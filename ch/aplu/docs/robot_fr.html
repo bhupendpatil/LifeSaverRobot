@@ -1,0 +1,919 @@
+<html>
+<head>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+
+
+<a href="http://ch/aplu/docs/index_fr.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a>
+<h2>Documentation  Robotics</h2>
+<h3>Module imports: </h3>
+<h3>from simrobot import *<br>
+  from nxtrobot import *<br>
+  from ev3robot import *</h3>
+<h4><b>LegoRobot:</b> </h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%" bgcolor="#F0F0F5" >Fonction</td>
+    <td width="70%" bgcolor="#F0F0F5">Action </td>
+  </tr>
+  <tr>
+    <td width="30%">
+      <p>LegoRobot()</p>
+    </td>
+    <td width="70%">G&eacute;n&egrave;re  un objet <em>LegoRobot</em> mod&eacute;lisant une  brique NXT, EV3 ou simul&eacute; d&eacute;pourvue de moteur et de capteurs tout en  &eacute;tablissant une connexion &agrave; la brique. Les  capteurs et moteurs doivent ensuite &ecirc;tre ajout&eacute;s avec <em>addPart()</em>
+        <div>
+          <div> </div>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>addPart(part)</p>
+    </td>
+    <td>
+      <p>Ajoute  un composant (capteur,  moteur ou ch&acirc;ssis) au robot </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>clearDisplay() </p>
+    </td>
+    <td>
+      <p>R&eacute;initialise  l&rsquo;&eacute;cran [<em>mode s<em>imulation:</em></em> barre d&rsquo;&eacute;tat] </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>drawString(text, x, y) </p>
+    </td>
+    <td>
+      <p>&Eacute;crit  le texte <em>text</em> &agrave; la position <em>x, y</em> [<em>Mode simulation&nbsp;:</em> dans la barre d&rsquo;&eacute;tat, (x, y) est dans ce cas ignor&eacute;] </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>isEnterHit() </p>
+    </td>
+    <td>
+      <p>Indique <em>True</em> si le bouton ENTER de la brique  &eacute;tait press&eacute; [<em>Sur le NXT et en mode simulation&nbsp;:</em> correspond &agrave; la touche <em>Esc</em>] </p>
+    </td>
+  </tr>
+  <tr>
+    <td>isEscapeHit() </td>
+    <td>Indique <em>True</em> si le bouton ESCAPE de la brique  &eacute;tait press&eacute; [<em>Sur le NXT et en mode simulation&nbsp;:</em> correspond &agrave; la touche <em>Esc</em>] </td>
+  </tr>
+  <tr>
+    <td>
+      <p>isLeftHit() </p>
+    </td>
+    <td>
+      <p>Indique <em>True</em> si le bouton LEFT de la brique  &eacute;tait press&eacute; [<em>Sur le NXT et en mode simulation&nbsp;:</em> correspond &agrave; la touche directionnelle<em> gauche</em>] </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>isRightHit() </p>
+    </td>
+    <td>
+      <p>Indique <em>True</em> si le bouton RIGHT de la brique  &eacute;tait press&eacute; [<em>Sur le NXT et en mode simulation&nbsp;:</em> correspond &agrave; la touche directionnelle<em> droite</em>] </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>isUpHit() </p>
+    </td>
+    <td>
+      <p>Indique <em>True</em> si le bouton UP de la brique &eacute;tait press&eacute; [<em>Sur le NXT et en mode simulation&nbsp;:</em> correspond &agrave; la touche directionnelle<em> haut</em>] </p>
+    </td>
+  </tr>
+  <tr>
+    <td>isDownHit() </td>
+    <td>Indique <em>True</em> si le bouton DOWN de la brique &eacute;tait press&eacute; [<em>Sur le NXT et en mode simulation&nbsp;:</em> correspond &agrave; la touche directionnelle<em> bas</em>] </td>
+  </tr>
+  <tr>
+    <td>
+      <p>playTone(frequency, duration) </p>
+    </td>
+    <td>
+      <p>Joue  un son de fr&eacute;quence <em>frequency</em> (en Hz)  et de dur&eacute;e <em>duration</em> (ms) [<em>Simulation mode:</em> non disponible] </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>setVolume(volume) </p>
+    </td>
+    <td>
+      <p>R&egrave;gle  le volume pour la restitution des sons (Compris entre 0 et 100) </p>
+    </td>
+  </tr>
+  <tr>
+      <td>playSample(tag, volume)</td>
+      <td>Joue le fichier WAV avec le volume donn&eacute; (0..100) du dossier <em>/home/root/music</em> en utilisant le nom du fichier <em>song&lt;tag&gt;.wav</em>  (<em>tag</em>: integer) (fonction non-bloquante). Format WAV accept&eacute;:   mono, 8 bit unsigned ou 16 bit signed avec un maximum de 11025 Hz. [<em>Simulation mode:</em> non disponible] </td>
+  </tr>
+  <tr>
+      <td>playSampleWait(tag, volume)</td>
+      <td>Idem, mais bloquant jusqu'&agrave; la fin de l'&eacute;mission [<em>Simulation mode:</em> non disponible] </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <p>setLED(pattern) </p>
+    </td>
+    <td>
+      <p>Ajuste  les LEDS du EV3: 0: &eacute;teint, 1: vert, 2: rouge, 3: rouge brillant, 4: vert clignotant,  5: rouge clignotant, 6: rouge brillant clignotant, 7: double clignotement vert,  8: double clignotement rouge, 9: double clignotement rouge brillant </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>exit()</p>
+    </td>
+    <td>
+      <p>Arr&ecirc;te  le robot et termine la connexion</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>isConnected()</p>
+    </td>
+    <td>
+      <p>Indique <em>True</em> si la connexion est &eacute;tablie ou si la fen&ecirc;tre de simulation n'est pas ferm&eacute;e</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>reset()</p>
+    </td>
+    <td>
+      <p><em>En mode  simulation&nbsp;:</em> place  le robot dans la position / direction de d&eacute;part</p>
+    </td>
+  </tr>
+</table>
+<br>
+<b>Gear <strong>(Essieu&nbsp;=  deux moteurs synchronis&eacute;s)</strong>:</b>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">
+      <p>Gear()</p>
+    </td>
+    <td width="70%">
+      <p>G&eacute;n&egrave;re  un objet <em>Gear</em> mod&eacute;lisant un ch&acirc;ssis  &eacute;quip&eacute; d&rsquo;un essieu constitu&eacute; de deux moteurs synchronis&eacute;s connect&eacute;s sur les  ports A et B</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>backward()</p>
+    </td>
+    <td>
+      <p>Fait  rouler le ch&acirc;ssis en arri&egrave;re (m&eacute;thode non bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>backward(ms)</p>
+    </td>
+    <td>
+      <p>Roule  en arri&egrave;re pendant l&rsquo;intervalle de temps <em>ms</em> (m&eacute;thode bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>isMoving()</p>
+    </td>
+    <td>
+      <p>Idem,  en tournant pendant <em>ms </em>millisecondes  (m&eacute;thode bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>forward()</p>
+    </td>
+    <td>
+      <p>Fait  avancer le ch&acirc;ssis (m&eacute;thode non bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>forward(ms)</p>
+    </td>
+    <td>
+      <p>Fait  avancer le ch&acirc;ssis pendant l&rsquo;intervalle de temps indiqu&eacute; par <em>ms </em>(m&eacute;thode bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>left()</p>
+    </td>
+    <td>
+      <p>Tourne  &agrave; gauche (m&eacute;thode non bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>left(ms)</p>
+    </td>
+    <td>
+      <p>Tourne  &agrave; gauche pendant <em>ms </em>millisecondes (m&eacute;thode  bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>leftArc(radius)</p>
+    </td>
+    <td>
+      <p>Tourne  &agrave; gauche en formant un arc de cercle de rayon radius (m&eacute;thode non bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>leftArc(radius, ms)</p>
+    </td>
+    <td>
+      <p>Idem,  en tournant pendant <em>ms </em>millisecondes  (m&eacute;thode bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>right()</p>
+    </td>
+    <td>
+      <p>Tourne  &agrave; droite (m&eacute;thode non bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>right(ms)</p>
+    </td>
+    <td>
+      <p>Idem,  en tournant pendant <em>ms </em>millisecondes  (m&eacute;thode bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>rightArc(radius)</p>
+    </td>
+    <td>
+      <p>Tourne  &agrave; droite en formant un arc de cercle de rayon radius (m&eacute;thode non bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>rightArc(radius, ms)</p>
+    </td>
+    <td>
+      <p>Idem,  en tournant pendant <em>ms </em>millisecondes  (m&eacute;thode bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>setSpeed(speed)</p>
+    </td>
+    <td>
+      <p>R&egrave;gle  la vitesse du robot</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>stop()</p>
+    </td>
+    <td>
+      <p>Arr&ecirc;te  le ch&acirc;ssis / l&rsquo;essieu</p>
+    </td>
+  </tr>
+  <tr>
+    <td>getLeftMotorCount() </td>
+    <td>Retourne  la valeur actuelle du compteur du moteur gauche [non disponible en mode  simulation]</td>
+  </tr>
+  <tr>
+    <td> getRightMotorCount() </td>
+    <td>Retourne  la valeur actuelle du compteur du moteur droit [non disponible en mode  simulation]</td>
+  </tr>
+  <tr>
+    <td> resetLeftMotorCount() </td>
+    <td>Remet  &agrave; 0 le compteur du moteur gauche [non disponible en mode simulation] </td>
+  </tr>
+  <tr>
+    <td> resetRightMotorCount() </td>
+    <td>Remet  &agrave; 0 le compteur du moteur droit [non disponible en mode simulation]</td>
+  </tr>
+</table>
+<br>
+<b>TurtleRobot:</b>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">
+      <p>TurtleRobot()</p>
+    </td>
+    <td width="70%">
+      <p>G&eacute;n&egrave;re  un objet <em>TurtleRobot</em> mod&eacute;lisant un  robot ayant un comportement de tortue. Le robot doit &ecirc;tre &eacute;quip&eacute; d&rsquo;un ch&acirc;ssis  mont&eacute; sur un essieu entra&icirc;n&eacute; par les moteurs connect&eacute;s aux ports A et B</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>backward()</p>
+    </td>
+    <td>
+      <p>Recule  (m&eacute;thode non bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>backward(step)</p>
+    </td>
+    <td>
+      <p>Recule  du nombre de pas sp&eacute;cifi&eacute; (m&eacute;thode bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>forward()</p>
+    </td>
+    <td>
+      <p>Avance  (m&eacute;thode non bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>forward(step)</p>
+    </td>
+    <td>
+      <p>Avance  du nombre de pas sp&eacute;cifi&eacute; (m&eacute;thode bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>left()</p>
+    </td>
+    <td>
+      <p>Tourne  &agrave; gauche (m&eacute;thode non bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>left(angle)</p>
+    </td>
+    <td>
+      <p>Tourne  &agrave; gauche (m&eacute;thode non bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>right()</p>
+    </td>
+    <td>
+      <p>Tourne  &agrave; droite (m&eacute;thode non bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>right(angle)</p>
+    </td>
+    <td>
+      <p>Tourne  &agrave; droite de l&rsquo;angle <em>angle </em>(m&eacute;thode  bloquante)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>setTurtleSpeed(speed)</p>
+    </td>
+    <td>
+      <p>R&egrave;gle  la vitesse du ch&acirc;ssis &agrave; <em>speed</em></p>
+    </td>
+  </tr>
+</table>
+<br>
+<b>Motor:</b>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">
+      <p>Motor(MotorPort.port)</p>
+    </td>
+    <td width="70%">
+      <p>G&eacute;n&egrave;re  un objet <em>Motor</em> mod&eacute;lisant un moteur  virtuel branch&eacute; sur le port moteur A, B, C, ou D</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>backward()</p>
+    </td>
+    <td>
+      <p>Fait  tourner les moteurs &agrave; l&rsquo;envers</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>forward()</p>
+    </td>
+    <td>
+      <p>Fait  tourner les moteurs &agrave; l&rsquo;endroit</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>setSpeed(speed)</p>
+    </td>
+    <td>
+      <p>R&egrave;gle  la vitesse du moteur</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>isMoving()</p>
+    </td>
+    <td>
+      <p>Retourne <em>True </em>si le moteur est en rotation</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>stop()</p>
+    </td>
+    <td>
+      <p>Arr&ecirc;te  le moteur </p>
+    </td>
+  </tr>
+  <tr>
+    <td>getMotorCount() </td>
+    <td>Retourne  la valeur actuelle du compteur de moteur [non disponible en mode simulation]</td>
+  </tr>
+  <tr>
+    <td> resetMotorCount() </td>
+    <td>R&eacute;initialise  le compteur du moteur &agrave; 0 et le fait tourner jusqu&rsquo;&agrave; ce que le compteur  atteigne la valeur <em>count</em>. (m&eacute;thode  bloquante) [non disponible en mode simulation] </td>
+  </tr>
+  <tr>
+    <td> rotateTo(count) </td>
+    <td>Idem  que <em>rotateTo(count)</em>, mais de mani&egrave;re  non bloquante lorsque <em>blocking = False</em> [non disponible en mode simulation] </td>
+  </tr>
+  <tr>
+    <td> rotateTo(count, blocking) </td>
+    <td>Idem  que <em>rotateTo(count)</em>, mais de mani&egrave;re  non bloquante lorsque <em>blocking = False</em> [non disponible en mode simulation] </td>
+  </tr>
+  <tr>
+    <td> continueTo(count) </td>
+    <td>Idem  que <em>rotateTo(count, False)</em>, mais  sans r&eacute;initialiser le compteur &agrave; 0 [non disponible en mode simulation]</td>
+  </tr>
+  <tr>
+    <td> continueTo(count, blocking) </td>
+    <td>Idem  que <em>rotateTo(count)</em>, mais de mani&egrave;re  non bloquante lorsque <em>blocking = False</em> [non disponible en mode simulation] </td>
+  </tr>
+  <tr>
+    <td> continueRelativeTo(count) </td>
+    <td>Idem  que <em>continueTo(count)</em>, mais avec un  incr&eacute;ment de <em>count </em>pour le compteur  [non disponible en mode simulation] </td>
+  </tr>
+  <tr>
+    <td> continueRelativeTo(count, blocking) </td>
+    <td>Idem  que <em>continueTo(count, blocking)</em>, mais  avec un incr&eacute;ment de <em>count </em>pour le  compteur [non disponible en mode simulation]</td>
+  </tr>
+</table>
+<br>
+<b>LightSensor:</b>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">
+      <p>LichtSensor(SensorPort.port)</p>
+    </td>
+    <td width="70%">
+      <p>G&eacute;n&egrave;re  un objet <em>LightSensor</em> mod&eacute;lisant un  capteur optique (photosensible) branch&eacute; sur le port S1, S2, S3, ou S4</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>LightSensor(SensorPort.port, <br>
+        dark = onDark)</p>
+    </td>
+    <td>
+      <p>Enregistre  la fonction de rappel <em>onDark</em> </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>LightSensor(SensorPort.port, <br>
+        bright = onBright)</p>
+    </td>
+    <td>
+      <p>Enregistre  la fonction de rappel <em>onBright</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>activate(True)</p>
+    </td>
+    <td>
+      <p>Active  la LED du capteur photosensible, ce qui est n&eacute;cessaire pour mesurer l&rsquo;intensit&eacute;  lumineuse diffus&eacute;e par une surface au sol (uniquement sur la brique NXT)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>activate(False)</p>
+    </td>
+    <td>
+      <p>D&eacute;sactive  laLED du capteur photosensible</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>getValue()</p>
+    </td>
+    <td>
+      <p>Indique  la valeur lue par le capteur photosensible (nombre entre 0 et 1000) </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>setTriggerLevel(level)</p>
+    </td>
+    <td>
+      <p>Ajuste  le seuil de d&eacute;clenchement</p>
+    </td>
+  </tr>
+</table>
+<br>
+<b>ColorSensor:</b>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">
+      <p>ColorSensor(SensorPort.port)</p>
+    </td>
+    <td width="70%">
+      <p>G&eacute;n&egrave;re  un objet <em>ColorSensor</em> mod&eacute;lisant un capteur  de couleurs branch&eacute; sur un des ports S1, S2, S3, ou S4</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>getColor()</p>
+    </td>
+    <td>
+      <p>Retourne  la couleur mesur&eacute;e par le capteur sous forme d&rsquo;un objet <em>Color</em> poss&eacute;dant les m&eacute;thodes <em>getRed()</em>, <em>getGreen()</em> et <em>getBlue()</em> permettant d&rsquo;obtenir les composantes RVB comprises entre  0 et 255.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>getColorID()</p>
+    </td>
+    <td>
+      <p>Retourne  l&rsquo;identifiant de la couleur actuellement mesur&eacute;e&nbsp;: 0: indefinit, 1: noir, 2: bleu, 3:vert,  4: jaune, 5: rouge, 6: blanc</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>getColorStr()</p>
+    </td>
+    <td>
+      <p>Retourne  la couleur mesur&eacute;e par une chaine de caract&egrave;res (BLACK, BLUE, GREEN, YELLOW,  RED, WHITE ou UNDEFINED)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>getLightValue()</p>
+    </td>
+    <td>
+      <p>Retourne  la luminosit&eacute; de la couleur mesur&eacute;e selon le mod&egrave;le TSL = Teinte, Saturation,  Lumi&egrave;re, (HSG = Hue, Saturation, Lightness)</p>
+    </td>
+  </tr>
+</table>
+<br>
+<b>TouchSensor:</b>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">
+      <p>TouchSensor(SensorPort.port)</p>
+    </td>
+    <td width="70%">
+      <p>G&eacute;n&egrave;re  un objet <em>TouchSensor</em> mod&eacute;lisant un  capteur tactile branch&eacute; sur un des ports S1, S2, S3, ou S4</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>TouchSensor(SensorPort.port, pressed = onPressed, released = onReleased)</p>
+    </td>
+    <td>
+      <p>Idem,  en rattachant les gestionnaires d&rsquo;&eacute;v&eacute;nements <em>onPressed(port), onReleased(port) </em></p>
+    </td>
+  </tr>
+  <tr>
+  <tr>
+    <td>
+      <p>isPressed()</p>
+    </td>
+    <td>
+      <p>Retourne <em>True</em> si le capteur tactile est  enfonc&eacute;</p>
+    </td>
+  </tr>
+</table>
+<br>
+<b>SoundSensor:</b>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">
+      <p>SoundSensor(SensorPort.port)</p>
+    </td>
+    <td width="70%">
+      <p>G&eacute;n&egrave;re  un objet <em>SoundSensor</em> mod&eacute;lisant un  capteur sonore branch&eacute; sur un des ports S1, S2, S3, ou S4.Pour EV3 utiliser le capteur type NXT: NxtSoundSensor(SensorPort.port)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>SoundSensor(SensorPort.port, loud = onLoud, quiet = onQuiet)</p>
+    </td>
+    <td>
+      <p>Rattache  les gestionnaires d&rsquo;&eacute;v&eacute;nements <em>onLoud(port, value) , onQuiet(port, value) </em> d&eacute;clench&eacute;s lorsque la valeur mesur&eacute;e passe  au-dessus du seuil critique </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>getValue()</p>
+    </td>
+    <td>
+      <p>Retourne  le niveau sonore mesur&eacute;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>setTriggerLevel(level)</p>
+    </td>
+    <td>
+      <p>R&egrave;gle  le seuil de d&eacute;clenchement pour les &eacute;v&eacute;nements </p>
+    </td>
+  </tr>
+</table>
+<br>
+<b>UltrasonicSensor:</b>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">
+      <p>UltrasonicSensor(SensorPort.port)</p>
+    </td>
+    <td width="70%">
+      <p>G&eacute;n&egrave;re  un objet <em>UltrasonicSensor</em> mod&eacute;lisant  un capteur ultrasonique branch&eacute; sur un des ports S1, S2, S3, ou S4</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>getDistance()</p>
+    </td>
+    <td>
+      <p>Retourne  la distance mesur&eacute;e par le capteur en [cm]. Retourne 255 si la mesure &eacute;choue  (aucune cible)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>setTriggerLevel(level)
+    </td>
+    <td>
+      <p>R&egrave;gle  le seuil de d&eacute;clenchement (valeur par d&eacute;faut&nbsp;: 10) </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>far(port, level), near(port, level)</p>
+    </td>
+    <td>
+      <p>Param&egrave;tres  nomm&eacute;s du constructeur <em>UltrasonicSensor</em> permettant d&rsquo;enregistrer un gestionnaire d&rsquo;&eacute;v&eacute;nements (fonction de rappel). La  fonction de rappel <em>far = onFar</em> est  d&eacute;clench&eacute;e lorsque la distance passe au-dessus du seuil de d&eacute;clenchement et <em>near = onNear</em> lorsqu&rsquo;elle passe  au-dessous du seuil</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>setProximityCircleColor(color)</p>
+    </td>
+    <td>
+      <p>En mode  simulation&nbsp;: R&egrave;gle la couleur du cercle de proximit&eacute;</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>setMeshTriangleColor(color)</p>
+    </td>
+    <td>
+      <p>En mode  simulation&nbsp;: R&egrave;gle la couleur des triangles de maillage (mesh)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>eraseBeamArea()</p>
+    </td>
+    <td>
+      <p>En mode  simulation&nbsp;: Efface le c&ocirc;ne de d&eacute;tection de l&rsquo;&eacute;cran</p>
+    </td>
+  </tr>
+</table>
+<p><br>
+    </p>
+<h4>GyroRateSensor (seulement EV3):</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">GyroRateSensor(SensorPort.port)</td>
+    <td width="70%">
+      <p>G&eacute;n&egrave;re  un objet GyroRateSensor branch&eacute; sur un des ports S1, S2, S3, S4</p>
+    </td>
+  </tr>
+  <tr>
+    <td>getValue()</td>
+    <td> Retourne la vitesse de rotation  (degr&eacute;es par seconde, positive 
+      contre le sens horaire)<br>
+    </td>
+  </tr>
+</table>
+<h4>&nbsp;</h4>
+<h4>GyroAngleSensor (seulement EV3):</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">GyroAngleSensor(SensorPort.port)</td>
+    <td width="70%">
+      <p>G&eacute;n&egrave;re  un objet GyroAngleSensor branch&eacute; sur un des ports S1, S2, S3, S4</p>
+    </td>
+  </tr>
+  <tr>
+    <td>getValue()</td>
+    <td> Retourne l'orientation actuelle par rapport &agrave; la position de d&eacute;part (degr&eacute;es, positive 
+      contre le sens horaire)<br>
+    </td>
+  </tr>
+  <tr>
+    <td>reset()</td>
+    <td>Ajuste la position de d&eacute;part</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><b>InfraredSensor (seulement EV3):</b>
+</p>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">
+      <p>IRRemoteSensor(SensorPort.port)</p>
+    </td>
+    <td width="70%">
+      <p>G&eacute;n&egrave;re  un objet <em>IRRemoteSensor</em> mod&eacute;lisant un  capteur infrarouge branch&eacute; sur un des ports S1, S2, S3, ou S4</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>getCommand()</p>
+    </td>
+    <td>
+      <p>Retourne l&rsquo;ID de la  commande courante : 0:Rien, 1:Sup&eacute;rieur-gauche, 2: Inf&eacute;rieur-droit, 3:Sup&eacute;rieur-droit,  4:inf&eacute;rieur-droit, 5:Sup&eacute;rieur-gauche&amp;sup&eacute;rieur-droit, 6:Sup&eacute;rieur-gauche&amp;inf&eacute;rieur-droit,  7:inf&eacute;rieur-gauche&amp;sup&eacute;rieur-droit, 8:inf&eacute;rieur-gauche&amp;inf&eacute;rieur-droit,  9:Bouton-central, 10:inf&eacute;rieur-gauche&amp;sup&eacute;rieur-gauche, 11:Sup&eacute;rieur-droit&amp;inf&eacute;rieur-droit. Le  canal est s&eacute;lectionn&eacute; par le slider rouge. 1=position sup&eacute;rieure, 4= position  inf&eacute;rieure. Cela correspond au num&eacute;ro de port sur lequel est attach&eacute; le  capteur</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>actionPerformed(port, command)</p>
+    </td>
+    <td>
+      <p>Param&egrave;tres  nomm&eacute;s du constructeur <em>UltrasonicSensor</em> permettant d&rsquo;enregistrer un gestionnaire d&rsquo;&eacute;v&eacute;nements <em>onActionPerformed </em>(fonction de rappel)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>IRSeekSensor(SensorPort.port)</p>
+    </td>
+    <td>
+      <p>G&eacute;n&egrave;re  un objet <em>IRSeekSensor</em> mod&eacute;lisant un  capteur infrarouge de recherche branch&eacute; sur un des ports S1, S2, S3, ou S4. La  source IR active de la t&eacute;l&eacute;commande doit &ecirc;tre activ&eacute;e (bouton central de la  t&eacute;l&eacute;commande)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>v = getValue()</p>
+    </td>
+    <td>
+      <p><em>v.bearing</em> sp&eacute;cifie  la direction (-12..12) et <em>v.distance</em> la  distance (en cm) &agrave; la source IR. </p>
+      Le canal est s&eacute;lectionn&eacute; par le slider rouge. 1=position  sup&eacute;rieure, 4= position inf&eacute;rieure. Cela correspond au num&eacute;ro de port sur  lequel est attach&eacute; le capteur</td>
+  </tr>
+  <tr>
+    <td>
+      <p>IRDistanceSensor(SensorPort.port)</p>
+    </td>
+    <td>
+      <p>G&eacute;n&egrave;re  un objet <em>IRDistanceSensor</em> mod&eacute;lisant  un capteur infrarouge de mesure de distances branch&eacute; sur un des ports S1, S2,  S3, ou S4. La cible doit &ecirc;tre en mesure de r&eacute;fl&eacute;chir le rayonnement IR</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>getDistance()</p>
+    </td>
+    <td>
+      <p>Retourne  la distance (en cm) &agrave; la cible</p>
+    </td>
+  </tr>
+</table>
+<br>
+<b> TemperatureSensor (seulement EV3):</b>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">
+      <p>TemperatureSensor(SensorPort.port) </p>
+    </td>
+    <td width="70%">
+      <p>G&eacute;n&egrave;re un objet <em>TemperatureSensor</em> mod&eacute;lisant un capteur  de temp&eacute;rature (thermom&egrave;tre) branch&eacute; sur un des ports S1, S2, S3, ou S4. Mod&egrave;le de capteur NXT g&eacute;r&eacute; : Temperature Sensor  9749</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="30%">
+      <p>getTemperature() </p>
+    </td>
+    <td width="70%">
+      <p>Retourne  la temp&eacute;rature en degr&eacute;s Celsius comprise entre -55 et 128 </p>
+    </td>
+  </tr>
+</table>
+<br>
+<b>ArduinoLink (seulement EV3):</b>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">
+      <p>ArduinoLink(SensorPort.port) </p>
+    </td>
+    <td width="70%">
+      <p>Cr&eacute;e  un objet <em>ArduinoLink</em> mod&eacute;lisant un  ma&icirc;tre I2C permettant une connexion &agrave; une carte de d&eacute;veloppement Arduino sur un  des ports S1, S2, S3, ou S4</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="30%">
+      <p>getReply(request,  reply) </p>
+    </td>
+    <td width="70%">
+      <p>Envoie  la requ&ecirc;te (nombre entier entre 0 et 255) vers l&rsquo;Arduino et retourne la r&eacute;ponse  en modifiant directement la liste <em>reply</em> comportant au maximum 16 nombres entiers compris entre 0 et 255</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="30%">
+      <p>getReplyInt(request) </p>
+    </td>
+    <td width="70%">
+      <p>Idem,  mais en fournissant la r&eacute;ponse sous la forme de la valeur de retour (nombre  entier 0 et 255).</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="30%">
+      <p>getReplyString(request) </p>
+    </td>
+    <td width="70%">
+      <p>Idem,  mais en fournissant la r&eacute;ponse sous la forme de la valeur de retour (cha&icirc;ne de  caract&egrave;res de longueur maximale 15).</p>
+    </td>
+  </tr>
+</table>
+<br>
+<b> RobotContext (seulement simulation)</b>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%">setStartDirection(angle)</td>
+    <td width="70%">R&egrave;gle  la position de d&eacute;part du robot (0 = orient&eacute; vers l&rsquo;Est, les angles sont  orient&eacute;s dans le sens des aiguilles de la montre) </td>
+  </tr>
+  <tr>
+    <td>setStartPosition(x, y)</td>
+    <td>R&egrave;gle  la position de d&eacute;part du robot (en pixels, origine dans le coin sup&eacute;rieur  gauche du canevas)</td>
+  </tr>
+  <tr>
+    <td>showStatusBar(height)</td>
+    <td>Ajoute  une barre d&rsquo;&eacute;tat de hauteur <em>height </em>au  bas de la fen&ecirc;tre</td>
+  </tr>
+  <tr>
+    <td>setStatusText(text)</td>
+    <td>Ajoute  le texte <em>text</em> dans la barre d&rsquo;&eacute;tat en  effa&ccedil;ant le texte pr&eacute;sent</td>
+  </tr>
+  <tr>
+    <td>useBackground(filename)</td>
+    <td>Ins&egrave;re  l&rsquo;image contenue dans le fichier <em>filename </em>au fond. Celle-ci peut &ecirc;tre d&eacute;tect&eacute;e par le capteur virtuel photosensible  ou de couleur comme une surface de rev&ecirc;tement.</td>
+  </tr>
+  <tr>
+    <td>useObstacle(filename, x, y)</td>
+    <td>Ins&egrave;re  un obstacle &agrave; la position <em>(x, y)</em> pouvant &ecirc;tre d&eacute;tect&eacute; par le capteur virtuel tactile.</td>
+  </tr>
+  <tr>
+    <td>useTarget(filename, mesh, x, y)</td>
+    <td>Ins&egrave;re  une cible &agrave; la position <em>(x, y) </em>pouvait  &ecirc;tre d&eacute;tect&eacute;e par le capteur virtuel ultrasonique. La repr&eacute;sentation &agrave; l&rsquo;&eacute;cran  de l&rsquo;obstacle est sp&eacute;cifi&eacute;e par l&rsquo;image contenue dans le fichier <em>filename </em>et le maillage triangulaire (mesh triangles) dans la liste de sommets <em>mesh.</em>
+        <div>
+          <div> </div>
+        </div>
+    </td>
+  </tr>
+</table>
+<p></p>
+<h4>EV3Copy (seulement EV3, Direct Mode):</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="30%">EV3Copy.copyFile(ipAddress, sourcePath, targetPath)</td>
+        <td width="70%">Faire une copie du fichier local sourcePath &agrave; targetPath du EV3 avec l'adresse IP donn&eacute;e (p.e. copyFile(&quot;10.0.1.1&quot;, &quot;c:/test.wav&quot;, &quot;/home/root/music/song1.wav&quot;)</td>
+    </tr>
+</table>
+<p></p>
+<p></p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="24%">Complete Online-JavaDoc :</td>
+    <td width="76%"><a href="http://www.aplu.ch/classdoc/ev3jliba/index.html">EV3JLibA</a> (Autonomous mode)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><a href="http://www.aplu.ch/classdoc/ev3jlib/index.html">EV3JLib</a> (Direct mode)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><a href="http://www.aplu.ch/classdoc/nxtjlib/index.html">NxtJLib</a> (Direct mode)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><a href="http://www.aplu.ch/classdoc/robotsim/index.html">RobotSim</a> (Simulation)</td>
+  </tr>
+</table>
+<p><a href="http://ch/aplu/docs/index_fr.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></p>
+<p>&nbsp;</p>
+</body>
+</html>
+

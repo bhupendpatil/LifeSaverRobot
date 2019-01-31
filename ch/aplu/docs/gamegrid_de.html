@@ -1,0 +1,516 @@
+
+<html>
+<head>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+
+<a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a>
+<h2>Wichtigste Methoden der Klassenbibliothek JGameGrid </h2 >
+<h3>Module import: from gamegrid import *<br>
+</h3>
+<h4> Klasse GameGrid (globale Funktionen nach Aufruf von <em>makeGameGrid()</em>)<br>
+</h4>
+<table width="100%"  border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
+<tr>
+    <td valign="top" width="37%">GameGrid(nbHorzCells, nbVertCells, cellSize, color)</td>
+    <td valign="top" >erzeugt ein Spielfenster mit der gegebenen Anzahl horizontalen und vertikalen Zellen,  Zellengr&ouml;sse, mit sichtbaren Gitterlinien in gegebener Farbe,  mit Navigationsbalken</td>
+  </tr> 
+  <tr>
+    <td valign="top" >GameGrid(nbHorzCells, nbVertCells, cellSize, color, bgImagePath)</td>
+    <td valign="top" >erzeugt ein Spielfenster mit der gegebenen Anzahl horizontalen und vertikalen Zellen, Zellengr&ouml;sse, mit Gitterlinien, mit Hintergrundbild, mit Navigationsbalken</td>
+  </tr> 
+  <tr>
+    <td valign="top" >GameGrid(nbHorzCells, nbVertCells, cellSize, None, bgImagePath, False)</td>
+    <td valign="top" >erzeugt ein Spielfenster mit der gegebenen Anzahl horizontalen und vertikalen Zellen, Zellengr&ouml;sse, ohne Gitterlinien, mit Hintergrundbild ohne Navigationsbalken</td>
+  </tr> 
+  <tr>
+    <td valign="top" >act()</td>
+    <td valign="top" > wird nach dem Start des Simulationszyklus periodisch am Ende aller Actor.act() aufgerufen</td>
+  </tr>
+  <tr>
+    <td valign="top" >addActor(actor, location)</td>
+    <td valign="top" >f&uuml;gt den Actor an der gegebenen Position zum Spielfenster  hinzu</td>
+  </tr>
+  <tr>
+    <td valign="top" >addKeyListener(listener)</td>
+    <td valign="top" >registriert den Tastaturlistener</td>
+  </tr>
+   <tr>
+    <td valign="top" >addMouseListener(listener, mouseEventMask)</td>
+    <td valign="top" >registriert den Mauslistener</td>
+  </tr>
+  <tr>
+    <td valign="top" >addStatusBar(height)</td>
+    <td valign="top" >f&uuml;gt ein Statusfenster zum Gamegrid</td>
+  </tr>
+  <tr>
+    <td valign="top" >delay(time)</td>
+    <td valign="top" >wartet definierte Zeit (in Millisec)</td>
+  </tr>
+  <tr>
+    <td valign="top" >doPause()</td>
+    <td valign="top" >unterbricht  den Simulationszyklus</td>
+  </tr> 
+  <tr>
+    <td valign="top" >doStep()</td>
+    <td valign="top" >f&uuml;hrt die Simulation Schritt f&uuml;r Schritt durch</td>
+  </tr> 
+  <tr>
+    <td valign="top" >doReset()</td>
+    <td valign="top" >setzt alle Actor die Startposition und startet die Simulation neu</td>
+  </tr> 
+  <tr>
+    <td valign="top" >doRun()</td>
+    <td valign="top" >startet den Simulationszyklus</td>
+  </tr>  
+  <tr>
+    <td height="27" valign="top" >getActors(Actor class)</td>
+    <td valign="top" >gibt alle Actors der gegebenen Klasse in einer Liste zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td valign="top" >getBg()</td>
+    <td valign="top" >gibt  die Referenz auf GGBackground zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td valign="top" >getBgColor()</td>
+    <td valign="top" >gibt  die Hintergrundfarbe zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td valign="top" >getKeyCode()</td>
+    <td valign="top" >gibt den Tastaturcode  der letzten gedr&uuml;ckten Taste zur&uuml;ck</td>
+  </tr>
+  
+  <tr>
+    <td valign="top" >getOneActorAt(location)</td>
+    <td valign="top" >gibt den ersten Actor in der gegebenen Zelle zur&uuml;ck (Null, falls keiner)</td>
+  </tr>
+  <tr>
+    <td valign="top" >getOneActor(Actor class)</td>
+    <td valign="top" >gibt den ersten Actor der gegebenen Klasse zur&uuml;ck (Null, falls keiner)</td>
+  </tr>
+  
+  <tr>
+    <td valign="top" >getRandomEmptyLocation()</td>
+    <td width="63%" valign="top" >gibt eine zuf&auml;llige leere Zellenlocation zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td valign="top" >getRandomLocation()</td>
+    <td valign="top" >gibt eine zuf&auml;llige Zellenlocation zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td valign="top" >hide()</td>
+    <td valign="top" >versteckt das Spielfenster ohne es zu schliessen</td>
+  </tr>
+  <tr>
+    <td valign="top" >isAtBorder(location)</td>
+    <td valign="top" >gibt <em>True</em> zur&uuml;ck, wenn sich die Zelle am Rand des Spielfensters befindet</td>
+  </tr>
+  <tr>
+    <td valign="top" >isEmpty(location)</td>
+    <td valign="top" >gibt <em>True</em> zur&uuml;ck, wenn die Zelle leer ist</td>
+  </tr>
+  <tr>
+    <td valign="top" >isInGrid(location)</td>
+    <td valign="top" >gibt <em>True </em>zur&uuml;ck, wenn sich die Zelle innerhalb des Spielfensters befindet</td>
+  </tr>
+   <tr>
+    <td valign="top" >kbhit()</td>
+    <td valign="top" >ergibt <em>True</em>, wenn eine Taste gedr&uuml;ckt wurde</td>
+  </tr>
+  <tr>
+    <td valign="top" >toLocation(x, y)</td>
+    <td valign="top" >gibt die Zelle  mit den Pixel-Koordinaten x und y zur&uuml;ck</td>
+  </tr>
+   <tr>
+    <td valign="top" >openSoundPlayer("wav/ping.wav")</td>
+    <td valign="top" >stellt eine Sounddatei  bereit. Folgende  Sounds sind im tigerjython.jar vorhanden: bird.wav, boing.wav, cat.wav, click.wav, explore.wav, frog.wav, notify.wav </td>
+  </tr>
+  <tr>
+    <td valign="top" >play()</td>
+    <td valign="top" >spielt den bereitgestellten Sound ab</td>
+  </tr>
+  <tr>
+    <td valign="top" >refresh()</td>
+    <td valign="top" >aktualisiert das Spielfenster</td>
+  </tr>
+   
+  <tr>
+    <td valign="top" >registerAct(onAct)</td>
+    <td valign="top" >registriert den Callback onAct, der in jedem Simulationszyklus aufgerufen wird</td>
+  </tr>
+  <tr>
+    <td valign="top" >registerNavigation(started = onStart, stepped = onStep, paused = onPause, resetted = onReset, periodChanged = onPeriodChange)</td>
+    <td valign="top" >registriert die Callbacks onStart, onStep, onPause, onReset, onPeriodChange, die bei angezeigtem Navigationsbalken aufgerufen werden (nicht alle n&ouml;tig)</td>
+  </tr>
+  <tr>
+    <td valign="top" >removeActor (actor)</td>
+    <td valign="top" >entfernt den  Actor vom Spielfenster</td>
+  </tr>
+  <tr>
+    <td valign="top" >removeActorsAt(location)&nbsp;</td>
+    <td valign="top" >entfernt alle Actors, die sich in  der angegebenen Zelle befinden</td>
+  </tr>
+  <tr>
+    <td valign="top" > removeAllActors()</td>
+    <td valign="top">entfernt alle Actors vom  Spielfenster</td>
+  </tr> 
+   <tr>
+    <td valign="top" >reset()</td>
+    <td valign="top" >setzt die definierte Simulation in die Ausgangsposition zur&uuml;ck, mit Ausnahme der Actors, welche entfernt worden sind</td>
+  </tr>
+   <tr>
+    <td valign="top" >show()</td>
+    <td valign="top" >zeigt das Spielfenster  an</td>
+  </tr>
+  <tr>
+    <td valign="top" >setBgColor(color)</td>
+    <td valign="top" >setzt die Hintergrundfarbe</td>
+  </tr>
+  
+  <tr>
+    <td valign="top" >setSimulationPeriod (milisec)</td>
+    <td valign="top" >setzt die Periode des Simulationsloops</td>
+  </tr>
+  <tr>
+    <td valign="top" >setStatusText(text)</td>
+    <td valign="top" >setzt  den Text in die Statusbar</td>
+  </tr>
+  <tr>
+    <td valign="top" >setTitle(text)</td>
+    <td valign="top" >setzt  den Titel in der Fenster-Titelleiste</td>
+  </tr>
+</table>
+<h4> <br>
+Klasse Actor</h4>
+<table width="100%"  border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
+ <tr>
+    <td width="37%" valign="top" >Actor(spritepath)</td>
+    <td valign="top">erzeugt einen Actor mit dem gegebenen  Spritebild </td>
+  </tr>
+  <tr>
+    <td valign="top" >Actor(True, spritepath)</td>
+    <td valign="top"> erzeugt einen rotierbaren Actor mit dem gegebenen  Spritebild </td>
+  </tr>
+  <tr>
+    <td valign="top" >Actor(spritepath, nbSprites)</td>
+    <td valign="top"> erzeugt einen Actor mit mehreren Sprites (index _0, _1,... e.g..fish_0.gif ,  fish_1.gif,... )</td>
+  </tr>
+  <tr>
+    <td valign="top" >Actor(True, spritepath, nbSprites)</td>
+    <td valign="top"> erzeugt einen rotierbaren Actor mit mehreren Spritebildern </td>
+  </tr>
+  <tr>
+    <td valign="top" >act()</td>
+    <td valign="top">wird nach dem Start des Simulationszyklus periodisch aufgerufen</td>
+  </tr>
+   <tr>
+    <td valign="top" >addActorCollisionListener(listener)</td>
+    <td valign="top">registriert den Kollisionslistener</td>
+  </tr>
+   <tr>
+    <td valign="top" >addCollisionActor(actor)</td>
+    <td valign="top">registriert den Kollisionspartner</td>
+  </tr>
+   <tr>
+    <td valign="top" >addMouseTouchListener (listener)</td>
+    <td valign="top">registriert den MouseTouchListener</td>
+  </tr>
+  <tr>
+    <td valign="top" >collide(actor1, actor2)</td>
+    <td valign="top">Callback beim Auftreten einer Kollision, gibt die Anzahl der Simulationszyklen zur&uuml;ck, w&auml;hrend den weitere Events unterdr&uuml;ckt werden</td>
+  </tr>
+  <tr>
+    <td valign="top" ><p>getCollisionActors()</p>    </td>
+    <td valign="top" >gibt eine Liste der Kollisionskandidaten zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td valign="top" >getDirection()</td>
+    <td valign="top">gibt die Bewegungsrichtung zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td valign="top" >getIdVisible()</td>
+    <td valign="top" >gibt Id des sichtbaren Sprites zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td valign="top" >getNeighbours(distance)</td>
+    <td valign="top" >gibt eine Liste aller Actors zur&uuml;ck, die sich in der gegebenen Distanz befinden.    distance definiert einen Kreis um den Mittelpunkt der aktuellen Zelle (Einheit: Zellenbreite). Es werden alle  Actors, deren Zelle geschnitten wird, zur&uuml;ckgegeben</td>
+  </tr>
+  <tr>
+    <td valign="top" >getNextMoveLocation (location)</td>
+    <td width="63%" valign="top">gibt die <em>location</em> nach dem n&auml;chsten <em>move()</em> zur&uuml;ck</td>
+  </tr>
+   
+  <tr>
+    <td valign="top" >getX()</td>
+    <td valign="top">gibt die aktuelle horizontale Zellenkoordinate zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td valign="top" >getY()</td>
+    <td valign="top">gibt die aktuelle vertikale Zellenkoordinate zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td valign="top" >hide()</td>
+    <td valign="top" >macht den Actor unsichtbar, entfernt ihn aber nicht. Nach <em>reset()</em> wird er wieder sichtbar</td>
+  </tr>
+   <tr>
+    <td valign="top" >isInGrid()</td>
+    <td valign="top">gibt <em>True </em>zur&uuml;ck, wenn sich der Actor innerhalb des Spielfensters befindet</td>
+  </tr>
+   <tr>
+    <td valign="top" >isHorzMirror()</td>
+    <td valign="top" >gibt <em>True</em> zur&uuml;ck, wenn die Figur horizontal gespiegelt ist</td>
+  </tr>
+  <tr>
+    <td valign="top" >isVertMirror()</td>
+    <td valign="top" >gibt <em>True</em> zur&uuml;ck, wenn die Figur vertikal gespiegelt ist</td>
+  </tr>  
+  <tr>
+    <td valign="top" >isMoveValid()</td>
+    <td valign="top">gibt <em>True</em> zur&uuml;ck, wenn ein <em>move()</em> den Actor  innerhalb des Spielfensters bel&auml;sst</td>
+  </tr>
+  <tr>
+    <td valign="top" >isNearBorder()</td>
+    <td valign="top">gibt <em>True</em> zur&uuml;ck, wenn sich der Actor am Rand des Spielfensters befindet</td>
+  </tr>
+  <tr>
+    <td valign="top" >isVisible()</td>
+    <td valign="top" >gibt <em>True</em> zur&uuml;ck, wenn der Actor sichtbar ist</td>
+  </tr>  
+  <tr>
+    <td valign="top" >move()</td>
+    <td valign="top">bewegt den Actor mit der aktuellen Richtung in eine benachbarte Zelle</td>
+  </tr>
+  <tr>
+    <td valign="top" >move(distance)</td>
+    <td valign="top">bewegt den Actor um die gegebene Distanz</td>
+  </tr>
+  <tr>
+    <td valign="top" ><p>reset()</p>    </td>
+    <td valign="top" >aufgerufen, wenn der Actor zum Gamegrid hinzugef&uuml;gt od.   Reset-Button gedr&uuml;ckt wird</td>
+  </tr>
+     <tr>
+    <td valign="top" >setCollisionCircle (spriteId,center, radius)</td>
+    <td valign="top" >legt den Kreis innerhalb des Actors fest, der f&uuml;r Kollisionen verwendet wird</td>
+  </tr>
+  <tr>
+    <td valign="top" >setCollisionLine(spriteId,                   startPoint,                   endPoint)</td>
+    <td valign="top" >legt eine Linie innerhalb des Actors fest, die f&uuml;r Kollisionen verwendet wird</td>
+  </tr>
+   <tr>
+    <td valign="top" >setCollisionRectangle(spriteId, center, width, height)</td>
+    <td valign="top" >legt das Rechteck  innerhalb des Actors fest, das f&uuml;r Kollisionen verwendet wird</td>
+  </tr>
+   <tr>
+    <td valign="top" >setCollisionSpot(spriteId,                   spot)</td>
+    <td valign="top" >legt den Punkt innerhalb des Actors fest, der f&uuml;r Kollisionen verwendet wird</td>
+  </tr>
+   <tr>
+     <td valign="top" >setCollisionImage(spriteId)</td>
+     <td valign="top" >w&auml;hlt f&uuml;r die Kollision nicht-transparente Pixels . Nur verf&uuml;gbar, falls der Partner spot, line oder circle  verwendet</td>
+   </tr>
+   <tr>
+    <td valign="top" >setHorzMirror(True)</td>
+    <td valign="top" >spiegelt das Bild horizontal</td>
+  </tr>
+  <tr>
+    <td valign="top" >setVertMirror(True)</td>
+    <td valign="top" >spiegelt das Bild vertikal</td>
+  </tr>
+  <tr>
+    <td valign="top" >setSlowDown(factor) </td>
+    <td valign="top">verlangsamt den Aufruf der Methode <em>act() </em>des Actors mit dem gegebenen Faktor</td>
+  </tr>
+   
+  <tr>
+    <td valign="top" >setLocation(location)</td>
+    <td valign="top">setzt den Actor in die gegeben Zelle</td>
+  </tr>
+  <tr>
+    <td valign="top" >setLocationOffset(point)</td>
+    <td valign="top">verschiebt die Mitte des Spritebild relativ zur Zellenmitte (location nicht ver&auml;ndert)</td>
+  </tr
+   >
+  <tr>
+    <td valign="top" >setPixelLocation(location)</td>
+    <td valign="top">setzt den Actor auf die gegebene Pixelkoordinate (location/offset werden angepasst)</td>
+  </tr
+   ><tr>
+    <td valign="top" >setX(x)</td>
+    <td valign="top" >setzt die x-Koordinate auf den angegebenen Wert</td>
+  </tr>
+   <tr>
+    <td valign="top" >setY(y)</td>
+    <td valign="top" >setzt die y-Koordinate auf den angegebenen Wert</td>
+  </tr>  
+   <tr>
+    <td valign="top" >show()</td>
+    <td valign="top"> Sprite mit der id 0 wird sichtbar</td>
+  </tr>
+  <tr>
+    <td valign="top" >show(spriteId)</td>
+    <td valign="top" > Sprite mit der angegebener id wird sichtbar</td>
+  </tr>  
+  <tr>
+    <td valign="top" >showNextSprite ()</td>
+    <td valign="top" >zeigt das n&auml;chste Sprite-Bild (spriteId wird um 1 erh&ouml;ht (modulo nbSprites))</td>
+  </tr>
+  <tr>
+    <td valign="top" >showPreviousSprite()</td>
+    <td valign="top" >zeigt das vorangehende Sprite-Bild (spriteId -1 wird nbSprites - 1) </td>
+  </tr>
+ 
+  
+   <tr>
+    <td valign="top" >removeSelf()</td>
+    <td valign="top" >der Actor wird vernichtet. Nach <em>reset() </em> erscheint er nicht mehr</td>
+  </tr>
+   <tr>
+    <td valign="top" >reset()</td>
+    <td valign="top" >wird bei GameGrid.addActor() aufgerufen und wenn der Reset-Button geklickt wird</td>
+  </tr>
+   <tr>
+    <td valign="top" >turn(angle) </td>
+    <td valign="top">&auml;ndert die Bewegungsrichtung um den gegebenen Winkel (in Grad im Uhrzeigersinn)</td>
+  </tr>
+</table>
+<h4> <br>
+Klasse Location</h4>
+<table width="100%"  border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
+  <tr>
+    <td valign="top" width="37%" >Location(x, y)</td>
+    <td valign="top" >erzeugt Location Objekt mit  gegebenen horizontalen und vertikalen Zellenkoordinaten</td>
+  </tr> 
+  <tr>
+    <td valign="top" >Location(location)</td>
+    <td valign="top" >erzeugt Location Objekt mit der gegebenen Location (clone)</td>
+  </tr> 
+  <tr>
+    <td valign="top" >clone()</td>
+    <td valign="top">gibt neue Location mit den gleichen Koordinaten zur&uuml;ck </td>
+  </tr>
+  <tr>
+    <td valign="top" >equals(location)</td>
+    <td valign="top" >gibt True zur&uuml;ck, falls die aktuelle Location identisch mit der &uuml;bergegebenen ist</td>
+  </tr>  
+  <tr>
+    <td valign="top" >get4CompassDirectionTo(location)</td>
+    <td valign="top" >gibt eine Liste mit   4 benachbarten Location  (WEST, EAST, NORTH, SOUTH) zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td valign="top" >getCompassDirectionTo(location)</td>
+    <td valign="top" >gibt eine Liste mit 8 benachbarten Locations (auch diagonal) </td>
+  </tr> 
+   <tr>
+    <td valign="top" >getDirectionTo(location)</td>
+    <td valign="top" >gibt die Richtung von der aktuellen zu der gegebenen Position in Grad zur&uuml;ck <br />
+     (0 Grad = EAST)</td>
+  </tr> 
+   <tr>
+    <td valign="top" >getNeighbourLocation(direction)</td>
+    <td valign="top" >gibt eine der 8 benachbarten Zellen zur&uuml;ck. Es wird die Zelle genommen, die am n&auml;chsten bei der gegebener Richtung liegt</td>
+  </tr> 
+   <tr>
+    <td valign="top" >getNeighbourLocations(distance)</td>
+    <td valign="top" >gibt Liste mit allen Zellen mit Zentren innerhalb  der gegebenen Distanz zur&uuml;ck</td>
+  </tr>  
+  <tr>
+    <td valign="top" >getX()</td>
+    <td valign="top" >gibt die aktuelle horizontale Zellenkoordinate zur&uuml;ck</td>
+  </tr> 
+  <tr>
+    <td valign="top" >getY()</td>
+    <td valign="top" >gibt die aktuelle vertikale Zellenkoordinate zur&uuml;ck</td>
+  </tr> 
+</table>
+<h4><br>
+Klasse  GGBackground</h4>
+<table width="100%"  border="1" bordercolor="#CCCCCC" cellspacing="0" cellpadding="3">
+ <tr>
+    <td valign="top" width="37%">clear()</td>
+    <td valign="top">l&ouml;scht den Hintergrund und &uuml;bermal ihn mit aktueller Hintergrundfarbe</td>
+  </tr>
+  <tr>
+    <td valign="top" >clear(color) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td valign="top">l&ouml;scht den Hintergrund und &uuml;bermalt ihn mit der gegebenen Farbe</td>
+  </tr> 
+  <tr>
+    <td valign="top" >drawCircle(center, radius)</td>
+    <td valign="top">zeichnet einen Kreis mit dem gegebenen Mittelpunkt und Radius (Pixelkoordinaten)</td>
+  </tr> <tr>
+    <td valign="top" >drawLine(x1,y1,&nbsp;x2, y2)</td>
+    <td valign="top">zeichnet eine Strecke mit gegebenen Endpunkten (Pixelkoordinaten)</td>
+  </tr> <tr>
+    <td valign="top" >drawLine(pt1,&nbsp;pt2)</td>
+    <td valign="top">zeichnet eine Strecke mit den gegebenen Endpunkten (Pixelkoordinaten)</td>
+  </tr> 
+  <tr>
+    <td valign="top" >drawPoint(pt) </td>
+    <td valign="top">zeichnet einen Punkt (Pixelkoordinaten)</td>
+  </tr> 
+  <tr>
+    <td valign="top" >drawRectangle(pt1,                pt2)</td>
+    <td valign="top">zeichnet ein Rechteck mit den gegebenen Diagonaleckpunkten (Pixelkoordinaten)</td>
+  </tr>
+  <tr>
+    <td valign="top" >drawText(text, pt) </td>
+    <td valign="top">schreibt Text an die Position mit dem gegeben Anfangspunkt (Pixelkoordinaten)</td>
+  </tr>
+    <tr>
+    <td valign="top" >fillCell(location,           color)</td>
+    <td valign="top">f&uuml;llt die gegebene Zelle mit der gegebenen Farbe</td>
+  </tr>
+  <tr>
+    <td valign="top" >fillCircle(center,radius)</td>
+    <td valign="top">zeichnet gef&uuml;llten Kreis mit dem gegebenen Mittelpunkt und Radius (Pixelkoordinaten)</td>
+  </tr>
+   
+  <tr>
+    <td valign="top" >getBgColor() </td>
+    <td valign="top">gibt die aktuelle Hintergrundfarbe zur&uuml;ck</td>
+  </tr> <tr>
+    <td valign="top" >getColor(location)</td>
+    <td valign="top">gibt die Hintergrundfarbe im Zentrum einer  Zelle zur&uuml;ck (Actors unber&uuml;cksichtigt)</td>
+  </tr> 
+   
+  <tr>
+    <td valign="top" >save()</td>
+    <td valign="top">speichert den aktuellen Hintergrund. Wiederherstellen mit restore()</td>
+  </tr> 
+   
+  <tr>
+    <td valign="top" >setBgColor(color)</td>
+    <td valign="top">&auml;ndert die Hintergrundfarbe </td>
+  </tr>
+  <tr>
+    <td valign="top" >setFont(font)</td>
+    <td valign="top">setzt die Schriftart</td>
+  </tr>
+   <tr>
+    <td valign="top" >setLineWidth(width)</td>
+    <td valign="top">setzt die Liniendicke</td>
+  </tr>
+  <tr>
+    <td valign="top" >setPaintColor(color)</td>
+    <td valign="top">setzt die Zeichnungsfarbe</td>
+  </tr>
+   <tr>
+    <td valign="top" >setPaintMode() </td>
+    <td valign="top">es wird  ohne R&uuml;cksicht auf den vorhandenen Hintergrund  gezeichnet</td>
+  </tr>
+  
+  <tr>
+    <td valign="top" >setXORMode(color)</td>
+    <td valign="top">bei  zweimaligen Zeichnen wird er den Hintergrund wieder herstellt</td>
+  </tr>
+  
+  <tr>
+    <td valign="top" >restore()</td>
+    <td valign="top">holt den vorher gespeicherten Hintergrund zur&uuml;ck</td>
+  </tr>  
+</table>
+<p>Vollst&auml;ndige Dokumentation der Java-Klassenbibliothek JGameGrid : <a href="http://www.jython.ch/gamegrid/dokumentation.inc.php" target="_blank">JGameGridDoc</a></p>
+<p><a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

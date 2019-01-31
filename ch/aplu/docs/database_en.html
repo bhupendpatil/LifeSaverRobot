@@ -1,0 +1,354 @@
+<html>
+<head>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+<h2><a href="http://ch/aplu/docs/index_en.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></h2>
+<h2>Documentation Databases</h2>
+<p>&nbsp;</p>
+<h4>Module import: from sqlite3 import *</h4>
+<p>Access to a  SQLite database (almost 100 % compatible with the sqlite3 module from Python 2.x, 3.x).</p>
+<h5>Global:</h5>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="22%" bgcolor="#F0F0F5">Function</td>
+    <td width="78%" bgcolor="#F0F0F5">Action</td>
+  </tr>
+  <tr>
+    <td> connect(database)</td>
+    <td>
+      <p><br>
+          connects to a SQLite database file with given filenames, and returns a Connection object. If the database file does not exist,  it is created. The database is opened for exclusive access until it is closed with close ()</p>
+    </td>
+  </tr>
+  <tr>
+    <td>connect(database, True)</td>
+    <td>same, but opens the database in auto-commit mode. All database operations become effective immediately<br>
+    </td>
+  </tr>
+  <tr>
+      <td>getDbInfo(database)</td>
+      <td>returns a dictionary with all table names and their attributes</td>
+  </tr>
+</table>
+<h4></h4>
+<h5>class Connection:</h5>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="22%" bgcolor="#F0F0F5">Method</td>
+    <td width="78%" bgcolor="#F0F0F5">Action</td>
+  </tr>
+  <tr>
+    <td> cursor()</td>
+    <td>
+      <p>creates and returns a database cursor<br>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>execute(sql)</td>
+    <td>executes the SQL command (does not take effect in the database until commit()) and returns the cursor used</td>
+  </tr>
+  <tr>
+    <td>commit()</td>
+    <td>one or more previously issued SQL commands are written into the database</td>
+  </tr>
+  <tr>
+    <td>close()</td>
+    <td>        terminates the connection to the database. Commands that are not completed with commit() are lost. If the program is aborted by an exception, the connection remains open and TigerJython must be restarted to establish a new connection</td>
+  </tr>
+  <tr>
+    <td>showTables()</td>
+    <td>returns a list of table names</td>
+  </tr>
+  <tr>
+    <td>describeTable(table)</td>
+    <td>returns the information about the table structure as an SQL Create command</td>
+  </tr>
+</table>
+<h5><strong><br>
+    </strong><br>
+    class Cursor:</h5>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="22%" bgcolor="#F0F0F5">Method</td>
+    <td width="78%" bgcolor="#F0F0F5">Action</td>
+  </tr>
+  <tr>
+    <td> execute(sql)</td>
+    <td>
+      <p>executes the SQL command (does not become effective in the database until commit()). For SELECT, a result set is generated, which can be traversed with the cursor<br>
+      </p>    </td>
+  </tr>
+  <tr>
+    <td>fetchone()</td>
+    <td>returns the record pointed to by the cusor, and moves the cursor to the next record. If no result set was created or the cursor is outside the result set, None is returned</td>
+  </tr>
+  <tr>
+    <td>fetchmany(n)</td>
+    <td>returns a list of the n next records (starting from the record pointed to by the cusor) and moves the cursor forward by n. If no result set was created, n &lt;1, or if the cursor is outside the result set, an empty list is returned. If there are not enough records, the rest of the records are returned</td>
+  </tr>
+  <tr>
+    <td>fetchall()</td>
+    <td>returns a list of all  records (starting from the record pointed to by the cursor). If no result set was created, an empty list is returned</td>
+  </tr>
+  <tr>
+    <td>getColumnNames()</td>
+    <td>returns a list with the field names of the SELECT command</td>
+  </tr>
+  <tr>
+    <td>getColumnName(n)</td>
+    <td>returns the field name of the nth field of the SELECT command (n = 1st. number of fields)</td>
+  </tr>
+  <tr>
+    <td>getColumnCount()</td>
+    <td>        returns the number of fields in the SELECT command<br>    </td>
+  </tr>
+  <tr>
+    <td>getMetaData()</td>
+    <td>returns a MetaData object (JDBC4ResultSet)</td>
+  </tr>
+  <tr>
+    <td>getBytes(filename)</td>
+    <td>returns a byte array (type: array.array) of the binary data from given file (absolute or relative path with respect to the tigerjython2.jar home directory)</td>
+  </tr>
+  <tr>
+    <td>updateBlob(table, where, attribute, buffer)</td>
+    <td> updates the BLOB field with given attribute in all records of given table that fullfil the where condition.<br>
+buffer contains the binary data (normally returned from the global function getBytes(), type array.array). Example: update(tbl, &quot;id = 1&quot;, &quot;flags&quot;, getBytes(&quot;swissflag.gif&quot;))</td>
+  </tr>
+</table>
+<p><strong>Note: </strong>If the Connection object <em>con</em> is used in a <em>with con:</em> block, <em>con.commit()</em> and <em>con.close()</em> are automatically called at the end of the block. The database is also closed securely with exceptions. Example:</p>
+<p><font face="Courier New, Courier, monospace">from sqlite3 import *
+<br>
+with connect(&quot;test.db&quot;) as con:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;con.execute(&quot;DELETE FROM people&quot;)<br>
+</font></p>
+<h3><br>
+Module import: from dbapi import *</h3>
+<p> Access to various databases: PostgreSQL, SQLite, MySQL, Derby (via built-in JDBC drivers).</p>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="22%" bgcolor="#F0F0F5">Function</td>
+    <td width="78%" bgcolor="#F0F0F5">Action</td>
+  </tr>
+  <tr>
+      <td>connect(sqlite:dbname)</td>
+      <td>connects to a SQLite database and returns a Connection object</td>
+  </tr>
+  <tr>
+      <td>connect(derby:dbname)</td>
+      <td>connects to an embedded Derby database and returns a Connection object</td>
+  </tr>
+  <tr>
+    <td> connect(derbyserver:serverURL, dbname, username, password)</td>
+    <td>
+      <p>connects to a Derby server database and returns a Connection object<br>
+      </p>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>connect(mysql:serverURL, dbname, username, password)</td>
+    <td>connects to a MySQL database and returns a Connection object</td>
+  </tr>
+  <tr>
+    <td>connect(postgre:serverURL, dbname, username, password)</td>
+    <td>connects to a PostgreSQL database and returns a Connection object</td>
+  </tr>
+</table>
+<p> The JDBC drivers can be downloaded from <a href="http://www.tigerjython.ch/download/tjderby.zip">here</a>. They must reside in the subdirectory Lib of the tigerjython2.jar home directory.<br>
+The database API largely corresponds to the <a href="http://www.python.org/dev/peps/pep-0249">Python Database API Specification v2.0</a>.</p>
+<p>&nbsp;</p>
+<h3>Module import: from prettytable import *</h3>
+<p>Formatted output of table data (cursor is a database cursor from SQLite)</p>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="22%" bgcolor="#F0F0F5">Function</td>
+        <td width="78%" bgcolor="#F0F0F5">Action</td>
+    </tr>
+    <tr>
+        <td> printTable(cursor)</td>
+        <td>
+            <p>executes a cursor.fetchall() and displays the result in the console left-aligned (a second call results in an empty result set)<br>
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>strTable(cursor)</p>
+        </td>
+        <td>same, but returns the formatted result as a string</td>
+    </tr>
+    <tr>
+        <td>printTable(cursor, align = &quot;x&quot;)</td>
+        <td>as above, but all columns for x = &quot;l&quot; left-aligned, &quot;c&quot; centered, &quot;r&quot; right-aligned (same for strTable())<br>
+        </td>
+    </tr>
+    <tr>
+        <td>printTable(cursor, align = [&quot;x&quot;, &quot;x&quot;, ...])</td>
+        <td>        as above, but columns are aligned one-by-one for x =  &quot;l&quot;, &quot;c&quot;, &quot;r&quot;  (same for strTable())</td>
+    </tr>
+    <tr>
+        <td>printTable(cursor, align = [&quot;x&quot;, &quot;x&quot;, ...], sortby = fieldname)</td>
+        <td>as above, but the output is alphabetically sorted according to the given database field (column) (the same for strTable())</td>
+    </tr>
+    <tr>
+        <td>showTable(cursor, params)</td>
+        <td>same as printTable(), but the table is displayed in its own window</td>
+    </tr>
+</table>
+<p>The module can also be used for tabular formatted output without any database connection. See the tutorial <a href="http://ptable.readthedocs.io/en/latest/tutorial.html">hier</a>.</p>
+<h3><br>
+Module import: from dbtable import *<br>
+</h3>
+<p>Abstraction of database tables without SQL</p>
+<p><strong>Class DbTable</strong></p>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="22%" bgcolor="#F0F0F5">Function/Method</td>
+        <td width="78%" bgcolor="#F0F0F5">Action</td>
+    </tr>
+    <tr>
+        <td> tbl = DbTable(fieldname1, fieldname2,...)</td>
+        <td>
+            <p>creates a table object with any number of field names (as string). The names may be packed in a tuple</p>        </td>
+    </tr>
+    <tr>
+        <td>tbl = DbTable(anotherTable)</td>
+        <td>
+            <p>creates a (deep) clone of the table object</p>        </td>
+    </tr>
+    <tr>
+        <td>tbl = DbTable()</td>
+        <td>
+            <p>creates an empty table that can be used for restore(), restoreFromTJ() or importFromCSV()</p>        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>tbl.insert(value1, value2,...)</p>        </td>
+        <td>
+            <p>inserts a row with given values into the table. The values can be packed in a tuple. Allowed data types: str, int, float, BLOB (binary). All fields must be given. The database field types are determined from the first row entered Binary field values are byte arrays (return value of getBytes(filename))</p>      </td>
+  </tr>
+    <tr>
+        <td>tbl.insertMany(liste)</td>
+        <td>inserts several rows packed in the given list (or tuple) (i.e. the return value of select() ). The database field types are determined from the first row entered (int, float or str)</td>
+    </tr>
+    <tr>
+        <td>for row in tbl:<br>
+                <font size="-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do_something_ with row.fieldname</font></td>
+        <td>Iterates through all rows and uses the field values</td>
+    </tr>
+    <tr>
+        <td>tbl.select(fieldname1, fieldname2, ..., pattern)</td>
+        <td>
+            <p>returns a tuple containing the given fields. If sort() was called before, the rows are returned in the requested order. patter is a sequence of equality conditions attribute = value. If an attribute is not specified, all values are accepted. Example: select(&quot;name&quot;, &quot;firstname&quot;, &quot;age&quot;, name = &quot;Smith&quot;, firstname = &quot;John&quot; returns fields &quot;name&quot;, &quot;firstname&quot; and &quot;age&quot; of every &quot;Smith John&quot;. The values has the data types str, int or float</p>        </td>
+    </tr>
+    <tr>
+        <td>tbl.sort(fieldname)</td>
+        <td>
+            <p>defines a field name (string) as sorting attribute. Table views and select() are then returned in the given ascending order. If no sort() is called, the order of the views and select() is undefined, but corresponds normally to the order the table rows are inserted</p>        </td>
+    </tr>
+    <tr>
+        <td>tbl.sort(fieldname, False)</td>
+        <td>same, but descending order</td>
+    </tr>
+    <tr>
+        <td>tbl.getAttributes()</td>
+        <td>returns a tuple with all field names (attributes)</td>
+    </tr>
+    <tr>
+        <td>tbl.view()</td>
+        <td>shows the table in the console using a tabular format (order given by sort())</td>
+    </tr>
+    <tr>
+        <td>tbl.view(fieldname1, fieldname2, ..., pattern)</td>
+        <td>same, but shows only fields with given name that fulfill the equality conditions (like select())</td>
+    </tr>
+    <tr>
+        <td>tbl.getView()</td>
+        <td>same, but returns the view in a string</td>
+    </tr>
+    <tr>
+        <td>tbl.getView(fieldname1, fieldname2, ..., pattern)</td>
+        <td>same, but returns only fields with given name that fulfill the equality conditions (like select())</td>
+    </tr>
+    <tr>
+        <td>print tbl</td>
+        <td>same as tbl.view()</td>
+    </tr>
+    <tr>
+        <td>len(tbl)</td>
+        <td>returns the number of table rows</td>
+    </tr>
+    <tr>
+        <td>tbl.delete(pattern)</td>
+        <td>
+            <p>erases all rows that fullfil the equality conditions in pattern (like in select()). Example: delete(name = &quot;Smith&quot;, firstname = &quot;John&quot;) deletes all rows with &quot;Smith John&quot;)</p>        </td>
+    </tr>
+    <tr>
+        <td>tbl.update(pattern)(fieldname1 = value1, fieldname2 = value2,...)</td>
+        <td>
+            <p>replaces the values of certain fields. Two parameter parenthesis are used. In the first parameter parenthesis, pattern selects the rows to modify (like with select()); the second parenthesis is used to set the new values. (Example: update(name = &quot;Smith&quot;, firstname = &quot;John&quot;)(city = &quot;Paris&quot;) sets the city of all &quot;Smith John&quot; to &quot;Paris&quot;). If the first paranthesis is empty, all rows are modified</p>            
+        </td>
+    </tr>
+    <tr>
+        <td>tbl.join(otherTable, left, right)</td>
+        <td>
+            <p>returns a table join of the current table with otherTable, where attribute values left and right must the same. The attribute fields are not part of the returned table. (Example.  person.join(sport, person.id = sport.id))</p>        </td>
+    </tr>
+    <tr>
+        <td>tbl.join(otherTable, left, right, True)</td>
+        <td>
+            <p>same, but the attribute fields are part of the returned table (they must have different names)</p>        </td>
+    </tr>
+    <tr>
+        <td>tbl.join(otherTable)</td>
+        <td>same, but all rows of both tables are combined (cross product)</td>
+    </tr>
+    <tr>
+        <td> tbl.saveTable(databaseName, tableName)</td>
+        <td>
+            <p>stores the table data in an external SQLite database with given SQLite table name. If the database does not exist, it is created. If the same SQLite table is already part of the database, it is deleted. The field names (attributes) and field types are maintained. If tableName is omitted, the variable name is used as SQLite table name</p>            </td>
+    </tr>
+    <tr>
+        <td>tbl.restoreTable(databaseName, tableName)</td>
+        <td>
+            <p>restores the table data from the SQLite database created with saveTable(). tbl should be an empty table created with DbTable(). If an non-empty table is used, all table data are erased. The field names and data types are maintained. If tableName is omitted, the variable name is used as SQLite table name</p>        </td>
+    </tr>
+    <tr>
+        <td>tbl.restoreFromTJ(databaseName, tableName)</td>
+        <td>same, but the SQLite database is supposed to be part of the TigerJython distribution (tigerjython2.jar) and first copied into the current directory</td>
+    </tr>
+    <tr>
+        <td>tbl.importFromCSV(filename, delimiter)</td>
+        <td>
+            <p>imports the content of the CSV formatted file (text file). The fields must be separated by the given delimiter. Each line must contain the same number of fields. The data type is determined form the first line (int, float, str)</p>        </td>
+    </tr>
+    <tr>
+        <td>tbl.exportToCSV(filename, delimiter, fieldname1, fieldname2, ..., pattern)</td>
+        <td>
+            <p>exports the table data in a CSV formatted file (text file), where the fields are separated by the given delimiter. Only fields with given field names are exported. pattern is sequence of equality conditions attribute = value (like in select()). If no fieldnames or pattern is specified, the complete table is exported</p>            </td>
+    </tr>
+    <tr>
+      <td>getBytes(filename)</td>
+      <td>returns a byte array (type: array.array) of the binary data from given file (absolute or relative path with respect to the tigerjython2.jar home directory)</td>
+    </tr>
+    <tr>
+      <td>storeBytes(buffer, filename)</td>
+      <td>writes a byte array (type array.array) into file (replaces an existing file)</td>
+    </tr>
+    <tr>
+        <td>showDbInfo(database)</td>
+        <td>displays all table names and their attributes of the given database</td>
+    </tr>
+    <tr>
+        <td>showDbInfoTJ(database)</td>
+        <td>displays all table names and their attributes of the given database that is part of the TigerJython distribution</td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+<h4><a href="http://ch/aplu/docs/index_en.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></h4>
+<p>&nbsp;</p>
+</body>
+</html>
+

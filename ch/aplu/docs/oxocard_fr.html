@@ -1,0 +1,1045 @@
+<!--Dokumentation Turtlegrafik-->
+<html>
+<head>
+<style type="text/css">
+<!--
+.Stil2 {
+	font-size: large;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+<a href="http://ch/aplu/docs/index_fr.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a>
+<h3>Dokumentation OXOcard</h3>
+<p><br>
+    <b>Modul import: from oxosnake import *</b>    <br>
+(Real- und Simulationsmodus)</p>
+<p>Globale Konstanten und Funktionen:<br>
+</p>
+<p>RED = (255, 0, 0), GREEN = (0, 255, 0), BLUE  = (0, 0, 255), BLACK = (0, 0, 0), 
+  WHITE = (255, 255, 255), <br>
+  YELLOW = (255, 255, 0), CYAN = (0, 255, 255), MAGENTA  = (255, 0, 255)</p>
+<p>BASE_COLORS = (RED, GREEN, BLUE, WHITE, YELLOW, CYAN, MAGENTA)</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="62%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  
+  <tr>
+    <td  >makeSnake()</td>
+    <td   >erzeugt  eine Schlange und stellt sie dar. Diese besitzt einen Kopf (head) und einen  nachfolgenden Schwanz (tail)<strong>)</strong>, der beliebig lang sein kann</td>
+  </tr>
+   <tr>
+    <td  >
+        <p>makeSnake(name = &quot;Monty&quot;, size = 4, pos = (1. 4), headColor    = (255, 0, 0), tailColor = (0, 200, 0), penColor = (0, 0, 255), bgColor = (0,    0, 0), heading = 0, speed = 50, hidden = False, penDown = False, dim = 1)</p>    
+    </td>
+    <td valign="top"  > optionale benannte Parameter und ihre  Standardwerte (heading: Winkel in Grad zu Norden im Uhrzeigersinn in 45 Grad  Schritten)</td>
+  </tr>
+   <tr>
+     <td  ><p>forward(steps)</p></td>
+     <td  >bewegt die Schlange um die Anzahl Schritte vorw&auml;rts. Ohne Parameter steps = 1</td>
+   </tr>
+   <tr>
+     <td  ><p>left(angle)</p></td>
+     <td  ><p>&auml;ndert die  Blickrichtung um gegebenen Winkel im Gegenuhrzeigersinn (in 45 Grad Schritten)</p></td>
+   </tr>
+   <tr>
+     <td  ><p>right(angle)</p></td>
+     <td  ><p>&auml;ndert die  Blickrichtung um gegebenen Winkel im Uhrzeigersinn (in 45 Grad Schritten)</p></td>
+   </tr> 
+   <tr>
+     <td  ><p>getName()</p></td>
+     <td  ><p>liefert den  Namen der Schlange zur&uuml;ck</p></td>
+   </tr>
+   <tr>
+     <td  ><p>setName(name)</p></td>
+     <td  ><p>setzt den  Namen der Schlange</p></td>
+   </tr>
+   <tr>
+     <td  ><p>setSpeed(speed)</p></td>
+     <td  >setzt die  Geschwindigkeit </td>
+   </tr>  
+   <tr>
+     <td  ><p>getX()</p></td>
+     <td  ><p>gibt die  x-Koordinate des Kopfs zur&uuml;ck</p></td>
+   </tr>
+   <tr>
+     <td  ><p>getY()</p></td>
+     <td  ><p>gibt die  y-Koordinate des Kopfs zur&uuml;ck</p></td>
+   </tr>
+   <tr>
+     <td  >
+         <p>getPos(x,  y) </p>
+     </td>
+     <td  ><p>gibt die  Position des  Kopfs als Tupel zur&uuml;ck</p></td>
+   </tr> 
+   <tr>
+     <td  >
+         <p>setPos(x,  y) </p>
+     </td>
+     <td  ><p>setzt den  Kopf an die gegebene Position (Parallelverschiebung des Schwanzes)</p></td>
+   </tr>   
+   <tr>
+     <td  >
+         <p>setPos(liste/tupel)</p>
+     </td>
+     <td  ><p>setzt den  Kopf an die gegebene Position </p></td>
+   </tr>
+   <tr>
+     <td  ><p>setHeading(dir)</p></td>
+     <td  ><p>setzt die  Blickrichtung. Winkel zu Norden im Uhrzeigersinn in 45 Grad Schritten</p></td>
+   </tr>
+   <tr>
+     <td  >getHeading()</td>
+     <td  >gibt die Blickrichtung zur&uuml;ck. Winkel zu Norden im Uhrzeigersinn in 45 Grad Schritten</td>
+   </tr>
+   <tr>
+     <td  ><p>penDown()</p></td>
+     <td  ><p>setzt den  Stift beim Kopf ab, sodass bei nachfolgenden Bewegungen eine Spur gezeichnet  wird</p></td>
+   </tr> 
+   <tr>
+     <td  ><p>penUp()</p></td>
+     <td  ><p>hebt den  Stift ab,  sodass keine Spur gezeichnet wird</p></td>
+   </tr>   
+   <tr>
+     <td  ><p>show()</p></td>
+     <td  ><p>macht die  Schlage ist sichtbar</p></td>
+   </tr>   
+   <tr>
+     <td  ><p>hide()</p></td>
+     <td  >
+         <p>macht die  Schlage unsichtbar (sie ist immer noch vorhanden und  eine Spur wird immer noch gezeichnet)</p>     </td>
+   </tr>
+   <tr>
+       <td  >isHidden()</td>
+       <td  >gibt True zur&uuml;ck, falls die Schlange unsichtbar ist</td>
+   </tr>    
+    <tr>
+     <td  ><p>clean()</p></td>
+     <td  ><p>l&ouml;scht alle  Spuren, l&auml;sst aber die Schlage, wo sie ist</p></td>
+   </tr>     
+ <tr>
+     <td  ><p>getSize()</p></td>
+     <td  ><p>liefert die  L&auml;nge der Schlange (Kopf + Schwanz)</p></td>
+   </tr>  
+    <tr>
+     <td  ><p>setHeadColor(color)<br>
+     setHeadColor(r, g, b)</p></td>
+     <td  ><p>setzt die Kopffarbe</p></td>
+   </tr>  
+   <tr>
+     <td  ><p>setTailColor(color)<br>
+     setTailColor(r, g, b)</p></td>
+     <td  ><p>setzt die  Schwanzfarbe</p></td>
+   </tr>   
+   <tr>
+     <td  ><p>setPenColor(color)<br>
+     setPenColor(r,  g, b)</p></td>
+     <td  ><p>setzt die  Spurfarbe</p></td>
+   </tr>   
+   <tr>
+     <td  ><p>setBgColor(color)<br>
+     setBgColor(r, g, b)</p></td>
+     <td  ><p>setzt die Hintergrundfarbe </p></td>
+   </tr>   
+    <tr>
+     <td  ><p>shortenTail()</p></td>
+     <td  ><p>schneidet  das letzte Schwanzelement ab (falls die Schlange l&auml;nger als 1 ist)</p></td>
+   </tr>   
+    <tr>
+     <td  ><p>growTail()</p></td>
+     <td  ><p>F&uuml;gt ein  zus&auml;tzliches Schwanzelement an (erst sichtbar bei der n&auml;chsten Bewegung)</p></td>
+   </tr>   
+    <tr>
+     <td  ><p>intersect()</p></td>
+     <td  ><p>gibt <em>True</em>  zur&uuml;ck, falls sich der Kopf auf einem der Schwanzelemente befindet; sonst wird  False zur&uuml;ckgegeben</p></td>
+   </tr>  
+    <tr>
+     <td  ><p>inPlayground()</p></td>
+     <td  ><p>gibt <em>True</em>  zur&uuml;ck, falls sich eines der Schlangenelement noch im sichtbaren Bereich  befindet,: sonst wird <em>False</em> zur&uuml;ckgegeben</p></td>
+   </tr>   
+    <tr>
+     <td  ><p>headInPlayground()</p></td>
+     <td  ><p>gibt True  zur&uuml;ck, falls sich der Schlangenkopf noch im sichtbaren Bereich  befindet,: sonst wird <em>False</em> zur&uuml;ckgegeben</p></td>
+   </tr>    
+<tr>
+     <td  ><p>spot(color)<br>
+    spot(r,  g, b)</p></td>
+     <td  ><p>setzt den  Pixel des Hintergrunds an der aktuellen Position des Schlangenkopfs auf die  gegebene Farbe. Die Schlange liegt &quot;oberhalb&quot;, d.h. verdecken die so  gesetzten Pixels </p></td>
+   </tr>
+<tr>
+  <td  >getRandomColor()</td>
+  <td   ><p>gibt eine zuf&auml;llige Farbe aus BASE_COLORS zur&uuml;ck. Bei jedem Aufruf wird eine andere Farbe zur&uuml;ckgegeben, bis alle 7 Farben abgerufen sind</p></td>
+</tr>
+<tr>
+    <td  >getRandomPos()</td>
+    <td   >gibt eine zuf&auml;llige Position als Tupel zur&uuml;ck. Bei jedem Aufruf wird eine andere Position zur&uuml;ckgegeben, bis alle 64 Positionen abgerufen sind.</td>
+</tr>
+<tr>
+  <td  >reduceBrightness(color, reduction)</td>
+  <td   >dividiert  alle 3 Farbkomponenten um den Faktor r und gibt die neue Farbe zur&uuml;ck. Falls  eine Komponente gr&ouml;sser als 0 ist, wird mindestens 1 zur&uuml;ckgegeben, damit die  Farbart erhalten bleibt</td>
+</tr>
+<tr>
+  <td  ><p>rgbToInt(color)</p></td>
+  <td  ><p>gibt das  gegebenen RGB-Tupel als Int-Farbwert zur&uuml;ck </p></td>
+</tr>
+<tr>
+  <td  ><p>intToRGB(color)</p></td>
+  <td  ><p>gibt den  gegebenen Int-Farbwert als RGB-Tupel zur&uuml;ck</p></td>
+</tr>  
+<tr>
+     <td  ><p>dim(dimFactor)</p></td>
+     <td  >
+         <p>dividiert die 3  Farbkomponenten aller verwendeten Farben mit den gegebenen Factor (falls eine Komponente &gt; 0 ist,  wird sie nie kleiner als 1, damit die Farbart erhalten bleibt) (im Simulationsmodus unwirksam)</p>
+     </td>
+  </tr>
+<tr>
+  <td  >enableRepaint(False)</td>
+  <td  >unterdr&uuml;ckt das automatische Rendern des Bildbuffers nach jeder Schlangenbewegung. Es muss mit repaint() selbst gerendert werden. forward(n) mit n &gt; 1 wird als nicht mehr als n Einzelschritte aufgefasst</td>
+</tr>
+<tr>
+  <td  >repaint()</td>
+  <td  >rendert den aktuellen Bildbuffer</td>
+</tr>
+<tr>
+    <td  >dispose()</td>
+    <td  >gibt alle Ressourcen frei und vergr&ouml;ssert dadurch den freien Speicherplatz</td>
+</tr>         
+</table>
+<p>&nbsp;</p>
+<p><strong>Klasse Snake:</strong></p>
+<p>Es k&ouml;nnen mehrere Schlagen erzeugt werden. Die zuletzt bewegte Schlange liegt &uuml;ber den anderen und ist vollst&auml;ndig sichtbar.</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+        <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+    </tr>
+    <tr>
+        <td  >snake = Snake(name = &quot;Monty&quot;, size = 4, pos = (1. 4), headColor    = (255, 0, 0), tailColor = (0, 140, 0), penColor = (0, 0, 255), bgColor = (0,    0, 0), heading = 0, speed = 50, hidden = False, penDown = False, dim = 1)</td>
+        <td   >
+            <p>erzeugt  ein Snake-Objekt mit den optionalen benannten Parametern</p>
+        </td>
+    </tr>
+</table>
+<p> Alle oben angegebenen Funktionen sind auch als Methoden verf&uuml;gbar. Zus&auml;tzlich:</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="32%"  >inTouch(snake1, snake2) </td>
+        <td width="68%"   >
+            <p>gibt True zur&uuml;ck, falls  ein Segment der Schlage snake1 und ein Segment der Schlage snake2 &uuml;bereinander liegen</p>
+        </td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+<p><br>
+    <b>Modul import: from oxocard import *</b>    <br>
+(Real- und Simulationsmodus)</p>
+<p><em>(Bemerkung: Zur Einsparung von Hauptspeicherplatz enth&auml;lt dieser Import die unten mit (*) bezeichneten Funktionen nicht. F&uuml;r die volle Unterst&uuml;tzung muss importiert werden: <strong>from oxocardext import *</strong> . Dabei kann es aber bei l&auml;ngeren Programmen einen Memory overflow geben.)</em></p>
+<p>Die Oxocard hat einen 8x8 pixel grosse Matrix mit Farb-LEDs  (Neopixels). Diese wird durch die Klasse OxoGrid abstrahiert, die einen 24x24  pixel grossen Bildbuffer (Canvas genannt) mit int Farbwerten f&uuml;r die  Farbkomponenten r, g, b mit je einem Bereich von 0..255 enth&auml;lt.<br>
+</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td  valign="top"><p align="justify"> Es wird ein  8x8 pixel grosser Ausschnitt davon (Window genannt) auf den LEDs dargestellt.  Canvas und Window haben ein Koordinatensystem, um die einzelnen Pixel zu  identifizieren. Der Ursprung liegt bei beiden oben links und die  x-Koordinatenachse zeigt nach links und die y-Koordinatenachse nach unten.</p>
+      <p align="justify">Standardm&auml;ssig liegt der Ursprung des Koordinatensystem  beim (x', y') = (8, 8) also ist das Windows im Canvas zentriert. Mit set<em>Origin(x, y</em>) kann der Ursprung (Origin)  des Windows an die Stelle (x, y) des Canvas verschoben werden. 
+    Die Koordinaten f&uuml;r alle Zeichnungsoperationen sind zwar  Windowkoordinaten, werden aber unter Ber&uuml;cksichtigung des aktuellen Origin im  Canvas durchgef&uuml;hrt. Canvas-Koordinaten ausserhalb 0..23, 0.23 werden  ignoriert. </p>
+    </td>
+    
+  </tr>
+</table>
+<p>Damit stehen im Canvas insgesamt 9 8x8 pixel grosse  Bildbereiche (engl <em>Frames</em>) zur  Verf&uuml;gung, die sich im Window darstellen lassen. Die Frames haben eine  Nummerierung von 0..7.</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top">
+        <p>Grunds&auml;tzlich werden alle Zeichnungsoperation im Bildbuffer  ausgef&uuml;hrt. Damit sie auch tats&auml;chich auf dem Neopixel-Display sichtbar werden,  muss der Bildbuffer auf den LEDs angezeigt werden, was man <strong><em>rendern</em></strong> nennt. Das  Rendering wird mit der Methode <em>repaint() </em>durchgef&uuml;hrt. 
+      Standardm&auml;ssig ist das automatische Rendering eingeschaltet.  Dabei wird bei jeder Zeichnungsoperation das <em>repaint() </em>automatisch aufgerufen. Oft m&ouml;chte man bestimmte Zeichnungsoperationen  zusammenfassen, bevor man sie als Ganzes sichtbar macht. Dazu schaltet man mit enableRepaint(False) das automatische  Rendering aus und f&uuml;hrt es an der gew&uuml;nschten Stelle mit repaint() selbst aus.
+    Es darf ausserhalb des Canvas gezeichnet werden, wobei  solche Pixels unsichtbar bleiben.</p>
+    </td>
+    
+  </tr>
+</table>
+<p>Globale Konstanten und Funktionen::<br>
+</p>
+<p>RED = (250, 0, 0), GREEN = (0, 250, 0), BLUE  = (0, 0, 250), BLACK = (0, 0, 0), 
+  WHITE = (255, 255, 255), <br>
+  YELLOW = (255, 255, 0), CYAN = (0, 255, 255), MAGENTA  = (255, 0, 255)</p>
+<p>BASE_COLORS = (RED, GREEN, BLUE, WHITE, YELLOW, CYAN, MAGENTA) 
+</p>
+<p></p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >
+      <p>clear(), clear(color)</p>
+    </td>
+    <td  >
+      <p>setzt alle Pixels des Canvas auf die Farbe <em>color</em>. Ohne Parameter werden alle  Pixels gel&ouml;scht (color = BLACK)</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>*clearWindow(), *clearWindow(color)</p>
+    </td>
+    <td  >
+      <p>setzt den Bereich des Canvas, &uuml;ber dem das aktuelle Window liegt, &nbsp;auf die Farbe <em>color</em>. Ohne Parameter werden die Pixels  gel&ouml;scht (color = BLACK)</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >*clearFrame(frameNumber)<br>
+      *clearWindow(frameNumber,  color)<br>
+    </td>
+    <td  >
+      <p>setzt die Pixels des gegebenen Frames auf <em>color</em>. Ohne Parameter werden  die Pixels gel&ouml;scht (color = BLACK)</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p> setOrigin(x, y)</p>
+    </td>
+    <td  >
+      <p>setzt den Ursprung des Windows auf x, y (auch Punktliste/Tupel). x, y  sind positive oder negative Integers. Liegen die Pixels ausserhalb des 24x24  pixel-Bereichs, sind die Pixels schwarz</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p> getOrigin()</p>
+    </td>
+    <td  >
+      <p>gibt den Origin als Tupel zur&uuml;ck </p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>* setFrame(frameNumber)</p>
+    </td>
+    <td  >
+      <p>setzt das Window auf das gegebene Frame</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>dim(dimFactor)</p>
+    </td>
+    <td  >
+      <p>vermindert die Farbwerte aller Pixels um den gegebenen Faktor. Falls eine  gegebene Komponente &gt; 0 ist, wird die reduzierte Farbkomponente nicht  kleiner als 1, damit die Farbart erhalten bleibt (im Simulationsmodus unwirksam)</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>enableRepaint(False)</p>
+    </td>
+    <td  >deaktiviert  das automatische Neuzeichnen (Rendering) des Windows</td>
+  </tr>
+  <tr>
+    <td  >
+      <p>repaint()</p>
+    </td>
+    <td  >zeichnet  das Window neu</td>
+  </tr>
+  <tr>
+    <td  >
+      <p>dot(x, y,  color)</p>
+    </td>
+    <td  >
+      <p>setzt ein  einzelnes Pixel des Canvas an der Position x, y auf die gegebene Farbe</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>*line(x, y, dir, length, color)</p>
+    </td>
+    <td  >
+      <p>zeichnet  eine Linie beginnend an der Position x, y in der gegebenen Richtung mit  gegebener L&auml;nge und Farbe (<em>dir</em> hat die Werte 0: Ost, 1: Nord-Ost, 2: Nord, 3: Nord-West, 4: West, 5: S&uuml;d-West, 6: S&uuml;d,  7: S&uuml;d-Ost) </p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>*arrow(x, y, dir, length, color)</p>
+    </td>
+    <td  >
+      <p>zeichnet  einen Pfeil beginnend an der Position x, y in der gegebenen Richtung mit  gegebener L&auml;nge und Farbe (<em>dir</em> hat die Werte 0: Ost, 1: Nord-Ost, 2: Nord, 3: Nord-West, 4: West, 5: S&uuml;d-West, 6: S&uuml;d,  7: S&uuml;d-Ost) </p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>*rectangle(ulx, uly, w, h, color)</p>
+    </td>
+    <td  >
+      <p>zeichnet  ein Rechteck mit gegebener oberen linken Ecke ulx, uly mit Breite h und H&ouml;he h  in der gegebenen Farbe </p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>*circle(xcenter, ycenter, r, color)</p>
+    </td>
+    <td  >
+      <p>zeichnet  einen approximativen Kreis mit gegebenem Zentrum xcenter, ycenter und Radius r  in der gegebenen Farbe</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>*fillCircle(xcenter, ycenter, r, color)</p>
+    </td>
+    <td  >
+      <p>zeichnet  einen approximativen gef&uuml;llten Kreis mit gegebenem Zentrum xcenter, ycenter und  Radius r in der gegebenen Farbe</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>getColor(x,  y)</p>
+    </td>
+    <td  >
+      <p>gibt den   Farbwert des Canvas an der Stelle (x, y) zur&uuml;ck.  Befindet sich (x, y) ausserhalb des Canvas, wird (0, 0, 0) (BLACK) zur&uuml;ckgegeben</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>getColorInt(x,  y)</p>
+    </td>
+    <td  >
+      <p>gibt den   Farbwert des Canvas an der Stelle (x, y) zur&uuml;ck (als Integer).  Befindet sich (x, y) ausserhalb des Canvas, wird  zur&uuml;ckgegeben</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>image(matrix)</p>
+    </td>
+    <td  >
+      <p>setzt die  Pixels aus der gegebenen Pixelmatrix im Bildbuffer ein. Die Einsetzung beginnt  beim aktuellen Origin. matrix ist eine Liste oder ein Tupel in folgendem  Format:<br>
+        ((c00, c01, c02,.. c07), <br>
+        (c10, c11, c12,.. c17),<br>
+        ...<br>
+        (c70, c71, c72,.. c77))<br>
+        wo c die Farbwerte  sind (als RGB-Tupel oder als Farb-Integer</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>*translate(vector)</p>
+    </td>
+    <td  >
+      <p>verschiebt  die Pixels des ganzen Canvas um den gegebenen Verschiebungsvektor. Pixels, die  von ausserhalb hineingeschoben werden, sind schwarz</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>*rotate(centerx,  centery, angle)</p>
+    </td>
+    <td  >
+      <p>dreht die  Pixel des Canvas mit dem gegebenen Rotationsmittelpunkt (Windowkoordianten) um  den gegeben Winkel (in Grad im Uhrzeigersinn). Pixels, die von ausserhalb  hineingeschoben werden, sind schwarz</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>insertBigChar(char, charColor, bgColor)</p>
+    </td>
+    <td  >
+      <p>stellt &nbsp;ein Zeichen mit Zeichen- und Hintergrundfarbe mit  grossem Font dar.&nbsp; Defaults: charColor =  (255, 255, 255), bgColor = (0, 0, 0)</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>display(chars, charColor, bgColor)</p>
+    </td>
+    <td  >
+      <p>stellt bis  maximal zwei Zeichen von chars mit Zeichen- und Hintergrundfarbe dar&nbsp; (Zahlen werden in Strings umgewandelt). Wird  ein negativer Integer &uuml;bergeben, erscheint ein Minuszeichen unter der linken  Ziffer. Defaults: charColor = (255, 255, 255), bgColor = (0, 0, 0)</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>bigTextScroll(text, textColor, bgColor, speed)</p>
+    </td>
+    <td  >
+      <p>zeigt mit  grossem Font einen nach links scrollenden Text mit gegebener Zeichen- und  Hintergrundfarbe an. Dieser wird mit einer einstellbaren Geschwindigkeit im  Bereich 1..12 verschoben. Defaults: textColor = (255, 255, 255), bgColor = (0,  0, 0), speed = 6)</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>smallTextScroll(text, textColor, bgColor, speed)</p>
+    </td>
+    <td  >
+      <p>zeigt mit  kleinem Font einen nach links scrollenden Text mit gegebener Zeichen- und  Hintergrundfarbe an. Dieser wird mit einer einstellbaren Geschwindigkeit im  Bereich 1..12 verschoben. Defaults: textColor = (255, 255, 255), bgColor = (0,  0, 0), speed = 5)</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>getArray()</p>
+    </td>
+    <td  >
+      <p>gibt den 24x24 pixel Canvas als Tupel mit Zeilentupels der Farbwerte  zur&uuml;ck </p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>rgbToInt(color)</p>
+    </td>
+    <td  >
+      <p>gibt das  gegebenen RGB-Tupel als Int-Farbwert zur&uuml;ck </p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>intToRGB(color)</p>
+    </td>
+    <td  >
+      <p>gibt den  gegebenen Int-Farbwert als RGB-Tupel zur&uuml;ck</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >
+      <p>reduceBrightness(color,  r)</p>
+    </td>
+    <td  >
+      <p>dividiert  alle 3 Farbkomponenten um den Faktor r und gibt die neue Farbe zur&uuml;ck. Falls  eine Komponente gr&ouml;sser als 0 ist, wird mindestens 1 zur&uuml;ckgegeben, damit die  Farbart erhalten bleibt</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >getRandomColor()</td>
+    <td   >
+      <p>gibt eine zuf&auml;llige Farbe aus BASE_COLORS zur&uuml;ck. Bei jedem Aufruf wird eine andere Farbe zur&uuml;ckgegeben, bis alle 7 Farben abgerufen sind</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >getRandomPos()</td>
+    <td   >gibt eine zuf&auml;llige Position als Tupel zur&uuml;ck. Bei jedem Aufruf wird eine andere Position zur&uuml;ckgegeben, bis alle 64 Positionen abgerufen sind</td>
+  </tr>
+  <tr>
+    <td  >dispose()</td>
+    <td  >gibt alle Ressourcen frei und vergr&ouml;ssert dadurch den freien Speicherplatz</td>
+  </tr>
+</table>
+<p><br>
+    <b>Modul import: from oxobutton import *</b>    <br>
+(Real- und Simulationsmodus)</p>
+<p><br>
+    Tasten  Identifikationen: BUTTON_L1, 
+    BUTTON_L2, 
+    BUTTON_L3, 
+    BUTTON_R1, 
+    BUTTON_R2, 
+    BUTTON_R3</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >button =  Button(buttonID)&nbsp;&nbsp;&nbsp; </td>
+    <td   >erzeugt  einen Button mit gegebener ID</td>
+  </tr>
+  <tr>
+    <td  >button =  Button(buttonID, callback)&nbsp;&nbsp;&nbsp; </td>
+    <td  >erzeugt  einen Button mit gegebener ID&nbsp; und einer  Callbackfunktion</td>
+  </tr>
+  <tr>
+    <td  >button.isPressed()</td>
+    <td  >liefert  True, falls der Button momentan gedr&uuml;ckt ist; sonst False</td>
+  </tr>
+  <tr>
+    <td  >button.wasPressed()</td>
+    <td  >liefert  True, falls der Button seit dem letzten Aufruf geklickt wurde; sonst False</td>
+  </tr> 
+</table>
+<p><br>
+    <b>Modul import: from oxoaccelerometer import *</b>    <br>
+(Real- und Simulationsmodus, im Simlationsmodus muss auch das Modul oxocard importiert werden)</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >acc = Accelerometer.create()&nbsp;&nbsp;&nbsp; </td>
+    <td   >erzeugt einen Sensor mit  Standardwerten: trigger_level = 10, rearm_time = 0.2, &nbsp;single-click auf allen 3 Achsen und  keinem Callback und gibt seine Referenz zur&uuml;ck </td>
+  </tr>
+  <tr>
+    <td  >acc = Accelerometer.create(callback)</td>
+    <td  >dasselbe unter Angabe einer  Callbackfunktion (parameterlos), die beim einem Clickevent aufgerufen wird</td>
+  </tr>
+  <tr>
+    <td valign="top"  >acc = Accelerometer.create(callback, trigger_level  = 10, rearm_time = 0.2, click_config = SINGLE_CLICK_X | SINGLE_CLICK_Y |  SINGLE_CLICK_Z)&nbsp;&nbsp;&nbsp; </td>
+    <td  >
+        <p align="left">dasselbe mit benannten  Parametern: 
+      trigger_level ist der Triggerpegel  im Bereich 1..100 (willk&uuml;rliche Einheiten), der &uuml;berschritten werden muss,  damit ein Click-bzw. Double-Clickevent registriert wird (kleinere Werte machen  den Sensor also empfindlicher) (default: 10), 
+      rearm_time ist die Zeit in  Sekunden, w&auml;hrend der der Sensor inaktiviert wird, bis er wieder Clickevents  registriert (default: 0.2). 
+      Mit click_config kann die  Triggerart konfiguriert werden. 
+      Or-Kobination von &nbsp;<br>
+      Accel.SINGLE_CLICK_X<br>
+Accel.SINGLE_CLICK_Y<br>
+Accel.SINGLE_CLICK_Z<br>
+Accel.DOUBLE_CLICK_X<br>
+Accel.DOUBLE_CLICK_Y<br>
+Accel.DOUBLE_CLICK_Z&nbsp;&nbsp; </p>
+    </td>
+  </tr>
+  <tr>
+    <td  >acc.get()</td>
+    <td  >gibt ein Tupel mit 3  Float-Werten der Beschleunigungskomponenten (acc_x,  acc_y, acc_z) zur&uuml;ck (in m/s^2 im Bereich +-2g) </td>
+  </tr>
+  <tr>
+    <td  >acc.getX()</td>
+    <td  >gibt die x-Komponente der  Beschleunigung zur&uuml;ck&nbsp; (in m/s^2 im  Bereich +-2g)</td>
+  </tr>
+  <tr>
+    <td  >acc.getY()</td>
+    <td  >gibt die y-Komponente der  Beschleunigung zur&uuml;ck (in m/s^2 im Bereich +-2g)</td>
+  </tr>
+  <tr>
+    <td  >acc.getZ()</td>
+    <td  >gibt die z-Komponente der  Beschleunigung zur&uuml;ck (in m/s^2 im Bereich +-2g)</td>
+  </tr>
+  <tr>
+    <td  >acc.getRoll()</td>
+    <td  >gibt den Drehwinkel bei einer Seitw&auml;rtsdrehung (in Grad im Bereich -90&deg; bis +90&deg;)</td>
+  </tr>
+  <tr>
+    <td  >acc.getPitch()</td>
+    <td  >gibt den Drehwinkel beim Kippen nach vorne, bzw. nach hinten (in Grad im Bereich -90&deg; bis +90&deg;)</td>
+  </tr>
+  <tr>
+    <td  >acc.wasClicked()</td>
+    <td  >gibt True zur&uuml;ck, falls der  Sensor seit dem letztem Aufruf einen Clickevent erfahren hat; sonst False</td>
+  </tr>
+  <tr>
+    <td  >acc.getTemperature()</td>
+    <td  >gibt die Temperatur des  Chips zur&uuml;ck (in Grad Celsius, Genauigkeit +- 2 degC)</td>
+  </tr>
+  <tr>
+    <td  >acc.dispose()</td>
+    <td  >gibt alle Ressourcen frei</td>
+  </tr>
+</table>
+<p><br>
+    <b>Modul import: from tcpcom import *</b>    <br>
+(nur Realmodus)<br>
+<br>
+<strong>Klasse Wlan</strong> (alle Methoden static)</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >Wlan.connect(ssid,  pwd, timeout = 10, verbose = False)</td>
+    <td   >verbindet  mit einem Accesspoint (Hostspot, WLAN Router) mit gegebenen SSID und Passwort.  Gibt True zur&uuml;ck, falls die Verbindung innerhalb des gegebenen Timeout (in sec)  gelingt; sonst wird False zur&uuml;ckgegeben. Mit <em>verbose = True</em> werden Debuginformationen ausgeschrieben</td>
+  </tr>
+  <tr>
+    <td  >Wlan.isWlanConnected()</td>
+    <td  >gibt  True zur&uuml;ck, falls eine Verbindung zum Accesspoint besteht</td>
+  </tr>
+  <tr>
+    <td  >Wlan.getIfConfig()</td>
+    <td  >gibt  ein Tupel (IP_address, mask, gateway_ip) zur&uuml;ck; None, falls keine Verbindung  besteht</td>
+  </tr>
+  <tr>
+    <td  >Wlan.getMyIPAddress()</td>
+    <td  >gibt  die IP-Adresse zur&uuml;ck, die der Accesspoint vergeben hat; leerer String, falls  keine Verbindung besteht</td>
+  </tr>
+  <tr>
+    <td  >Wlan.scan()</td>
+    <td  >gibt  ein Tupel mit Netzwerkinfos &uuml;ber alle gefundenen Accesspoints zur&uuml;ck. Format:  ssid (string), channel (int), rssi Signalst&auml;rke in dB (int) </td>
+  </tr>
+  <tr>
+      <td  > Wlan.activateAP(ssid = &quot;ESP&quot;, password = &quot;aabbaabbaabb&quot;, channel = 10, verbose = False)<br>
+      </td>
+      <td  >aktiviert einen Accesspoint mit gegebenen SSID, Passwort und Kanal (1..13). F&uuml;r password = &quot;&quot; (leer) ist der Zugang passwortfrei</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><strong>Klasse TCPServer</strong>:</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >server = TCPServer(port, stateChanged, endOfBlock = &quot;\n&quot;, verbose = False)</td>
+    <td   >
+      <p>erzeugt ein eventbasierte Serverinstanz und startet ihn auf dem gegebenen Port. Informationen werden &uuml;ber die Callbackfunktion stateChanged() abgegeben. endOfBlock ist das Terminierungszeichen f&uuml;r die &Uuml;bertragung von messages. Events sind: &quot;PORT_IN_USE&quot;, 
+        &quot;CONNECTED&quot;, 
+        &quot;LISTENING&quot;,
+        &quot;TERMINATED&quot;<br>
+        &quot;MESSAGE&quot;. Nach erfolgreichem Start ist der Server im Zustand &quot;LISTENING&quot;</p>
+      </td>
+  </tr>
+  <tr>
+    <td  >server.closeConnection()</td>
+    <td  >schliesst die TCP-Verbindung</td>
+  </tr>
+  <tr>
+    <td  >server.closeSocket()</td>
+    <td  >schliesst den Socket</td>
+  </tr>
+  <tr>
+    <td  >server.terminate()</td>
+    <td  >beendet den Server-Thread</td>
+  </tr>
+  <tr>
+    <td  >server.send(data)</td>
+    <td  >sendet die Message (Type bytes oder string) zum Client. Blockiert bis alle Daten gesendet sind</td>
+  </tr>
+  <tr>
+    <td  > server.getClientIP()<br>
+    </td>
+    <td  >gibt die IP-Addresse des verbundenen Clients zur&uuml;ck; leer, falls kein Client verbunden ist</td>
+  </tr>
+  <tr>
+    <td  >server.isServerRunnging()</td>
+    <td  >gibt True zur&uuml;ck, falls der Server noch nicht beendet ist</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><strong>Klasse TCPClient</strong>:</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >client = TCPClient(verbose = False)</td>
+    <td   >
+      <p>erzeugt ein Clientinstanz, aber verbindeet noch nicht mit einem Server</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >client.connect(host, port)</td>
+    <td  >beginnt den Verbindungsaufbau zum Host auf dem gegebenen Port. Blockiert bis die Verbindung zustande gekommen ist und gibt True zur&uuml;ck; falls die Verbindung misslingt, wird False zur&uuml;ckgegeben</td>
+  </tr>
+  <tr>
+    <td  >client.send(data)</td>
+    <td  >sendet die Message (Typ bytes oder string) zum Client. Blockiert bis alle Daten gesendet sind</td>
+  </tr>
+  <tr>
+    <td  >client.getReply(timeout = 5)</td>
+    <td  >wartet maximal die Zeit timeout (in sec) auf einen Antwort und gibt sie zur&uuml;ck; falls keine Antwort empfangen wurde, wird None zur&uuml;ckgegeben</td>
+  </tr>
+  <tr>
+    <td  >client.closeConnection()</td>
+    <td  >schliesst die TCP-Verbindung</td>
+  </tr>
+  <tr>
+    <td  >client.isConnnected()</td>
+    <td  >gibt True zur&uuml;ck, falls eine Verbindung zum Server besteht</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><b></b><strong>Klasse HTTPServer (abgeleitet aus TCPServer)</strong></p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >server = HTTPServer(requestHandler, serverName = &quot;ESP&quot;, port = 80, verbose = False)</td>
+    <td   >
+      <p>erzeugt und startet einen einfachen HTTP-Server mit dem gegebenen Namen, der auf dem gegebenen Port auf HTTP GET-Requests h&ouml;rt. Beim Eingang eines Requests wird die Callbackfunktion requestHandler mit folgenden Parametern aufgerufen:</p>
+      <p>clientIP: IP-Adresse des Clients<br>
+      filename: Filename der GET-Query (string)<br>
+      params: Key-Value-Paare der GET-Parameters (dictionary)</p>
+      <p>Der R&uuml;ckgabewert (string) wird dem Client als Messageteils des HTTP-Respose zugesendet</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><strong>Klasse HTTPClient (abgeleitet aus TCPClient)</strong></p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >client = HTTPClient(verbose = False)</td>
+    <td   >
+      <p>erzeugt einen HTTP-Client, der aber noch keine Verbindung aufnimmt</p>
+      </td>
+  </tr>
+  <tr>
+    <td  >client.connect(host, port)</td>
+    <td   >beginnt den Verbindungsaufbau zum Host auf dem gegebenen Port. Blockiert bis die Verbindung zustande gekommen ist und gibt True zur&uuml;ck; falls die Verbindung misslingt, wird False zur&uuml;ckgegeben (vererbt aus TCPClient)</td>
+  </tr>
+  <tr>
+    <td  >client.sendGetRequest(query, timeout = 10)</td>
+    <td   >sendet einen GET-Request an den Server und wartet maximal timeout Sekunden auf einen Response. query ist im Format &lt;filename&gt;?key1=value1&amp;key2=value2&amp;...<br>
+    Der R&uuml;ckgabewert ist der vollst&auml;ndige HTTP-Response. Falls keine Antwort erhalten wird, wird der leere String zur&uuml;ckgegeben</td>
+  </tr>
+  <tr>
+    <td  >TCPClient.request(url, verbose = False)</td>
+    <td   >
+      <p>sendet einen GET-Request im vereinfachten Verfahren (ohne dass eine Client-Instanz erzeugt werden muss).<br> 
+        url hat das Format:http://host/query oder https://host/query <br>
+        und der R&uuml;ckgabewert ist nur des Messageteil des HTTP-Response.<br>
+      F&uuml;r http: wird Port 80, f&uuml;r https:  wird Port 443  verwendet</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >TCPClient.extractJSON(response)</td>
+    <td   >konvertiert den JSON-formatierte String in ein Dictionary</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><b>Modul import: <strong>from mqttclient  import MQTTClient</strong></b> <br>
+    (nur Realmodus)<br>
+  <br>
+  <strong>Klasse MQTTClient</strong> (abgeleitet von  umqtt.simple.MQTTClient)<strong><br>
+    </strong>(siehe: http://github.com/micropython/micropython-lib/tree/master/umqtt.simple)</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >client  = MQTTClient(host, port = 0, <br>
+    user = None, password = None)</td>
+    <td   >erzeugt  einen MQTT Client unter Angabe der Broker IP- Adresse. Falls n&ouml;tig, werden die  mitgegebenen Authentifizierungsangaben verwendet. Die Verbindung wird noch nicht  hergestellt</td>
+  </tr>
+  <tr>
+    <td  >client.connect(cleanSession  = True)</td>
+    <td  >erstellt  eine Verbindung zum Broker. Falls cleanSession = <em>True</em> ist, werden alle vorher  gesendeten Daten des gleichen Clients gel&ouml;scht</td>
+  </tr>
+  <tr>
+    <td  >client.ping()</td>
+    <td  >sendet  einen Ping-Request an den Server, damit dieser die Verbindung offen h&auml;lt</td>
+  </tr>
+  <tr>
+    <td  >client.publish(topic,  payload, retries = 10, retain = False, qos = 0)</td>
+    <td  >sendet  zum gegebenen Topic eine Message (payload). Falls die Verbindung nicht mehr  offen ist, wird so oft ein neues <em>connect()</em> gemacht, bis die Zahl <em>retries</em> erreicht ist. Falls <em>retain = True</em> wird diese  Message als die letzte&nbsp; good/retain  Message betrachtet. qos ist der Quality of&nbsp;  Service level (nur 0, 1 unterst&uuml;tzt). Gibt True zur&uuml;ck, falls das  Publish erfolgreich war; False, falls die Verbindung nicht mehr aufgebaut  werden konnte</td>
+  </tr>
+  <tr>
+    <td  >client.registerCallback(onMessageReceived)</td>
+    <td  >registriert  die Callbackfunktion <em>onMessageReceived()</em>,  die beim Erhalt einer Message aufgerufen wird (Funktionsname beliebig)</td>
+  </tr>
+   <tr>
+    <td  >onMessageReceived(topic,  payload)</td>
+    <td  >oben  registrierte Callbackfunktion mit den Parametern <em>topic</em> und<em> payload</em> (type:  string)</td>
+  </tr>
+   <tr>
+    <td  >client.subscribe(topic,  qos = 0</td>
+    <td  >abonniert  das gegebene Topic mit dem gegegeben qos level (siehe bei <em>publish()</em>)</td>
+  </tr>
+   <tr>
+    <td  >client.disconnect()</td>
+    <td  >schliesst  die Verbindung und beendet den internen Subscriber Poll Thread </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><b>Modul import: <strong>import weather</strong></b> <br>
+  (nur Realmodus)<br>
+</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >info  = weather.request(ssid, password, city, key)<br>
+    </td>
+    <td   >
+      <p>verbindet &uuml;ber den WiFi-Hostspot mit gegebener SSID und Passwort mit Host <strong>http://openweathermap.org</strong> und macht einen Wetterdaten-Request f&uuml;r den gegebenen Ort. Dabei wird der gegebene Authorisierungsschl&uuml;ssel verwendet. Dieser kann man man kostenfrei auf diesem Host beziehen. (Wird der Parameter weggelassen, so wird ein Standardschl&uuml;ssel verwendet, der maximal 60 Anfragen / min f&uuml;r alle Nutzer erlaubt.)</p>
+      <p>R&uuml;ckgabewert: Dictionary mit den Feldern:</p>
+      <table width="100%" border="0">
+        <tr>
+          <td>&quot;status&quot;</td>
+          <td>&quot;OK&quot; oder Fehlerstring, der den Fehler beschreibt, z.B. &quot;City not found&quot; (string)</td>
+        </tr>
+        <tr>
+          <td>&quot;temp&quot;</td>
+          <td>Temperatur in &deg;C (float)</td>
+        </tr>
+        <tr>
+          <td>&quot;pressure&quot;</td>
+          <td>Luftdruck in hPa (mbar) (float)</td>
+        </tr>
+        <tr>
+          <td>&quot;humidity&quot;</td>
+          <td>Luftfeuchtigkeit in % (int)</td>
+        </tr>
+        <tr>
+          <td>&quot;temp_min&quot;</td>
+          <td>Tagesminimum der Temperatur in &deg;C (float)</td>
+        </tr>
+        <tr>
+          <td>&quot;temp_max&quot;</td>
+          <td>Tagesmaximum der Temperatur in &deg;C (float)</td>
+        </tr>
+        <tr>
+          <td>&quot;description&quot;</td>
+          <td>Wetterlage in Worten (deutsch) (string)</td>
+        </tr>
+        <tr>
+          <td>&quot;sunrise&quot;</td>
+          <td>Sonnenaufgang in Universal Time (UTC) (string)</td>
+        </tr>
+        <tr>
+          <td>&quot;sunset&quot;</td>
+          <td>Sonnenuntergang in Universal Time (UTC) (string)</td>
+        </tr>
+        <tr>
+          <td>&quot;datetime&quot;</td>
+          <td>Datum - Uhrzeit (UTC) der Wettererfassung (string)</td>
+        </tr>
+      </table>
+      </td>
+  </tr>
+</table>
+<p><b><br>
+Modul import: <strong>import httptime</strong></b><br>
+(nur Realmodus)<br>
+</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >datetime  = httptime.getDateTime(ssid, password, city, timezone, key)<br>
+    </td>
+    <td   >
+      <p>verbindet &uuml;ber den WiFi-Hostspot mit gegebener SSID und Passwort mit Host <strong>https://api.timezonedb.com</strong> und macht einen Zeit/Datum-Request f&uuml;r den gegebenen Ort. Dabei wird der gegebene Authorisierungsschl&uuml;ssel verwendet. Dieser kann man man kostenfrei auf diesem Host beziehen. (Wird der Parameter weggelassen, so wird ein Standardschl&uuml;ssel verwendet, der maximal 1 Anfrage/sec f&uuml;r alle Nutzer erlaubt.) timezone ist entweder der Country Code oder der Landesname (englisch).</p>
+      <p>R&uuml;ckgabewert: String im Format: ww yyyy-nn-dd hh:mm:ss<br>
+      ww:  Wochentag, yyyy: Jahr, 
+      nn: Monat, dd: Tag, hh: Stunden, mm: Minuten, ss: Sekunden<br>
+      Beispiel: Mo 2018-09-10 20:27:33</p>
+      <p>Falls ein Fehler auftritt, wird None zur&uuml;ckgegeben</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >time = httptime.getTime(ssid, password, city, timezone, key)</td>
+    <td   >dasselbe, aber es wird nur der Zeitteil im Format hh:mm:ss zur&uuml;ckgegeben</td>
+  </tr>
+  <tr>
+    <td  >httptime.getCountryCode(country)</td>
+    <td   >gibt den Country Code (2 Buchstaben) zum gegebenenen Land (englisch geschrieben) zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td  >httptime.getCountry(countryCode)</td>
+    <td   >gibt das Land zum zum gegebenenen Country Code zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td  >httptime.countryDict</td>
+    <td   >Dictionary mit country_code:country</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><b>Modul import: <strong>from music import*</strong></b> <br>
+    (nur Realmodus)<br>
+</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >playTone(frequency,  duration)</td>
+    <td   ><p>spielt  einen Ton mit gegebener Frequenz (in Hz) und Dauer (in ms) ab. Frequenzbereich:  ca. 100 - 1500 Hz. Die Frequenz kann auch in Notennotation (als String)  angegeben werden: 'r', 'C', 'C#', 'D'...,'c', c#,  d...,'c2','c2#','d2'...,'c3'.&nbsp; 'r' ist  eine Pause, 'C' Beginn der Oktave mit 131 Hz, 'c' Beginn der Oktave bei 262 Hz,  'c2' Beginn der Oktave bei 523 Hz, 'c3': 1046 Hz. Hinter der Notenangabe kann  ein Doppelpunkt und ein Verl&auml;ngerungsfaktor f&uuml;r die Dauer angegeben werden.  Beispiel einer Notensequenz:<br>
+      ('c2:3',  'g', 'f#', 'g', 'g#:3', 'g', 'r', 'h:2', 'c2')</p>
+    Die Funktion blockiert, bis der Ton fertig  gespielt ist</td>
+  </tr>
+  <tr>
+    <td  >playSong(song,  duration = 150)</td>
+    <td  >spielt  die T&ouml;ne in der Notenliste (oder Tupel) <em>song</em> mit gegebener Dauer <em>duration</em> ab.</td>
+  </tr>
+  <tr>
+    <td  >beep(n,  frequency = 1000)</td>
+    <td  >spielt  n kurze Tonsignale mit gegebener Frequenz ab</td>
+  </tr>
+  
+</table>
+<p>Vordefinierte  Songs:<br>
+ENTERTAINER,  RINGTONE, BIRTHDAY, JUMP_UP, JUMP_DOWN, DADADADUM, POWER_UP, POWER_DOWN,  PUNCHLINE, WEDDING, BOOGYWOODY, PRELUDE </p>
+<p>&nbsp;</p>
+<p><b>Modul import: <strong>from utils import *</strong></b> <br>
+</p>
+<p><strong>Klasse Vector:</strong><br>
+</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >a =  Vector(x, y)</td>
+    <td   ><p>erzeugt  ein 2-dimensionales Vektorobjekt mit gegebenen Koordinaten</p>
+    </td>
+  </tr>
+  <tr>
+    <td  >a =  Vector((x, y))</td>
+    <td  >dasselbe  mit gegebenem Koordinatentupel (oder Liste).</td>
+  </tr>
+  <tr>
+    <td  >a =  Vector()</td>
+    <td  >dasselbe  mit den Koordinaten (0, 0)</td>
+  </tr>
+  <tr>
+    <td  >c =  a.add(b)</td>
+    <td  >gibt  einen neuen Summenvektor der beiden Vektoren a und b zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td  >c =  a.sub(b)</td>
+    <td  >gibt  einen neuen Differenzvektor der beiden Vektoren a und b zur&uuml;ck </td>
+  </tr>
+  <tr>
+    <td  >c =  a.mult(k)</td>
+    <td  >gibt  einen neuen Vektor mit skalarer Multiplikation zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td  >print(a)</td>
+    <td  >schreibt  die Komponenten aus</td>
+  </tr>
+  <tr>
+    <td  >a[0],  a[1]</td>
+    <td  >Komponenten  in Indexschreibweise (lesend und schreibend)</td>
+  </tr>
+</table>
+<p><br>
+    <strong>Klasse I2C_com:</strong><br>
+(nur Realmodus)<br>
+</p>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="32%" bgcolor="#F0F0F5"  >Funktion</td>
+    <td width="68%" bgcolor="#F0F0F5"  >Aktion</td>
+  </tr>
+  <tr>
+    <td  >i2c  = I2C_com(i2c_address, scl = Pin(22), sda = Pin(21)</td>
+    <td   ><p>erzeugt  ein I2C-Schnittstellenobjekt mit gegebener I2C-Adresse an den gegebenen Pins  f&uuml;r SCL und SDA</p></td>
+  </tr>
+  <tr>
+    <td  >i2c.readReg(cmd)</td>
+    <td  >liest  ein einzelnes Byte an der gegebenen Registeradresse cmd (int) (R&uuml;ckgabewert:  int)</td>
+  </tr>
+  <tr>
+    <td  >i2c.writeReg(cmd,  data)</td>
+    <td  >schreibt  ein Datenbyte data (int) an der gegebenen Registeradresse cmd (int)</td>
+  </tr>
+  <tr>
+    <td  >i2c.readBlock(cmd,  len)</td>
+    <td  >liest  eine Folge von Bytes beginnend bei der gegebenen Registeradresse cmd (int).  R&uuml;ckgabewert: Liste mit ints</td>
+  </tr>
+  <tr>
+    <td  >i2c.writeBlock(cmd,  data)</td>
+    <td  >schreibt  eine Folge von Bytes beginnend bei der gegebenen Registeradresse cmd (int).  data ist eine Liste mit ints</td>
+  </tr>
+  <tr>
+    <td  >i2C_com.dispose()</td>
+    <td  >gibt  den I2C-Port wieder frei (f&uuml;r alle Ger&auml;te)</td>
+  </tr>
+  
+</table>
+<p> from machine import Pin, I2C<br>
+i2c = I2C(scl = Pin(21), sda = Pin(22))<br>
+devices = i2c.scan()<br>
+liefert  alle I2C-Ger&auml;teadressen, die an den gegebenen Pins f&uuml;r SCL und SDA  angeschlossen sind.</p>
+<p>&nbsp;</p>
+<p><br>
+</p>
+<p><a href="http://ch/aplu/docs/index_fr.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

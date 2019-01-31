@@ -1,0 +1,829 @@
+<html>
+<head>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+
+<a href="http://ch/aplu/docs/index_en.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a>
+<h2>Documentation Turtle Graphics</h2>
+<h3>Module import: from gturtle import *
+  
+</h3>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%" bgcolor="#F0F0F5">Function</td>
+    <td width="62%" bgcolor="#F0F0F5">Action</td>
+  </tr>
+  
+  <tr>
+    <td>makeTurtle()</td>
+    <td >defines all global commands and creates a (global) turtle in its down window and returns turtle reference</td>
+  </tr>
+   <tr>
+    <td>makeTurtle(color)</td>
+    <td >same, but creates  a  turtle with given color and returns turtle reference</td>
+  </tr>
+  <tr>
+    <td>makeTurtle(&quot;sprites/turtle.gif&quot;)</td>
+    <td >same, but creates a turtle with given sprite image and returns turtle reference</td>
+  </tr>  
+  <tr>
+      <td>makeTurtle(color, size)</td>
+      <td >same, but creates a dot shaped turtle with given color and diameter (in pixel)</td>
+  </tr>
+  <tr>
+      <td>getTurtle()</td>
+      <td >returns global turtle reference</td>
+  </tr>
+  <tr>
+    <td>t = Turtle()</td>
+    <td >creates a turtle object t</td>
+  </tr>
+  <tr>
+    <td>tf = TurtleFrame()</td>
+    <td >creates  a graphics windows where several turtles may live together</td>
+  </tr>
+  <tr>
+    <td>tf = TurtleFrame(title)</td>
+    <td >same, but with given title</td>
+  </tr>
+  <tr>
+    <td>t = Turtle(tf)</td>
+    <td >creates a turtle in the given TurtleFrame</td>
+  </tr> 
+  <tr>
+    <td>clone()</td>
+    <td >creates a turtle clone (same color,  position, viewing direction)</td>
+  </tr>  
+  <tr>
+    <td>isDisposed()</td>
+    <td >returns True, if the window is closed</td>
+  </tr>
+  <tr>
+    <td>putSleep()</td>
+    <td >pauses  program execution until wakeUp() is called</td>
+  </tr>
+  <tr>
+    <td>wakeUp()</td>
+    <td >resumes paused program execution</td>
+  </tr>
+  <tr>
+    <td>enableRepaint(False)</td>
+    <td >disables automatic screen rendering</td>
+  </tr>
+  <tr>
+    <td>repaint()</td>
+    <td >renders the screen manually (after disabling automatic rendering)</td>
+  </tr>
+  <tr>
+    <td>savePlayground()</td>
+    <td >copies the playground into a internal image buffer (restore with  clear())</td>
+  </tr>
+  <tr>
+    <td>savePlayground(fileName, format)</td>
+    <td >copies  the playground into a image file (format: &quot;png&quot; or &quot;gif&quot;). Returns True, if successful; otherwise False</td>
+  </tr>
+  <tr>
+      <td>setPlaygroundSize(width, height)</td>
+      <td >sets the size of the turtle window independent of the option settings in TigerJython  (must be called prior to makeTurtle())</td>
+  </tr>
+  <tr>
+      <td>setFramePosition(x, y)</td>
+      <td >moves  the upper left vertex of the turtle window to the given screen position </td>
+  </tr>
+  <tr>
+      <td>setFramePositionCenter()</td>
+      <td >moves  the turtle window to the screen center</td>
+  </tr>  
+</table>
+<h4><br>
+Movements</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td>back(distance), bk(distance)</td>
+    <td >moves the turtle backwards for given distance (in turtle coordinates)</td>
+  </tr>
+  <tr>
+      <td>backward(distance)</td>
+      <td>same as back(distance)</td>
+  </tr>
+  <tr>
+    <td width="28%">forward(distance),  fd(distance)</td>
+    <td width="62%">moves the turtle forwards for given distance (in turtle coordinates)</td>
+  </tr>
+  <tr>
+    <td>hideTurtle(), ht()</td>
+    <td >hides the turtle (speeds-up the drawing, speed = -1) </td>
+  </tr>
+  <tr>
+    <td>home()</td>
+    <td >puts  the turtle in the center of the window with viewing direction to the north</td>
+  </tr>
+  <tr>
+    <td>left(angle), lt(angle)</td>
+    <td >turns the turtle to the left (in degrees)</td>
+  </tr>
+   <tr>
+    <td>penDown(),  pd()</td>
+    <td >activates the pen (trace becomes visible) </td>
+  </tr>
+   <tr>
+    <td>penErase(), pe() </td>
+    <td >sets the pen color to the background color</td>
+  </tr>
+  <tr>
+    <td>leftArc(radius, angle)</td>
+    <td >moves the  turtle on a left oriented arc with with given radius and sector angle (in degrees)</td>
+  </tr>
+  <tr>
+    <td>leftCircle(radius)</td>
+    <td >moves the turtle on a left oriented circle with given radius (in turtle coordinates)</td>
+  </tr>
+   <tr>
+    <td>penUp(),  pu()</td>
+    <td >deactivates the pen (trace becomes invisible) </td>
+  </tr>
+   <tr>
+    <td>penWidth(width) </td>
+    <td >selects the pen width (in pixels)</td>
+  </tr>
+   <tr>
+     <td>setPenWidth(width) </td>
+     <td >selects the pen width (in pixels)</td>
+   </tr>
+  <tr>
+    <td>right(angle), rt(angle) </td>
+    <td >turnes the turtle to the right (in degrees)</td>
+  </tr>
+  <tr>
+    <td>rightArc(radius, angle) </td>
+    <td >moves the turtle on a right oriented arc with with given radius and sector angle (in degrees)</td>
+  </tr>
+   <tr>
+    <td>rightCircle(radius) </td>
+    <td >moves the turtle on a right oriented circle with given radius (in turtle coordinates)</td>
+  </tr>
+  <tr>
+    <td>setCustomCursor(cursorImage)</td>
+    <td >selects image file used as mouse cursor</td>
+  </tr>
+   <tr>
+    <td>setCustomCursor(cursorImage, Point(x, y))</td>
+    <td >selects image file use as mouse cursor and defines the hotspot relative to the picture</td>
+  </tr>
+   <tr>
+    <td>setLineWidth(width)</td>
+    <td >sets the pen width (in pixels)</td>
+  </tr>
+   <tr>
+       <td>setEndCap(style)</td>
+       <td >sets the end point style of a line: &quot;square&quot; (default), &quot;round&quot; (rounded), &quot;clip&quot; (cropped)</td>
+   </tr>
+  <tr>
+    <td>showTurtle(), st()</td>
+    <td >shows the turtle</td>
+  </tr>
+  
+  <tr>
+    <td>speed(speed) </td>
+    <td >sets the speed of the turtle movement (pixels per second, -1: no animation)</td>
+  </tr>
+  <tr>
+    <td>delay(time) </td>
+    <td >stops the program for the given amount of time (in milliseconds)</td>
+  </tr>
+ <tr>
+    <td>wrap() </td>
+    <td >turtle positions outside the window are mapped inside the window (torus symmetry)</td>
+  </tr>
+  <tr>
+    <td>clip() </td>
+    <td >turtles outside the window are invisible</td>
+  </tr>
+  <tr>
+    <td>getPlaygroundWidth()</td>
+    <td >returns the horizontal size m of the turtle playground (turtle coordinates x = -m/2..m/2)</td>
+  </tr>
+  <tr>
+    <td>getPlaygroundHeight()</td>
+    <td >eturns the vertical size n of the turtle playground (turtle coordinates y = -n/2..n/2)r</td>
+  </tr>
+  </table>
+<h4><br>
+Positioning</h4>
+  
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td>direction(x, y)</td>
+    <td>returns the angle to turn to the  position (x, y) zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td>direction(coords)</td>
+    <td>same, but coordinates given as list, tuple or complex</td>
+  </tr>
+  <tr>
+    <td>direction(turtle)</td>
+    <td>returns the angle to turn to the position of another turtle</td>
+  </tr>
+  <tr>
+    <td>distance(x, y) </td>
+    <td >returns the distance of the turtle to point(x, y)</td>
+  </tr>
+ 
+  <tr>
+    <td>distance(coords) </td>
+    <td>same, but coordinates given as list, tuple or complex</td>
+  </tr>
+  <tr>
+    <td>distance(turtle)</td>
+    <td>returns the distance to another turtle</td>
+  </tr>
+  <tr>
+    <td>getPos() </td>
+    <td>returns the current position (list)</td>
+  </tr>
+   <tr>
+    <td>getX() </td>
+    <td >returns the current x-coordinate</td>
+  </tr>
+   <tr>
+    <td>getY() </td>
+    <td >returns the current y-coordinate</td>
+  </tr>
+  <tr>
+    <td>heading() </td>
+    <td>returns the current viewing direction (in degrees, clockwise to the north)</td>
+  </tr>
+  <tr>
+    <td>heading(degrees) </td>
+    <td >sets the viewing direction (in degrees, zero to the north, positive clockwise)</td>
+  </tr>
+  <tr>
+    <td>moveTo(x, y)</td>
+    <td >moves  the turtle to the given coordinates by drawing the trace</td>
+  </tr>
+  <tr>
+    <td>moveTo(coords)</td>
+    <td>same, but coordinates given as list, tuple or complex</td>
+  </tr>
+  <tr>
+    <td width="28%">setHeading(degrees), setH(degrees)</td>
+    <td width="62%">sets the viewing direction (in degrees, zero to the north, positive clockwise)</td>
+  </tr>
+   <tr>
+    <td width="28%">setRandomHeading()</td>
+    <td width="62%">sets the viewing direction to a random value  0 ... 360&deg;</td>
+  </tr>
+  <tr>
+    <td width="28%">setPos(x, y)</td>
+    <td width="62%">moves  the turtle to the given coordinates without drawing the trace</td>
+  </tr>
+  <tr>
+    <td>setPos(coords)</td>
+    <td>same, but coordinates given as list, tuple or complex</td>
+  </tr>
+  <tr>
+    <td width="28%">setX(x)</td>
+    <td width="62%">sets the turtle to given x-coordinate</td>
+  </tr>
+  <tr>
+    <td width="28%">setY(y)</td>
+    <td width="62%">sets the turtle to given y-coordinate</td>
+  </tr>
+   <tr>
+    <td width="28%">setRandomPos(width, height)</td>
+    <td width="62%">sets the turtle position to  a random value in the given rectangle (center at current position)</td>
+  </tr>
+   <tr>
+    <td width="28%">setScreenPos(x, y)</td>
+    <td width="62%">sets the turtle position to the given pixel coordinates</td>
+  </tr>
+  <tr>
+    <td width="28%">setScreenPos(Point(x, y))</td>
+    <td width="62%">sets the turtle position to the given point</td>
+  </tr>
+  <tr>
+    <td width="28%">towards(x, y)</td>
+    <td width="62%">returns the direction (in degrees) to the given coordinates</td>
+  </tr>
+  <tr>
+    <td>towards(coords)</td>
+    <td>same, but coordinates given as list, tuple or complex</td>
+  </tr>
+  <tr>
+    <td width="28%">towards(turtle)</td>
+    <td width="62%">returns the direction to another turtle</td>
+  </tr>
+   <tr>
+    <td width="28%">toTurtlePos(x, y)</td>
+    <td width="62%">returns a list of the turtle coordinates of the given pixel coordinates</td>
+  </tr>
+   <tr>
+    <td width="28%">toTurtlePos(Point(x, y))</td>
+    <td width="62%">returns a list of the turtle coordinates of the given point</td>
+  </tr>  
+   <tr>
+    <td width="28%">pushState()</td>
+    <td width="62%">saves the current turtle state on a stack (first-in-last-out)</td>
+  </tr>
+   <tr>
+    <td width="28%">popState()</td>
+    <td width="62%">sets the turtle state to the last element of the stack and removes the state from the stack</td>
+  </tr>
+   <tr>
+    <td width="28%">clearStates()</td>
+    <td width="62%">removes all elements from the state stack</td>
+  </tr> 
+  </table>
+<h4><br>
+Colors</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC"> 
+   <tr>
+    <td width="28%">askColor(title, defaultColor) </td>
+    <td width="62%">opens a color selection dialog and returns the selected color (None if canceled)</td>
+  </tr>
+  <tr>
+    <td>clear() </td>
+    <td >erases the traces and hides all turtles, but lets them where they are. If the image buffer created with  savePlayground() is not empty, it is restored</td>
+  </tr>
+   <tr>
+    <td>clear(color) </td>
+    <td >erases the traces, hides all turtles (lets them where they are) and paints the background with the given color</td>
+  </tr>
+  <tr>
+    <td>clean() </td>
+    <td >erases the traces but lets the turtles where they are. The image buffer created with savePlayground() is erased</td>
+  </tr>
+  <tr>
+    <td>clean(color) </td>
+    <td >erases the traces (but lets the turtles where they are) and paints the background with the color</td>
+  </tr>
+  <tr>
+    <td>clearScreen(), cs()</td>
+    <td >erases the traces and sets the turtle to the home position</td>
+  </tr>
+  <tr>
+    <td>dot(diameter) </td>
+    <td >paints a filled circle with given radius using the current pen color</td>
+  </tr>
+  <tr>
+    <td>openDot(diameter) </td>
+    <td >paints a non-filled circle with given radius using the current pen color</td>
+  </tr>
+  <tr>
+      <td>spray(density, spread, size)</td>
+      <td >paints a random point cloud at the turtle position with given number of points, spreading and point size (without size: size = 1)</td>
+  </tr>
+  <tr>
+    <td>fill() </td>
+    <td >fills a closed area around the current turtlle position with the current fill color</td>
+  </tr>
+  <tr >
+    <td>fill(x , y) </td>
+    <td >fills a closed area around the given position with the current fill color </td>
+  </tr>
+  <tr >
+    <td>fill(coords)</td>
+    <td >same, but coordinates given as list, tuple or complex</td>
+  </tr>
+   <tr>
+     <td>fillToPoint() </td>
+     <td>fills continuously from the current turtle position</td>
+   </tr>
+   <tr>
+    <td>fillToPoint(x , y) </td>
+    <td>fills continuoiusly from the given point</td>
+   </tr>
+   <tr>
+     <td>fillToPoint(coords)</td>
+     <td >same, but coordinates given as list, tuple or complex</td>
+   </tr>
+   <tr>
+    <td>fillToHorizontal( y) </td>
+    <td >fills continuously die area between the horizontal line and the turtle position</td>
+   </tr>
+   <tr>
+    <td>fillToVertical(x) </td>
+    <td >fills continuously die area between the veritcall line and the turtle position</td>
+   </tr>
+    <tr>
+    <td>fillOff() </td>
+    <td >terminates the fill mode</td>
+   </tr>
+   <tr>
+    <td width="28%">getColor() </td>
+    <td width="62%">returns the turtle color</td>
+  </tr>
+  <tr>
+    <td width="28%">getColorStr() </td>
+    <td width="62%">returns the turtle color as   X11 color string</td>
+  </tr>
+   <tr>
+    <td width="28%">getFillColor() </td>
+    <td width="62%">returns the fill color</td>
+  </tr>
+  <tr>
+    <td width="28%">getFillColorStr() </td>
+    <td width="62%">returns the fill color as   X11 color string</td>
+  </tr>
+   <tr>
+    <td width="28%">getPixelColor() </td>
+    <td width="62%">returns the color of the pixel (background or trace) at the current turtle position (None, if outside turtle window)</td>
+  </tr>
+  <tr>
+    <td width="28%">getPixelColorStr() </td>
+    <td width="62%">returns the color as X11 color string of the pixel at the current turtle position  (empty, if X11 color name does no exist; None, if outside turtle window)</td>
+  </tr>
+  <tr>
+    <td>makeColor(value)</td>
+    <td>returns a color reference of given value. Value examples: (&quot;7FFED4&quot;), (&quot;Aqua-Marine&quot;), (0x7FFED4), (8388564), (0.5, 1.0, 0.83), (128, 255, 212), (&quot;rainbow&quot;, n) with n = 0..1, light spectrum</td>
+  </tr>
+  <tr>
+    <td width="28%">getRandomX11Color() </td>
+    <td width="62%">returns a random  X11 color string</td>
+  </tr>
+   <tr>
+    <td width="28%">setColor(color) </td>
+    <td width="62%">sets the turtle color</td>
+  </tr>
+  <tr>
+    <td>setPenColor(color) </td>
+    <td >sets the turtle's pen color</td>
+  </tr>
+  <tr>
+    <td>setFillColor(color) </td>
+    <td >sets the turtle's fill color</td>
+  </tr>
+  <tr>
+    <td>startPath() </td>
+    <td >starts to register the turtle movement for a following fill operation</td>
+  </tr>
+  <tr>
+    <td>fillPath() </td>
+    <td >closes the fill operation at current turtle position and fills the path with the current fill color</td>
+  </tr>
+   <tr>
+    <td>stampTurtle() </td>
+    <td >creates an image of the turtle at the current position</td>
+  </tr>
+   <tr>
+    <td>stampTurtle(color) </td>
+    <td >creates an image of the turtle with given color at current position</td>
+  </tr>
+   <tr>
+       <td>transparent(color, alpha)</td>
+       <td >returns a transparent color based on the given color and a transparency value (between 0.0 and 1.0, default: 0.5)</td>
+   </tr>
+  </table>
+<h4><br>
+Callbacks</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC"> 
+ <tr>
+    <td width="28%">makeTurtle(mouseNNN = onMouseNNN)<br>
+    </td>
+    <td >registers the callback function  onMouseNNN(x, y) that is called when a mouse event happens. Values for NNN:  Pressed, Released, Clicked, Dragged, Moved, Entered, Exited, SingleClicked, DoubleClicked (use a comma separator to register more than one). Special behaviour: Hit: Invocation in a separate thread, HitX: same, but  events are ignored until the previous callback returns</td>
+  </tr>
+  <tr>
+    <td>makeTurtle(turtleHit = onTurtleHit)</td>
+    <td >registers the callback function onTurtleHit(x, y) that is called when the turtle image is clicked</td>
+  </tr>
+  <tr>
+    <td>t = Turtle(turtleHit = onTurtleHit)</td>
+    <td >registers the callback function onTurtleHit(t, x, y) that is called when the image of turtle t is clicked</td>
+  </tr>
+  <tr>
+    <td width="28%">isLeftMouseButton(),<br>
+isRightMouseButton() </td>
+    <td width="62%" >returns True, if the event is caused by the left/right mouse button</td>
+  </tr>
+ <tr>
+    <td width="28%">makeTurtle(keyNNN = onKeyNNN)</td>
+    <td width="62%" >registers the callback onKeyNNN(keyCode) that is called when a keyboard key is hit. Values for NNN:  Pressed, Hit: Invocation in separate thread, HitX: same, but  events are ignored until the previous callback returns. keyCode is a unique integer value that identifies the key</td>
+  </tr>
+ <tr>
+   <td>getKeyModifiers()</td>
+   <td >returns an integer code for special keyboard keys (shift, ctrl, etc., also combined)</td>
+ </tr>
+ <tr>
+     <td>makeTurtle(closeClicked = onCloseClicked)</td>
+     <td >registers the callback onCloseClicked() that is called when the title bar close button is hit. The window must be closed manually by calling dispose()</td>
+ </tr>
+ <tr>
+     <td>showSimulationBar(NNN = onNNN)</td>
+     <td >
+         <p>shows a dialog window with buttons  'Step', 'Run'/'Pause', 'Reset' and a slider to adjust the simulation period. The following callbacks can be registered:  start, pause, step, reset, change(parameter: simulationPeriod), loop, exit (close button hit). loop is invoked in every simulation cycle by the simulation thread</p>
+        </td>
+ </tr>
+ <tr>
+     <td>showSimulationBar(ulx, uly, initPeriod, NNN = onNNN)</td>
+     <td >same, but with dialog screen position (upper left corner) and simulation period (default: 100)</td>
+ </tr>
+ <tr>
+     <td>hideSimulationBar()</td>
+     <td >closes the dialog and frees all resources</td>
+ </tr>
+  </table>
+<h4><br>
+Keyboard</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td >getKey()&nbsp;&nbsp;</td>
+    <td >returns the character (as string) of the last key pressed (empty, if illegal key)</td>
+  </tr>
+  <tr>
+    <td >getKeyCode()&nbsp;&nbsp;</td>
+    <td >returns the key code of the last key pressed</td>
+  </tr>
+  <tr>
+    <td width="28%" >getKeyWait() </td>
+    <td width="62%">stops the program until a key is pressed and returns the character (as string) of the key (empty, if illegal key)</td>
+  </tr>
+  <tr>
+    <td width="28%" >getKeyCodeWait() </td>
+    <td width="62%">stops the program until a key is pressed and returns the key code of the key</td>
+  </tr>
+  <tr>
+      <td >getModifiers()</td>
+      <td >returns special code if ctrl/alt/shift key is pressed</td>
+  </tr>
+  <tr>
+      <td >getModifiersText()</td>
+      <td >returns verbose description if ctrl/alt/shift key is pressed</td>
+  </tr>
+  <tr>
+    <td >kbhit() </td>
+    <td >returns True, if a key was hit since the last call of getKey() or getKeyCode()</td>
+  </tr>
+</table>
+<h4><br>
+  Text, Images and Sound<font size="-1"><br>
+  (playTone() available without import gturtle)</font></h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+   <tr>
+    <td>addStatusBar(20)&nbsp;&nbsp;</td>
+    <td >adds a status bar 20 pixels height</td>
+  </tr>
+  <tr>
+    <td>beep()&nbsp;&nbsp;</td>
+    <td >emits a short tone</td>
+  </tr>
+  <tr>
+    <td>playTone(freq)</td>
+    <td>plays tone mit given frequency (in Hz) and duration 1000 ms (blocking function)</td>
+  </tr>
+  <tr>
+    <td>playTone(freq, block = False)</td>
+    <td>same, but not-blocking function, used to play several tones at (about) the same time<br>
+    </td>
+  </tr>
+  <tr>
+    <td>playTone(freq, duration)</td>
+    <td>plays tone with given frequency and given duration (in ms)</td>
+  </tr>
+  <tr>
+    <td>playTone([f1, f2, ...])</td>
+    <td>plays several tones in a sequence with given frequency and duration 1000 ms</td>
+  </tr>
+  <tr>
+    <td>playTone([(f1, d1), (f2, d2), ...])</td>
+    <td>plays serveral tones in a sequence with given frequency and given duration</td>
+  </tr>
+  <tr>
+    <td>playTone([(&quot;c&quot;, 700), (&quot;e&quot;, 1500), ...])</td>
+    <td>plays serveral tones in a sequence with given  (Helmholtz) pitch naming and duration. <br>
+      Supported are: 
+    great octave, one-line to three-line octave (range C, C# up to h'''</td>
+  </tr>
+  <tr>
+    <td>playTone([(&quot;c&quot;, 700), (&quot;e&quot;, 1500), ...], instrument = &quot;piano&quot;)</td>
+    <td>same, but selects instrument type. Supported are: piano, guitar, harp, trumpet, xylophone, organ, violin, panflute, bird, seashore, ... (see MIDI specifications)</td>
+  </tr>
+  <tr>
+    <td>playTone([(&quot;c&quot;, 700), (&quot;e&quot;, 1500), ...], instrument = &quot;piano&quot;, volume=10)</td>
+    <td>same, but selects sound volume (0..100)</td>
+  </tr>
+  <tr>
+      <td>label(param) </td>
+      <td>displays str(param) starting at the current turtle position (left adjusted)</td>
+  </tr>
+  <tr>
+      <td>label(param1, param2, ...)</td>
+      <td>concatenates  str(params) separated by spaces and displays the text</td>
+  </tr>
+  <tr>
+      <td>label(param1, param2, ..., adjust = 'x')</td>
+      <td>same, but x = 'l' left adjusted (default), 'c' center adjusted, 'r' right adjusted</td>
+  </tr>
+   <tr>
+    <td width="28%">printerPlot(draw) </td>
+    <td width="62%">prints the traces that are drawn in function draw</td>
+  </tr>
+  <tr>
+      <td>setFont(Font font) </td>
+      <td >defines the font used by label(). font is an  object of class Font,<br>
+        ex: Font("Courier New", Font.BOLD, 12). Default: Font(&quot;SansSerif&quot;, Font.PLAIN, 24)</td>
+  </tr>
+  <tr>
+      <td>setFont(name)</td>
+      <td >defines new font name using the current syte and size</td>
+  </tr>
+  <tr>
+      <td>setFont(name, style)</td>
+      <td >defines new font name and style using the current size<br>
+        style = Font.PLAIN, Font.BOLD, Font.ITALIC</td>
+  </tr>
+  <tr>
+      <td>setFont(name, style, size)</td>
+      <td >defines new font name, style and size</td>
+  </tr>
+  <tr>
+    <td>setFontSize</a>(size) </td>
+    <td >defines new font size (style and size unchanged)</td>
+  </tr>
+ 
+  <tr>
+    <td>getTextHeight()</td>
+    <td >returns the height of texts with current font (in pixels)</td>
+  </tr>
+  <tr>
+    <td>getTextAscent()</td>
+    <td >returns the ascender height of texts with current font (in pixels)</td>
+  </tr>
+  <tr>
+    <td>getTextDescent()</td>
+    <td >returns the descender height of texts with current font (in pixels)</td>
+  </tr>
+  <tr>
+    <td>getTextWidth(text)</td>
+    <td >returns the width of given text with current font (in pixels)</td>
+  </tr>
+  <tr>
+    <td>setStatusText(text)</td>
+    <td >shows the given text in the status bar. Any exiting text is erased</td>
+  </tr>
+   <tr>
+    <td>setTitel(title)</td>
+    <td >shows the given title in the window title bar</td>
+  </tr>
+   <tr>
+     <td>img = getImage(path)</td>
+     <td >
+       <p>loads an image (in png, gif or jpg format) from the local file system or from an URL and returns an image reference. For path = sprites/nnn an image from the TigerJython distribution is loaded (see help/image-library for available images)</p>
+     </td>
+   </tr>
+   <tr>
+     <td>drawImage(img)</td>
+     <td >draws the image  img at the current turtle position with the current viewing direction</td>
+   </tr>
+   <tr>
+     <td>drawImage(path)</td>
+     <td >loads an image (in png, gif or jpg format) from the local file system or from an URL and draws it at the current turtle position with the current viewing direction. For path = sprites/nnn an image from the TigerJython distribution is loaded </td>
+   </tr>
+   <tr>
+       <td >img = mirror(img, horzMirror, vertMirror)</td>
+       <td >same, but mirrors the image horizontally and/or vertically  (boolean parameters)</td>
+   </tr>
+</table>
+<br>
+<h4><br>
+Video</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%">rec = VideoRecorder(turtle, filename, resolution)</td>
+    <td width="62%" >creates a MP4 (H.264/AVC) video encoder, that captures the turtle playground  (turtles, traces and images). filename is the output file (absolute or relative path).  resolution must be a string with one of the supported video resolutions, e.g. &quot;640x480&quot;. Use getSupportedResolutions() to enumerate all supported resolutions.</td>
+  </tr>
+  <tr>
+    <td>rec = VideoRecorder(turtleFrame, filename, resolution)</td>
+    <td >same, using a TurtleFrame</td>
+  </tr>
+  <tr>
+    <td>rec = VideoRecorder(turtle, filename, resolution, ulx, uly)</td>
+    <td>same, with given position of the playground's upper left corner with respect to the video image. Default values 0, 0</td>
+  </tr>
+  <tr>
+    <td>rec = VideoRecorder(turtleFrame, filename, resolution, ulx, uly)</td>
+    <td>same, using a TurtleFrame</td>
+  </tr>
+  <tr>
+    <td>VideoRecorder.getSupportedResolutions()</td>
+    <td>string enumeration of all supported video resolutions</td>
+  </tr>
+  <tr>
+    <td>rec.captureImage()</td>
+    <td>
+      <p>records one single image (frame). Calculation and capture of a single image can last any time. The resulting frame rate is determined by the chosen video resolution (normally 25 pictures/secs).</p>
+    </td>
+  </tr>
+  <tr>
+    <td>rec.captureImage(nb)</td>
+    <td>same, but captures same picture nb times</td>
+  </tr>
+  <tr>
+    <td>rec.finish()</td>
+    <td>terminates the recording and closes the output file</td>
+  </tr>
+</table>
+<br>
+<h4><br>
+Dialogs</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%">msgDlg(message)</td>
+    <td width="62%" >opens a modal dialolg with an OK button and given message</td>
+  </tr>
+  <tr>
+    <td>msgDlg(message, title)</td>
+    <td >same with title text</td>
+  </tr>
+  <tr>
+    <td>inputInt(prompt)</td>
+    <td>
+      <p>opens a modal dialog with OK/Cancel buttons. OK returns integer (the dialog is shown again, if no integer is entered). Cancel or  Close terminate the program. The named parameter init sets an initialising value</p>
+    </td>
+  </tr>
+  <tr>
+    <td>inputInt(prompt, False)</td>
+    <td>
+      <p>same, but Cancel/Close do not terminate, but returns None</p>
+    </td>
+  </tr>
+  <tr>
+    <td>inputFloat(prompt)</td>
+    <td>opens a modal dialog with OK/Cancel buttons. OK returns float (the dialog is shown again, if no float is entered). Cancel or  Close terminate the program. The named parameter init sets an initialising value</td>
+  </tr>
+  <tr>
+    <td>inputFloat(prompt, False)</td>
+    <td>same, but Cancel/Close do not terminate, but returns None</td>
+  </tr>
+  <tr>
+    <td>inputString(prompt)</td>
+    <td>opens a modal dialog with OK/Cancel buttons. OK returns string. Cancel or  Close terminate the program. The named parameter init sets an initialising value</td>
+  </tr>
+  <tr>
+    <td>inputString(prompt, False)</td>
+    <td>same, but Cancel/Close do not terminate, but returns None</td>
+  </tr>
+  <tr>
+    <td>input(prompt)</td>
+    <td>opens a modal dialog with OK/Cancel buttons. OK returns integer, float or string. Cancel or  Close terminate the program. The named parameter init sets an initialising value</td>
+  </tr>
+  <tr>
+    <td>input(prompt, False)</td>
+    <td>same, but Cancel/Close do not terminate, but returns None</td>
+  </tr>
+  <tr>
+    <td>askYesNo(prompt)</td>
+    <td>
+      <p>opens a modal dialog with Yes/No buttons. Yes returns True, No returns False. Cancel or  Close terminate the program</p>
+    </td>
+  </tr>
+  <tr>
+    <td>askYesNo(prompt, False)</td>
+    <td>same, but Close does not terminate, but returns None</td>
+  </tr>
+</table>
+<h4>&nbsp;</h4>
+<h4>Image Manipulations</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%" >img = getImage(filename)</td>
+    <td width="62%" ><p>returns a  image representation of the give image file (formats: jpg, bmp, png, gif)</p></td>
+  </tr>
+  <tr>
+    <td >img = readImage(data)</td>
+    <td ><p>returns  image representation from binary data (in jpg, gif, bmp, png format)</p></td>
+  </tr>
+  <tr>
+    <td >imageToString(img, type)</td>
+    <td ><p>returns  image data in string representaion (type = "bmp", "gif", "jpg", "png)</p></td>
+  </tr>
+  <tr>
+    <td > save(img, filename, type)</td>
+    <td >writes image to a file (type = "bmp", "gif", "jpg", "png) </td>
+  </tr>
+  <tr>
+    <td >imgPaste = paste(img, imgReplace, x, y)</td>
+    <td ><p>replaces a part of the image at position (x, y) with imgReplace. Returns a new image</p></td>
+  </tr>
+  <tr>
+    <td >imgCrop = crop(img, x1, y1, x2, y2)</td>
+    <td >returns the image from the given rectangle</td>
+  </tr>
+  <tr>
+    <td >imgScale = scale(img, factor, angle)</td>
+    <td >scales the image with the given factor and rotates it by a given  angle (in degrees clockwise). Returns a new image</td>
+  </tr>
+  <tr>
+      <td >img = mirror(img, horzMirror, vertMirror)</td>
+      <td >mirrors the image horizontally and/or vertically  (boolean parameters). Returns a new image</td>
+  </tr>
+  <tr>
+    <td >saveData(data, filename)<br></td>
+    <td >saves binary data to given file</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><a href="http://ch/aplu/docs/index_en.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,835 @@
+<!--Documentation des graphique tortue-->
+<html>
+<head>
+<style type="text/css">
+<!--
+.Stil1 {color: #FF0000}
+-->
+</style>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+<h2><a href="http://ch/aplu/docs/index_fr.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></h2>
+<h2>Documentation des graphiques tortue</h2>
+<b>Module import: from gturtle import *</b><br><br>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%" bgcolor="#F0F0F5">Function</td>
+    <td width="62%" bgcolor="#F0F0F5">Action</td>
+  </tr>  
+  <tr>
+    <td>makeTurtle()</td>
+    <td > Cr&eacute;e  une tortue (globale) dans une nouvelle fen&ecirc;tre et d&eacute;finit toutes les commandes  globales et retourne une r&eacute;f&eacute;rence de la tortue</td>
+  </tr>
+   <tr>
+    <td>makeTurtle(color)</td>
+    <td >Idem,  mais en sp&eacute;cifiant la couleur de la tortue &agrave; cr&eacute;er et retourne une r&eacute;f&eacute;rence de la tortue</td>
+  </tr>
+  <tr>
+    <td>makeTurtle(&quot;sprites/turtle.gif&quot;)</td>
+    <td >Idem,  mais en cr&eacute;ant une tortue repr&eacute;sent&eacute;es par l&rsquo;image de sprite sp&eacute;cifi&eacute;e et retourne une r&eacute;f&eacute;rence de la tortue</td>
+  </tr>  
+  <tr>
+      <td>makeTurtle(color, size)</td>
+      <td >Idem, mais en cr&eacute;ant une tortue circulaire en utilisant la couleur et le diam&egrave;tre (en pixel)</td>
+  </tr>
+  <tr>
+    <td>t = Turtle()</td>
+    <td >Cr&eacute;er  un objet tortue <em>t</em></td>
+  </tr>
+  <tr>
+    <td>tf = TurtleFrame()</td>
+    <td >Cr&eacute;e  une fen&ecirc;tre de graphique (<em>TurtleFrame</em>)  pouvant contenir plusieurs tortues</td>
+  </tr>
+  <tr>
+    <td>tf = TurtleFrame(title)</td>
+    <td >Idem, mais en affichant le titre</td>
+  </tr>
+  <tr>
+    <td>t = Turtle(tf)</td>
+    <td >Cr&eacute;e  une tortue <em>t</em> qui se trouve dans le <em>TurtleFrame</em> <em>tf</em></td>
+  </tr> 
+  <tr>
+    <td>clone()</td>
+    <td >Cr&eacute;e  un clone de la tortue globale poss&eacute;dant les m&ecirc;mes propri&eacute;t&eacute;s (m&ecirc;me couleur,  position et orientation)</td>
+  </tr>  
+  <tr>
+    <td>isDisposed()</td>
+    <td >Retourne <em>True</em> si la fen&ecirc;tre est ferm&eacute;e</td>
+  </tr>
+  <tr>
+    <td>putSleep() </td>
+    <td >Met  l&rsquo;ex&eacute;cution du programme en pause jusqu&rsquo;&agrave; l&rsquo;appel de la fonction <em>wakeUp()</em> </td>
+  </tr>
+  <tr>
+    <td>wakeUp() </td>
+    <td >Reprend  l&rsquo;ex&eacute;cution d&rsquo;un programme mis en pause avec <em>putSleep()</em></td>
+  </tr>
+  <tr>
+    <td>enableRepaint(False)</td>
+    <td >D&eacute;clenche le  rendu automatique de l'&eacute;cran</td>
+  </tr>
+  <tr>
+    <td>repaint()</td>
+    <td >Restitue l'&eacute;cran  manuellement (apr&egrave;s d&eacute;clenchement du rendu automatique)</td>
+  </tr>
+  <tr>
+    <td>savePlayground()</td>
+    <td >Copie le playground dans une memoire d'image interne (restituter avec clear())</td>
+  </tr>
+  <tr>
+    <td>savePlayground(fileName, format)</td>
+    <td >Copie le playground dans un fichier image (format: &quot;png&quot; ou &quot;gif&quot;). Retourne False dans le cas &eacute;ch&eacute;ant</td>
+  </tr>
+  <tr>
+      <td>setPlaygroundSize(width, height)</td>
+      <td >  
+          <p>S&eacute;lectionne la grandeur de la fen&ecirc;tre graphique ind&eacute;pendant des options dans TigerJython  (doit &ecirc;tre appel&eacute; avant makeTurtle())</p>
+        </td>
+  </tr>
+  <tr>
+      <td>setFramePosition(x, y)</td>
+      <td >Positionne le coin en haut &agrave; gauche de la fen&ecirc;tre graphique &agrave; la position x, y de l'&eacute;cran</td>
+  </tr>
+  <tr>
+      <td>setFramePositionCenter()</td>
+      <td >Positionne la fen&ecirc;tre graphique au centre de l'&eacute;cran</td>
+  </tr>  
+</table>
+<br>
+<b><br>
+Movements</b>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%">back(distance), bk(distance)</td>
+    <td width="62%"><p>D&eacute;place la tortue en arri&egrave;re sur la distance indiqu&eacute;e (coordonn&eacute;es    tortue) </td>
+  </tr>
+  <tr>
+      <td >backward(distance)</td>
+      <td >Idem</td>
+  </tr>
+  <tr>
+    <td >forward(distance),  fd(distance)</td>
+    <td ><p>D&eacute;place la tortue en avant sur la distance indiqu&eacute;e (coordonn&eacute;es    tortue) </td>
+  </tr>
+  <tr>
+    <td>hideTurtle(), ht()</td>
+    <td><p>Cache la tortue, ce qui a pour effet d&rsquo;acc&eacute;l&eacute;rer le tra&ccedil;age du dessin  </td>
+  </tr>
+  <tr>
+    <td>home()</td>
+    <td><p>Replace la tortue dans sa position d&rsquo;origine&nbsp;au centre de la    fen&ecirc;tre et orient&eacute;e vers le haut </td>
+  </tr>
+  <tr>
+    <td>left(angle), lt(angle)</td>
+    <td><p>Tourne la tortue de <em>angle</em> degr&eacute;s vers la gauche </td>
+  </tr>
+   <tr>
+    <td>penDown(),  pd()</td>
+    <td><p>Active le crayon (la tortue trace son chemin)  </td>
+  </tr>
+   <tr>
+    <td>penErase(), pe() </td>
+    <td><p>Assigne au crayon la m&ecirc;me couleur que le fond d&rsquo;&eacute;cran (trace    invisible) </td>
+  </tr>
+  <tr>
+    <td>leftArc(radius, angle)</td>
+    <td><p>D&eacute;place la tortue sur un arc de cercle orient&eacute; vers la gauche, d&rsquo;angle <em>angle</em> (en degr&eacute;s) et de rayon <em>radius</em> </td>
+  </tr>
+  <tr>
+    <td>leftCircle(radius)</td>
+    <td>D&eacute;place la tortue sur un cercle de rayon <em>radius</em> en partant vers la gauche</td>
+  </tr>
+   <tr>
+    <td>penUp(),  pu()</td>
+    <td> D&eacute;sactive le crayon (la trace de la tortue devient invisible) </td>
+  </tr>
+   <tr>
+    <td>penWidth(width) </td>
+    <td> R&egrave;gle la largeur de la trace (en pixels) </td>
+  </tr>
+   <tr>
+     <td>setPenWidth(width) </td>
+     <td>R&egrave;gle la largeur de la trace (en pixels) </td>
+   </tr>
+  <tr>
+    <td>right(angle), rt(angle) </td>
+    <td> Tourne la tortue de <em>angle</em> degr&eacute;s vers la droite </td>
+  </tr>
+  <tr>
+    <td>rightArc(radius, angle) </td>
+    <td> D&eacute;place la tortue sur un arc de cercle orient&eacute; vers la droite, d&rsquo;angle <em>angle</em> (en degr&eacute;s) et de rayon <em>radius</em> </td>
+  </tr>
+   <tr>
+    <td>rightCircle(radius) </td>
+    <td> D&eacute;place la tortue sur un cercle de rayon <em>radius</em> en partant vers la droite </td>
+  </tr>
+  <tr>
+    <td>setCustomCursor(cursorImage)</td>
+    <td> R&egrave;gle le fichier image utilis&eacute; en guise de curseur de la souris </td>
+  </tr>
+   <tr>
+    <td>setCustomCursor(cursorImage, Point(x, y))</td>
+    <td> Idem, en indiquant les coordonn&eacute;es relatives de l&rsquo;image par rapport au    point d&rsquo;action de la souris </td>
+  </tr>
+   <tr>
+    <td>setLineWidth(width)</td>
+    <td> R&egrave;gle la largeur du crayon (en pixels) </td>
+  </tr>
+   <tr>
+       <td>setEndCap(style)</td>
+       <td >R&egrave;gle la fa&ccedil;on de finir une ligne:  &quot;square&quot; (d&eacute;faut), &quot;round&quot; (arrondie), &quot;clip&quot; (coup&eacute;e)</td>
+   </tr>
+  <tr>
+    <td>showTurtle(), st()</td>
+    <td> Affiche la tortue globale </td>
+  </tr>
+  
+  <tr>
+    <td>speed(speed) </td>
+    <td> R&egrave;gle la vitesse du mouvement de la tortue </td>
+  </tr>
+  <tr>
+    <td>delay(time) </td>
+    <td> Arr&ecirc;te l&rsquo;ex&eacute;cution du programme durant l&rsquo;intervalle de temps <em>time</em> (en millisecondes) </td>
+  </tr>
+ <tr>
+    <td valign="top">wrap() </td>
+    <td> Les positions des tortues se trouvant en dehors de l&rsquo;&eacute;cran sont    envoy&eacute;es &agrave; l&rsquo;int&eacute;rieur de la fen&ecirc;tre par une sym&eacute;trie sur un tore. Une tortue    qui d&eacute;passe &agrave; gauche r&eacute;apparait donc &agrave; droite et une tortue qui d&eacute;passe vers    le haut r&eacute;apparait en bas de l&rsquo;&eacute;cran </td>
+ </tr>
+  <tr>
+    <td>clip() </td>
+    <td> Contraire de <em>wrap()</em>&nbsp;:    les tortues qui sortent de la fen&ecirc;tre sont invisibles </td>
+  </tr>
+  <tr>
+    <td>getPlaygroundWidth()</td>
+    <td >
+      <p>Retourne la largueur m du territoire de la tortue (coordonn&eacute;es  -m/2...m/2)</p>
+    </td>
+  </tr>
+   <tr>
+    <td>getPlaygroundHeight()</td>
+    <td >Retourne la hauteur m du territoire de la tortue (coordonn&eacute;es  -m/2...m/2)</td>
+  </tr>
+  </table>
+<b><br>
+<strong>Localisation</strong></b>  
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td>direction(x, y)</td>
+    <td>Retourne l'angle pour tourner dans la direction de la position (x, y)</td>
+  </tr>
+  <tr>
+    <td>direction(coords)</td>
+    <td>Idem,  en sp&eacute;cifiant les coordonn&eacute;es <em>coords</em> sous forme de tuple <em>(x,y)</em>, de liste <em>[x,y]</em>, ou de nombre complexe <em>x + yj</em></td>
+  </tr>
+  <tr>
+    <td>direction(turtle)</td>
+    <td>Retourne l'angle pour turner dans la direction d'une autre tortue</td>
+  </tr>
+  <tr>
+    <td width="28%">distance(x, y) </td>
+    <td width="62%">Retourne  la distance s&eacute;parant la position de la tortue et le point de coordonn&eacute;es (x, y)</td>
+  </tr>
+  <tr>
+    <td valign="top">distance(coords) </td>
+    <td >Idem,  en sp&eacute;cifiant les coordonn&eacute;es <em>coords</em> sous forme de tuple <em>(x,y)</em>, de liste <em>[x,y]</em>, ou de nombre complexe <em>x + yj</em></td>
+  </tr>
+  <tr>
+    <td>distance(turtle)</td>
+    <td>Retourne la distance s&eacute;parant la position de la tortue de la position d'une autre tortue</td>
+  </tr>
+  <tr>
+    <td>getPos() </td>
+    <td>Retourne  la position courante de la tortue sous forme de liste
+      <div>
+        <div> </div>
+    </div></td>
+  </tr>
+   <tr>
+    <td>getX() </td>
+    <td> Retourne la coordonn&eacute;e <em>x</em> de    la tortue </td>
+  </tr>
+   <tr>
+    <td>getY() </td>
+    <td> Retourne la coordonn&eacute;e <em>y</em> de    la tortue </td>
+  </tr>
+  <tr>
+    <td>heading() </td>
+    <td> Retourne l&rsquo;orientation actuelle de la tortue en degr&eacute;s. L&rsquo;orientation vers    le nord correspond &agrave; un angle de 0&deg;. Les angles sont orient&eacute;s dans le sens    des aiguilles de la montre </td>
+  </tr>
+  <tr>
+    <td>heading(degrees) </td>
+    <td> R&egrave;gle l&rsquo;orientation de la tortue en degr&eacute;s. L&rsquo;orientation vers le nord    correspond &agrave; un angle de 0&deg;. Les angles sont orient&eacute;s dans le sens des    aiguilles de la montre </td>
+  </tr>
+  <tr>
+    <td>moveTo(x, y)</td>
+    <td>D&eacute;place la tortue &agrave; la position (x,y) en dessinant la trace</td>
+  </tr>
+  <tr>
+    <td>moveTo(coords)</td>
+    <td>Idem,  en sp&eacute;cifiant les coordonn&eacute;es <em>coords</em> sous forme de tuple <em>(x,y)</em>, de liste <em>[x,y]</em>, ou de nombre complexe <em>x + yj</em></td>
+  </tr>   
+  <tr>
+    <td >setHeading(degrees), setH(degrees)</td>
+    <td >R&egrave;gle  l&rsquo;orientation de la tortue (en degr&eacute;s, 0&deg; correspond au Nord, angles orient&eacute;s dans  le sens des aiguilles de la montre)</td>
+  </tr>
+   <tr>
+    <td >setRandomHeading()</td>
+    <td > R&egrave;gle l&rsquo;orientation de mani&egrave;re al&eacute;atoire avec un angle de vue compris    entre 0&deg; et 360&deg; </td>
+  </tr>
+  <tr>
+    <td >setPos(x, y)</td>
+    <td > Positionne la tortue au point de coordonn&eacute;es (x,y) sans dessiner la    trace </td>
+  </tr>
+  <tr>
+    <td >setPos(coords)</td>
+    <td >Idem,  en sp&eacute;cifiant les coordonn&eacute;es <em>coords</em> sous forme de tuple <em>(x,y)</em>, de liste <em>[x,y]</em>, ou de nombre complexe <em>x + yj</em></td>
+  </tr>
+  <tr>
+    <td >setX(x)</td>
+    <td > R&egrave;gle la coordonn&eacute;e <em>x</em> de la    tortue </td>
+  </tr>
+  <tr>
+    <td >setY(y)</td>
+    <td > R&egrave;gle la coordonn&eacute;e <em>y</em> de la    tortue </td>
+  </tr>
+   <tr>
+    <td >setRandomPos(width, height)</td>
+    <td > Place la tortue sur une position al&eacute;atoire situ&eacute;e &agrave; l&rsquo;int&eacute;rieur du    rectangle centr&eacute; &agrave; la position actuelle, de largeur <em>width</em> et de hauteur <em>height</em> </td>
+  </tr>
+   <tr>
+    <td >setScreenPos(x, y)</td>
+    <td > Positionne la tortue globale aux coordonn&eacute;es d&rsquo;&eacute;cran <em>x</em> et <em>y</em> </td>
+  </tr>
+  <tr>
+    <td >setScreenPos(Point(x, y))</td>
+    <td >Idem  en sp&eacute;cifiant les coordonn&eacute;es par un objet <em>Point(x,y)</em></td>
+  </tr>
+  <tr>
+    <td >towards(x, y)</td>
+    <td >Retourne  l&rsquo;angle d&rsquo;orientation (en degr&eacute;s) qu&rsquo;il faut donner &agrave; la tortue pour qu&rsquo;elle  vise le point de coordonn&eacute;es (x, y)</td>
+  </tr>
+  <tr>
+    <td >towards(coords)</td>
+    <td >Idem,  en sp&eacute;cifiant les coordonn&eacute;es <em>coords</em> sous forme de tuple <em>(x,y)</em>, de liste <em>[x,y]</em>, ou de nombre complexe <em>x + yj</em></td>
+  </tr>
+  <tr>
+    <td >towards(turtle)</td>
+    <td >Retourne  l&rsquo;angle d&rsquo;orientation (en degr&eacute;s) qu&rsquo;il faut donner &agrave; la tortue pour qu&rsquo;elle  vise la tortue <em>turtle</em></td>
+  </tr>
+   <tr>
+    <td >toTurtlePos(x, y)</td>
+    <td >Retourne une liste des coordonn&eacute;s de la tortue globale au point x, y de l'&eacute;cran</td>
+  </tr>
+   <tr>
+    <td >toTurtlePos(Point(x, y))</td>
+    <td >Idem  en sp&eacute;cifiant les coordonn&eacute;es par un objet <em>Point(x,y)</em></td>
+  </tr>  
+   <tr>
+    <td >pushState()</td>
+    <td > Sauvegarde l&rsquo;&eacute;tat actuel de la tortue sur une pile (Last In, First    Out) </td>
+  </tr>
+   <tr>
+    <td >popState()</td>
+    <td > Restaure le dernier &eacute;tat sauvegard&eacute; avec <em>pushState()</em>. Supprime ce dernier de la pile des &eacute;tats </td>
+  </tr>
+   <tr>
+    <td>clearStates()</td>
+    <td> Vide la pile de sauvegarde des &eacute;tats en supprimant tous les &eacute;tats    sauvegard&eacute;s </td>
+  </tr> 
+  </table>
+<b><br>
+<strong>Couleurs</strong></b>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC"> 
+   <tr>
+    <td width="28%">askColor(title, defaultColor) </td>
+    <td width="62%"> Ouvre une bo&icirc;te de dialogue de s&eacute;lection de couleur et retourne la    couleur s&eacute;lectionn&eacute;e. Si l&rsquo;utilisateur clique sur le bouton annuler, retourne <em>None</em></td>
+  </tr>
+  <tr>
+    <td>clear() </td>
+    <td> Efface toutes les traces et cache toutes les tortues en les laissant    par contre &agrave; leur place. Si la memoire d'image cr&eacute;e par savePlayground() n'est pas vide, son contenu est affich&eacute;</td>
+  </tr>
+   <tr>
+    <td>clear(color) </td>
+    <td> Efface les traces et cache toutes les tortues puis colorie le fond    d&rsquo;&eacute;cran avec la couleur <em>color</em> </td>
+  </tr>
+  <tr>
+    <td>clean() </td>
+    <td> Efface toutes les traces et toutes les tortues. R&eacute;initialise la    position de toutes les tortues au centre de l&rsquo;&eacute;cran.  La memoire d'image cr&eacute;e par savePlayground() est vid&eacute;e</td>
+  </tr>
+  <tr>
+    <td>clean(color) </td>
+    <td> Efface toutes les traces et toutes les tortues en coloriant le fond de    la fen&ecirc;tre avec la couleur <em>color</em>.    R&eacute;initialise la position de toutes les tortues au centre de l&rsquo;&eacute;cran. </td>
+  </tr>
+  <tr>
+    <td>clearScreen(), cs()</td>
+    <td >Efface toutes les traces et replace la tortue dans sa position d&rsquo;origine</td>
+  </tr>
+ <tr>
+    <td>dot(diameter) </td>
+    <td> Dessiner un disque plein de diam&egrave;tre <em>diameter</em> en le remplissant de la couleur assign&eacute;e au crayon de la    tortue </td>
+ </tr>
+  <tr>
+    <td>openDot(diameter) </td>
+    <td> Dessiner un cercle vide de diam&egrave;tre <em>diameter</em> en coloriant son p&eacute;rim&egrave;tre de la couleur assign&eacute;e au    crayon de la tortue </td>
+  </tr>
+  <tr>
+      <td>spray(density, spread, size)</td>
+      <td >Dessiner un nuage de points al&eacute;atoires &agrave; la position de la tortue. Param&egrave;tres: nombre de points, extension du nuage et largeur des points (sans size: size = 1)</td>
+  </tr>
+  <tr>
+    <td>fill() </td>
+    <td >Remplit  la surface ferm&eacute;e qui entoure le point auquel se trouve la tortue avec la  couleur de remplissage sp&eacute;cifi&eacute;e au pr&eacute;alable avec <em>setFillColor(color)</em></td>
+  </tr>
+  <tr >
+    <td>fill(x , y) </td>
+    <td >Remplit  la surface ferm&eacute;e qui entoure le point de coordonn&eacute;es (x,y) avec la couleur de  remplissage sp&eacute;cifi&eacute;e au pr&eacute;alable avec <em>setFillColor(color)</em></td>
+  </tr>
+   <tr>
+     <td >fill(coords) </td>
+     <td>Idem,  en sp&eacute;cifiant les coordonn&eacute;es <em>coords</em> sous forme de tuple <em>(x,y)</em>, de liste <em>[x,y]</em>, ou de nombre complexe <em>x + yj</em></td>
+   </tr>
+   <tr>
+    <td >fillToPoint() </td>
+    <td>Remplissage  continu depuis la position actuelle de la tortue</td>
+   </tr>
+   <tr>
+    <td>fillToPoint(x , y) </td>
+    <td>Remplissage  continu depuis le point de coordonn&eacute;es <em>(x,  y)</em></td>
+   </tr>
+   <tr>
+     <td>fillToPoint(coords) </td>
+     <td >Idem,  en sp&eacute;cifiant les coordonn&eacute;es <em>coords</em> sous forme de tuple <em>(x,y)</em>, de liste <em>[x,y]</em>, ou de nombre complexe <em>x + yj</em></td>
+   </tr>
+   <tr>
+    <td>fillToHorizontal( y) </td>
+    <td >Remplissage  continu de la surface d&eacute;limit&eacute;e par la trace actuelle de la tortue et la droite  horizontale form&eacute;e par les points d&rsquo;ordonn&eacute;e <em>y</em></td>
+   </tr>
+   <tr>
+    <td>fillToVertical(x) </td>
+    <td >Remplissage  continu de la surface d&eacute;limit&eacute;e par la trace actuelle de la tortue et la droite  verticale form&eacute;e par les points d&rsquo;abscisse <em>x</em></td>
+   </tr>
+    <tr>
+    <td>fillOff() </td>
+    <td >Termine  le mode remplissage</td>
+   </tr>
+   <tr>
+    <td >getColor() </td>
+    <td >Retourne  la couleur de la tortue globale</td>
+  </tr>
+  <tr>
+    <td >getColorStr() </td>
+    <td >Retourne  la couleur de la tortue globale sous la forme d&rsquo;une chaine de caract&egrave;res X11</td>
+  </tr>
+   <tr>
+    <td >getFillColor() </td>
+    <td > Retourne la couleur de remplissage actuelle </td>
+  </tr>
+  <tr>
+    <td >getFillColorStr() </td>
+    <td > Retourne la couleur de remplissage actuelle sous la forme d&rsquo;une chaine    de caract&egrave;res X11</td>
+  </tr>
+   <tr>
+    <td >getPixelColor() </td>
+    <td > Retourne la couleur du pixel (trace ou fond) situ&eacute; &agrave; la position    actuelle de la tortue globale (None, si hors de la fen&ecirc;tre graphique)</td>
+  </tr>
+  <tr>
+    <td >getPixelColorStr() </td>
+    <td > Idem, en retournant la couleur sous forme de chaine X11 (chaine vide, si le nom n'existe pas; None, si hors de la fen&ecirc;tre graphique)</td>
+  </tr>
+  <tr>
+    <td valign="top">makeColor() </td>
+    <td >Retourne  une couleur de r&eacute;f&eacute;rence correspondant &agrave; la valeur pass&eacute;e. Exemples de  valeurs&nbsp;: (&quot;7FFED4&quot;), (&quot;Aqua-Marine&quot;), (0x7FFED4),  (8388564), (0.5, 1.0, 0.83), (128, 255, 212), (&quot;rainbow&quot;, n) avec n =  0..1 qui indique une couleur de l&rsquo;arc-en-ciel&nbsp;: n=0.1 correspond au violet  et n=0.9 au rouge</td>
+  </tr>
+  <tr>
+    <td >getRandomX11Color() </td>
+    <td >Retourne  une couleur al&eacute;atoire sous forme de chaine de caract&egrave;res X11</td>
+  </tr>
+   <tr>
+    <td >setColor(color) </td>
+    <td > R&egrave;gle la couleur de la tortue &agrave; <em>color</em>. </td>
+  </tr>
+  <tr>
+    <td>setPenColor(color) </td>
+    <td> R&egrave;gle la couleur du crayon utilis&eacute; par la tortue &agrave; <em>color</em> </td>
+  </tr>
+  <tr>
+    <td>setFillColor(color) </td>
+    <td> R&egrave;gle la couleur de remplissage utilis&eacute;e par la tortue &agrave; <em>color</em> </td>
+  </tr>
+  <tr>
+    <td>startPath() </td>
+    <td> Commence &agrave; tenir compte du mouvement de la tortue pour les op&eacute;rations    de remplissage subs&eacute;quentes </td>
+  </tr>
+  <tr>
+    <td>fillPath() </td>
+    <td> Contraire de <em>startPath()</em>&nbsp;:    termine l&rsquo;op&eacute;ration de remplissage &agrave; la position courante de la tortue et    remplit la zone ainsi d&eacute;limit&eacute;e par la couleur de remplissage </td>
+  </tr>
+   <tr>
+    <td>stampTurtle() </td>
+    <td> Cr&eacute;e une image de la tortue &agrave; la position courante </td>
+  </tr>
+   <tr>
+    <td>stampTurtle(color) </td>
+    <td> Cr&eacute;e une image de la tortue &agrave; la position courante avec la couleur <em>color</em> </td>
+  </tr>
+   <tr>
+       <td>transparent(color, alpha)</td>
+       <td >Retourne une couleur transparente  bas&eacute;e sur la couleur donn&eacute;e et une valeur de la transparence (entre 0.0 et 1.0, d&eacute;faut: 0.5)</td>
+   </tr>
+  </table>
+<b><br>
+</b><strong>Fonctions de rappel (callbacks)</strong>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+     <td width="28%">makeTurtle(mouseNNN = onMouseNNN)<br>
+    </td>
+    <td width="62%" >Enregistre  la fonction de rappel (callback) <em>onMouseNNN(x,y)</em> qui est appel&eacute;e lorsqu&rsquo;un &eacute;v&eacute;nement de la souris survient. Les valeurs  possibles pour <em>NNN</em> sont&nbsp;: <em>Pressed</em>, <em>Released</em>, <em>Clicked</em>, <em>Dragged</em>, <em>Moved</em>, <em>Entered</em>, <em>Exited</em>, <em>SingleClicked</em>, <em>DoubleClicked</em> (employer la virgule pour enregistrer plusieurs). Cas sp&eacute;ciaux: <em>Hit</em>&nbsp;: L&rsquo;invocation se fait dans  un thread (fil d&rsquo;ex&eacute;cution) s&eacute;par&eacute;, <em>HitX</em>:  idem, mais les &eacute;v&eacute;nements sont ignor&eacute;s jusqu&rsquo;&agrave; ce que le traitement de  l&rsquo;&eacute;v&eacute;nement en cours soit termin&eacute;</td>
+  </tr>
+  <tr>
+    <td align="left">isLeftMouseButton(),<br>
+isRightMouseButton() </td>
+    <td >Retourne  vrai si l&rsquo;&eacute;v&eacute;nement est g&eacute;n&eacute;r&eacute; par le bouton gauche, respectivement droit</td>
+  </tr><tr>
+    <td>makeTurtle(keyNNN = onKeyNNN)</td>
+    <td  >Enregistre  la fonction de rappel (callback) <em>onKeyNNN(keyCode)</em> qui est appel&eacute;e lorsqu&rsquo;une touche du clavier est enfonc&eacute;e. Les valeurs  possibles pour <em>NNN</em> sont&nbsp;: <em>Pressed</em>, <em>Hit</em>&nbsp;: invocation du gestionnaire d&rsquo;&eacute;v&eacute;nement dans un thread  s&eacute;par&eacute; et <em>HitX</em>&nbsp;: idem que <em>Hit</em>, mais les &eacute;v&eacute;nements sont ignor&eacute;s  jusqu&rsquo;&agrave; ce que la derni&egrave;re ex&eacute;cution de la fonction de rappel ait retourn&eacute;. <em>keyCode</em> est un entier unique qui  identifie la touche press&eacute;e</td>
+  </tr>
+  <tr>
+    <td  valign="top" align="left">getKeyModifiers() </td>
+    <td  >Retourne  un nombre entier repr&eacute;sentant les touches sp&eacute;ciales du clavier enfonc&eacute;es (Shift,  Ctrl, etc&hellip;) et leurs combinaisons</td>
+  </tr>
+  <tr>
+    <td valign="top" align="left">makeTurtle(closeClicked = onCloseClicked) </td>
+    <td> Enregistre la fonction de rappel <em>onCloseClicked()</em> qui est appel&eacute;e lorsque le bouton <em>fermer</em> de la barre de titre est actionn&eacute;. La fen&ecirc;tre doit ensuite &ecirc;tre ferm&eacute;e    manuellement en appelant <em>dispose()</em> </td>
+  </tr>
+   <tr>
+    <td >makeTurtle(turtleHit = onTurtleHit) </td>
+    <td > Enregistre la fonction de rappel <em>onTurtleHit(x,    y)</em> qui est appel&eacute;e lorsqu&rsquo;on clique sur l&rsquo;image de la tortue globale </td>
+  </tr>
+   <tr>
+       <td >t = Turtle(turtleHit = onTurtleHit)</td>
+       <td >Enregistre la fonction de rappel <em>onTurtleHit(t,    x, y)</em> qui est appel&eacute;e lorsqu&rsquo;on clique sur l&rsquo;image de l&rsquo;objet tortue <em>t</em></td>
+   </tr>
+   <tr>
+       <td>showSimulationBar(NNN = onNNN)</td>
+       <td >
+           <p>Montre un dialogue qui contient les boutons 'Step', 'Run'/'Pause', 'Reset' et une commande lin&eacute;aire pour ajuster la p&eacute;riode de simulation. Les fonctions de rappel suivantes peuvent &ecirc;tre enregistr&eacute;es:   start, pause, step, reset, change(param&egrave;tre: simulationPeriod), loop, exit (bouton close press&eacute;). loop est appel&eacute; dans chaque cycle par le thread de simulation</p>
+       </td>
+   </tr>
+   <tr>
+       <td>showSimulationBar(ulx, uly, initPeriod, NNN = onNNN)</td>
+       <td >idem, mais avec la position du dialogue (coin gauche en haut) et periode de simulation  (default: 100)</td>
+   </tr>
+   <tr>
+       <td>hideSimulationBar()</td>
+       <td >Ferme le dialogue et lib&egrave;re les ressources</td>
+   </tr>
+</table>
+<b><br>
+</b>
+<h4><br>
+<b>Clavier </b> </h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td >getKey()&nbsp;&nbsp;</td>
+        <td >Retourne,  sous forme de cha&icirc;ne de caract&egrave;res, le caract&egrave;re correspondant &agrave; la derni&egrave;re  touche du clavier enfonc&eacute;e</td>
+    </tr>
+    <tr>
+        <td >getKeyCode()&nbsp;&nbsp;</td>
+        <td >Retourne  le code (nombre entier) de la derni&egrave;re touche du clavier enfonc&eacute;e</td>
+    </tr>
+    <tr>
+        <td width="28%" >getKeyWait() </td>
+        <td width="62%">Met  le programme en pause jusqu&rsquo;&agrave; ce qu&rsquo;une touche du clavier soit actionn&eacute;e et  retourne le caract&egrave;re en question sous forme de chaine de caract&egrave;res
+            <div>
+                    <div> </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td width="28%" >getKeyCodeWait() </td>
+        <td width="62%">Idem,  en retournant le code de la derni&egrave;re touche enfonc&eacute;e sous forme de nombre  entier</td>
+    </tr>
+    <tr>
+        <td >getModifiers()</td>
+        <td >Retourne un code si ctrl/alt/shift  est actionn&eacute;</td>
+    </tr>
+    <tr>
+        <td >getModifiersText()</td>
+        <td >Retourne une description si ctrl/alt/shift est actionn&eacute;</td>
+    </tr>
+    <tr>
+        <td >kbhit() </td>
+        <td >Retourne <em>True </em>si une touche du clavier a &eacute;t&eacute;  press&eacute;e depuis le dernier appel &agrave; <em>getKey()</em> ou <em>getKeyCode()</em></td>
+    </tr>
+</table>
+<h4><b><strong><br>
+    <br>
+    Texte, images et son</strong></b>
+        <br>
+        <font size="-1">(playTone() disponible sans import gturtle)</font>
+</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+   <tr>
+    <td width="28%">addStatusBar(20)&nbsp;&nbsp;</td>
+    <td width="62%">Ajout  une barre d&rsquo;&eacute;tat de 20 pixels de hauteur</td>
+  </tr>
+  <tr>
+    <td>beep()&nbsp;&nbsp;</td>
+    <td >&Eacute;met  un court son</td>
+  </tr>
+  <tr>
+    <td>playTone(freq)</td>
+    <td>Joue  un son de fr&eacute;quence <em>freq</em> (en Hz) et  de dur&eacute;e&nbsp;1000 ms. Fonction bloquante</td>
+  </tr>
+  <tr>
+    <td>playTone(freq, block = False)</td>
+    <td>Idem,  mais en version non bloquante, ce qui permet de jouer plusieurs sons &agrave; la fois<br>    </td>
+  </tr>
+  <tr>
+    <td>playTone(freq, duration)</td>
+    <td>Joue  le son de fr&eacute;quence <em>freq</em>` et de dur&eacute;e <em>duration</em> (en ms)</td>
+  </tr>
+  <tr>
+    <td>playTone([f1, f2, ...])</td>
+    <td>Joue  plusieurs sons cons&eacute;cutifs de fr&eacute;quences <em>f1</em>, <em>f2</em>, &hellip; et de dur&eacute;e 1000 ms</td>
+  </tr>
+  <tr>
+    <td>playTone([(f1, d1), (f2, d2), ...])</td>
+    <td>Joue  plusieurs tons cons&eacute;cutifs indiqu&eacute;s par des tuples (fr&eacute;quence, dur&eacute;e)</td>
+  </tr>
+  <tr>
+    <td><div align="left">playTone([(&quot;c&quot;,700), (&quot;e&quot;,1500), ...])</div></td>
+    <td> Joue plusieurs tons cons&eacute;cutifs en utilisant le nom de la note (A=la, H=si,  C=do, D=r&eacute;, &hellip;, et de dur&eacute;e indiqu&eacute;e en [ms]. La tessiture du g&eacute;n&eacute;rateur de son s&rsquo;&eacute;tend du do1,  do#1, &hellip; jusqu&rsquo;au si5      </td>
+  </tr>
+  <tr>
+    <td><div align="left">playTone([(&quot;c&quot;,700), (&quot;e&quot;,1500), ...], instrument = &quot;piano&quot;)</div></td>
+    <td>Idem,  mais en choisissant le type d&rsquo;instrument &agrave; utiliser pour la restitution du son.  Les instruments disponibles sont <em>piano</em>, <em>guitar</em>, <em>harp</em>, <em>trumpet</em>, <em>xylophone</em>, <em>organ</em>, <em>violin</em>, <em>panflute</em>, <em>bird</em>, <em>seashore</em> ... (voir la sp&eacute;cification MIDI)</td>
+  </tr>
+  <tr>
+    <td><div align="left">playTone([(&quot;c&quot;,700), (&quot;e&quot;,1500), ...], instrument = &quot;piano&quot;, volume=10)</div></td>
+    <td>Idem,  en rajoutant le choix du volume compris entre 0..100</td>
+  </tr>
+  <tr>
+    <td >label(text) </td>
+    <td >Affiche  le texte <em>text</em> &agrave; la position courante  de la tortue</td>
+  </tr>
+  <tr>
+      <td>label(param) </td>
+      <td>Affiche  le texte <em>text</em> &agrave; la position courante  de la tortue (align&eacute; &agrave; gauche)</td>
+  </tr>
+  <tr>
+      <td>label(param1, param2, ...)</td>
+      <td>Relie str(params) s&eacute;par&eacute;s par des espaces et affiche le texte</td>
+  </tr>
+  <tr>
+      <td>label(param1, param2, ..., adjust = 'x')</td>
+      <td>Idem, mais  x = 'l' align&eacute; &agrave; gauche (defaut), 'c' centr&eacute;, 'r' &agrave; droite</td>
+  </tr>
+   <tr>
+    <td >printerPlot(draw) </td>
+    <td >Envoie  vers l&rsquo;imprimante les commandes de dessins contenues dans la fonction <em>draw()</em> dont la r&eacute;f&eacute;rence est pass&eacute;e en argument</td>
+  </tr>
+  <tr>
+      <td>setFont(Font font) </td>
+      <td >D&eacute;finit la police utilis&eacute;e par la fonction <em>label()</em>. font est un object de la classe Font. Example: Font("Courier New", Font.BOLD, 12). Default: Font(&quot;SansSerif&quot;, Font.PLAIN, 24)</td>
+  </tr>
+  <tr>
+      <td>setFont(name)</td>
+      <td >D&eacute;finit le nom de la police en utilisant le style et la taille existants</td>
+  </tr>
+  <tr>
+      <td>setFont(name, style)</td>
+      <td >D&eacute;finit le nom et le style de la police en utilisant la taille existante<br>
+        style = Font.PLAIN, Font.BOLD, Font.ITALIC</td>
+  </tr>
+  <tr>
+      <td>setFont(name, style, size)</td>
+      <td >D&eacute;finit le nom, le style et la taille de la police</td>
+  </tr>
+  <tr>
+    <td>setFontSize</a>(size) </td>
+    <td> D&eacute;finit la taille de police en utilisant le nom et le style existants</td>
+  </tr>
+ <tr>
+    <td>getTextHeight()</td>
+    <td> Retourne la hauteur des caract&egrave;res de la police actuellement en usage    (en pixels) </td>
+ </tr>
+  <tr>
+    <td>getTextAscent()</td>
+    <td >Retourne  la hauteur du jambage sup&eacute;rieur de la police actuellement en usage (en pixels).  Pour plus de d&eacute;tails, consulter </td>
+  </tr>
+  <tr>
+    <td>getTextDescent()</td>
+    <td> Retourne la hauteur du jambage inf&eacute;rieur de la police actuellement en    usage (en pixels). Cf. <em>getTextAscent()</em></td>
+  </tr>
+  <tr>
+    <td>getTextWidth(text)</td>
+    <td> Retourne la largeur en pixels du texte <em>text</em> avec la police actuellement en usage </td>
+  </tr>
+  <tr>
+    <td>setStatusText(text)</td>
+    <td> Affiche le texte <em>text</em> dans    la barre d&rsquo;&eacute;tat. Tout texte pr&eacute;sent dans la barre d&rsquo;&eacute;tat au moment de l&rsquo;appel    est &eacute;cras&eacute; </td>
+  </tr>
+   <tr>
+    <td>setTitel(title)</td>
+    <td> Affiche la chaine de caract&egrave;res <em>title</em> dans la barre de titre de la fen&ecirc;tre </td>
+  </tr>
+   <tr>
+    <td>img = getImage(path)</td>
+    <td >
+      <p>Charge et retourne l'image par un fichier JAR, par un fichier du disque local ou par un serveur internet</p>
+      </td>
+  </tr>
+   <tr>
+     <td valign="top">drawImage(img)</td>
+     <td >Dessine l'image dans le  fond    d&rsquo;&eacute;cran avec le centre &agrave; la position actuelle de la tortue et orient&eacute; par l'angle actuelle de la tortue</td>
+   </tr>
+   <tr>
+    <td valign="top">drawImage(path)</td>
+    <td >
+      <p>Charge l'image par un fichier JAR, par un fichier du disque local ou par un serveur internet et dessine l'image dans le  fond    d&rsquo;&eacute;cran avec le centre &agrave; la position actuelle de la tortue et orient&eacute; par l'angle actuelle de la tortue</p>
+     </td>
+  </tr>
+   <tr>
+       <td >img = mirror(img, horzMirror, vertMirror)</td>
+       <td >idem, mais l'image est refl&eacute;t&eacute; horizontalement ou/et verticalement (param&egrave;tres bool&eacute;ens)</td>
+   </tr>
+</table>
+<h4><br>
+  Video</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%">rec = VideoRecorder(turtle, filename, resolution)</td>
+    <td width="62%" >creates a MP4 (H.264/AVC) video encoder, that captures the turtle playground  (turtles, traces and images). filename is the output file (absolute or relative path).  resolution must be a string with one of the supported video resolutions, e.g. &quot;640x480&quot;. Use getSupportedResolutions() to enumerate all supported resolutions.</td>
+  </tr>
+  <tr>
+    <td>rec = VideoRecorder(turtleFrame, filename, resolution)</td>
+    <td >same, using a TurtleFrame</td>
+  </tr>
+  <tr>
+    <td>rec = VideoRecorder(turtle, filename, resolution, ulx, uly)</td>
+    <td>same, with given position of the playground's upper left corner with respect to the video image. Default values 0, 0</td>
+  </tr>
+  <tr>
+    <td>rec = VideoRecorder(turtleFrame, filename, resolution, ulx, uly)</td>
+    <td>same, using a TurtleFrame</td>
+  </tr>
+  <tr>
+    <td>VideoRecorder.getSupportedResolutions()</td>
+    <td>string enumeration of all supported video resolutions</td>
+  </tr>
+  <tr>
+    <td>rec.captureImage()</td>
+    <td>
+      <p>records one single image (frame). Calculation and capture of a single image can last any time. The resulting frame rate is determined by the chosen video resolution (normally 25 pictures/secs).</p>
+    </td>
+  </tr>
+  <tr>
+    <td>rec.captureImage(nb)</td>
+    <td>same, but captures same picture nb times</td>
+  </tr>
+  <tr>
+    <td>rec.finish()</td>
+    <td>terminates the recording and closes the output file</td>
+  </tr>
+</table>
+<p><strong><br>
+Bo&icirc;tes de dialogue</strong></p>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%">msgDlg(message)</td>
+    <td width="62%"> Ouvre une bo&icirc;te de dialogue modale avec le message <em>message</em> et un bouton OK </td>
+  </tr>
+  <tr>
+    <td>
+        <div align="left">msgDlg(message, title)</div>
+    </td>
+    <td> Idem, en sp&eacute;cifiant le titre de la fen&ecirc;tre </td>
+  </tr>
+  <tr>
+    <td>inputInt(prompt)</td>
+    <td> Ouvre une bo&icirc;te de    dialogue modale avec les boutons OK/Annuler. OK retourne le nombre entier    entr&eacute;. Un clic sur Annuler ou Fermer termine le programme </td>
+  </tr>
+  <tr>
+    <td>inputInt(prompt, False)</td>
+    <td> Idem, sauf qu&rsquo;un clic sur    Annuler/Fermer n&rsquo;interrompt pas le programme mais retourne la valeur <em>None</em> </td>
+  </tr>
+  <tr>
+    <td>inputFloat(prompt)</td>
+    <td> Ouvre une bo&icirc;te de dialogue modale avec les boutons OK/Annuler. OK    retourne le nombre &agrave; virgule flottante entr&eacute;. Un clic sur Annuler ou Fermer    termine le programme </td>
+  </tr>
+  <tr>
+    <td>inputFloat(prompt, False)</td>
+    <td> Idem, sauf qu&rsquo;un clic sur Annuler/Fermer n&rsquo;interrompt pas le programme    mais retourne la valeur <em>None</em> </td>
+  </tr>
+  <tr>
+    <td>inputString(prompt)</td>
+    <td> Ouvre une bo&icirc;te de dialogue modale avec les boutons OK/Annuler. OK    retourne la chaine entr&eacute;e. Un clic sur Annuler ou Fermer termine le programme </td>
+  </tr>
+  <tr>
+    <td>inputString(prompt, False)</td>
+    <td> Idem, sauf qu&rsquo;un clic sur Annuler/Fermer n&rsquo;interrompt pas le programme    mais retourne la valeur <em>None</em> </td>
+  </tr>
+  <tr>
+    <td>input(prompt)</td>
+    <td> Ouvre une bo&icirc;te de dialogue modale avec les boutons OK/Annuler. OK    retourne le nombre entier, le nombre flottant ou la chaine de caract&egrave;res saisie par l&rsquo;utilisateur. Les boutons Annuler ou Fermer terminent le programme  </td>
+  </tr>
+  <tr>
+    <td>input(prompt, False)</td>
+    <td> Idem, sauf qu&rsquo;un clic sur Annuler/Fermer n&rsquo;interrompt pas le programme    mais retourne la valeur <em>None</em> </td>
+  </tr>
+  <tr>
+    <td>askYesNo(prompt)</td>
+    <td> Ouvre une bo&icirc;te de dialogue modale avec les boutons Oui/Non. Oui retourne <em>True</em> et Non retourne <em>False</em>. Les boutons Annuler ou Fermer terminent le programme </td>
+  </tr>
+  <tr>
+    <td>askYesNo(prompt, False)</td>
+    <td> Idem, sauf qu&rsquo;un clic sur Annuler/Fermer n&rsquo;interrompt pas le programme    mais retourne la valeur <em>None</em> </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h4>Image Manipulations</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%" >img = getImage(filename)</td>
+    <td width="62%" ><p>returns a  image representation of the give image file (formats: jpg, bmp, png, gif)</p></td>
+  </tr>
+  <tr>
+    <td >img = readImage(data)</td>
+    <td ><p>returns  image representation from binary data (in jpg, gif, bmp, png format)</p></td>
+  </tr>
+  <tr>
+    <td >imageToString(img, type)</td>
+    <td ><p>returns  image data in string representaion (type = "bmp", "gif", "jpg", "png)</p></td>
+  </tr>
+  <tr>
+    <td > save(img, filename, type)</td>
+    <td >writes image to a file (type = "bmp", "gif", "jpg", "png) </td>
+  </tr>
+  <tr>
+    <td >imgPaste = paste(img, imgReplace, x, y)</td>
+    <td ><p>replaces a part of the image at position (x, y) with imgReplace. Returns a new image</p></td>
+  </tr>
+  <tr>
+    <td >imgCrop = crop(img, x1, y1, x2, y2)</td>
+    <td >returns the image from the given rectangle</td>
+  </tr>
+  <tr>
+    <td >imgScale = scale(img, factor, angle)</td>
+    <td >scales the image with the given factor and rotates it by a given  angle (in degrees clockwise). Returns a new image</td>
+  </tr>
+  <tr>
+      <td >img = mirror(img, horzMirror, vertMirror)</td>
+      <td >mirrors the image horizontally and/or vertically  (boolean parameters). Returns a new image</td>
+  </tr>
+  <tr>
+    <td >saveData(data, filename)<br></td>
+    <td >saves binary data to given file</td>
+  </tr>
+</table>
+<h2>&nbsp;</h2>
+<p><a href="http://ch/aplu/docs/index_fr.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a> </p>
+<p>&nbsp; </p>
+<p>&nbsp; </p>
+</body>
+</html>

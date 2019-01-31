@@ -1,0 +1,621 @@
+<html>
+<head>
+<style type="text/css">
+<!--
+.Stil2 {
+	font-size: large;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+<a href="http://ch/aplu/docs/index_en.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a>
+<h2>Documentation micro:bit</h2>
+<h3>Module import: from micro:bit import *</h3>
+<strong><font size="+1">Global function calls:</font></strong><br>
+(Real mode)<br>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="28%" bgcolor="#F0F0F5">Function</td>
+        <td width="62%" bgcolor="#F0F0F5">Action</td>
+    </tr>
+    <tr>
+        <td>panic(n)</td>
+        <td >blocks the system and displays infinitely a &quot;sad face&quot; image followed by n (for developers only)</td>
+    </tr>
+    <tr>
+        <td>reset()</td>
+        <td >restarts the board (and executes main.py)</td>
+    </tr>
+    <tr>
+        <td>sleep(dt)</td>
+        <td >stops program for dt milliseconds</td>
+    </tr>
+    <tr>
+        <td>running_time()</td>
+        <td >returns the time in  milliseconds since the board was switched on or resetted</td>
+    </tr>
+    <tr>
+        <td>temperature()</td>
+        <td >returns the temperature in degrees celsius (as float)</td>
+    </tr>
+</table>
+<br>
+<br>
+<hr>
+<strong><font size="+1"><br>
+<strong>Class Button</strong></font></strong> <br>
+(Real- and simulation mode) <br>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td>button_a</td>
+        <td >object reference (instance) of button A</td>
+    </tr>
+    <tr>
+        <td width="28%">button_b</td>
+        <td width="62%">object reference (instance) of button B</td>
+    </tr>
+</table>
+<br>
+<strong>Methods:</strong>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td>is_pressed()</td>
+        <td >returns True, if the button is down (pressed); otherwise False</td>
+    </tr>
+    <tr>
+        <td width="28%">was_pressed()</td>
+        <td width="62%">returns True, if the button was pressed since the last call (or start of the program). Another call returns False, until the button is pressed again</td>
+    </tr>
+    <tr>
+        <td>get_presses()</td>
+        <td>returns the number of button presses since the last call (or start of program). Another call returns False, until the button is pressed again</td>
+    </tr>
+</table>
+<p><strong>Example: </strong><br>
+        <font face="Courier New, Courier, monospace">if button_a.was_pressed():</font><br>
+        <font face="Courier New, Courier, monospace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do_something</font></p>
+<p><strong>Remarks:</strong><br>
+    I<span id="result_box" lang="en">n simulation mode, press a button with a left mouse button press. With a  right mouse button press, the button is held in the pressed state until you press again with one of the mouse buttons. So you can simulate the simultaneous pressing of the two buttons.</span></p>
+<hr>
+<br>
+<strong><font size="+1">Class Display</font> </strong><br>
+(Real- and simulation mode) <br>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="28%">display</td>
+        <td width="62%" >object reference (instance)</td>
+    </tr>
+</table>
+<br>
+<strong>Methods:</strong>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td>set_pixel(x, y, value)</td>
+        <td >sets the intensity of pixel at position x, y. value in range 0..9</td>
+    </tr>
+    <tr>
+      <td>get_pixel(x, y)</td>
+      <td >returns the intensity of the pixel at position x, y</td>
+    </tr>
+    <tr>
+        <td>clear()</td>
+        <td >clears all pixels</td>
+    </tr>
+    <tr>
+        <td>show(str)</td>
+        <td >shows given str on LED  display. If str has more than 1 character, the text ist scrolled until the last character becomes visible</td>
+    </tr>
+    <tr>
+        <td>show(list_of_img, delay = 400,  loop = False, wait = True, clear = False)</td>
+        <td>
+            <p>shows all images of the list in a timed sequence. If  loop = True ist, the sequence is repeated infinitely. For wati = True the method is blocking, otherwise it returns while the sequence continues in the background. delay is the display time for each image in ms (default: 400). For clear = True, the display is clear after the last image is shown</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="28%">show(img)</td>
+        <td width="62%">show Image img on LED display. If img is bigger than 5x5 pixel, the pixels in range x, y = 0..4 are shown. If img is smaller than 5x5 pixel, the missing pixels are black</td>
+    </tr>
+    <tr>
+        <td>scroll(str)</td>
+        <td>shows str as scrolling text. The last character disappears</td>
+    </tr>
+    <tr>
+        <td>off()</td>
+        <td>turns off display (pin3, pin4, pin6, pin7, pin9, pin19 may be used for general digital in/out)</td>
+    </tr>
+    <tr>
+        <td>on()</td>
+        <td>turns on the display and sets pin3, pin4, pin6, pin7, pin9, pin19 in display mode</td>
+    </tr>
+    <tr>
+        <td>scroll(str, delay = 150,  loop = False, wait = True, monospace = False)</td>
+        <td>show str as scrolling text .  If  loop = True, the sequence is repeated infinitely. For wait = True the method is blocking, otherwise it returns while the sequence continues in the background. delay is the display time for a single column (default: 150)</td>
+    </tr>
+</table>
+<strong><br>
+Examples: </strong><br>
+<font face="Courier New, Courier, monospace">display.show(&quot;A&quot;)</font><br>
+<font face="Courier New, Courier, monospace">display.scroll(&quot;Hello&quot;)<br>
+display.show([Image.HAPPY, Image.SAD])</font><br>
+<br>
+<br>
+<hr>
+<br>
+<strong><font size="+1">Class Image</font></strong><br>
+(Real- and simulation mode) <br>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td>Image(str)</td>
+        <td >creates object reference (instance). str has format &quot;aaaaa:bbbbb:ccccc:ddddd:eeeee:&quot; where a is a number in the range 0..9 and defines the intensity of the pixel, a are values of first line, b of second, etc.</td>
+    </tr>
+    <tr>
+        <td width="28%">Image()</td>
+        <td width="62%">creates object  reference (instance) with 5x5 pixels and all pixels are turned off</td>
+    </tr>
+    <tr>
+        <td>Image(width, height)</td>
+        <td>creates object  reference (instance) with given number of horizontal and vertical pixels with all pixels turned off (value = 0)</td>
+    </tr>
+</table>
+<br>
+<strong>Methods:</strong>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td>set_pixel(x, y, value)</td>
+        <td >sets the intensity of pixel at position x, y. value in range 0..9</td>
+    </tr>
+    <tr>
+        <td>fill(value)</td>
+        <td>sets  all pixel intensities  to the given value (0..9)</td>
+    </tr>
+    <tr>
+        <td>get_pixel(x, y)</td>
+        <td>returns the intensity of the pixel at position x, y</td>
+    </tr>
+    <tr>
+        <td width="28%">shift_left(n)</td>
+        <td width="62%">returns an Image object by shifting the picture left by n columns  (inserted columns at the right are turned off)</td>
+    </tr>
+    <tr>
+        <td>shift_right(n)</td>
+        <td>returns an Image object by shifting the picture right by n columns (inserted columns at the left are turned off)</td>
+    </tr>
+    <tr>
+        <td>shift_up(n)</td>
+        <td>returns an Image object by shifting the picture up by n rows (inserted rows at the bottom are turned off)</td>
+    </tr>
+    <tr>
+        <td>shift_down(n)</td>
+        <td>returns an Image object by shifting the picture down by n rows (inserted rows at the top are turned off)</td>
+    </tr>
+    <tr>
+        <td>copy()</td>
+        <td>returns a clone of the image</td>
+    </tr>
+    <tr>
+        <td>invert()</td>
+        <td>returns an Image object by inverting the intensity of all pixels (new_value = 9 - value)</td>
+    </tr>
+    <tr>
+        <td>crop(x, y, w, h)</td>
+        <td>returns a image section of width w and height h at the  upper left vertex  (x, y)</td>
+    </tr>
+    <tr>
+        <td>dest.blit(img, x, y, w, h, xdest, ydest)</td>
+        <td>copies from given image img a rectangular section of size w, h  at position x, y  to dest image at position xdest, ydest</td>
+    </tr>
+</table>
+<strong><br>
+Operations:</strong>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td>image_new = image * n</td>
+        <td >returns an object with all pixel intensities multiplied by n</td>
+    </tr>
+    <tr>
+        <td width="28%">image_new = image1 + image2</td>
+        <td width="62%">returns an object by adding the pixel intensities of image1 and image2</td>
+    </tr>
+</table>
+<strong><br>
+</strong> <strong> Predefined Images:</strong>
+<ul>
+    <li><font size="-1">Image.HEART</font></li>
+    <li><font size="-1">Image.HEART_SMALL</font></li>
+    <li><font size="-1">Image.HAPPY</font></li>
+    <li><font size="-1">Image.SMILE</font></li>
+    <li><font size="-1">Image.SAD</font></li>
+    <li><font size="-1">Image.CONFUSED</font></li>
+    <li><font size="-1">Image.ANGRY</font></li>
+    <li><font size="-1">Image.ASLEEP</font></li>
+    <li><font size="-1">Image.SURPRISED</font></li>
+    <li><font size="-1">Image.SILLY</font></li>
+    <li><font size="-1">Image.FABULOUS</font></li>
+    <li><font size="-1">Image.MEH</font></li>
+    <li><font size="-1">Image.YES</font></li>
+    <li><font size="-1">Image.NO</font></li>
+    <li><font size="-1">Image.CLOCK12, Image.CLOCK11, Image.CLOCK10, Image.CLOCK9,  Image.CLOCK8, Image.CLOCK7, Image.CLOCK6, Image.CLOCK5,  Image.CLOCK4, Image.CLOCK3, Image.CLOCK2, Image.CLOCK1</font></li>
+    <li><font size="-1">Image.ARROW_N, Image.ARROW_NE, Image.ARROW_E,  Image.ARROW_SE, Image.ARROW_S, Image.ARROW_SW,  Image.ARROW_W, Image.ARROW_NW</font></li>
+    <li><font size="-1">Image.TRIANGLE</font></li>
+    <li><font size="-1">Image.TRIANGLE_LEFT</font></li>
+    <li><font size="-1">Image.CHESSBOARD</font></li>
+    <li><font size="-1">Image.DIAMOND</font></li>
+    <li><font size="-1">Image.DIAMOND_SMALL</font></li>
+    <li><font size="-1">Image.SQUARE</font></li>
+    <li><font size="-1">Image.SQUARE_SMALL</font></li>
+    <li><font size="-1">Image.RABBIT</font></li>
+    <li><font size="-1">Image.COW</font></li>
+    <li><font size="-1">Image.MUSIC_CROTCHET</font></li>
+    <li><font size="-1">Image.MUSIC_QUAVER</font></li>
+    <li><font size="-1">Image.MUSIC_QUAVERS</font></li>
+    <li><font size="-1">Image.PITCHFORK</font></li>
+    <li><font size="-1">Image.XMAS</font></li>
+    <li><font size="-1">Image.PACMAN</font></li>
+    <li><font size="-1">Image.TARGET</font></li>
+    <li><font size="-1">Image.TSHIRT</font></li>
+    <li><font size="-1">Image.ROLLERSKATE</font></li>
+    <li><font size="-1">Image.DUCK</font></li>
+    <li><font size="-1">Image.HOUSE</font></li>
+    <li><font size="-1">Image.TORTOISE</font></li>
+    <li><font size="-1">Image.BUTTERFLY</font></li>
+    <li><font size="-1">Image.STICKFIGURE</font></li>
+    <li><font size="-1">Image.GHOST</font></li>
+    <li><font size="-1">Image.SWORD</font></li>
+    <li><font size="-1">Image.GIRAFFE</font></li>
+    <li><font size="-1">Image.SKULL</font></li>
+    <li><font size="-1">Image.UMBRELLA</font></li>
+    <li><font size="-1">Image.SNAKE</font></li>
+    <li><font size="-1">Lists:
+        Image.ALL_CLOCKS,  Image.ALL_ARROWS</font></li>
+</ul>
+<p><strong>Remark: </strong><br>
+    An Image object (short &quot;image&quot;) is an abstraction of the real picture and becomes visible when <font face="Courier New, Courier, monospace">display.show(img</font>) is called. An image may have any number of horizontal and vertical pixels (w, h), but only pixels in the range x = 0..4, y = 0..4 are shown. (If image is smaller, the non-defined pixels are black.) .</p>
+<p>Be aware that some methods do not modify the image itself, but return a new image. To change <font face="Courier New, Courier, monospace">img</font>, it must be assigned to the return value.</p>
+<p><strong>Example: </strong><br>
+        <font face="Courier New, Courier, monospace">img = Image(2, 2)<br>
+            img = img.invert()<br>
+            display.show(img)</font><br>
+    <span class="Stil2"><br>
+</span></p>
+<hr>
+<br>
+<strong><font size="+1">Class MicroBitTouchPin</font></strong><br>
+(Real- and simulation mode only *) <br>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td>pin0, pin1, pin2, pin8, pin12, pin16</td>
+        <td >instances for general digital-in/digital-out</td>
+    </tr>
+    <tr>
+        <td width="28%">pin0, pin1, pin2</td>
+        <td width="62%">instances for analog-in/analog-out (PWM)</td>
+    </tr>
+    <tr>
+        <td>pin3, pin4, pin6, pin7, pin9, pin10</td>
+        <td>instances predefined for LED display (display mode)</td>
+    </tr>
+    <tr>
+        <td>pin5, pin11</td>
+        <td>instances predefine for button A, B (button mode)</td>
+    </tr>
+    <tr>
+        <td>pin13, pin14, pin15</td>
+        <td>instances predefined for SPI (spi mode)</td>
+    </tr>
+    <tr>
+        <td>pin19, pin20</td>
+        <td>instances predefined for I2C (i2c mode)</td>
+    </tr>
+</table>
+<br>
+<strong>Methods:</strong>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td>* read_digital()</td>
+        <td >returns True, if the pin is logical 1 (HIGH); returns False, if logical 0 (LOW) (Pulldown 10 kOhm)</td>
+    </tr>
+    <tr>
+        <td width="28%">* write_digital(v)</td>
+        <td width="62%">if v = 1, sets the pin to logical 1 (HIGH); if v = 0, sets the pin to logical 0 (LOW) (max. current: 5 mA)</td>
+    </tr>
+    <tr>
+        <td>read_analog()</td>
+        <td>returns value from ADC in range 0..1023 (input impedance: 10&nbsp;MOhm)</td>
+    </tr>
+    <tr>
+        <td>write_analog(v)</td>
+        <td>sets the PWM duty cycle (v = 0..1023 corresponds to 0..100%) (max. current: 5 mA)</td>
+    </tr>
+    <tr>
+        <td>set_analog_period(period)</td>
+        <td>sets the PWM period in milliseconds</td>
+    </tr>
+    <tr>
+        <td>set_analog_period_microseconds(period)</td>
+        <td>sets the PWM period in microseconds (&gt; 300)</td>
+    </tr>
+</table>
+<br>
+<br>
+<hr>
+<strong><font size="+1"><br></font></strong><strong><font size="+1">
+Class Accelerometer</font></strong>
+</p>
+<br>
+(Real- and Simulationmode)<br>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%">accelerometer</td>
+    <td width="62%" >object reference (instance)</td>
+  </tr>
+</table>
+<br>
+<strong>Methods:</strong>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%">get_x(), get_y(), get_z()</td>
+    <td width="62%" ><p>returns the current value of acceleration in x, y or z direction  (int,   range approx.. -2047 to +2048, corresponding approx. -20 m/s^2 to +20 m/s^2, gravitational acceleration of approx. 10 m/s^2 included). x direction: ButtonA-ButtonB; y direction: Pin2-USB; z direction: perpenticular to the board</p></td>
+  </tr>
+  <tr>
+    <td>get_values()</td>
+    <td>returns a tuple with the acceleration in x, y and z direction (ints, units as above)</td>
+  </tr>
+  <tr>
+    <td>current_gesture()</td>
+    <td><p>returns the current gesture. The following gestures are detected: &quot; up&quot;, &quot; down&quot;, &quot; left&quot;, &quot; right&quot;, &quot; face up&quot;, 
+      &quot; face down&quot;, &quot; freefall&quot;, &quot; 3g&quot;, &quot; 6g&quot;, &quot; 8g&quot;, &quot; shake&quot;</p></td>
+  </tr>
+  <tr>
+    <td>is_gesture(name)</td>
+    <td>returns True, if name is the current gesture</td>
+  </tr>
+  <tr>
+    <td>get_gestures()</td>
+    <td>returns a tuple of the gesture history. The most recent is listed last. Also clears the gesture history before returning</td>
+  </tr>
+  <tr>
+    <td>was_gesture(name)</td>
+    <td>returns True, if the given name is found in the gesture history</td>
+  </tr>
+</table>
+<br>
+<br>
+<hr>
+<br>
+<strong><font size="+1">Class MicroBitCompass</font></strong><br>
+(Real mode)<br>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="28%">compass</td>
+        <td width="62%" >object reference (instance)</td>
+    </tr>
+</table>
+<br>
+<strong>Methods:</strong>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td>calibrate()</td>
+        <td >
+            <p>starts a blocking calibration routine needed to get accurate readings: tilt the micro:bit in different directions, so that the blinking pixel reaches the border, where the border pixel is turned on. When all border pixels are lit, the program continues </p>
+        </td>
+    </tr>
+    <tr>
+        <td width="28%">is_calibrated()</td>
+        <td width="62%">returns True, if the compass was calibrated</td>
+    </tr>
+    <tr>
+        <td>clear_calibration()</td>
+        <td>resets the compass to the non-calibrated state</td>
+    </tr>
+    <tr>
+        <td>heading()</td>
+        <td>returns the angle of the current direction if the micro:bit with respect to the north</td>
+    </tr>
+    <tr>
+        <td>get_x(), get_y(), get_z()</td>
+        <td>returns the current  value of the x, y or z component of the magnetic field at the sensor position (int, in microtesla, no calibration needed)</td>
+    </tr>
+    <tr>
+        <td>get_values()</td>
+        <td>returns a tuple with     x , y and z components of the magnetic field at the sensor position  (int, in microtesla, no calibration needed)</td>
+    </tr>
+</table>
+<br>
+<br>
+<hr>
+<br>
+<strong><font size="+1">Class NeoPixel</font></strong> <font size="-1"><br>
+</font>(Real mode)<font size="-1"><br>
+(<strong>Module import: from neopixel import *</strong>)</font>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="28%">np = NeoPixel(pin, n)</td>
+        <td width="62%" >
+            <p>creates a Neopixel object (instance) with n   neopixels controlled via given pin. Each pixel is addressed by its position (starting from 0) and its color is determined by assigning a RGB tuple, e.g. np[2] = (0, 100, 255) sets pixel # 2 to red = 0, green = 100, blue = 255. <em>show()</em> must be called to update the display</p>
+            <p>(Strips with WS2812 LEDs supported.)</p>
+        </td>
+    </tr>
+</table>
+<br>
+<strong>Methods:</strong>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td>clear()</td>
+        <td >
+            <p>clears all pixels</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="28%">show()</td>
+        <td width="62%">shows the pixels. Must be called to make any change of color values visible</td>
+    </tr>
+</table>
+<br>
+<br>
+<hr>
+<p></p>
+<p><strong><font size="+1">Module music</font></strong> <br>
+    (Real mode)<br>
+    <font size="-1"> (<strong>Module import: from music import *</strong>)</font></p>
+<strong>Functions:</strong>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td>set_tempo(bpm = 120)</td>
+        <td >sets the number of beats per minute (default: 120)</td>
+    </tr>
+    <tr>
+        <td width="28%">pitch(frequency, len, pin = microbit.pin0, wait = True)</td>
+        <td width="62%">plays a tone with given frequency in Hertz during the given length (duration) (in milliseconds). pin defines the output pin at the GPIIO header (default: P0). If wait = True, the function is blocking; otherwise it returns while the sound continues (until finished or stop() is called)</td>
+    </tr>
+    <tr>
+        <td>play(melody, pin = microbit.pin0, wait = True, loop = False)</td>
+        <td>plays a melody with current tempo. pin defines the output pin at the GPIIO header (default: P0). If wait = True, the function is blocking; otherwise it returns while the sound continues (until finished or stop() is called). If loop is True, the melody is played again infinitely</td>
+    </tr>
+    <tr>
+        <td>stop(pin = microbit.pin0)</td>
+        <td>stops sound output at given header pin (default: P0)</td>
+    </tr>
+</table>
+<p><strong>Remark:</strong> <br>
+    A melody is a list of strings in the format [&quot;note:duration&quot;, &quot;note:duration&quot;,...]<br>
+    note in musical notation: c, d, e, f, g, a, h with optional octave number (default: 1): e.g. c2, d2, ... and optional sharp: c#, d#,... or c#2, d#2,...<br>
+    duration in number of ticks (optional, defaut: 1)</p>
+<p><strong>Predifined song lists:</strong></p>
+<ul>
+    <li><font size="-1">ADADADUM - the opening to Beethoven&rsquo;s 5th Symphony in C minor</font></li>
+    <li><font size="-1">ENTERTAINER - the opening fragment of Scott Joplin&rsquo;s Ragtime classic &ldquo;The Entertainer&rdquo;</font></li>
+    <li><font size="-1">PRELUDE - the opening of the first Prelude in C Major of J.S.Bach&rsquo;s 48 Preludes and Fugues</font></li>
+    <li><font size="-1">ODE - the &ldquo;Ode to Joy&rdquo; theme from Beethoven&rsquo;s 9th Symphony in D minor</font></li>
+    <li><font size="-1">NYAN - the Nyan Cat theme </font></li>
+    <li><font size="-1">RINGTONE - something that sounds like a mobile phone ringtone. To be used to indicate an incoming message</font></li>
+    <li><font size="-1">FUNK - a funky bass line for secret agents and criminal masterminds</font></li>
+    <li><font size="-1">BLUES - a boogie-woogie 12-bar blues walking bass</font></li>
+    <li><font size="-1">BIRTHDAY - &ldquo;Happy Birthday to You...&rdquo;</font></li>
+    <li><font size="-1">WEDDING - the bridal chorus from Wagner&rsquo;s opera &ldquo;Lohengrin&rdquo;</font></li>
+    <li><font size="-1">FUNERAL - the &ldquo;funeral march&rdquo; otherwise known as Fr&eacute;d&eacute;ric Chopin&rsquo;s Piano Sonata No. 2 in B&#9837; minor.</font></li>
+    <li><font size="-1">PUNCHLINE - a fun fragment that signifies a joke has been made</font></li>
+    <li><font size="-1">PYTHON   - John Philip Sousa&rsquo;s march &ldquo;Liberty Bell&rdquo; aka, the theme for &ldquo;Monty   Python&rsquo;s Flying Circus&rdquo;</font></li>
+    <li><font size="-1">BADDY - silent movie era entrance of a baddy</font></li>
+    <li><font size="-1">CHASE - silent movie era chase scene</font></li>
+    <li><font size="-1">BA_DING - a short signal to indicate something has happened</font></li>
+    <li><font size="-1">WAWAWAWAA - a very sad trombone</font></li>
+    <li><font size="-1">JUMP_UP - for use in a game, indicating upward movement</font></li>
+    <li><font size="-1">JUMP_DOWN - for use in a game, indicating downward movement</font></li>
+    <li><font size="-1">POWER_UP - a fanfare to indicate an achievement unlocked</font></li>
+    <li><font size="-1">POWER_DOWN - a sad fanfare to indicate an achievement lost</font><br>
+            <br>
+    </li>
+</ul>
+<hr>
+<font size="+1"><strong><br>
+</strong></font>
+<p><strong><font size="+1">Module radio:</font></strong><br>
+    (Real mode)<br>
+    <font size="-1">(<strong>Module import: from radio import *</strong>)</font><br>
+    <font size="-1"><br>
+</font>Computer communication over Bluetooth</p>
+<strong>Functions:</strong>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td>on()</td>
+        <td >turns Bluetooth communication on. Connecting to  a micro:bit node that has radio turned on</td>
+    </tr>
+    <tr>
+        <td width="24%">off()</td>
+        <td width="76%">turns Bluetooth communicaion off</td>
+    </tr>
+    <tr>
+        <td>send(msg)</td>
+        <td>sends the message string to the receiving node's message queue (First-In-First-Out, FIFO buffer)</td>
+    </tr>
+    <tr>
+        <td>msg = receive()</td>
+        <td>returns the oldest message (string) in the message queue  and removes it from the queue. None is returned, if the queue is empty. It is assumed that the messages is sent with send(smg), so it  can be converted in a valuable string [otherwise a ValueError exception (&quot;received packet is not a string&quot;) is raised]</td>
+    </tr>
+    <tr>
+        <td>send_bytes(msg_bytes)</td>
+        <td>sends the message bytes (class <em>bytes, e.g b'\x01</em>\x48') to the receiving node's message queue (First-In-First-Out, FIFO buffer)</td>
+    </tr>
+    <tr>
+        <td>receive_bytes()</td>
+        <td>returns the oldest message bytes from the message queue and deletes it from the queue.  None is returned, if the queue is empty. To send the message, send_bytes(msg) must be used (and not send(msg))</td>
+    </tr>
+</table>
+<p><br>
+</p>
+<hr>
+<p><br>
+</p>
+<p><strong><font size="+1">Modul mbglow</font></strong><br>
+    (Real- and simulation mode)<br>
+    <font size="-1">(<strong>Modul import: from mbglow import *</strong>)</font><br>
+</p>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="28%">
+            <p>makeGlow()</p>
+        </td>
+        <td width="62%" >creates a visible glowbug at position (0, 0) directed to the north with its trace enabled. Coordinate system: -2 &lt;=x &lt;=2 (+ to the right), -2 &lt;= y &lt;= 2 (+ upwards), (0, 0) at center pixel</td>
+    </tr>
+    <tr>
+        <td>setSpeed()</td>
+        <td>sets the speed for movements (0..100)</td>
+    </tr>
+    <tr>
+        <td>show()</td>
+        <td>enables the visibility for the following movements</td>
+    </tr>
+    <tr>
+        <td>hide()</td>
+        <td>disables the visibility</td>
+    </tr>
+    <tr>
+        <td>clear()</td>
+        <td>clears all visible pixels. The glowbug remains at the current position (but is invisible)</td>
+    </tr>
+    <tr>
+        <td>showTrace(enable)</td>
+        <td>enables/disables the trace for the following movements (pixels are turned on at the glowbug position) </td>
+    </tr>
+    <tr>
+        <td>forward()</td>
+        <td>moves the glowbug one step in the forward direction</td>
+    </tr>
+    <tr>
+        <td>back()</td>
+        <td>moves the glowbug one step in the backward direction</td>
+    </tr>
+    <tr>
+        <td>left(angle)</td>
+        <td>turns the glowbug in 45 degrees increments to the left (angle = 45, 90, 135, 180, 215, 270, 315)</td>
+    </tr>
+    <tr>
+        <td>right(angle)</td>
+        <td>turns the glowbug in 45 degrees increments to the right (angle = 45, 90, 135, 180, 215, 270, 315)</td>
+    </tr>
+    <tr>
+        <td>setPos(x, y)</td>
+        <td>sets the glowbug at position (x, y)</td>
+    </tr>
+    <tr>
+        <td>getPos()</td>
+        <td>returns the  current position of the glowbug (as tuple)</td>
+    </tr>
+    <tr>
+        <td>isLit()</td>
+        <td>returns True, if the pixel at the current glowbug position is turned on</td>
+    </tr>
+</table>
+<p><br>
+</p>
+<h4><a href="http://ch/aplu/docs/index_de.html"></a></h4>
+<p><br>
+        <br>
+</p>
+<p><a href="http://ch/aplu/docs/index_en.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

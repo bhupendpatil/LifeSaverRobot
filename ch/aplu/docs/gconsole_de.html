@@ -1,0 +1,133 @@
+<html>
+<head>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+
+<a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a>
+<h2>Dokumentation GConsole</h2>
+<h3>Module import: from gconsole import *<br>
+  <br />
+  
+</h3>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%" bgcolor="#F0F0F5" >Befehl</td>
+    <td width="62%" bgcolor="#F0F0F5" >Aktion</td>
+  </tr>
+  
+  <tr>
+    <td >makeConsole()</td>
+    <td >erzeugt ein (globales) Konsolen-Fenster in Bildschirmmitte mit halber Bildschirmgr&ouml;sse</td>
+  </tr>
+   <tr>
+    <td >makeConsole(Position(ulx, uly), Size(width, height))</td>
+    <td >erzeugt ein (globales) Konsolen-Fenster an gegebener Bildschirmposition (ulx, uly) und gegebener Gr&ouml;sse (width, height)</td>
+  </tr>  
+   <tr>
+    <td >dispose()</td>
+    <td >schliesst das Fenster</td>
+  </tr>  
+   <tr>
+    <td >isDisposed()</td>
+    <td >gibt True zur&uuml;ck, falls das Fenster geschlossen wurde (durch Aufruf von dispose() oder Klicken des Close-Buttons</td>
+  </tr>  
+  <tr>
+    <td >clear()</td>
+    <td >l&ouml;scht den Fensterinhalt</td>
+  </tr>
+  <tr>
+    <td >hide()</td>
+    <td >versteckt das Fenster</td>
+  </tr>
+  <tr>
+    <td >show()</td>
+    <td >zeigt das versteckte Fenster wieder</td>
+  </tr>
+  <tr>
+    <td >setTitle(title)</td>
+    <td >setzt den Fenstertitel</td>
+  </tr>
+  <tr>
+    <td >showHorizontalScrollbar(enable)</td>
+    <td >f&uuml;gt einen horizontalen Scrollbalken ein</td>
+  </tr>
+  <tr>
+    <td >showVerticalScrollbar(enable)</td>
+    <td >f&uuml;gt einen vertikalen Scrollbalken ein</td>
+  </tr>
+  <tr>
+    <td >delay(time)</td>
+    <td >h&auml;lt das Programm um die Zeit time (ms) an</td>
+  </tr>
+  <tr>
+      <td >addExitListener(onExit)</td>
+      <td >registriert die Callbackfunktion onExit(), die beim Click des Close-Buttons aufgerufen wird. Damit Fenster schliesst, muss dispose() aufgerufen werden</td>
+  </tr>  
+</table>
+<h4><br>
+Ausschreiben</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td  width="28%">gprintln(v)</td>
+    <td width="62%" >schreibt einen String oder eine Zahl an der aktuellen Cursorposition aus und setzt Cursor an den Anfang der n&auml;chsten Zeile</td>
+  </tr>
+  <tr>
+    <td >gprint(v)</td>
+    <td >schreibt einen String oder eine Zahl aus und setzt den Cursor ans Zeilenende</td>
+  </tr>
+</table>
+<h4><br>
+  <br> 
+Einlesen</h4>
+  
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+   <tr>
+    <td width="28%" >getFloat()&nbsp;&nbsp;</td>
+    <td width="62%" >liefert die mit &lt;cr&gt; beendete Eingabe als Float zur&uuml;ck; None, falls nicht als Float darstellbar</td>
+  </tr>
+  <tr>
+    <td >getInt()&nbsp;&nbsp;</td>
+    <td >liefert die mit &lt;cr&gt; beendete Eingabe als Integer zur&uuml;ck; None, falls nicht als Integer darstellbar</td>
+  </tr>
+  <tr>
+    <td >getString()</td>
+    <td>liefert den mit &lt;cr&gt; beendeten Eingabestring</td>
+  </tr>
+   <tr>
+       <td >getKey() </td>
+       <td>liefert einen String mit dem Zeichen des letzten Tastendruck zur&uuml;ck (leer, falls illegale Taste) (ord() liefert auch non-printing ASCII code)</td>
+   </tr>
+   <tr>
+       <td >getKeyWait() </td>
+       <td>wartet bis eine Taste gedr&uuml;ckt wird und liefert sie als String zur&uuml;ck (ord() liefert auch non-printing ASCII code)</td>
+   </tr>
+   <tr>
+       <td >getKeyCode() </td>
+       <td>liefert den  Code der zuletzt gedr&uuml;ckten Taste zur&uuml;ck; gibt 65535, falls keine Taste gedr&uuml;ckt wurde</td>
+   </tr>
+   <tr>
+       <td >getKeyCodeWait() </td>
+       <td >wartet bis eine Taste gedr&uuml;ckt wird und liefert ihren Code zur&uuml;ck</td>
+   </tr>
+   
+   
+   
+   <tr>
+       <td >getModifiers()</td>
+       <td >liefert einen Spezialcode beim Dr&uuml;cken von Ctrl/Alt/Shift</td>
+   </tr>
+   <tr>
+       <td >getModifiersText()</td>
+       <td >liefert einen Bezeichner beim Dr&uuml;cken von Ctrl/Alt/Shift</td>
+   </tr>
+   <tr>
+    <td >kbhit() </td>
+    <td >liefert True, falls ein Tastendruck noch nicht  mit getKeyCode() abgeholt ist</td>
+  </tr> 
+</table>
+<h4><br>
+  <a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></h4>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

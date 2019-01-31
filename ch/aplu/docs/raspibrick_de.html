@@ -1,0 +1,859 @@
+<html>
+<head>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+<h2><font face="Arial, Helvetica, sans-serif"><a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></font></h2>
+<h2><font face="Arial, Helvetica, sans-serif">Dokumentation RaspiBrick Robotik</font></h2>
+<h3><font face="Arial, Helvetica, sans-serif">Module imports: </font></h3>
+<h3><font face="Arial, Helvetica, sans-serif">from raspisim import *<br>
+  from raspibrick import *<br>
+</font></h3>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%" bgcolor="#F0F0F5"><font face="Arial, Helvetica, sans-serif">Methode</font></td>
+    <td width="70%" bgcolor="#F0F0F5"><font face="Arial, Helvetica, sans-serif">Aktion</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif"> Robot()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">erzeugt Roboter-Instanz (ohne Motoren) und stellt die Verbindung zum Roboter her</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">Robot(ip)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">dasselbe, aber verbindet ohne Abfragedialog mit geg. IP-Adresse/Alias (String)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">exit()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">stoppt den Roboter, gibt alle Ressourcen frei und beendet die Verbindung</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">getIPAdresses()()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">gibt die IP-Adressen des Roboters zur&uuml;ck</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">isEscapeHit() </font></td>
+    <td><font face="Arial, Helvetica, sans-serif"><em>True</em>,  falls Push-Button  (autonom) bzw. Tastaturtaste <em>Esc</em> (Remote-Modus) gedr&uuml;ckt wurde</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">isLeftHit() </font></td>
+    <td><font face="Arial, Helvetica, sans-serif"><em>True</em>,  falls Tastaturtaste <em>Cursor-Left</em> gedr&uuml;ckt (nur Remote-Modus)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">isRightHit() </font></td>
+    <td><font face="Arial, Helvetica, sans-serif"><em>True</em>,  falls Tastaturtaste <em>Cursor-Right</em> gedr&uuml;ckt (nur Remote-Modus)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">isUpHit() </font></td>
+    <td><font face="Arial, Helvetica, sans-serif"><em>True</em>,  falls Tastaturtaste <em>Cursor-Up</em> gedr&uuml;ckt (nur Remote-Modus)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">isDownHit() </font></td>
+    <td><font face="Arial, Helvetica, sans-serif"><em>True</em>,  falls Tastaturtaste <em>Cursor-Down</em> gedr&uuml;ckt (nur Remote-Modus)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">playTone(frequency,  duration) </font></td>
+    <td><font face="Arial, Helvetica, sans-serif">spielt  einen Ton mit geg, Frequenz (in Hz) in L&auml;nge (ms)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">setSoundVolume(volume) </font></td>
+    <td><font face="Arial, Helvetica, sans-serif">setzt  die Lautst&auml;rke f&uuml;r alle Tonausgaben (0..100) </font></td>
+  </tr>
+  <tr>
+    <td>initSound(soundFile, volume)</td>
+    <td>bereitet die gegebene Sounddatei (wav, mp3) zum Abspielen vor</td>
+  </tr>
+  <tr>
+    <td>playSound()</td>
+    <td>beginnt das Abspielen</td>
+  </tr>
+  <tr>
+    <td>stopSound()</td>
+    <td>beendet das Abspielen</td>
+  </tr>
+  <tr>
+    <td>fadeoutSound(time)</td>
+    <td>l&auml;sst das Abspielen mit der Ausklingzeit (ms) ausklingen</td>
+  </tr>
+  <tr>
+    <td>pauseSound()</td>
+    <td>h&auml;lt das Abspielen an</td>
+  </tr>
+  <tr>
+    <td>resumeSound()</td>
+    <td>f&auml;hrt mit dem Abspielen weiter</td>
+  </tr>
+  <tr>
+    <td>rewindSound()</td>
+    <td>beginnt von Anfang an</td>
+  </tr>
+  <tr>
+    <td>isSoundPlaying()</td>
+    <td><em>True</em>, falls das Abspielen nach im Gang ist</td>
+  </tr>
+</table>
+<font face="Arial, Helvetica, sans-serif"><br>
+<h4><br>
+Gear: </h4>
+</font>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%"><font face="Arial, Helvetica, sans-serif">Gear()</font></td>
+    <td width="70%"><font face="Arial, Helvetica, sans-serif">erzeugt ein Fahrwerk mit 2 synchronisierten Motoren </font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">backward()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">f&auml;hrt r&uuml;ckw&auml;rts (nicht-blockierende Methode)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">backward(ms)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">f&auml;hrt w&auml;hrend gegebener Zeit (in ms) r&uuml;ckw&auml;rts und stoppt (blockierende Methode)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">forward()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">f&auml;hrt vorw&auml;rts (nicht blockierende Methode)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">forward(ms)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">f&auml;hrt w&auml;hrend gegebener Zeit (in ms) vorw&auml;rts und stoppt (blockierende Methode)</font></td>
+  </tr>
+  <td><font face="Arial, Helvetica, sans-serif"> left()</font></td>
+      <td><font face="Arial, Helvetica, sans-serif">dreht links (nicht blockierende Methode)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif"> left(ms)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">dreht w&auml;hrend gegebener Zeit (in ms) links und stoppt (blockierende Methode)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif"> leftArc(radius)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">f&auml;hrt auf einem Linksbogen mit geg. Radius (in m) (nicht- blockierende Methode)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif"> leftArc(radius, ms)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">f&auml;hrt w&auml;hrend geg. Zeit (in ms) auf einem Linksbogen und stoppt (blockierende Methode)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif"> right()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">dreht rechts (nicht-blockierende Methode)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif"> right(ms)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">dreht w&auml;hrend gegebener Zeit (in ms)  rechts und stoppt (blockierende Methode)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif"> rightArc(radius)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">f&auml;hrt auf einem Rechtsbogen mit geg. Radius (in m) (nicht blockierende Methode)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif"> rightArc(radius, ms)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">f&auml;hrt w&auml;hrend geg. Zeit (in ms) auf einem Rechtsbogen und stoppt(blockierende Methode)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif"> setSpeed(speed)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">setzt die Geschwindigkeit (0..100) (erst beim n&auml;chsten Bewegungsbefehl &uuml;bernommen)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif"> stop()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">stoppt das Fahrwerk</font></td>
+  </tr>
+</table>
+<font face="Arial, Helvetica, sans-serif"><br>
+<h4><br>
+Motor: </h4>
+</font>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%"><font face="Arial, Helvetica, sans-serif">Motor(MOTOR_LEFT)</font></td>
+    <td width="70%"><font face="Arial, Helvetica, sans-serif">erzeugt eine Instanz des den linken Motor </font></td>
+  </tr>
+  <tr>
+    <td width="30%"><font face="Arial, Helvetica, sans-serif">Motor(MOTOR_RIGHT)</font></td>
+    <td width="70%"><font face="Arial, Helvetica, sans-serif">erzeugt eine Instanz des rechten Motor </font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">backward()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">startet die R&uuml;ckw&auml;rtsdrehung</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">forward()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">startet die Vorw&auml;rtsdrehung</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif"> setSpeed(speed)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">setzt die Geschwindigkeit (0..100)  (erst beim n&auml;chsten Bewegungsbefehl &uuml;bernommen)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif"> stop()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">stoppt den Motor </font></td>
+  </tr>
+</table>
+<font face="Arial, Helvetica, sans-serif"><br>
+<h4><br>
+LightSensor: </h4>
+</font>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%"><font face="Arial, Helvetica, sans-serif">LightSensor(id)</font></td>
+    <td width="70%"><font face="Arial, Helvetica, sans-serif">erzeugt eine Instanz eines Lichtsensors mit geg. id (LS_FRONT_LEFT=0, LS_FRONT_RIGHT=1, LS_REAR_LEFT=2, LS_REAR_RIGHT=3)</font></td>
+  </tr>
+  <tr>
+    <td>LightSensor(id, bright = onBright, dark = onDark)</td>
+    <td>dasselbe mit registrierten Event-Callbacks  onBright(id, value), onDark(id, value) beim &Uuml;berqueren des Triggerlevels (default: 500)</td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">LightSensor(id, True)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">(nur Simulationsmodus) erzeugt eine Instanz eines aufw&auml;rts gerichteten Lichtsensors mit geg. id (LS_FRONT_LEFT=0, LS_FRONT_RIGHT=1, LS_REAR_LEFT=2, LS_REAR_RIGHT=3)</font></td>
+  </tr>
+  <tr>
+    <td>LightSensor(id, True, bright = onBright, dark = onDark)</td>
+    <td>dasselbe mit registrierten Event-Callbacks  onBright(id, value), onDark(id, value) beim &Uuml;berqueren des Triggerlevels</td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">getValue()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">gibt den gemessenen Wert des Lichtsensors zur&uuml;ck (0..1000) </font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">setTriggerLevel(level)</font></td>
+    <td>setzt neuen Triggerlevel</td>
+  </tr>
+</table>
+<font face="Arial, Helvetica, sans-serif"><br>
+<h4><br>
+UltrasonicSensor: </h4>
+</font>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%"><font face="Arial, Helvetica, sans-serif">UltrasonicSensor()</font></td>
+    <td width="70%"><font face="Arial, Helvetica, sans-serif">erzeugt eine Instanz eines Ultraschallsensors</font></td>
+  </tr>
+  <tr>
+    <td>
+      <p>UltrasonicSensor(far = onFar, near = onNear)</p>
+    </td>
+    <td>dasselbe mit registrierten Event-Callbacks  onFar(value), onNear(value) beim &Uuml;berqueren des Triggerlevels</td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">getValue()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">gibt die Entfernung zur&uuml;ck (in cm, -1 f&uuml;r Fehler)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">setTriggerLevel(level)</font></td>
+    <td>setzt neuen Triggerlevel</td>
+  </tr>
+</table>
+<font face="Arial, Helvetica, sans-serif"><br>
+<h4><br>
+InfraredSensor: </h4>
+</font>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%"><font face="Arial, Helvetica, sans-serif">InfraredSensor(id) </font></td>
+    <td width="70%"><font face="Arial, Helvetica, sans-serif">erzeugt  eine Instanz eines Infrarot Sensors mit geg. id (IR_CENTER = 0, IR_LEFT = 1, IR_RIGHT = 2, IR_LINE_LEFT = 3, IR_LINE_RIGHT = 4)</font></td>
+  </tr>
+  <tr>
+    <td>InfraredSensor(id, activated = onActivated, passivated = onPassivated)</td>
+    <td>dasselbe mit registrieren Event-Callbacks onActivated(id), onPassivated(id)</td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">getValue()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">gibt 1 zur&uuml;ck, wenn der Sensor reflektiertes Licht registriert, sonst 0</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">setTriggerLevel(level)</font></td>
+    <td>setzt neuen Triggerlevel</td>
+  </tr>
+</table>
+<font face="Arial, Helvetica, sans-serif"><br>
+<h4><font face="Arial, Helvetica, sans-serif"><br>
+  Camera: </font></h4>
+</font>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%"><font face="Arial, Helvetica, sans-serif">Camera() </font></td>
+    <td width="70%"><font face="Arial, Helvetica, sans-serif">erzeugt  eine Instanz einer Raspberry Pi Kamera</font></td>
+  </tr>
+  <tr>
+    <td valign="top">captureJPEG(width, height)</td>
+    <td>nimmt ein Bild mit der geg. Pixelauf&ouml;sung auf und gibt es als String im JPEG Format zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td valign="top">saveData(data, filename)</td>
+    <td>schreibt den Inhalt von data byteweise in eine bin&auml;re Datei (z.B. ein Bild im JPEG Format)</td>
+  </tr>
+  <tr>
+    <td valign="top">captureAndSave(width, height, filename)</td>
+    <td>nimmt ein Bild mit der geg. Pixelauf&ouml;sung auf und speichert es im JPEG Format im Linux-Dateisystem des Raspi</td>
+  </tr>
+  <tr>
+    <td valign="top">captureAndTransfer(width, height)</td>
+    <td>(nur remote mode) nimmt ein Bild mit der geg. Pixelauf&ouml;sung auf, transferiert es auf den remote Device und gibt es als String im JPEG Format zur&uuml;ck<br>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">readImage(jpeg)</td>
+    <td>Wandelt ein Bild als JPEG String in eine in GPanel verwendbare Bitmap um<br>
+    (from gpanel import *)</td>
+  </tr>
+</table>
+<br>
+<h4><br>
+<font face="Arial, Helvetica, sans-serif">ServoMotor: </font></h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%"><font face="Arial, Helvetica, sans-serif">ServoMotor(id, home, inc) </font></td>
+    <td width="70%"><font face="Arial, Helvetica, sans-serif">erzeugt  eine Instanz eines Servomotors mit geg. id. (Stecker S12:id=0,  S13:id=1, S14:id =2; S15:id=3). home: PWM duty cycle f&uuml;r Homeposition (0..4095), inc:  duty/position-Faktor. Setzt Motor auf Homeposition</font></td>
+  </tr>
+  <tr>
+    <td valign="top">setPos(pos)</td>
+    <td>setzt relative Position des Motors (pos &lt;&gt; 0 von Homeposition aus)</td>
+  </tr>
+  <tr>
+    <td valign="top">setPosAbs(pos)</td>
+    <td>setzt absolute Position des Motors (PWM duty cycle 0..4095)</td>
+  </tr>
+  <tr>
+    <td valign="top">setHome()</td>
+    <td>setzt Motor auf Homeposition</td>
+  </tr>
+</table>
+<h4><font face="Arial, Helvetica, sans-serif"><br>
+    Beeper: </font></h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="30%"><font face="Arial, Helvetica, sans-serif">Beeper() </font></td>
+        <td width="70%"><font face="Arial, Helvetica, sans-serif">erzeugt  eine Instanz eines Beepers (aktiver Buzzers zwischen GPIO-Port 40 und Ground angeschlossen, Polarit&auml;t beachten!)</font></td>
+    </tr>
+    <tr>
+        <td valign="top"><font face="Arial, Helvetica, sans-serif">Beeper(pin = 40) </font></td>
+        <td>dasselbe, aber am angegebenen GPIO-Port angeschlossen</td>
+    </tr>
+    <tr>
+        <td valign="top">turnOn()</td>
+        <td>schaltet den Beeper an</td>
+    </tr>
+    <tr>
+        <td valign="top">turnOff()</td>
+        <td>schaltet den Beeper ab</td>
+    </tr>
+    <tr>
+        <td valign="top">start(onTime, offTime, count = 0, blocking = False)</td>
+        <td>startet Ein-Ausschaltzyklus mit der Einschaltzeit onTime (ms), Ausschaltzeit offTime (ms), Anzahl Perioden count (default: 0: endlos). Mit blocking = True blockiert der Aufruf, bis alle Zyklen gespielt sind, sonst kehrt der Aufruf nach Start des Zyklus zur&uuml;ck (default: False)</td>
+    </tr>
+    <tr>
+        <td valign="top">stop()</td>
+        <td>beendet den Spielzyklus</td>
+    </tr>
+    <tr>
+        <td valign="top">setOnTime(onTime)</td>
+        <td>setzt die Einschaltzeit (auch w&auml;hrend des Spielens) (in ms)</td>
+    </tr>
+    <tr>
+        <td valign="top">setOffTime(offTime)</td>
+        <td>setzt die Ausschaltzeit (auch w&auml;hrend des Spielens) (in ms)</td>
+    </tr>
+    <tr>
+        <td valign="top">setOnOffTime(onTime, offTime)</td>
+        <td>setzt Ein- und Ausschaltzeit  (auch w&auml;hrend des Spielens) (in ms)</td>
+    </tr>
+    <tr>
+        <td valign="top">isBeeping()</td>
+        <td>liefert True, falls der Spielzyklus noch im Gang ist</td>
+    </tr>
+    <tr>
+        <td valign="top">beep(count = 1)</td>
+        <td>kurzes Piepen mit count Perioden (default: 1)</td>
+    </tr>
+</table>
+<h4><br>
+    Led: </h4>
+<font face="Arial, Helvetica, sans-serif"></font>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%"><font face="Arial, Helvetica, sans-serif">Led(id) </font></td>
+    <td width="70%"><font face="Arial, Helvetica, sans-serif">erzeugt  eine Instanz eines LED-Paars mit der geg. id (LED_FRONT = 0, LED_LEFT = 1, LED_REAR = 2, LED_RIGHT =  3)</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">setColor(red, green, blue)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">schaltet ein LED-Paar in der gegebenen RGB-Farbe ein (Farbkomponenten 0 ...255)</font></td>
+  </tr>
+  <tr>
+    <td valign="top">setColor(colorStr)</td>
+    <td>dasselbe, aber mit X11-Color-String</td>
+  </tr>
+  <tr>
+    <td valign="top">startBlinker(onColorStr, offColorStr, onTime,offTime, count, blocking = False)</td>
+    <td>startet  Blinker mit onColorStr, offColorStr (X11-Color-String) und  den Zeiten onTime, offTime (in ms). count: Anzahl Einschaltungen (0: endlos). Kehrt  sofort zur&uuml;ck, falls blocking = False, sonst blockierend, bis Blinken fertig</td>
+  </tr>
+  <tr>
+    <td valign="top">stopBlinker()</td>
+    <td>stoppt Blinker und schaltet Led ab</td>
+  </tr>
+  <tr>
+    <td valign="top">isBlinkerAlive()</td>
+    <td><em>True</em>, falls  Blinker noch aktiv</td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">Led.setColorAll(red, green, blue)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">schaltet alle 8 LEDs in der gegebenen RGB-Farbe (statische Methode)</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">Led.setColorAll(colorStr)</font></td>
+    <td>dasselbe, aber mit X11-Color-String</td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">Led.clearAll()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">schaltet alle LEDs aus  (statische Methode)</font></td>
+  </tr>
+</table>
+<font face="Arial, Helvetica, sans-serif"><br>
+<h4><br>
+Display: </h4>
+</font>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%"><font face="Arial, Helvetica, sans-serif">Display() </font></td>
+    <td width="70%"><font face="Arial, Helvetica, sans-serif">erzeugt eine Instanz eines 7-Segment-Displays</font></td>
+  </tr>
+  <tr>
+    <td ><font face="Arial, Helvetica, sans-serif">clear() </font></td>
+    <td ><font face="Arial, Helvetica, sans-serif">l&ouml;scht das  Display (und stoppt den Display-Multiplexer)</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">isAvailable()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">gibt True zur&uuml;ck, falls das Display angeschlossen ist, andernfalls False</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">isBlinkerAlive()()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">gibt True zur&uuml;ck, falls der Blinker angezeigt wird, sonst False</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">isTickerAlive()()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">gibt True zur&uuml;ck, falls der Ticker angezeigt wird, sonst False</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">scrollToLeft()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">scrollt den Text  um einen Schritt nach links</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">scrollToRight()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">scrollt den Text um einen Schritt nach rechts</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">setToStart()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">setzt den Text an die Startposition</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">showText(text, pos=0, dp=[0, 0, 0, 0]]</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">zeigt den gegebenen Text an. Optional Position pos und Dezimalpunkte dp als Liste mit 0 oder 1</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">showBlinker(text, dp=[0, 0, 0, 0], count=3, speed=1, blocking=False)</font></td>
+    <td>
+      <p><font face="Arial, Helvetica, sans-serif">zeigt einen blinkenden Text. Optional Dezimalpunkte dp als Liste mit 0 oder 1, <br>
+      count: Anzahl Wiederholungen; speed: Blinkgeschwindigkeit; blocking: blockierend, bis Blinker beendet ist</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">showTicker(text, count=1, speed=2, blocking=False)</font></td>
+    <td>
+      <p><font face="Arial, Helvetica, sans-serif">zeigt den Tickertext scrollend nach links, bis die letzten 4 Zeichen angezeigt sind.<br>
+        count: Anzahl Wiederholungen; speed: Scrollgeschwindigkeit; blocking: blockierend, bis Ticker beendet ist</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">stopBlinker()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">stoppt den laufenden Blinker</font></td>
+  </tr>
+  <tr>
+    <td valign="top"><font face="Arial, Helvetica, sans-serif">stopTicker()</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">stoppt den laufenden Ticker</font></td>
+  </tr>
+</table>
+<font face="Arial, Helvetica, sans-serif"><br>
+<h4><br>
+    OLED1306: </h4>
+</font>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="30%"><font face="Arial, Helvetica, sans-serif">OLED1306() </font></td>
+        <td width="70%"><font face="Arial, Helvetica, sans-serif">erzeugt  eine Instanz eines alphanumerischen OLED-Displays mit 128x64 pixels  (mit SSD1306 Chip), der an I2C angeschlossen ist (Adresse 0x3C)</font></td>
+    </tr>
+    <tr>
+        <td valign="top"><font face="Arial, Helvetica, sans-serif">OLED1306(filename)</font></td>
+        <td>dasselbe, aber mit angegebenen Hintergrundbild (ppm-Format 128x64 B/W). (Nur autonomer Modus)</td>
+    </tr>
+    <tr>
+        <td valign="top">setBkImage(filename)</td>
+        <td>w&auml;hlt das Hintergrundbild (ppm-Format 128x64 B/W). None: ein bestehendes Bild wird entfernt  (nur autonomer Modus)</td>
+    </tr>
+    <tr>
+        <td valign="top">setFont(ttfFile, fontSize)</td>
+        <td>entnimmt das Font der angegenenen TTF-Fontdatei (nur autonomer Mode)</td>
+    </tr>
+    <tr>
+        <td valign="top">setFontSize(fontSize)</td>
+        <td>setzt die Schriftgr&ouml;sse (in pixel)</td>
+    </tr>
+    <tr>
+        <td valign="top">setText(text, lineNum, fontSize = None, indent = 0)</td>
+        <td>schreibt den Text text auf die Zeilennummer lineNum (0, 1,...) mit der gew&auml;hlten Schriftgr&ouml;sse in pixel (default: None: aktueller Wert). Der Text wird um indent pixels einger&uuml;ckt (default: 0)</td>
+    </tr>
+    <tr>
+        <td valign="top">println(text)</td>
+        <td>f&uuml;gt den Text  mit einem Zeilenumbruch in den Textbuffer und zeigt diesen  an. Der Text wird im Fenster bei Bedarf nach oben gescrollt, damit die letzte Zeile sichtbar bleibt</td>
+    </tr>
+    <tr>
+      <td valign="top">clear()</td>
+      <td>l&ouml;scht den Display und den Textbuffer</td>
+    </tr>
+    <tr>
+        <td valign="top">setInverse(inverse = True)</td>
+        <td>w&auml;hlt schwarze Pixel auf weissem Hintergrund</td>
+    </tr>
+    <tr>
+        <td valign="top">startBlinker(count = 3, offTime = 1000, onTime = 1000, blocking = False)</td>
+        <td>startet einen Blinkzyklus mit count Perioden, der Ausschaltzeit offTime (ms) und der Einschaltzeit onTime (ms). Falls blocking = True blockierend, bis Zyklus beendet</td>
+    </tr>
+    <tr>
+      <td valign="top">stopBlinker()</td>
+      <td>beendet einen laufenden Blinkzyklus</td>
+    </tr>
+    <tr>
+        <td valign="top">isBlinking()</td>
+        <td>liefert True, falls Blinkzyklus l&auml;uft</td>
+    </tr>
+</table>
+<font face="Arial, Helvetica, sans-serif">
+<h4><br>
+Tools: </h4>
+</font>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%"><font face="Arial, Helvetica, sans-serif">delay(time)</font></td>
+    <td width="70%"><font face="Arial, Helvetica, sans-serif">h&auml;lt das Programm w&auml;hrend der Zeit time (in Millisekunden) an</font></td>
+  </tr>
+</table>
+<font face="Arial, Helvetica, sans-serif"><br>
+<h4><br>
+RobotContext (nur Simulation) </h4>
+</font>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%"><font face="Arial, Helvetica, sans-serif">setStartDirection(angle)</font></td>
+    <td width="70%"><font face="Arial, Helvetica, sans-serif">setzt die Startrichtung des Roboters (0 gegen Osten, positiv im Uhrzeigersinn)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">setStartPosition(x, y)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">setzt die Startposition des Roboters (Pixelkoordinaten, Nullpunkt oben links</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">showStatusBar(height)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">f&uuml;gt eine Statusbar mit gegebener H&ouml;he unten am Fenster an</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">setStatusText(text)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">setzt den Statustext (alter Text wird gel&ouml;scht)</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">useBackground(filename)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">f&uuml;gt ein Hintergrundbild f&uuml;r den Lichtsensor ein</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">useObstacle(filename, x, y)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">f&uuml;gt ein Hindernis f&uuml;r den Infrarotsensor an der Position (x, y) ein</font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial, Helvetica, sans-serif">useTarget(filename, mesh, x, y)</font></td>
+    <td><font face="Arial, Helvetica, sans-serif">f&uuml;gt ein Target f&uuml;r den Ultraschallsensor an der Position (x, y) ein</font></td>
+  </tr>
+  <tr>
+    <td>useTorch(power, x, y, z)</td>
+    <td>f&uuml;gt eine mausverschiebbare Lampe (Punktlichtquelle) mit gegebener Leistung an gegebener Position ein (z: H&ouml;he) (wird f&uuml;r aufw&auml;rts gerichtete Lichtsensoren verwendet)</td>
+  </tr>
+  <tr>
+    <td>useShadow(ulx, uly, lrx, lry)</td>
+    <td>f&uuml;gt einen rechteckigen Schatten mit gegebenen oberen linken/unteren rechten Ecken ein (absorbiert das Licht von Lampen)</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="25%"><font face="Arial, Helvetica, sans-serif">Vollst&auml;ndige Dokumentation :</font></td>
+    <td width="75%"><font face="Arial, Helvetica, sans-serif"><a href="http://www.aplu.ch/classdoc/raspipylib/">RaspiPyLib</a> (Python Doc)</font></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><font face="Arial, Helvetica, sans-serif"><a href="http://www.aplu.ch/classdoc/raspijlib/">RaspiJLib</a> (JavaDoc)</font></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><font face="Arial, Helvetica, sans-serif"><a href="http://www.aplu.ch/classdoc/raspisim/">RaspiSim</a> (JavaDoc, simulation mode)</font></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p><font face="Arial, Helvetica, sans-serif"><strong>Zustandsauswahl mit Drucktaste und  LED/Display-Anzeigen</strong> der RaspiBrick Firmware</font></p>
+<table  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="82" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>Zustand</strong></font></p>
+    </td>
+    <td width="76" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>Einschalten</strong></font></p>
+    </td>
+    <td width="62" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>Suche Access Point (AP)</strong></font></p>
+    </td>
+    <td width="76" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>AP gefunden<br>
+      </strong></font></p>
+    </td>
+    <td width="74" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>AP nicht gefunden</strong><br>
+&nbsp;</font></p>
+    </td>
+    <td width="233" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>Bereit &nbsp;</strong><br>
+      </font></p>
+    </td>
+    <td width="118" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>BrickGate-Server l&auml;uft und wartet auf einen Client</strong></font></p>
+    </td>
+    <td width="110" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>BrickGate-Server hat Verbindung mit einem    Client</strong></font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="82" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>Anzeige<br>
+      </strong>(falls vorhanden)</font></p>
+    </td>
+    <td width="76" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">leer</font></p>
+    </td>
+    <td width="62" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">AP--</font></p>
+    </td>
+    <td width="76" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">Ticker:<br>
+        IP-Adresse</font></p>
+    </td>
+    <td width="74" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">Ticker:<br>
+        #0-0-0-0</font></p>
+    </td>
+    <td width="233" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">m-n<br>
+      m: Prog.ID des ausgew&auml;hlten Programms<br>
+      n: Anzahl gespeicherter Programme</font><br>
+      </p>
+    </td>
+    <td width="118" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">HOLd</font></p>
+    </td>
+    <td width="110" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">kurze Anzeige    von&nbsp; <em>Conn</em>, dann leer (frei f&uuml;r    User-Programm)</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="82" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>LEDs </strong><br>
+      (neben Taste)</font></p>
+    </td>
+    <td width="76" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">dunkel</font></p>
+    </td>
+    <td width="62" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">weiss</font></p>
+    </td>
+    <td width="76" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">gr&uuml;n</font></p>
+    </td>
+    <td width="74" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">gelb</font></p>
+    </td>
+    <td width="233" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">blau, blink die Zahl der Prog.ID</font></p>
+    </td>
+    <td width="118" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">gr&uuml;n blinkend</font></p>
+    </td>
+    <td width="110" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">dunkel (frei&nbsp; f&uuml;r User- Programm)</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="82" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>M&ouml;gliche Aktionen</strong></font></p>
+    </td>
+    <td width="76" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">Warten</font></p>
+    </td>
+    <td width="62" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">Abbrechen mit    Klick</font></p>
+    </td>
+    <td width="76" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">Abbrechen mit    Klick</font></p>
+    </td>
+    <td width="74" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">Abbrechen mit    Klick</font></p>
+    </td>
+    <td width="233" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">Klick startet gew&auml;hltes Python-Programm, Doppelklick w&auml;hlt Prog.ID aus,<br>
+      langes Halten startet BrickGate-Server,<br>
+      langes Halten mit vorderem IR-Sensor aktiviert beginnt Shutdown,<br>
+      Klick mit vorderen IR-Sensor aktiviert zeigt IP-Adresse, Doppelklick mit vorderem IR-Sensor aktiviert l&ouml;scht alle Programme</font><br>
+      </p>
+    </td>
+    <td width="118" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">Klick startet    autonomes Java-Programm, langes Halten stoppt BrickGate-Serve</font><font face="Arial, Helvetica, sans-serif">r</font></p>
+    </td>
+    <td width="110" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">frei f&uuml;r    User-Programm</font></p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h4><font face="Arial, Helvetica, sans-serif"><strong>Herunterfahren<br>
+</strong></font></h4>
+<table border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="72" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>Zustand</strong></font></p>
+    </td>
+    <td width="145" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>IdLE</strong></font></p>
+    </td>
+    <td width="199" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>Shutdown &quot;Are you sure?&quot;</strong></font></p>
+    </td>
+    <td width="210" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>Shutdown best&auml;tigt</strong></font></p>
+    </td>
+    <td width="224" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>Shutdown abgebrochen</strong></font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="72" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>Anzeige</strong></font></p>
+    </td>
+    <td width="145" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">m-n</font></p>
+    </td>
+    <td width="199" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">oooo</font></p>
+    </td>
+    <td width="210" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">BYE.</font></p>
+    </td>
+    <td width="224" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">IdLE</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="72" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>LEDs</strong></font></p>
+    </td>
+    <td width="145" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">blau</font></p>
+    </td>
+    <td width="199" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">rot</font></p>
+    </td>
+    <td width="210" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">dunkel und dann    schwach rot</font></p>
+    </td>
+    <td width="224" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">blau</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="72" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif"><strong>M&ouml;gliche Aktionen</strong></font></p>
+    </td>
+    <td width="145" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">Langes Tastenhalten    und vorderem IR-Sensor gleichzeitig aktiviert</font></p>
+    </td>
+    <td width="199" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">Best&auml;tigen:  Klick mit aktiviertem vorderen IR-Sensor. 
+        Abbrechen:     Klick ohne IR- Sensor</font></p>
+    </td>
+    <td width="210" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">Warten, bis gr&uuml;ne    LED des Raspberry Pi nicht mehr blinkt. Dann ausschalten</font></p>
+    </td>
+    <td width="224" valign="top">
+      <p><font size="-1" face="Arial, Helvetica, sans-serif">Normal weiterverwenden</font></p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h4><font face="Arial, Helvetica, sans-serif"><strong>&Uuml;bersicht RaspiBrick</strong></font></h4>
+<ul>
+  <li><font face="Arial, Helvetica, sans-serif">Vollst&auml;ndig konfiguriertes Linux-Betriebssystem mit Zusatzkomponenten als SD-Karten-Image<br />
+        <br />
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">(Falls erw&uuml;nscht) Weitgehend automatisierte manuelle Installation ausgehend von der Raspberry Pi NOOBS Distribution<br>
+    <br>
+  </font></li>
+<li><font face="Arial, Helvetica, sans-serif">Automatisierter Update aus einem GitHub-Repository<br />
+      <br />
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">Unterst&uuml;tzung aller Pi2Go-Modelle, aber auch mit anderer Robotik-Hardware einsetzbar<br />
+      <br />
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">Wahl des Access-Points (SSID/Passkey) durch Setup-Tool ohne direkten Anschluss eines Bildschirms<br />
+    <br />
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">Vorinstallierter VNC-Server f&uuml;r Remote Desktop<br />
+      <br />
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">Umfangreiche klassenbasierte Robotik-Library mit &auml;hnlichem Design wie bei der Lego Robotik<br />
+      <br />
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">Direkt importierbare Python-Library im PYTHONPATH f&uuml;r User pi, root und sudoer<br />
+      <br />
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">Installierte Entwicklungsumgebung TigerJython  (als sudo gestartet)<br />
+      <br />
+  </font></li>
+<li><font face="Arial, Helvetica, sans-serif">TigerJython-Roboter-Bibliothek mit direktem, transparenten Zugriff auf die Roboter-Hardward (kein Linux-Desktop n&ouml;tig)<br />
+        <br />
+  </font></li>
+<li><font face="Arial, Helvetica, sans-serif">Vorinstallierte Java-IDE BlueJ und RaspiTransfer zur Entwicklung von Java Robotik-Programmen<br />
+        <br />
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">Unterst&uuml;zung von Python- und Java-Programmen sowohl f&uuml;r den autonomen und Remote-Modus (analog dem NXT/EV3 Direct Mode)<br>
+    <br>
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">Simulation grundlegender RaspiBrick-Operationen in Python und Java mit gleichbleibendem API (in Vorbereitung)<br />
+    <br />
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">IP-Socket Server (BrickGate) zur Ausf&uuml;hrung von Remote-Programmen in irgendeiner Programmiersprache <br />
+      <br />
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">Managment Tool (BrickStarter) zur Ausf&uuml;hrung von autonomen Programmen und zum Herunterfahren ohne Bildschirm/Tastatur. Automatisch beim Booten gestartet.<br />
+    <br />
+  </font></li>
+<li><font face="Arial, Helvetica, sans-serif">Sourcen der Library und der Installationsscripts &uuml;ber GitHub frei verf&uuml;gbar (http://github.com/raspibrick)<br />
+      <br />
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">Online-Tutorials </font>
+      <ul>
+        <li><font face="Arial, Helvetica, sans-serif"><a href="http://www.jython.ch/pi2go">http://www.jython.ch/pi2go</a></font></li>
+        <li><font face="Arial, Helvetica, sans-serif"><a href="http://www.python-exemplarisch.ch">http://www.python-exemplarisch.ch</a></font></li>
+        <li><font face="Arial, Helvetica, sans-serif"><a href="http://www.raspibrick.com">http://www.raspibrick.com</a><br />
+          <br />
+        </font></li>
+    </ul>
+  </li>
+  <li><font face="Arial, Helvetica, sans-serif">Laufend erweiterte Sammlung von Anwendungsbeispielen<br />
+        <br />
+  </font></li>
+  <li><font face="Arial, Helvetica, sans-serif">Online-Support in Deutsch, Franz&ouml;sisch und Englisch (support@raspibrick.com)</font></li>
+</ul>
+<p><font face="Arial, Helvetica, sans-serif"><a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></font></p>
+<p>&nbsp;</p>
+</body>
+</html>
+

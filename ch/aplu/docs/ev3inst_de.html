@@ -1,0 +1,155 @@
+<html>
+<head>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+<blockquote>
+  <h2><a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></h2>
+  <h2>EV3 installieren</h2>
+  <h3>1 SD-Karte mit leJOS EV3 erstellen</h3>
+  <p>Der EV3-Brick startet standardm&auml;ssig mit einem  Men&uuml; von LEGO Mindstorms. Damit der Brick Python-Scripts ausf&uuml;hren kann, m&uuml;ssen Sie  eine SD-Karte mit der leJOS EV3-Distribution erstellen, die zus&auml;tzlich einen unter Linux laufenden Python-Interpreter enth&auml;lt. Ist diese SD-Karte beim Einschalten des Roboters eingesteckt, startet der EV3 automatisch mit einem leJOS Men&uuml;. Wird die Karte wieder entfernt, k&ouml;nnen Sie den Brick wieder standardm&auml;ssig mit dem LEGO-Men&uuml; verwenden.</p>
+</blockquote>
+<ul>
+  <li>Nehmen Sie eine leere Micro SD-Karte mit mindestens 4&nbsp;GB und maximal 32 GB Speicherkapazit&auml;t</li>
+  <li>Stecken Sie diese Karte mit einem USB-Kartenleser in Ihren Computer</li>
+  <li>Eine neue SD-Karte enth&auml;lt &uuml;blicherweise eine leere FAT32 formatierte prim&auml;re Partition und kann sofort verwendet werden. Bei bereits gebrauchten SD-Karten solllten Sie mit einer Datentr&auml;gerverwaltung &uuml;berpr&uuml;fen, ob die Karte eine leere FAT32 Partition enth&auml;lt. (Eine bereits im EV3 verwendete Karte enth&auml;lt eine 500 MB FAT Partition. Der &uuml;brige Teil ist Ext2-formatiert und enth&auml;lt das Linux-Dateisystem. Es gen&uuml;gt daher nicht, die Karte zu formatieren, sondern sie muss neu partitioniert werden. Unter Windows k&ouml;nnen Sie die Karte mit dem Gratis-Werkzeug <em>MiniTool Partition Home Edition</em> neu partitionieren, indem Sie alle vorhandenen Partitionen  l&ouml;schen und eine einzige FAT32 Partition  erstellen.)</li>
+  <li>Laden Sie die Datei <a href="http://clab2.phbern.ch/lego/EV3Autonom/download/ev3sdcard.zip"><strong>ev3sdcard.zip</strong></a> (ca. 70 MB) herunter, packen Sie sie aus und kopieren Sie alle Dateien auf die SD-Karte. <br>
+  Sie finden  danach folgende Dateien/Verzeichnisse:</li>
+</ul>
+<blockquote>
+  <p align="center"><img src="gifs/sdcard2.png" alt="" width="455" height="168" border="1"><br>
+      <br>
+  </p>
+  <h3>2 leJOS auf EV3 starten</h3>
+</blockquote>
+<ul>
+  <li>SD-Karte einschieben 
+    (Beschriftung nach oben) und EV3 einschalten</li>
+  <li>Auf dem EV3-Display erscheint nach kurzer Zeit der leJOS-Start-Bildschirm. Wird hingegen das Lego-Men&uuml; gestartet, so ist Ihre Karte nicht korrekt konfiguriert. &Uuml;berpr&uuml;fen Sie, dass tats&auml;chlich eine prim&auml;re 4 - 32 GB grosse FAT32-Partition vorliegt und alle Dateien/Verzeichnisse vorhanden sind.</li>
+  <li>Beim ersten Start wird die SD-Karte automatisch neu partitioniert. Deswegen m&uuml;ssen Sie ca. 20&nbsp;Minuten Geduld haben. Danach erscheint auf dem EV3-Display  das leJOS-Men&uuml;. Sie k&ouml;nnen jetzt die Karte immer eingesteckt lassen</li>
+  <li>Schalten Sie den EV3 aus und starten Sie ihn neu</li>
+</ul>
+<br>
+
+<blockquote>
+  <h3>3 <strong>Mit dem EV3 verbinden</strong></h3>
+  <p>Alle Verbindungen mit dem EV3 ben&uuml;tzen das TCP/IP Protokoll, aber beim physikalischen Transportkanal kann es sich um USB, Bluetooth oder WLAN handeln. Der EV3 antwortet auf Ping-Requests und Sie k&ouml;nnen damit am einfachsten &uuml;berpr&uuml;fen, ob die Verbindung zum EV3 klappt. Die Standard-IP-Adresse f&uuml;r Bluetooth und USB ist 10.0.1.1. Diese Adresse wird auch auf dem leJOS Startbildschirm angezeigt.</p>
+  <p>Sie k&ouml;nnen sich &uuml;ber USB, Bluetooth oder WLAN mit dem EV3 verbinden, aber wir empfehlen Ihnen Bluetooth zu verwenden, da Sie dabei ohne Kabel und zus&auml;tzlichen WLAN-Adapter auskommen. (Informationen, wie Sie sich mit USB oder WLAN verbinden, erhalten Sie <a href="http://www.jython.ch/robotinstall">hier</a>.) Um eine IP-Verbindung &uuml;ber Bluetooth aufzubauen, wird das Bluetooth Personal Area Netzwerk (PAN) Protocol verwendet. </p>
+  <p>Da standardm&auml;ssig Bluetooth auf dem EV3 eingeschaltet ist, sind auf dem EV3 keine weiteren Einstellungen n&ouml;tig, um die Verbindung &uuml;ber Bluetooth zu verwenden. Sie m&uuml;ssen allerdings den PC mit dem EV3 paaren, so wie Sie es mit irgendeinem anderen Bluetooth-Ger&auml;t gewohnt sind und den EV3 als PAN Access Point definieren. Das Vorgehen h&auml;ngt vom verwendeten Betriebssystem ab.</p>
+  <div align="justify">
+    <table border="0" width="906">
+      <tbody>
+        <tr>
+          <td valign="top" width="605"><strong>Bluetooth PAN unter Windows</strong>:<br>
+            <br>
+            
+            <ul>
+              <li>F&uuml;hren Sie, so wie Sie es mit anderen Bluetooth-Ger&auml;ten gewohnt sind, eine Bluetooth-Suche durch und paaren Sie den EV3. Best&auml;tigen Sie den Sicherheitscode (Kennung) mit OK, obschon Sie ihn auf dem EV3 nicht sehen</li>
+              <li>Nach dem Paaren (<strong>und jedes Mal, wenn der EV3 neu eingeschaltet wird</strong>) m&uuml;ssen Sie den EV3 als Zugriffspunkt definieren. Gehen Sie dazu in der <em>Systemsteuerung</em> unter <em>Ger&auml;te und Drucker</em> und f&uuml;hren Sie einen Rechtsklick auf das<em> EV3-Symbol</em> aus. W&auml;hlen Sie dann: <em>Verbindung erstellen &uuml;ber: -&gt; Zugriffspunkt.</em></li>
+          </ul></td>
+          <td valign="top" width="291"><img src="gifs/ev3bluetooth1_de.png" alt="ev3ndis1" width="451" height="179"></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  <div align="justify">
+    <table border="0" width="906">
+      <tbody>
+        <tr>
+          <td valign="top" width="628"><strong>Bluetooth PAN unter Linux (Ubuntu)</strong>:<br>
+            <br>
+            
+              <ul>
+                <li>Paaren Sie den EV3 und aktivieren Sie unter Bluetooth Einstellungen die Checkbox "Benutzung Ihres Mobiltelefons als Netzwerkger&auml;t (PAN/NAP)"</li>
+          </ul></td>
+          <td valign="top" width="268"><img src="gifs/ev3_pan_linux2_de.png" alt="ev3_pan_linux" height="95" width="472"></td>
+        </tr>
+      </tbody>
+    </table>
+    <table border="0" width="906">
+      <tbody>
+        <tr>
+          <td valign="top"><br>
+            
+              <ul>
+                <li>Nach dem Paaren und <strong>jedes Mal, wenn der EV3 eingeschaltet wird</strong>, m&uuml;ssen Sie den EV3 als aktiven IP Zugriffspunkt (Access Point) ausw&auml;hlen. Unter der <em>Netzwerk  </em> Ikone klicken Sie auf <em>EV3&nbsp;Netzwerk</em>. Nach einer kurzen Zeit erscheint eine Best&auml;tigungsmeldung &uuml;ber die erfolgreiche Verbindung.</li>
+            </ul></td>
+          <td valign="top"><img src="gifs/ev3_pan_linux_de.png" alt="ev3_pan_linux" height="293" width="243"></td>
+        </tr>
+        <tr>
+          <td valign="top" width="628"><strong>Bluetooth PAN unter MacOS:</strong><br>
+            <br>
+            
+              <ul>
+                <li>Klicken Sie auf die Bluetooth-Ikone und f&uuml;hren Sie eine Bluetooth-Suche durch. Paaren Sie den EV3, wobei Sie den passkey ignorieren. Im Bluetooth Control Panel erscheint als  EV3* (nicht verbunden)<br>
+                <br>
+                </li>
+                <li>Nach dem Paaren und <strong>jedes Mal, wenn der EV3 eingeschaltet wird</strong>, klicken Sie auf die Bluetooth-Ikone und setzten Sie den Cursor auf EV3. W&auml;hlen Sie <em>"Mit Netzwerk verbinden"</em></li>
+            </ul>
+              <p align="center"><img src="gifs/btmac6.png" alt="bluetooth_mac" width="500" height="229"></p>
+          </td>
+          <td valign="top" width="268"><p>&nbsp;</p>
+              <p>&nbsp;</p></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Sie k&ouml;nnen den <strong>Bluetooth-Namen</strong> des EV3-Bricks im leJOS-Men&uuml; unter <em>System - Change name</em> &auml;ndern. Um den neuen Namen einzugeben, m&uuml;ssen Sie den Cursor-Block mit den Cursor-Tasten auf das gew&uuml;nschte Zeichen verschieben und mit der <em>Enter</em>-Taste best&auml;tigen. Der neue Name ist unten am Display sichtbar. (U steht f&uuml;r Grossbuchstaben (uppercase), l f&uuml;r Kleinbuchstaben (lowercase), X f&uuml;r L&ouml;schen und D f&uuml;r Beenden (Done)). Um den neuen Namen zu best&auml;tigen, m&uuml;ssen Sie auf D fahren und <em>Enter</em> dr&uuml;cken. Damit dieser aktiv wird, booten Sie den EV3 neu.</p>
+  <p>&nbsp;</p>
+  <p>4 <strong>BrickGate starten/updaten</strong></p>
+</blockquote>
+<blockquote>
+  <p align="justify">Bei der Ausf&uuml;hrung von Python-Scripts auf einem externen PC/Smartphone, aber auch mit dem lokalen EV3-Python-Interpreter greifen diese  auf die Lego-Hardware (Motoren, Sensoren, usw.) &uuml;ber den <strong>BrickGate</strong>-Server zu. Es handelt sich dabei um einen <strong>TCP/IP-Gateway</strong>, der die   codierten Befehle des Pythonprogramms empf&auml;ngt, sie interpretiert  und die   entsprechenden Aktionen unter Verwendung der Java-basierten leJOS-Klassenbibliothek ausf&uuml;hrt. Zudem zeigt <em>BrickGate</em> auf dem EV3-Display die im Linux-Dateisystem gespeicherten Python-Scripts an und erm&ouml;glicht es, sie f&uuml;r den autonomen Modus mit den EV3-Buttons auszuw&auml;hlen und zu starten.</p>
+  <p align="justify"><em>BrickGate</em> ist in der Distribution der   SD-Karte bereits enthalten. Das Programm ist nach der Grundinstallation im EV3-Men&uuml; unter <em>Programs</em> sichtbar und kann dort gestartet werden. Falls Sie das Programm aus Versehen gel&ouml;scht haben oder  es auf die neuste Version updaten wollen, so k&ouml;nnen Sie es jederzeit von hier   downladen. </p>
+  <p align="justify"><a href="http://www.aplu.ch/brickgate-install">Download BrickGate</a></p>
+  <p align="justify">Beim  Download wird <em>BrickGate.jar</em> und ein dazugeh&ouml;render Bibliotheksordner <em>ev3robot</em> von unserem Webserver auf den EV3 &uuml;bertragen. Dabei muss der EV3 &uuml;ber Bluetooth (oder USB, WLAN) mit dem Computer verbunden sein und der Computer einen Internetzugang haben.</p>
+  <p align="justify"><font size="-1">(Der Link ist ein WebStart, der die Installation des Java Runtime Environment (JRE) voraussetzt. Beim Start wird normalerweise eine Sicherheitswarnung ausgel&ouml;st. Sie k&ouml;nnen diese positiv best&auml;tigen, da  eine Signatur von Comodo f&uuml;r ACE information technology AG, Switzerland vorliegt. F&uuml;r die Installation unter Linux, siehe Anhang)</font></p>
+<p>Es ist  vorteilhaft, <em>BrickGate</em> als <em>Default</em> Programm zu w&auml;hlen, damit Sie beim Einschalten des EV3 <em>Brickgate</em> mit einem einzigen Klick starten k&ouml;nnen. Gehen Sie wie folgt vor: Nachdem Sie mit dem <em>Enter</em>-Button auf <em>BrickGate.jar</em> geklickt haben, bl&auml;ttern Sie mit dem <em>Left</em>-Button im EV3-Men&uuml;, bis die Option <em>Set as Default</em> erscheint. Best&auml;tigen Sie die Auswahl mit dem <em>Enter</em>-Button.</p>
+<p><br>
+    <br>
+</p>
+<h3>5 Ihr erstes Programm im direkten und autonomen Modus</h3>
+</blockquote>
+<ul>
+  <li>Starten Sie <em>TigerJython</em> </li>
+  <li>Klicken Sie auf das Symbol <em>Einstellungen</em> und w&auml;hlen Sie das Register <em>Bibliotheken</em>. Aktivieren Sie die Checkbox <em>EV3-Download aktivieren</em> und <em>Nach Download ausf&uuml;hren</em>:</li>
+</ul>
+<p align="center"><img src="gifs/ev3tigerjython.png" alt="ev3tigerjython" width="296" height="408"></p>
+<ul>
+  <li>Beenden Sie <em>TigerJython</em> und starten Sie  neu</li>
+  <li>In der   Ikonenleiste des Editors erscheint eine neue Ikone mit einem EV3-Button-Symbol, die f&uuml;r   EV3-Robotik verwendet wird. </li>
+  <li>Schreiben Sie ein kurzes Programm unter dem Namen <em>MyFirst</em></li>
+</ul>
+<blockquote>
+  <p align="center"><img src="gifs/ev3myfirst_de.png" width="635" height="480"></p>
+</blockquote>
+<ul>
+  <li>F&uuml;hren Sie das Python-Script im <strong>direkten Modus</strong> aus: Klicken Sie auf den gr&uuml;nen Pfeil <em>Ausf&uuml;hren. </em>Es erscheint ein Dialogfenster, in dem nach der IP-Adresse des EV3 gefragt wird. Best&auml;tigen Sie den Standardwert 10.0.1.1 durch Dr&uuml;cken von OK. Das Script wird nun auf dem PC ausgef&uuml;hrt und die Befehle &uuml;ber Bluetooth an den EV3-Brickgate-Server gesendet. Dieser spielt zur Best&auml;tigung der erfolgreichen Verbindung eine Melodie und bewegt sich kurz vorw&auml;rts. Beim Verbindungsabbruch ert&ouml;nt  eine zweite Melodie<br>
+    <br>
+  </li>
+  <li>F&uuml;hren Sie dasselbe Python-Script im <strong>autonomen Modus</strong> aus: Klicken Sie die EV3-Ikone. Im Ausgabe-Fenster erscheint eine Best&auml;tigung f&uuml;r den erfolgreichen Download und das Script startet mit dem Python-Interpreter des EV3 automatisch. Es sendet wiederum Befehle an den BrickGate-Server, allerdings nun &uuml;ber eine lokale (interne) IP-Verbindung (localhost).  Der EV3 spielt zur Best&auml;tigung der erfolgreichen Verbindung eine Melodie und bewegt sich wiederum kurz vorw&auml;rts. Beim Verbindungsabbruch ert&ouml;nt  eine zweite Melodie</li>
+</ul>
+<blockquote>
+  <p align="center"><img src="gifs/ev3download_de.png" width="635" height="480"></p>
+
+  <p> Das   Python-Script, das auf dem EV3-Brick im Ordner <em>/home/python/scripts </em>gespeichert ist, erscheint automatisch im<em> BrickGate</em>-Men&uuml;. Mit den<em> Up-Down</em>-Buttons kann der Pfeil verschoben werden und mit <em>Enter</em> wird das Script  vollst&auml;ndig eigenst&auml;ndig auf dem EV3-Brick erneut ausgef&uuml;hrt, auch wenn dieser nicht mehr mit einem PC verbunden ist.</p>
+  <p align="center"><img src="gifs/ev3display.gif" alt="ev3inst" width="155" height="114"></p>
+  <p>Im   autonomen Modus werden  bei fehlerhaften   Programmen keine  Fehlermeldungen   angezeigt. Immerhin kann ein blockierendes Programm mit der Tastenkombination <strong>Down+Enter</strong> abgebrochen werden. Dabei wird allerdings auch der BrickGate-Server beendet und muss neu gestartet werden. Es ist  deswegen vorteilhaft,  Programme zuerst im   direkten Modus zu entwickeln und zu testen und erst danach  im   autonomen Modus laufen zu lassen.</p>
+  <p>(Falls Sie sich n&auml;her f&uuml;r das Linux-Betriebssystem interessieren und Python (oder Java) auf dem EV3 lokal ausf&uuml;hren wollen, so &ouml;ffnen Sie eine SSH shell. Weitere Informationen finden Sie <a href="http://www.aplu.ch/home/ev3_inst.html#explorelinux">hier</a>.)</p>
+  <h3><font size="-1"><br>
+  Anhang: Installation der JRE und des Webstart-Browser-Plugins unter Linux (Ubuntu)</font></h3>
+  <p><font size="-1">F&uuml;hren Sie in einem Terminal folgende Befehle aus:</font></p>
+  <table border="0" width="97%">
+    <tbody>
+      <tr>
+        <td bgcolor="F0F0F5"><font size="-1"><strong>sudo add-apt-repository ppa:webupd8team/java <br>
+          sudo apt-get update <br>
+          sudo apt-get install oracle-java7-installer </strong></font></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>&nbsp;</p>
+  <p><a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a><br>
+  </p>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,821 @@
+<!--Dokumentation Turtlegrafik-->
+<html>
+<head>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+
+
+
+<a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a>
+<h2>Dokumentation Turtlegrafik</h2>
+<h3>Module import: from gturtle import *<br></h3>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%" bgcolor="#F0F0F5">Funktion</td>
+    <td width="62%" bgcolor="#F0F0F5">Aktion</td>
+  </tr>
+  
+  <tr>
+    <td>makeTurtle()</td>
+    <td >erzeugt  eine (globale) Turtle im neuen Grafikfenster und gibt die globale Turtlereferenz zur&uuml;ck</td>
+  </tr>
+   <tr>
+    <td>makeTurtle(color)</td>
+    <td >erzeugt  eine  Turtle mit gegebener Farbe und gibt die globale Turtlereferenz zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td>makeTurtle(&quot;sprites/turtle.gif&quot;)</td>
+    <td >erzeugt Turtle mit einem eigenen Turtle-Bild turtle.gif und gibt die globale Turtlereferenz zur&uuml;ck</td>
+  </tr>  
+  <tr>
+      <td>makeTurtle(color, size)</td>
+      <td >erzeugt eine kreisf&ouml;rmige Turtle mit gegebener Farbe und Durchmesser (in Pixel)</td>
+  </tr>
+  <tr>
+      <td>getTurtle()</td>
+      <td >gibt die globale Turtlereferenz zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td>t = Turtle()</td>
+    <td >erzeugt ein Turtleobjekt t </td>
+  </tr>
+  <tr>
+    <td>tf = TurtleFrame()</td>
+    <td >erzeugt  ein  Bildschirmfenster, in dem mehrere Turtles leben</td>
+  </tr>
+  <tr>
+    <td>tf = TurtleFrame(title)</td>
+    <td >dasselbe, aber mit gegebenem Titel</td>
+  </tr>
+  <tr>
+    <td>t = Turtle(tf)</td>
+    <td >erzeugt Turtle t im TurtleFrame tf</td>
+  </tr> 
+  <tr>
+    <td>clone()</td>
+    <td >erzeugt ein Turtleklon (gleiche Farbe,  Position, Blickrichtung)</td>
+  </tr>  
+  <tr>
+    <td>isDisposed()</td>
+    <td >gibt True zur&uuml;ck, falls das Fenster geschlossen ist</td>
+  </tr>
+  <tr>
+    <td>putSleep()</td>
+    <td >h&auml;lt  den Programmablauf an, bis wakeUp() aufgerufen wird</td>
+  </tr>
+  <tr>
+    <td>wakeUp()</td>
+    <td >f&uuml;hrt angehaltenen Programmablauf weiter</td>
+  </tr>
+  <tr>
+    <td>enableRepaint(False)</td>
+    <td >schaltet das automatische Bildschirm-Rendering aus</td>
+  </tr>
+  <tr>
+    <td>repaint()</td>
+    <td >rendert den Bildschim (nach dem Ausschalten des automatischen Rendering)</td>
+  </tr>
+  <tr>
+    <td>savePlayground()</td>
+    <td >speichert den Playground in einem internen Bildbuffer (zur&uuml;ckholen mit clear())</td>
+  </tr>
+  <tr>
+    <td>savePlayground(fileName, format)</td>
+    <td >speichert den Playground als Bilddatei (format: &quot;png&quot; oder &quot;gif&quot;). Im Fehlerfall wird False zur&uuml;ckgegeben</td>
+  </tr>
+  <tr>
+      <td>setPlaygroundSize(width, height)</td>
+      <td >setzt die Gr&ouml;sse des Turtlefensters unabh&auml;ngig von den Einstellungen in TigerJython (muss vor makeTurtle() aufgerufen werden)</td>
+  </tr>
+  <tr>
+      <td>setFramePosition(x, y)</td>
+      <td >setzt die obere linke Ecke des Turtlefensters an die gegebene Bildschirmposition </td>
+  </tr>
+  <tr>
+      <td>setFramePositionCenter()</td>
+      <td >setzt das Turtlefenster in Bildschirmmitte</td>
+  </tr>  
+</table>
+<h4><br>
+Bewegen</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td>back(distance), bk(distance)</td>
+    <td >bewegt Turtle r&uuml;ckw&auml;rts </td>
+  </tr>
+  <tr>
+      <td>backward(distance)</td>
+      <td>dasselbe wie back(distance)</td>
+  </tr>
+  <tr>
+    <td width="28%">forward(distance),  fd(distance)</td>
+    <td width="62%">bewegt Turtle vorw&auml;rts </td>
+  </tr>
+  <tr>
+    <td>hideTurtle(), ht()</td>
+    <td >macht Turtle unsichtbar (Turtle zeichnet schneller, speed = -1) </td>
+  </tr>
+  <tr>
+    <td>home()</td>
+    <td >setzt Turtle in die Mitte des Fensters Richtung nach oben</td>
+  </tr>
+  <tr>
+    <td>left(angle), lt(angle)</td>
+    <td >dreht Turtle nach links </td>
+  </tr>
+   <tr>
+    <td>penDown(),  pd()</td>
+    <td >setzt Zeichenstift ab (Spur sichtbar) </td>
+  </tr>
+   <tr>
+    <td>penErase(), pe() </td>
+    <td >setzt die Stiftfarbe auf die Hintergrundfarbe</td>
+  </tr>
+  <tr>
+    <td>leftArc(radius, angle)</td>
+    <td >bewegt Turtle auf einem Bogen mit dem   Sektor-Winkel <em>angle</em> nach links </td>
+  </tr>
+  <tr>
+    <td>leftCircle(radius)</td>
+    <td >bewegt Turtle auf einem Kreis nach links </td>
+  </tr>
+   <tr>
+    <td>penUp(),  pu()</td>
+    <td >hebt den Zeichenstift (Spur unsichtbar) </td>
+  </tr>
+   <tr>
+    <td>penWidth(width) </td>
+    <td >setzt die Dicke des Stifts in Pixel</td>
+  </tr>
+   <tr>
+     <td>setPenWidth(width)</td>
+     <td >setzt die Dicke des Stifts in Pixel</td>
+   </tr>
+  <tr>
+    <td>right(angle), rt(angle) </td>
+    <td >dreht Turtle nach rechts </td>
+  </tr>
+  <tr>
+    <td>rightArc(radius, angle) </td>
+    <td >bewegt Turtle auf einem Bogen mit dem   Sektor-Winkel <em>angle</em> nach rechts </td>
+  </tr>
+   <tr>
+    <td>rightCircle(radius) </td>
+    <td >bewegt Turtle auf einem Kreis nach rechts</td>
+  </tr>
+  <tr>
+    <td>setCustomCursor(cursorImage)</td>
+    <td >w&auml;hlt die Bilddatei des Mauscursors</td>
+  </tr>
+   <tr>
+    <td>setCustomCursor(cursorImage, Point(x, y))</td>
+    <td >w&auml;hlt die Bilddatei des Mauscursors unter Angabe der Mausposition innerhalb des Bildes</td>
+  </tr>
+   <tr>
+    <td>setLineWidth(width)</td>
+    <td >setzt die Dicke des Stifts in Pixel</td>
+  </tr>
+   <tr>
+       <td>setEndCap(style)</td>
+       <td >setzt die Art, wie das Ende einer Linie gezeichnet wird: &quot;square&quot; (default), &quot;round&quot; (abgerundet), &quot;clip&quot; (abgeschnitten)</td>
+   </tr>
+   <tr>
+    <td>showTurtle(), st()</td>
+    <td >zeigt Turtle </td>
+  </tr>
+  
+  <tr>
+    <td>speed(speed) </td>
+    <td >setzt Turtlegeschwindigkeit (Pixels pro Sekunde, -1: keine Animation)</td>
+  </tr>
+  <tr>
+    <td>delay(time) </td>
+    <td >h&auml;lt das Programm w&auml;hrend der Zeit time (in Millisekunden) an</td>
+  </tr>
+ <tr>
+    <td>wrap() </td>
+    <td >setzt Turtlepositionen ausserhalb des Fensters ins Fenster zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td>clip() </td>
+    <td >Turtles ausserhalb des Fensters sind nicht sichtbar</td>
+  </tr>
+  <tr>
+    <td>getPlaygroundWidth()</td>
+    <td >gibt die horizontale Gr&ouml;sse m des Turtlefensters zur&uuml;ck (Turtlekoordinaten x = -m/2..m/2)</td>
+  </tr>
+  <tr>
+    <td>getPlaygroundHeight()</td>
+    <td >gibt die vertikale Gr&ouml;sse n des Turtlefensters zur&uuml;ck (Turtlekoordinaten y = -n/2..n/2)</td>
+  </tr>
+  </table>
+<h4><br>
+Positionieren</h4>
+  
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td>direction(x, y)</td>
+    <td>gibt den Winkel (in Grad) f&uuml;r die Drehung zur Position (x, y) zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td>direction(coords)</td>
+    <td>dasselbe, aber Koordinatenangabe als Liste, Tupel oder komplexe Zahl</td>
+  </tr>
+  <tr>
+    <td>direction(turtle)</td>
+    <td>gibt den Winkel (in Grad) f&uuml;r die Drehung zu einer anderen Turtle zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td>distance(x, y) </td>
+    <td >gibt die Entfernung der Turtle zum Punkt(x, y) zur&uuml;ck</td>
+  </tr>
+ 
+  <tr>
+    <td>distance(coords) </td>
+    <td>dasselbe, aber Koordinatenangabe als Liste, Tupel oder komplexe Zahl</td>
+  </tr>
+  <tr>
+    <td>distance(turtle)</td>
+    <td>gibt die Entfernung der Turtle zu einer anderen Turtle zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td>getPos() </td>
+    <td>gibt die Turtleposition zur&uuml;ck </td>
+  </tr>
+   <tr>
+    <td>getX() </td>
+    <td >gibt die aktuelle x-Koordinate der Turtle zur&uuml;ck</td>
+  </tr>
+   <tr>
+    <td>getY() </td>
+    <td >gibt die aktuelle y-Koordinate der Turtle zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td>heading() </td>
+    <td>gibt die Richtung der Turtle zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td>heading(degrees) </td>
+    <td >setzt die Richtung der Turtle (0 ist gegen oben, im Uhrzeigersinn)</td>
+  </tr>
+  <tr>
+    <td>moveTo(x, y)</td>
+    <td >bewegt Turtle auf die Position (x, y)</td>
+  </tr>
+  <tr>
+    <td>moveTo(coords)</td>
+    <td>dasselbe, aber Koordinatenangabe als Liste, Tupel oder komplexe Zahl</td>
+  </tr>
+  <tr>
+    <td width="28%">setHeading(degrees), setH(degrees)</td>
+    <td width="62%">setzt die Richtung der Turtle (0 gegen oben, im Uhrzeigersinn)</td>
+  </tr>
+   <tr>
+    <td width="28%">setRandomHeading()</td>
+    <td width="62%">setzt die Richtung zuf&auml;llig zwischen 0 und 360&deg;</td>
+  </tr>
+  <tr>
+    <td width="28%">setPos(x, y)</td>
+    <td width="62%">setzt Turtle auf die Position (x, y)</td>
+  </tr>
+  <tr>
+    <td>setPos(coords)</td>
+    <td>dasselbe, aber Koordinatenangabe als Liste, Tupel oder komplexe Zahl</td>
+  </tr>
+  <tr>
+    <td width="28%">setX(x)</td>
+    <td width="62%">setzt Turtle auf x-Koordinate</td>
+  </tr>
+  <tr>
+    <td width="28%">setY(y)</td>
+    <td width="62%">setzt Turtle auf y-Koordinate</td>
+  </tr>
+   <tr>
+    <td width="28%">setRandomPos(width, height)</td>
+    <td width="62%">setzt Turtle auf einen zuf&auml;lligen Punkt im Bereich width, height</td>
+  </tr>
+   <tr>
+    <td width="28%">setScreenPos(x, y)</td>
+    <td width="62%">setzt Turtle auf gegebene Pixelkoordinaten (x, y)</td>
+  </tr>
+  <tr>
+    <td width="28%">setScreenPos(Point(x, y))</td>
+    <td width="62%">setzt Turtle auf gegebene Pixelkoordinaten </td>
+  </tr>
+  <tr>
+    <td width="28%">towards(x, y)</td>
+    <td width="62%">gibt die Richtung (in Grad) zur Position (x, y)</td>
+  </tr>
+  <tr>
+    <td>towards(coords)</td>
+    <td>dasselbe, aber Koordinatenangabe als Liste, Tupel oder komplexe Zahl</td>
+  </tr>
+  <tr>
+    <td width="28%">towards(turtle)</td>
+    <td width="62%">gibt die Richtung (in Grad) zu einer anderen Turtle zur&uuml;ck</td>
+  </tr>
+   <tr>
+    <td width="28%">toTurtlePos(x, y)</td>
+    <td width="62%">gibt die Turtlekoordinaten der gegebenen Pixelkoordinaten (x, y) als Liste zur&uuml;ck</td>
+  </tr>
+   <tr>
+    <td width="28%">toTurtlePos(Point(x, y))</td>
+    <td width="62%">gibt die Turtlekoordinaten der gegebenen Pixelkoordinaten als Liste zur&uuml;ck</td>
+  </tr>  
+   <tr>
+    <td width="28%">pushState()</td>
+    <td width="62%">speichert den Turtlezustand in einem Stapelspeicher</td>
+  </tr>
+   <tr>
+    <td width="28%">popState()</td>
+    <td width="62%">holt den zuletzt gespeicherten Zustand vom Stapelspeicher</td>
+  </tr>
+   <tr>
+    <td width="28%">clearStates()</td>
+    <td width="62%">l&ouml;scht den Stapelspeicher</td>
+  </tr> 
+  </table>
+<h4><br>
+Farben</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC"> 
+   <tr>
+    <td width="28%">askColor(title, defaultColor) </td>
+    <td width="62%">zeigt ein Fenster zur Farbwahl und gibt die gew&auml;hlte Farbe zur&uuml;ck (None, wenn Abbrechen gedr&uuml;ckt wurde)</td>
+  </tr>
+  <tr>
+    <td>clear() </td>
+    <td >l&ouml;scht die Zeichnung und versteckt alle Turtles (sie bleiben am Ort). Falls der mit savePlayground() erzeugte Bildbuffer  nicht leer ist, wird dieser angezeigt</td>
+  </tr>
+   <tr>
+    <td>clear(color) </td>
+    <td >l&ouml;scht die Zeichnung, versteckt alle Turtles (sie bleiben am Ort) und f&auml;rbt den Hintergrund </td>
+  </tr>
+  <tr>
+    <td>clean() </td>
+    <td >l&ouml;scht die Turtlespuren (Turtles bleiben am Ort sichtbar). Der mit savePlayground() erzeugte Bildbuffer wird gel&ouml;scht</td>
+  </tr>
+  <tr>
+    <td>clean(color) </td>
+    <td >l&ouml;scht die Zeichnung und  f&auml;rbt den Hintergrund  (Turtles bleiben am Ort sichtbar). </td>
+  </tr>
+  <tr>
+    <td>clearScreen(), cs()</td>
+    <td >l&ouml;scht die Turtlespuren und setzt die Turtle an Homeposition</td>
+  </tr>
+ <tr>
+    <td>dot(diameter) </td>
+    <td >zeichnet einen mit Stiftfarbe gef&uuml;llten Kreis </td>
+  </tr>
+  <tr>
+    <td>openDot(diameter) </td>
+    <td >zeichnet einen nicht gef&uuml;llten Kreis </td>
+  </tr>
+  <tr>
+      <td>spray(density, spread, size)</td>
+      <td >zeichnet eine zuf&auml;llige Punktwolke an der Turtleposition mit geg. Anzahl Punkten, Ausdehnung und Punktgr&ouml;sse (ohne size: size = 1)</td>
+  </tr>
+  <tr>
+    <td>fill() </td>
+    <td >f&uuml;llt die geschlossene Figur, in der sich die Turtle befindet mit der F&uuml;llfarbe</td>
+  </tr>
+  <tr >
+    <td>fill(x , y) </td>
+    <td >f&uuml;llt eine geschlossene Figur mit dem inneren  Punkt (x, y) mit der F&uuml;llfarbe</td>
+  </tr>
+   <tr>
+     <td>fill(coords) </td>
+     <td>dasselbe, aber Koordinatenangabe als Liste, Tupel oder komplexe Zahl</td>
+   </tr>
+   <tr>
+    <td>fillToPoint() </td>
+    <td>f&uuml;llt fortlaufend die gezeichnete Figur von der aktuellen Turtleposition mit der Stiftfarbe</td>
+   </tr>
+   <tr>
+    <td>fillToPoint(x , y) </td>
+    <td>f&uuml;llt fortlaufend die gezeichnete Figur vom Punkt (x, y)  mit der Stiftfarbe</td>
+   </tr>
+   <tr>
+     <td>fillToPoint(coords) </td>
+     <td >dasselbe, aber Koordinatenangabe als Liste, Tupel oder komplexe Zahl</td>
+   </tr>
+   <tr>
+    <td>fillToHorizontal( y) </td>
+    <td >f&uuml;llt fortlaufend die Fl&auml;che zwischen der Figur und der  horizontalen Linie (Stiftfarbe)</td>
+  </tr>
+   <tr>
+    <td>fillToVertical(x) </td>
+    <td >f&uuml;llt fortlaufend die Fl&auml;che zwischen der Figur und der  vertikalen Linie (Stiftfarbe)</td>
+  </tr>
+    <tr>
+    <td>fillOff() </td>
+    <td >beendet den fortlaufenden F&uuml;llmodus </td>
+   </tr>
+   <tr>
+    <td width="28%">getColor() </td>
+    <td width="62%">gibt die Turtlefarbe zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td width="28%">getColorStr() </td>
+    <td width="62%">gibt die  X11-Turtlefarbe zur&uuml;ck</td>
+  </tr>
+   <tr>
+    <td width="28%">getFillColor() </td>
+    <td width="62%">gibt die F&uuml;llfarbe zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td width="28%">getFillColorStr() </td>
+    <td width="62%">gibt die  X11-F&uuml;llfarbe zur&uuml;ck</td>
+  </tr>
+   <tr>
+    <td width="28%">getPixelColor() </td>
+    <td width="62%">gibt die Farbe des Pixels an der Turtlekoordinate zur&uuml;ck (None, falls ausserhalb des Turtlefensters)</td>
+  </tr>
+  <tr>
+    <td width="28%">getPixelColorStr() </td>
+    <td width="62%">gibt die Farbe des Pixels an der Turtlekoordinate als X11-Farbe zur&uuml;ck (leerer String, falls kein X11-Farbname existiert; None, falls ausserhalb des Turtlefensters)</td>
+  </tr>
+  <tr>
+    <td>makeColor(value)</td>
+    <td>gibt eine Farbreferenz von value zur&uuml;ck. Werte-Beispiele: (&quot;7FFED4&quot;), (&quot;Aqua-Marine&quot;), (0x7FFED4), (8388564), (0.5, 1.0, 0.83), (128, 255, 212), (&quot;rainbow&quot;, n) mit n = 0..1, Lichtspektrum</td>
+  </tr>
+  <tr>
+    <td width="28%">getRandomX11Color() </td>
+    <td width="62%">gibt eine zuf&auml;llige X11-Farbe zur&uuml;ck</td>
+  </tr>
+   <tr>
+    <td width="28%">setColor(color) </td>
+    <td width="62%">legt Turtlefarbe fest</td>
+  </tr>
+  <tr>
+    <td>setPenColor(color) </td>
+    <td >legt Stiftfarbe fest </td>
+  </tr>
+  <tr>
+    <td>setFillColor(color) </td>
+    <td >legt  F&uuml;llfarbe fest </td>
+  </tr>
+  <tr>
+    <td>startPath() </td>
+    <td >startet die Aufzeichnung der Turtlebewegung zum nachtr&auml;glichen F&uuml;llen</td>
+  </tr>
+  <tr>
+    <td>fillPath() </td>
+    <td >verbindet die aktuelle Turtleposition mit dem Startpunkt und f&uuml;llt die geschlossene Figur mit der F&uuml;llfarbe</td>
+  </tr>
+   <tr>
+    <td>stampTurtle() </td>
+    <td >erzeugt ein Turtlebild an der aktuellen Turtleposition</td>
+  </tr>
+   <tr>
+    <td>stampTurtle(color) </td>
+    <td >erzeugt ein Turtlebild mit angegebener Farbe an der aktuellen Turtleposition </td>
+  </tr>
+   <tr>
+       <td>transparent(color, alpha)</td>
+       <td >gibt von der der angegebenen Farbe und dem Wert f&uuml;r Transparenz (zwischen 0.0 und 1.0, default: 0.5) eine  transparente Farbe zur&uuml;ck</td>
+   </tr>
+  </table>
+<h4><br>
+Callbacks</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%">
+      makeTurtle(mouseNNN = onMouseNNN)      </td>
+    <td width="62%" >registriert die Callbackfunktion onMouseNNN(x, y) , die beim Mausevent aufgerufen wird. Werte f&uuml;r NNN: Pressed, Released, Clicked, Dragged, Moved, Entered, Exited, SingleClicked, DoubleClicked (auch mehrere, durch Komma getrennt) Speziell: Hit: Aufruf im eigenen Thread, HitX: Dasselbe, aber nachfolgende Events werden ignoriert, bis Callback zur&uuml;ckkehrt</td>
+  </tr>
+  <tr>
+    <td>makeTurtle(turtleHit = onTurtleHit)</td>
+    <td >registriert die Callbackfunktion onTurtleHit(x, y), die aufgerufen wird, wenn auf das Turtlebild geklickt wird</td>
+  </tr>
+  <tr>
+    <td>t = Turtle(turtleHit = onTurtleHit)</td>
+    <td >registriert die Callbackfunktion onTurtleHit(t, x, y), die aufgerufen wird, wenn auf das Bild der Turtle t geklickt wird</td>
+  </tr>
+  <tr>
+    <td>
+      <p>isLeftMouseButton(),<br>
+        isRightMouseButton()
+        <br>
+      </p>
+    </td>
+    <td >gibt True zur&uuml;ck, falls beim Event die linke bzw. rechte Maustaste verwendet wurde</td>
+  </tr>
+  <tr>
+    <td>makeTurtle(keyNNN = onKeyNNN)</td>
+    <td >registriert die Callbackfunktion onKeyNNN(keyCode), die beim Dr&uuml;cken einer Tastaturtaste aufgerufen wird. Werte f&uuml;r NNN: Pressed, Hit: Aufruf im eigenen Thread, HitX: Dasselbe, aber nachfolgende Events ignoriert, bis Callback zur&uuml;ckkehrt. keyCode ist ein f&uuml;r die Taste eindeutiger integer Code</td>
+  </tr>
+  <tr>
+    <td>getKeyModifiers()</td>
+    <td >
+      <p>liefert nach einem Tastaturevent einen Code f&uuml;r Spezialtasten (Shift, Ctrl, usw., auch kombiniert)</p>
+    </td>
+  </tr>
+  <tr>
+      <td>makeTurtle(closeClicked = onCloseClicked)</td>
+      <td >registriert die Callbackfunktion onCloseClicked(), die beim Klick des Close-Buttons des Turtlefensters aufgerufen wird. Das Fenster muss mit dispose() geschlossen werden</td>
+  </tr>
+  <tr>
+    <td>showSimulationBar(NNN = onNNN)</td>
+    <td >zeigt ein Dialogfenster mit den Button 'Step', 'Run'/'Pause', 'Reset' und einem Slider zum Einstellen der Simulationsperiode. Folgende Callbacks NNN k&ouml;nnen registiert werden: start, pause, step, reset, change(Parameter: simulationPeriod), loop, exit (close button gedr&uuml;ckt). loop wird in jedem Simulationszyklus vom Simulationsthread aufgerufen</td>
+  </tr>
+  <tr>
+      <td>showSimulationBar(ulx, uly, initPeriod, NNN = onNNN)</td>
+      <td >wie oben, aber mit Positionierung des Dialogfensters (obere linke Ecke) und Anfangswert der Simulationsperiode (default: 100)</td>
+  </tr>
+  <tr>
+      <td>hideSimulationBar()</td>
+      <td >schliesst das Dialogfenster und gibt alle Ressourcen frei</td>
+  </tr>
+  </table>
+<h4><br>
+Tastatur</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td >getKey()&nbsp;&nbsp;</td>
+    <td >holt den letzten Tastendruck ab und liefert  String zur&uuml;ck (leer, falls illegale Taste)</td>
+  </tr>
+  <tr>
+    <td >getKeyCode()&nbsp;&nbsp;</td>
+    <td >holt den letzten Tastendruck ab und liefert Code  zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td width="28%" >getKeyWait() </td>
+    <td width="62%">wartet bis Taste gedr&uuml;ckt und liefert String  zur&uuml;ck (leer, falls illegale Taste)</td>
+  </tr>
+  <tr>
+    <td width="28%" >getKeyCodeWait() </td>
+    <td width="62%">wartet bis Taste gedr&uuml;ckt und&nbsp; liefert Code zur&uuml;ck</td>
+  </tr>
+  <tr>
+      <td >getModifiers()</td>
+      <td >liefert einen Spezialcode beim Dr&uuml;cken von Ctrl/Alt/Shift</td>
+  </tr>
+  <tr>
+      <td >getModifiersText()</td>
+      <td >liefert einen Bezeichner beim Dr&uuml;cken von Ctrl/Alt/Shift</td>
+  </tr>
+  <tr>
+    <td >kbhit() </td>
+    <td >liefert True, falls ein Tastendruck noch nicht  mit getKey() od. getKeyCode() abgeholt ist</td>
+  </tr>
+</table>
+<h4><br>
+  Texte, Bilder und Sound</h4>
+  (playTone() auch ohne import gturtle verf&uuml;gbar)
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+   <tr>
+    <td>addStatusBar(20)&nbsp;&nbsp;</td>
+    <td >f&uuml;gt eine Statusbar mit der H&ouml;he 20 Pixel hinzu</td>
+  </tr>
+  <tr>
+    <td>beep()&nbsp;&nbsp;</td>
+    <td >erzeugt einen Ton</td>
+  </tr>
+  <tr>
+    <td>playTone(freq)</td>
+    <td>spielt Ton mit geg. Frequenz (in Hz) und Dauer 1000 ms (blockierende Funktion)</td>
+  </tr>
+  <tr>
+    <td>playTone(freq, block = False)</td>
+    <td>dasselbe, aber nicht-blockierende Funktion (um mehrere T&ouml;ne fast gleichzeitig abzuspielen)</td>
+  </tr>
+  <tr>
+    <td>playTone(freq, duration)</td>
+    <td>spielt Ton mit geg. Frequenz und geg. Dauer (in ms)</td>
+  </tr>
+  <tr>
+    <td>playTone([f1, f2, ...])</td>
+    <td>spielt hintereinander mehrere T&ouml;ne mit geg. Frequenzen und Dauer 1000 ms</td>
+  </tr>
+  <tr>
+    <td>playTone([(f1, d1), (f2, d2), ...])</td>
+    <td>spielt hintereinander mehrere T&ouml;ne mit geg. Frequenzen und geg. Dauer</td>
+  </tr>
+  <tr>
+    <td>playTone([(&quot;c&quot;, 700), (&quot;e&quot;, 1500), ...])</td>
+    <td>spielt hintereinander mehrere T&ouml;ne mit geg. Tonbezeichnungen und geg. Dauer. Erlaubt sind: Grosse Oktave, ein-, zwei- und dreigestrichene Oktave, also der Bereich von C, C#,..., h'''</td>
+  </tr>
+  <tr>
+    <td>playTone([(&quot;c&quot;, 700), (&quot;e&quot;, 1500), ...], instrument = &quot;piano&quot;)</td>
+    <td>wie vorher, aber mit gew&auml;hltem Instrument (piano, guitar, harp, trumpet, xylophone, organ, violin, panflute, bird, seashore, ... (gem&auml;ss MIDI-Spezifikation)</td>
+  </tr>
+  <tr>
+    <td>playTone([(&quot;c&quot;, 700), (&quot;e&quot;, 1500), ...], instrument = &quot;piano&quot;, volume = 10)</td>
+    <td>wie vorher, aber mit gew&auml;hlter Lautst&auml;rke (0..100)</td>
+  </tr>
+  <tr>
+    <td width="28%">label(param) </td>
+    <td width="62%">schreibt str(param) an der aktuellen Position aus (linksb&uuml;ndig)</td>
+  </tr>
+   <tr>
+       <td>label(param1, param2, ...)</td>
+       <td>konkateniert str(params) mit Leerstellen getrennt und schreibt den Text aus</td>
+   </tr>
+   <tr>
+       <td>label(param1, param2, ..., adjust = 'x')</td>
+       <td>dasselbe, aber mit x = 'l' linksb&uuml;ndig (default), 'c' zentriert, 'r' rechtsb&uuml;ndig</td>
+   </tr>
+   <tr>
+    <td width="28%">printerPlot(draw) </td>
+    <td width="62%">druckt die mit der Funktion draw erstellte Zeichnung</td>
+  </tr>
+  <tr>
+    <td>setFont(Font font) </td>
+    <td >legt  Schriftart fest. font ist ein  Objekt der Klasse Font<br> 
+        Beispiel: Font("Courier New", Font.BOLD, 12).<br> 
+        Default: Font(&quot;SansSerif&quot;, Font.PLAIN, 24)</td>
+  </tr>
+  <tr>
+      <td>setFont(name)</td>
+      <td >legt neue Schriftart mit bestehenden Schriftstil und Schriftgr&ouml;sse fest</td>
+  </tr>
+  <tr>
+      <td>setFont(name, style)</td>
+      <td >legt neue Schriftart und Schriftstil mit bestehender Schriftgr&ouml;sse fest<br>
+      style = Font.PLAIN, Font.BOLD, Font.ITALIC</td>
+  </tr>
+  <tr>
+      <td>setFont(name, style, size)</td>
+      <td >legt neue Schriftart, Schriftstil und Schriftgr&ouml;sse fest</td>
+  </tr>
+  <tr>
+    <td>setFontSize</a>(size) </td>
+    <td >legt neue Schriftgr&ouml;sse fest (Schriftart und Stil bleiben erhalten)</td>
+  </tr>
+ 
+  <tr>
+    <td>getTextHeight()</td>
+    <td >liefert die H&ouml;he des Texts im aktuellen Font (in Pixels)</td>
+  </tr>
+  <tr>
+    <td>getTextAscent()</td>
+    <td >liefert die H&ouml;he des Text-Ascenders im aktuellen Font (in Pixels)</td>
+  </tr>
+  <tr>
+    <td>getTextDescent()</td>
+    <td >liefert die H&ouml;he des Text-Decenders im aktuellen Font (in Pixels)</td>
+  </tr>
+  <tr>
+    <td>getTextWidth(text)</td>
+    <td >liefert die Breite des gegebenen Texts im aktuellen Font (in Pixels)</td>
+  </tr>
+  <tr>
+    <td>setStatusText(&quot;Press&nbsp;any&nbsp;key!&quot;)</td>
+    <td >schreibt eine Mitteilung in die Statusbar</td>
+  </tr>
+   <tr>
+    <td>setTitel(&quot;Text&quot;)</td>
+    <td >schreibt den Text in die Titelzeile</td>
+  </tr>
+   <tr>
+     <td>img = getImage(path)</td>
+     <td >l&auml;dt ein Bild (im png-, gif-, jpg-Format) vom lokalen Filesystem oder von einer URL und gibt eine Referenz darauf zur&uuml;ck. F&uuml;r path = sprites/nnn werden auch Bilder von der TigerJython-Distribution geladen (Help/Bildbibliothek zeigt die vorhandenen Bilder)</td>
+   </tr>
+   <tr>
+     <td>drawImage(img)</td>
+     <td >stellt das Bild img an der Position der Turtle mit ihrer Blickrichtung dar</td>
+   </tr>
+   <tr>
+     <td>drawImage(path)</td>
+     <td >l&auml;dt ein Bild (im png-, gif-, jpg-Format) vom lokalen Filesystem oder von einer URL und stellt es an der Position der Turtle mit ihrer Blickrichtung dar. F&uuml;r path = sprites/nnn werden auch Bilder von der TigerJython-Distribution geladen</td>
+   </tr>
+   <tr>
+       <td>drawImage(path, horzMirror, vertMirror)</td>
+       <td >dasselbe, aber spiegelt das Bild horizontal und/oder vertikal (boole'sche Parameter)</td>
+   </tr>
+</table>
+<h4>&nbsp;</h4>
+<h4>Video</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%">rec = VideoRecorder(turtle, filename, resolution)</td>
+    <td width="62%" >erstellt einen MP4 (H.264/AVC) Video-Encoder, der das Turtlefenster (Turtles, Spuren und Images) aufzeichnet und in der gegebenen Datei abgespeichert. resolution muss ein String mit einer unterst&uuml;tzten Aufl&ouml;sung sein, beispielsweise &quot;640x480&quot;. getSupportedResolutions() liefert die aktuell unterst&uuml;tzten Aufl&ouml;sungen </td>
+  </tr>
+  <tr>
+    <td>rec = VideoRecorder(turtleFrame, filename, resolution)</td>
+    <td >dasselbe mit einem TurtleFrame</td>
+  </tr>
+  <tr>
+    <td>rec = VideoRecorder(turtle, filename, resolution, ulx, uly)</td>
+    <td>dasselbe mit Angabe der Position der oberen linken Ecke des Turtlefensters bez&uuml;glich des Video-Bildes. Standardwerte 0, 0</td>
+  </tr>
+  <tr>
+    <td>rec = VideoRecorder(turtleFrame, filename, resolution, ulx, uly)</td>
+    <td>dasselbe mit einem TurtleFrame</td>
+  </tr>
+  <tr>
+    <td>VideoRecorder.getSupportedResolutions()</td>
+    <td>liefert einen String mit allen aktuell unterst&uuml;tzten Video-Aufl&ouml;sungen</td>
+  </tr>
+  <tr>
+    <td>rec.captureImage()</td>
+    <td>nimmt ein einzelnes Bild (frame) auf. Die Aufnahme kann in beliebigen zeitlichen Abst&auml;nden erfolgen. Die Bildabspielrate (frame rate) h&auml;ngt von der Aufl&ouml;sung ab (normalerweise 25 frames / s)</td>
+  </tr>
+  <tr>
+    <td>rec.captureImage(nb)</td>
+    <td>dasselbe, aber es werden nb gleiche Bilder aufgenommen</td>
+  </tr>
+  <tr>
+    <td>rec.finish()</td>
+    <td>die Aufnahme wird beendet und die Videodatei geschlossen</td>
+  </tr>
+</table>
+<h4><br>
+  Dialoge</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%">msgDlg(message)</td>
+    <td width="62%" >&ouml;ffnet einen modalen Dialog mit einem OK-Button und gegebenem Mitteilungstext</td>
+  </tr>
+  <tr>
+    <td>msgDlg(message, title)</td>
+    <td >dasselbe mit Titelangabe</td>
+  </tr>
+  <tr>
+    <td>inputInt(prompt)</td>
+    <td>&ouml;ffnet einen modalen Dialog mit  OK/Abbrechen-Buttons. OK gibt den  eingegebenen Integer zur&uuml;ck (falls kein Integer, wird Dialog neu angezeigt). Abbrechen od. Schliessen beendet das Programm. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+  </tr>
+  <tr>
+    <td>inputInt(prompt, False)</td>
+    <td>dasselbe, aber Abbrechen/Schliessen beendet das Programm nicht, sondern gibt None zur&uuml;ck. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+  </tr>
+  <tr>
+    <td>inputFloat(prompt)</td>
+    <td>&ouml;ffnet einen modalen Dialog mit  OK/Abbrechen-Buttons. OK gibt den eingegebenen  Float zur&uuml;ck (falls kein Float, wird Dialog neu angezeigt). Abbrechen  od. Schliessen beendet das Programm. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+  </tr>
+  <tr>
+    <td>inputFloat(prompt, False)</td>
+    <td>dasselbe, aber Abbrechen/Schliessen beendet das Programm nicht, sondern gibt None zur&uuml;ck. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+  </tr>
+  <tr>
+    <td>inputString(prompt)</td>
+    <td>&ouml;ffnet einen modalen Dialog mit  OK/Abbrechen-Buttons. OK gibt den  eingegeben String zur&uuml;ck. Abbrechen od. Schliessen beendet das Programm. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+  </tr>
+  <tr>
+    <td>inputString(prompt, False)</td>
+    <td>dasselbe, aber Abbrechen/Schliessen beendet das Programm nicht, sondern gibt None zur&uuml;ck. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+  </tr>
+  <tr>
+    <td>input(prompt)</td>
+    <td>&ouml;ffnet einen modalen Dialog mit OK/Abbrechen-Buttons. OK gibt Eingabe als Integer, Float oder String zur&uuml;ck. Abbrechen od. Schliessen beendet das Programm</td>
+  </tr>
+  <tr>
+    <td>input(prompt, False)</td>
+    <td>dasselbe, aber Abbrechen/Schliessen beendet das Programm nicht, sondern gibt None zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td>askYesNo(prompt)</td>
+    <td>&ouml;ffnet einen modalen Dialog mit Ja/Nein-Buttons. Ja gibt True, Nein gibt False zur&uuml;ck. Schliessen beendet das Programm</td>
+  </tr>
+  <tr>
+    <td>askYesNo(prompt, False)</td>
+    <td>dasselbe, aber Schliessen beendet das Programm nicht, sondern gibt None zur&uuml;ck</td>
+  </tr>
+</table>
+<h4>&nbsp;</h4>
+<h4>Bildbearbeitung</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%" >img = getImage(filename)</td>
+    <td width="62%" ><p>gibt die Bilddatei als Image zur&uuml;ck (Formate: jpg, gif, bmp, png)</p>
+    </td>
+  </tr>
+  <tr>
+    <td >img = readImage(data)</td>
+    <td ><p>gibt vom bin&auml;ren Datenstrom data ein Image zur&uuml;ck (Formate: jpg, gif, bmp, png)</p></td>
+  </tr>
+  <tr>
+    <td >imageToString(img, type)</td>
+    <td ><p>gibt eine Stringrepresentation vom Image zur&uuml;ck (type = "bmp", "gif", "jpg", "png)</p></td>
+  </tr>
+  <tr>
+    <td > save(img, filename, type)</td>
+    <td >schreibt Image in eine Bilddatei (type = "bmp", "gif", "jpg", "png) </td>
+  </tr>
+  <tr>
+    <td >imgPaste = paste(img, imgReplace, x, y)</td>
+    <td ><p>ersetzt Teil des Bildes an der Position x, y mit einem anderen Bild. Gibt das neue Bild zur&uuml;ck</p></td>
+  </tr>
+  <tr>
+    <td >imgCrop = crop(img, x1, y1, x2, y2)</td>
+    <td >gibt einen rechteckigen Ausschnitt des Bildes zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td >imgScale = scale(img, factor, angle)</td>
+    <td >skaliert das Bild um den gegebenen Faktor und und dreht das Bild um den gegebenen Winkel  (in Grad im Uhrzeigersinn). Gibt das neue Bild zur&uuml;ck</td>
+  </tr>
+  <tr>
+      <td >img = mirror(img, horzMirror, vertMirror)</td>
+      <td >spiegelt das Bild horizontal und/oder vertikal (boole'sche Parameter). Gibt das neue Bild zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td >saveData(data, filename)<br></td>
+    <td >speichert die bin&auml;ren Daten in einer Datei</td>
+  </tr>
+</table>
+<p><a href="http://ch/aplu/docs/index_de.html"><br>
+<img src="gifs/home.png" alt="home" width="25" height="25"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

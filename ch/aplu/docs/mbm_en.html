@@ -1,0 +1,98 @@
+<html>
+<head>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+<h2><a href="http://ch/aplu/docs/index_en.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></h2>
+<h2>Documentation MicroBit Manager (MBM)</h2>
+<p>&nbsp;</p>
+<h4>Overview:</h4>
+<p><br>
+  The MicroBit Manager can be used to develop programs for the micro: bit (or compatible microcontrollers, e.g. the Calliope Mini) with various well-known program editors/ IDEs. After editing the source, by one click they are    downloaded and executed on the target system. The program execution is supervised in a terminal window (Console, REPL),   where error messages and print output are displayed. By pressing Ctrl+C the program can be stopped and the Python prompt is presented. The user can now enter command lines and let them execute  with the Python interpreter. With an option, the MBM can flash the firmware  from an internal firmware image. After the flashing process, some useful Python library modules are copied to the target (support of  motors, tutorials, external sensors, etc.).
+<p>During the  program development, the target board is connected to the development system via the USB interface. It then appears as a extra external USB device with its own drive letter (Windows) or as an extra drive name (Mac, Linux). When the terminal window is open and for up- and downloading files other than the firmware, the target is addressed as a serial device (via USB), thus  uses a ComPort (Windows) or a serial device name (Mac, LInux). For Windows versions earlier than 10, an mbed driver must be installed, which can be downloaded from <a href="http://www.tigerjython.ch/download/mbed.zip">here</a>. No additional driver is required for Windows 10 and Mac/Linux.</p>
+<p>The MicroBit Manager is integrated into TigerJython and does not need any additional installations. To be used standalone or with other IDEs, it can be downloaded from <a href="http://www.tigerjython.ch/download/mbm.zip">here</a> as a Java application (including source). All its functions are selected via command-line parameters, which are listed when calling MBM without parameters <em>(java -jar MBM.jar</em>)</p>
+<p>To enable the MBM in TigerJython, choose <em>Preferences | Library | Chose robot</em> and select  <em>micro:bit</em>/Calliope. An additional black-bordered button  appears in the taskbar and the options <em>Remote Terminal, Download/Execute, Download module, Flash target</em> are enabled in the Tools menu.</p>
+<h4><br>
+  Development process:</h4>
+<p>The source is written in the editor window of TigerJython and then stored on the development system like other Python programs. But since the program is not executed on the development system, but on the target, instead of pressing the green run-button the black-bordered download/execute-button is clicked (or Tool option <em>Download/Execute</em> selected). The code is then checked for syntax errors with TigerJython's special Python parser and user friendly error messages are displayed in the editor window near the position where they are detected. If the program passes the parsing process, an extra terminal window (REPL) is obened, in which  the communication process with the target is traced. This comprises the following steps:
+<ul>
+  <li> stopping a running program</li>
+  <li>source downloading to the target file system as <em>main.py </em> (overwriting an existing file)</li>
+  <li>executing  Ctrl+D to perform a soft boot that starts <em>main.py</em><br>
+  </li>
+</ul>
+<p>Any print() output and all error messages are displayed in the terminal window and by typing  Ctrl+C the program can be halted. After a program stops, Python's interpreter prompt &gt;&gt;&gt; is displayed and commands can be entered. A simple Ctrl+D performs a soft boot and restarts the program. There is no need to close the terminal window: when a new version is downloaded from the development system, the window closes automatically and a new window is opened.
+<p>Because a running program is stopped automatically, it is allowed to write non-terminating programs or endless loops, as common for microcontroller programs written in C or assembler. However, these loops should not overload the processor, because otherwise the program interruption may fail (insert a <em>sleep(0.001) </em>in tight loops).
+
+<p>To support structured programming, Python modules can be copied to the target system using the option <em>Download module</em>. As usual they are integrated with an import statement. Unfortunately to the size of programs and modules cannot exceed more than a few kBytes due to the lack of memory space.</p>
+<p>After a program has been downloaded (and renamed automatically to <em>main.py</em>), the USB connection to the development system can be unplugged. Each time the USB port of the target is powered with 5V by a USB charger or USB power bank, the <em>main.py</em> is immediately started.</p>
+<p>If <em>main.py</em>  hangs or the target becomes unreachable because of a faulty software manipulation, a new system can be installed from scratch  by flashing the firmware. Because all program modules are lost, they must be restored from the development system. </p>
+<p>The Python interpreter <em>MicroPython</em> is not a full implementation of Python 3.x, but  most  language features are available. The special hardware of the target is accessed by importing    <em>from microbit import * </em>resp. <em>from calliope_mini import *</em>  (a full documentation for the micro:bit can be found <a href="http://microbit-micropython.readthedocs.io/en/latest/microbit_micropython_api.html">here</a>)  .
+<h4>&nbsp;</h4>
+<h4>MBM API:</h4>
+<p>As an additional feature,  operations of the MBM can also be executed by a Python program running in TigerJython. After <em>import mbm</em> the following functions are available:
+<h4>Module Import: from mbm import *</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="22%" bgcolor="#F0F0F5">Function</td>
+    <td width="78%" bgcolor="#F0F0F5">Action</td>
+  </tr>
+  <tr>
+    <td> showFiles()</td>
+    <td>
+      <p>browses the file system of the target and displays all file names<br>
+      </p>    </td>
+  </tr>
+  <tr>
+    <td>openTerminal()</td>
+    <td>opens a terminal window (REPL) and connects to the micro: bit</td>
+  </tr>
+  <tr>
+    <td>extract(filename)</td>
+    <td>copies the file filename from the target to the directory, where the TigerJython program is located<br></td>
+  </tr>
+  <tr>
+    <td>copy(filename)</td>
+    <td><p>copies the file filename from the development system to the target. The filename remains the same, but the  directory path  is truncated</p>    
+      </td>
+  </tr>
+  <tr>
+    <td>run(filename)</td>
+    <td>opens a terminal window (REPL) and copies the file filename from the development system to the target. Renames it to main.py and runs the program. A given directory path is truncated<br></td>
+  </tr>
+  <tr>
+    <td>runMain()</td>
+    <td>opens a terminal window (REPL) and runs  main.py (if available)</td>
+  </tr>
+  <tr>
+    <td>flash()</td>
+    <td>installs the internal firmware image<br>
+    </td>
+  </tr>
+  <tr>
+    <td>flash(filename)</td>
+    <td>installs the given external firmware image</td>
+  </tr>
+  <tr>
+      <td>enableDataCapture(enable)</td>
+      <td>enables/disables text line capture in terminal window, captured lines are added to the data line buffer</td>
+  </tr>
+  <tr>
+      <td>getDataLines()</td>
+      <td>returns a list with all captured lines in the data line buffer and clears the buffer</td>
+  </tr>
+  <tr>
+      <td> isTerminalDisposed()<br>
+      </td>
+      <td>returns True, if the terminal is not visible (not yet opened or already closed)</td>
+  </tr>
+</table>
+
+<p>In a typical example, the target acts as data logger and the content of the data file is transferred to TigerJython by calling <em>extract(filename)</em> where it is further processed.</p>
+<p>&nbsp;</p>
+<p><br>
+</p>
+<h4><a href="http://ch/aplu/docs/index_de.html"></a><a href="http://ch/aplu/docs/index_en.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></h4>
+<p>&nbsp;</p>
+</body>
+</html>
+

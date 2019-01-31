@@ -1,0 +1,1518 @@
+<html>
+<head>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+
+<a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a>
+<h2>Dokumentation GPanel</h2>
+<h3>Module import: from gpanel import *<br>
+  <br />
+  
+</h3>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%" bgcolor="#F0F0F5" >Befehl</td>
+    <td width="62%" bgcolor="#F0F0F5" >Aktion</td>
+  </tr>
+  
+  <tr>
+    <td >makeGPanel()</td>
+    <td >erzeugt ein (globales) GPanel-Grafikfenster mit  Koordinaten (0, 1, 0, 1). Cursor auf (0, 0)</td>
+  </tr>
+   <tr>
+    <td >makeGPanel(xmin, xmax, ymin, ymax)</td>
+    <td >erzeugt ein (globales) GPanel-Grafikfenster mit  angegebenen Koordinaten. Cursor auf (0, 0)</td>
+  </tr>
+  <tr>
+    <td >makeGPanel(xmin, xmax, ymin, ymax, False)</td>
+    <td >dasselbe, aber mit unsichtbarem Fenster (sichtbar machen mit visible(True))</td>
+  </tr> 
+  <tr>
+    <td >makeGPanel(Size(width, height))</td>
+    <td >dasselbe wie makeGPanel(), aber Fenstergr&ouml;sse w&auml;hlbar (in Pixels)</td>
+  </tr>
+  <tr>
+    <td >getScreenWidth()</td>
+    <td >gibt Bildschirmbreite zur&uuml;ck (in Pixels)</td>
+  </tr>
+  <tr>
+    <td >getScreenHeight()</td>
+    <td >gibt Bildschirmh&ouml;he zur&uuml;ck (in Pixels)</td>
+  </tr>
+  <tr>
+    <td >window(xmin, xmax, ymin, ymax)</td>
+    <td >setzt ein neues Koordinatensystem</td>
+  </tr>
+  <tr>
+      <td >getWindow()</td>
+      <td >liefert Referenz des GWindow (JFrame)</td>
+  </tr>
+  <tr>
+    <td >drawGrid(x, y)</td>
+    <td ><p>zeichnet  Gitter mit 10 Ticks im Bereich 0..x, 0..y. Anschrift abh&auml;ngig, ob x,y int oder float</p>    </td>
+  </tr> 
+  <tr>
+    <td >drawGrid(x, y, color)</td>
+    <td ><p>dasselbe mit Angabe der Farbe</p>    </td>
+  </tr> 
+  <tr>
+    <td >drawGrid(x1, x2, y1, y2)</td>
+    <td ><p>dasselbe im Bereich&nbsp; x1..x2,  y1..y2</p>    </td>
+  </tr> 
+  <tr>
+    <td >drawGrid(x1, x2, y1, y2, color)</td>
+    <td ><p>dasselbe mit Angabe der Farbe</p>    </td>
+  </tr> 
+  <tr>
+    <td >drawGrid(x1, x2, y1, y2, x3,  y3)</td>
+    <td ><p>dasselbe mit Angabe der Anzahl der Anzahl Ticks  x3, y3 in x- und y-Richtung</p>    </td>
+  </tr> 
+  <tr>
+    <td >drawGrid(x1, x2, y1, y2, x3,  y3, color)</td>
+    <td ><p>dasselbe mit Angabe der Farbe</p>    </td>
+  </tr>    
+  <tr>
+    <td >drawPanelGrid(p, ...)</td>
+    <td >wie drawGrid(...) mit Angabe der GPanel-Referenz (f&uuml;r mehrere GPanels)</td>
+  </tr>
+  <tr>
+    <td >visible(isVisible)</td>
+    <td >macht Fenster sichtbar/unsichtbar </td>
+  </tr>  
+   <tr>
+    <td >resizeable(isResizeable)</td>
+    <td >aktiviert, deaktiviert das Zoomen des Fensters</td>
+  </tr>  
+   <tr>
+    <td >dispose()</td>
+    <td >schliesst das Fenster</td>
+  </tr>  
+   <tr>
+    <td >isDisposed()</td>
+    <td >gibt True zur&uuml;ck, falls das Fenster geschlossen  ist</td>
+  </tr>  
+   <tr>
+    <td >bgColor(color)</td>
+    <td >setzt die Hintergrundfarbe (X11-Farbstring oder  Color type, zur&uuml;ckgegeben von makeColor())</td>
+  </tr>  
+   <tr>
+    <td >title(text)</td>
+    <td >setzt den Text in der Titelzeile</td>
+  </tr>  
+   <tr>
+    <td >makeColor(colorStr)</td>
+    <td >gibt Farbe als Color type zum gegebenen X11-Farbstring zur&uuml;ck</td>
+  </tr>  
+   <tr>
+    <td >windowPosition(ulx, uly)</td>
+    <td >setzt das Fenster an die gegebene  Bildschirmposition</td>
+  </tr>  
+   <tr>
+    <td >windowCenter()</td>
+    <td >setzt das Fenster in Bildschirmmitte</td>
+  </tr>  
+   <tr>
+    <td >storeGraphis()</td>
+    <td >speichert die Grafik in einem internen Buffer</td>
+  </tr>  
+  <tr>
+    <td >recallGraphics()</td>
+    <td >rendert die Grafik aus dem internen Buffer</td>
+  </tr>  
+  <tr>
+    <td >clearStore(color)</td>
+    <td >l&ouml;scht den internen Buffer (&uuml;berschreibt mit  Farbe)</td>
+  </tr>  
+  <tr>
+    <td >delay(time)</td>
+    <td >Programm um Zeit time (Millisekunden) anhalten</td>
+  </tr>  
+  <tr>
+    <td >getDividingPoint(pt1, pt2, ratio)</td>
+    <td >liefert den Teilpunkt der Strecke mit  Punktlisten pt1, pt2, der sie im Teilverh&auml;ltnis ratio teilt</td>
+  </tr>  
+  <tr>
+    <td >getDividingPoint(c1, c2, ratio)</td>
+    <td >liefert den Teilpunkt der Strecke mit complex  c1, c2, der sie im Teilverh&auml;ltnis ratio teilt</td>
+  </tr>  
+  <tr>
+      <td >toUser(winX, winY), toUserHeight(winHeight), toUserWidth(winWidth), toUserX(winX), toUserY(winY)</td>
+      <td >Transformationen von Float- auf Pixelkoordinaten</td>
+  </tr>
+  <tr>
+      <td >toWindow(userX, userY), toWindowHeight(userHeight), toWindowWidth(userWidth), toWindowX(userX), toWindowY(userY)</td>
+      <td >Transformationen von Pixel- auf Floatkoordinaten</td>
+  </tr>
+  <tr>
+    <td >clear()</td>
+    <td >l&ouml;scht Fensterinhalt (f&uuml;llt mit Hintergrundfarbe)  und setzt Cursor auf (0, 0)</td>
+  </tr>  
+  <tr>
+    <td >erase()</td>
+    <td >l&ouml;scht Fensterinhalt (f&uuml;llt mit  Hintergrundfarbe) ohne Ver&auml;nderung des Cursors</td>
+  </tr>
+  <tr>
+    <td >putSleep()<br>
+    </td>
+    <td >h&auml;lt  den Programmablauf an, bis wakeUp() aufgerufen wird</td>
+  </tr>
+  <tr>
+    <td >wakeUp()</td>
+    <td >f&uuml;hrt angehaltenen Programmablauf weiter</td>
+  </tr>
+  <tr>
+    <td >linfit(X, Y)</td>
+    <td >f&uuml;hrt eine lineare Regression y = a*x+b mit Daten in X- und Y-Liste aus und gibt (a, b) zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td >addExitListener(onExit)</td>
+    <td >registriert die Callbackfunktion onExit(), die beim Click des Close-Buttons aufgerufen wird. Damit Fenster schliesst, muss dispose() aufgerufen werden</td>
+  </tr>  
+</table>
+<h4><br>
+Zeichnen</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td  width="28%">lineWidth(width)</td>
+    <td >setzt die Stiftdicke (in Pixel) </td>
+  </tr>
+  <tr>
+      <td >getLineWidth()</td>
+      <td >liefert aktuelle Stiftdicke (in Pixel)</td>
+  </tr>
+  <tr>
+    <td >setColor(color)</td>
+    <td >setzt die Stiftfarbe (X11-Farbstring oder  Colortype) </td>
+  </tr>
+  <tr>
+    <td >move(x, y)</td>
+    <td >setzt Cursor auf (x, y) ohne zu zeichnen</td>
+  </tr>
+  <tr>
+    <td width="28%" >move(coord_list)</td>
+    <td width="62%">setzt Cursor auf Punktliste = [x, y] ohne zu zeichnen</td>
+  </tr>
+  <tr>
+    <td width="28%" >move(c)</td>
+    <td width="62%">setzt Cursor auf complex(x, y) ohne zu zeichnen</td>
+  </tr>
+  <tr>
+    <td width="28%" >getPosX()</td>
+    <td width="62%">liefert x-Koordinate des Cursors</td>
+  </tr>
+  <tr>
+    <td width="28%" >getPosY()</td>
+    <td width="62%">liefert y-Koordinate des Cursors</td>
+  </tr>
+  <tr>
+    <td width="28%" >getPos()</td>
+    <td width="62%">liefert&nbsp;  Cursorposition als Punktliste</td>
+  </tr>
+  <tr>
+    <td >draw(x, y), lineTo(x, y), lineto(x, y)</td>
+    <td >zeichnet Linie zu neuem Punkt (x, y) und &auml;ndert Cursor</td>
+  </tr>
+  <tr>
+    <td >draw(coord_list), lineTo(coord_list), lineto(coor_list)</td>
+    <td >zeichnet Linie zu Punktliste = [x, y] und &auml;ndert Cursor</td>
+  </tr>
+  <tr>
+    <td >draw(c), lineTo(c), lineto(c)</td>
+    <td >zeichnet Linie zu complex(x, y) und &auml;ndert Cursor</td>
+  </tr>
+   <tr>
+    <td >line(x1, y1, x2, y2)</td>
+    <td >zeichnet Linie von (x1, y1) zu (x2, y2) ohne &Auml;nderung des Cursors</td>
+  </tr>
+   <tr>
+    <td >line(pt1, pt2)</td>
+    <td >zeichnet Linie von pt1 = [x1, y1] zu pt2 = [x2,  y2] ohne &Auml;nderung des Cursors</td>
+  </tr>
+   <tr>
+    <td >line(c1, c2)</td>
+    <td >zeichnet Linie von complex(x1, y1) zu  complex(x2, y2) ohne &Auml;nderung des Cursors</td>
+  </tr>
+   <tr>
+     <td >line(li[p0, p1,...])</td>
+     <td >zeichnet Linienzug der Punkte in der Liste (auch Tupel)</td>
+   </tr>
+   <tr>
+       <td >arrow(x1, y1, x2, y2, size)</td>
+       <td >zeichnet Pfeil von (x1, y1) zu (x2, y2). size ist die Gr&ouml;sse der Pfeilspitze (falls weggelassen, size = 15)</td>
+   </tr>
+   <tr>
+       <td >arrow(pt1, pt2, size)</td>
+       <td >zeichnet Pfeil von pt1 = [x1, y1] zu pt2 = [x2, y2]. size ist die Gr&ouml;sse der Pfeilspitze (falls weggelassen, size = 10)</td>
+   </tr>
+   <tr>
+       <td >arrow(c1, c2, size)</td>
+       <td >zeichnet Pfeil von complex(x1, y1) zu complex(x2, y2). size ist die Gr&ouml;sse der Pfeilspitze (falls weggelassen, size = 10)</td>
+   </tr>
+   <tr>
+       <td >doubleArrow(x1, y1, x2, y2, size)</td>
+       <td >zeichnet Doppelpfeil von (x1, y1) zu (x2, y2). size ist die Gr&ouml;sse der Pfeilspitze (falls weggelassen, size = 10)</td>
+   </tr>
+   <tr>
+       <td >doubleArrow(pt1, pt2, size)</td>
+       <td >zeichnet Doppelpfeil von pt1 = [x1, y1] zu pt2 = [x2, y2]. size ist die Gr&ouml;sse der Pfeilspitze (falls weggelassen, size = 10)</td>
+   </tr>
+   <tr>
+       <td >doubleArrow(c1, c2, size)</td>
+       <td >zeichnet Doppelpfeil von complex(x1, y1) zu complex(x2, y2). size ist die Gr&ouml;sse der Pfeilspitze (falls weggelassen, size = 10)</td>
+   </tr>
+   <tr>
+    <td >circle(radius)</td>
+    <td >zeichnet Kreis mit Mitte bei Cursor und  gegebenem Radius (in x-Koordinateneinheit)</td>
+  </tr>
+   <tr>
+       <td >circle(x, y, radius), circle(center, radius)</td>
+       <td >dasselbe, aber mit gegebenem Mittelpunkt (center: Liste oder complex)</td>
+   </tr>
+   <tr>
+    <td >fillCircle(radius)</td>
+    <td >zeichnet gef&uuml;llten Kreis (F&uuml;llfarbe =  Stiftfarbe)</td>
+  </tr>
+   <tr>
+       <td >fillCircle(x, y, radius), circle(center, radius)</td>
+       <td >dasselbe, aber mit gegebenem Mittelpunkt (center: Liste oder complex)</td>
+   </tr>
+   <tr>
+    <td >ellipse(a, b)</td>
+    <td >zeichnet Ellipse mit Mitte bei Cursor und  Halbachsen</td>
+  </tr>
+   <tr>
+       <td >ellipse(x, y, a, b), ellipse(center, a, b)</td>
+       <td >dasselbe, aber mit gegebenem Mittelpunkt (center: Liste oder complex)</td>
+   </tr>
+   <tr>
+    <td >fillEllipse(a, b)</td>
+    <td >zeichnet gef&uuml;llte Ellipse (F&uuml;llfarbe =  Stiftfarbe)</td>
+  </tr>
+   <tr>
+       <td >fillEllipse(x, y, a, b), fillEllipse(center, a, b)</td>
+       <td >dasselbe, aber mit gegebenem Mittelpunkt (center: Liste oder complex)</td>
+   </tr>
+   <tr>
+    <td >rectangle(a, b)</td>
+    <td >zeichnet Rechteck mit Zentrum bei Cursor und  Seiten</td>
+  </tr>
+   <tr>
+    <td >rectangle(x1, y1, x2, y2)</td>
+    <td >zeichnet Rechteck mit gegen&uuml;berliegenden  Eckpunkten</td>
+  </tr>
+   <tr>
+    <td >rectangle(pt1, pt2)</td>
+    <td >zeichnet Rechteck mit gegen&uuml;berliegenden  Punktlisten</td>
+  </tr>
+   <tr>
+    <td >rectangle(c1, c2)</td>
+    <td >zeichnet Rechteck mit gegen&uuml;berliegenden complex</td>
+  </tr>
+   <tr>
+    <td >fillRectangle(a, b)</td>
+    <td >zeichnet gef&uuml;lltes Rechteck (F&uuml;llfarbe =  Stiftfarbe)</td>
+  </tr>
+   <tr>
+    <td >fillRectangle(x1, y1, x2, y2)</td>
+    <td >zeichnet gef&uuml;lltes Rechteck (F&uuml;llfarbe =  Stiftfarbe)</td>
+  </tr>
+   <tr>
+    <td >fillRectangle(pt1, pt2)</td>
+    <td >zeichnet gef&uuml;lltes Rechteck (F&uuml;llfarbe =  Stiftfarbe)</td>
+  </tr>
+   <tr>
+    <td >fillRectangle(c1, c2)</td>
+    <td >zeichnet gef&uuml;lltes Rechteck (F&uuml;llfarbe =  Stiftfarbe)</td>
+  </tr>
+  <tr>
+    <td >arc(radius, startAngle, extendAngle)</td>
+    <td >zeichnet Kreisbogen mit Zentrum bei Cursor,  Radius und Start- und Sektorwinkel (0 nach Osten, positiv im Gegenuhrzeigersinn)</td>
+  </tr>
+   <tr>
+    <td >fillArc(radius, startAngle, extendAngle)</td>
+    <td >zeichnet gef&uuml;llten Kreisbogen (F&uuml;llfarbe =  Stiftfarbe)</td>
+  </tr>
+  <tr>
+    <td >polygon(x_list, y_list)</td>
+    <td >zeichnet Polygon mit Eckpunkten mit x-Koordinaten  aus der Liste x_list und y-Koordinaten aus&nbsp;  y_list</td>
+  </tr>
+   <tr>
+    <td >polygon((li[pt1, pt2,..])</td>
+    <td >zeichnet Polygon mit Liste aus Eckpunktlisten  pt1, pt2,...</td>
+  </tr>
+   <tr>
+    <td >polygon(li[c1, c2, c3,...])</td>
+    <td >zeichnet Polygon mit Liste aus Eckpunktcomplex  c1, c2,...</td>
+  </tr>
+   <tr>
+    <td >fillPolygon(x_list, y_list)</td>
+    <td >zeichnet gef&uuml;lltes Polygon (F&uuml;llfarbe =  Stiftfarbe)</td>
+  </tr>
+   <tr>
+    <td >fillPolygon((li[pt1, pt2,..])</td>
+    <td >zeichnet gef&uuml;lltes Polygon (F&uuml;llfarbe =  Stiftfarbe)</td>
+  </tr>
+   <tr>
+    <td >fillPolygon(li[c1, c2, c3,...])</td>
+    <td >zeichnet gef&uuml;lltes Polygon (F&uuml;llfarbe =  Stiftfarbe)</td>
+  </tr>
+   <tr>
+     <td >lowerPath, upperPath, hull = getHull(li[pt1, pt2,..])</td>
+     <td >liefert Punkttupels lowerPath, upperPath und hull der konvexen H&uuml;lle der Punkte pt1, pt2,...</td>
+   </tr>
+  <tr>
+    <td >quadraticBezier(x1, y1, xc, yc, x2, y2)</td>
+    <td >zeichnet quadratische Bezier-Kurve mit 2  Punkten (x1, y1), (x2, y2) und Kontrollpunkt (xc, yc) </td>
+  </tr>
+  <tr>
+    <td >quadraticBezier(pt1, pc, pt2)</td>
+    <td >zeichnet quadratische Bezier-Kurve mit 3 Punktlisten</td>
+  </tr>
+  <tr>
+    <td >quadraticBezier(c1, cc, c2)</td>
+    <td >zeichnet quadratische Bezier-Kurve mit 3 complex </td>
+  </tr>
+   <tr>
+    <td >cubicBezier(x1, y1, xc1, yc1,  xc2, yc2, x2, y2) </td>
+    <td >zeichnet kubische Bezier-Kurve mit 2 Punkten  (x1, y1), (x2, y2) und  2 Kontrollpunkten (xc1, yc1), (xc2, yc2)</td>
+  </tr>
+  <tr>
+    <td >cubicBezier(pt1, ptc1, ptc2, pt2)</td>
+    <td >zeichnet kubische Bezier-Kurve mit 2 Punktlisten  und 2 Kontrollpunktlisten</td>
+  </tr>
+  <tr>
+    <td >cubicBezier(c1, cc1, cc2, c2) </td>
+    <td >zeichnet kubische Bezier-Kurve mit 4 complex</td>
+  </tr>
+   <tr>
+    <td >triangle(x1, y1, x2, y2, x3,  y3) </td>
+    <td >zeichnet Dreieck mit Eckpunkten</td>
+  </tr>
+  <tr>
+    <td >triangle(pt1, pt2, pt3) </td>
+    <td >zeichnet Dreieck mit Eckpunktlisten</td>
+  </tr>
+  <tr>
+    <td >triangle(c1, c2, c3) </td>
+    <td >zeichnet Dreieck mit complex</td>
+  </tr>
+   <tr>
+     <td >triangle(li[pt1, pt2, pt3])</td>
+     <td >zeichnet Dreieck mit Liste der Eckpunkte</td>
+   </tr>
+   <tr>
+    <td >fillTriangle(x1, y1, x2, y2, x3,  y3) </td>
+    <td >zeichnet gef&uuml;lltes Dreieck (F&uuml;llfarbe = Stiftfarbe)</td>
+  </tr>
+  <tr>
+    <td >fillTriangle(pt1, pt2, pt3) </td>
+    <td >zeichnet gef&uuml;lltes Dreieck (F&uuml;llfarbe = Stiftfarbe)</td>
+  </tr>
+  <tr>
+    <td >fillTriangle(c1, c2, c3) </td>
+    <td >zeichnet gef&uuml;lltes Dreieck (F&uuml;llfarbe = Stiftfarbe)</td>
+  </tr>
+  <tr>
+    <td >fillTriangle(li[pt1, pt2, pt3])</td>
+    <td >zeichnet gef&uuml;lltes Dreieck (F&uuml;llfarbe = Stiftfarbe)</td>
+  </tr>
+  <tr>
+    <td >point(x, y)</td>
+    <td >zeichnet 1-Pixel-Punkt bei (x, y)</td>
+  </tr>
+   <tr>
+    <td >point(pt)</td>
+    <td >zeichnet 1-Pixel-Punkt bei Punktliste pt = [x,y]</td>
+  </tr>
+   <tr>
+    <td >point(complex)</td>
+    <td >zeichnet 1-Pixel-Punkt bei complex(x, y)</td>
+  </tr>
+  <tr>
+    <td >fill(x, y, color,  replacementColor)</td>
+    <td >f&uuml;llt geschlossenes Gebiet um Punkt (x, y).  color wird durch replacementColor ersetzt (floodfill)</td>
+  </tr>
+  
+  <tr>
+    <td >fill(pt, color,replacementColor)</td>
+    <td >f&uuml;llt geschlossenes Gebiet um Punkt pt.  color wird durch replacementColor ersetzt (floodfill)</td>
+  </tr>
+  <tr>
+    <td >fill(complex, color,replacementColor) </td>
+    <td >f&uuml;llt geschlossenes Gebiet um complex(x, y).  color wird durch replacementColor ersetzt (floodfill)</td>
+  </tr>
+  <tr>
+    <td >image(path, x, y) </td>
+    <td ><p>f&uuml;gt eine Bild im  GIF-  , PNG- oder JPG-Format mit unterer linker Ecke bei (x, y) ein.  Pfad zur Bilddatei: Relativ zum Verzeichnis von TigerJython, im Distributions-JAR (Verzeichnis <em>sprites</em>) oder mit  http:// vom Internet.</p>    </td>
+  </tr>
+  <tr>
+    <td >image(path, pt) </td>
+    <td >dasselbe mit Punktliste</td>
+  </tr>
+  <tr>
+    <td >image(path, complex) </td>
+    <td >dasselbe mit complex</td>
+  </tr>
+  <tr>
+    <td >image(bm, x, y)</td>
+    <td >f&uuml;gt GBitmap bm im  GIF-  , PNG- oder JPG-Format mit unterer linker Ecke bei (x, y) ein</td>
+  </tr>
+  <tr>
+    <td >image(bm, pt)</td>
+    <td >dasselbe mit Punktliste</td>
+  </tr>
+  <tr>
+    <td >image(bm, complex)</td>
+    <td >dasselbe mit complex</td>
+  </tr>
+  <tr>
+    <td >imageHeighpath) </td>
+    <td >gibt die Bildh&ouml;he zur&uuml;ck</td>
+  </tr>
+   <tr>
+    <td >imageWidth(path) </td>
+    <td >gibt die Bildbreite zur&uuml;ck</td>
+  </tr>
+ <tr>
+    <td >enableRepaint(boolean) </td>
+    <td >aktiviert/deaktiviert das automatische  Rendern des Offscreen-Buffers (Standard: aktiviert)</td>
+  </tr>
+  <tr>
+    <td >repaint() </td>
+    <td >rendert den Offscreen-Buffer (n&ouml;tig, wenn das automatische Rendern deaktiviert ist)</td>
+  </tr>
+  <tr>
+    <td >setPaintMode() </td>
+    <td >w&auml;hlt den normalen Zeichnungsmodus</td>
+  </tr>
+  <tr>
+    <td >setXORMode(color) </td>
+    <td >w&auml;hlt den XOR-Zeichnungsmodus mit gegebener Farbe. Zweimaliges Zeichnen l&ouml;scht</td>
+  </tr>
+  <tr>
+    <td >getPixelColor(x, y) </td>
+    <td >gibt Farbe am Punkt (x, y) als Colortyp zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td >getPixelColor(pt) </td>
+    <td >gibt Farbe an Punktliste pt = [x, y] als Colortyp  zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td >getPixelColor(complex) </td>
+    <td >gibt Farbe an complex(x, y) als Colortyp zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td >getPixelColorStr(x, y) </td>
+    <td >gibt Farbe am Punkt (x, y) als X11-Farbstring  zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td >getPixelColorStr(pt) </td>
+    <td >gibt Farbe an Punktliste als X11-Farbstring zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td >getPixelColorStr(complex) </td>
+    <td >gibt Farbe an complex als X11-Farbstring zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td >makeColor(value)</td>
+    <td >gibt eine Farbreferenz von value zur&uuml;ck. Werte-Beispiele: (&quot;7FFED4&quot;), (&quot;Aqua-Marine&quot;), (0x7FFED4), (8388564), (0.5, 1.0, 0.83), (128, 255, 212), (&quot;rainbow&quot;&quot;, n) mit n = 0..1, Lichtspektrum</td>
+  </tr>
+  <tr>
+      <td >Node(center, text, size, borderSize, borderColor, textColor, bgColor, font)</td>
+      <td >erzeugt und zeichnet ein Bild mit einem (gef&uuml;llten) Kreis und dem gegebenen mittenzentrierten Text. Defaults: size = 50, borderSize = 1, borderColor = &quot;black&quot;, textColor = &quot;black&quot;, bgColor = &quot;white&quot;, font = Font(&quot;Courier&quot;, Font.PLAIN, 14). Gibt die Referenz von Node zur&uuml;ck</td>
+  </tr>
+  <tr>
+      <td >Edge(node1, node2, lineWidth, color)</td>
+      <td >erzeugt und zeichnet eine ungerichtete Kante zwischen den beiden Knoten. Defaults: lineWidth = 1, color = &quot;black&quot;</td>
+  </tr>
+  <tr>
+      <td >DirectedEdge(node1, node2, lineWidth, color, headSize)</td>
+      <td >erzeugt und zeichnet eine gerichtete Kantel von Knoten node1 zu node2. Defaults: lineWidth = 1, color = &quot;black&quot;, headSize = 10 (Seitenl&auml;nge des Pfeildreiecks in Pixel)</td>
+  </tr>
+  <tr>
+      <td >DoubleDirectedEdge(node1, node2, lineWidth, color, headSize)</td>
+      <td >erzeugt und zeichnet eine doppelt gerichtete Kante zwischen Knoten node1 und node2. Defaults: lineWidth = 1, color = &quot;black&quot;, headSize = 10 (Seitenl&auml;nge des Pfeildreiecks in Pixel)</td>
+  </tr>
+</table>
+<h4><br>
+Text</h4>
+  
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%" >text(string) </td>
+    <td width="62%" >schreibt Text mit Beginn beim  aktuellen Cursor</td>
+  </tr>
+  <tr>
+    <td >text(x, y, string) </td>
+    <td >schreibt Text mit Beginn bei Punkt (x, y)</td>
+  </tr>
+   <tr>
+    <td >text(pt, string) </td>
+    <td >schreibt Text mit Beginn bei Punktliste pt = [x, y]</td>
+  </tr>
+   <tr>
+    <td >text(complex, string) </td>
+    <td >schreibt Text mit Beginn bei complex(x, y)</td>
+  </tr>
+   <tr>
+    <td >text(x, y, string, font,  textColor, bgColor) </td>
+    <td >schreibt Text mit Beginn bei (x, y) mit Font, Textfarbe und  Hintergrundfarbe</td>
+  </tr>
+   <tr>
+    <td >text(pt, string, font,  textColor, bgColor) </td>
+    <td >schreibt Text mit Beginn bei Punkliste mit Font, Textfarbe  und Hintergrundfarbe</td>
+  </tr>
+   <tr>
+    <td >text(complex,string,  font, textColor, bgColor) </td>
+    <td >schreibt Text mit Beginn bei complex(x, y) mit Font,  Textfarbe und Hintergrundfarbe</td>
+  </tr>
+   <tr>
+    <td >font(font) </td>
+    <td >setzt ein neues Standardfont</td>
+  </tr>
+  </table>
+<h4><br>
+Callbacks</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="28%">
+      <p>makeGPanel(mouseNNN = onMouseNNN)</p>
+      <p>auch mehrere, durch Komma getrennt<br>
+      </p>
+    </td>
+    <td width="62%" >registriert die Callbackfunktion onMouseNNN(x, y), die beim Mausevent aufgerufen wird. Werte f&uuml;r NNN: Pressed, Released, Clicked, Dragged, Moved, Entered, Exited, SingleClicked, DoubleClicked</td>
+  </tr>
+  <tr>
+    <td>
+      <p>isLeftMouseButton(),<br>
+        isRightMouseButton() <br>
+      </p>
+    </td>
+    <td >gibt True zur&uuml;ck, falls beim Event die linke bzw. rechte Maustaste verwendet wurde</td>
+  </tr>
+  <tr>
+    <td>makeGPanel(keyPressed = onKeyPressed)</td>
+    <td >registriert die Callbackfunktion onKeyPressed(keyCode), die beim Dr&uuml;cken einer Tastaturtaste aufgerufen wird. keyCode ist ein f&uuml;r die Taste eindeutiger integer Code</td>
+  </tr>
+  <tr>
+    <td>getKeyModifiers()</td>
+    <td >
+      <p>liefert nach einem Tastaturevent einen Code f&uuml;r Spezialtasten (Shift, Ctrl, usw., auch kombiniert)</p>
+    </td>
+  </tr>
+  <tr>
+      <td>makeGPanel(closeClicked = onCloseClicked)</td>
+      <td >registriert die Callbackfunktion onCloseClicked(), die beim Klick des Close-Buttons der Titelzeile aufgerufen wird. Das Fenster muss mit dispose() geschlossen werden</td>
+  </tr>
+  <tr>
+      <td>showSimulationBar(NNN = onNNN)</td>
+      <td >zeigt ein Dialogfenster mit den Button 'Step', 'Run'/'Pause', 'Reset' und einem Slider zum Einstellen der Simulationsperiode. Folgende Callbacks NNN k&ouml;nnen registiert werden: start, pause, step, reset, change(Parameter: simulationPeriod), loop, exit (close button gedr&uuml;ckt). loop wird in jedem Simulationszyklus vom Simulationsthread aufgerufen</td>
+  </tr>
+  <tr>
+      <td>showSimulationBar(ulx, uly, initPeriod, NNN = onNNN)</td>
+      <td >wie oben, aber mit Positionierung des Dialogfensters (obere linke Ecke) und Anfangswert der Simulationsperiode (default: 100)</td>
+  </tr>
+  <tr>
+      <td>hideSimulationBar()</td>
+      <td >schliesst das Dialogfenster und gibt alle Ressourcen frei</td>
+  </tr>
+</table>
+<h4><br>
+Tastatur</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+   <tr>
+    <td >getKey()&nbsp;&nbsp;</td>
+    <td >holt den letzten Tastendruck ab und liefert  String zur&uuml;ck (leer, falls illegale Taste)</td>
+  </tr>
+  <tr>
+    <td >getKeyCode()&nbsp;&nbsp;</td>
+    <td >holt den letzten Tastendruck ab und liefert Code  zur&uuml;ck</td>
+  </tr>
+  <tr>
+    <td width="28%" >getKeyWait() </td>
+    <td width="62%">wartet bis Taste gedr&uuml;ckt und liefert String  zur&uuml;ck (leer, falls illegale Taste)</td>
+  </tr>
+   <tr>
+    <td width="28%" >getKeyCodeWait() </td>
+    <td width="62%">wartet bis Taste gedr&uuml;ckt und&nbsp; liefert Code zur&uuml;ck</td>
+  </tr>
+   <tr>
+       <td >getModifiers()</td>
+       <td >liefert einen Spezialcode beim Dr&uuml;cken von Ctrl/Alt/Shift</td>
+   </tr>
+   <tr>
+       <td >getModifiersText()</td>
+       <td >liefert einen Bezeichner beim Dr&uuml;cken von Ctrl/Alt/Shift</td>
+   </tr>
+   <tr>
+    <td >kbhit() </td>
+    <td >liefert True, falls ein Tastendruck noch nicht  mit getKey() od. getKeyCode() abgeholt ist</td>
+  </tr> 
+</table>
+<h4><br>
+  GUI-Komponenten</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+   <tr>
+    <td width="28%" >add(component)&nbsp;&nbsp;</td>
+    <td width="62%" >f&uuml;gt component in einer Zeile am oberen Rand  hinzu</td>
+  </tr>
+  <tr>
+    <td >validate()&nbsp;&nbsp;</td>
+    <td >baut das Fenster mit hinzugef&uuml;gten Komponenten neu auf</td>
+  </tr>
+ </table>
+  <h4><br>
+  Statusbar</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+   <tr>
+    <td >addStatusbar(height)&nbsp;&nbsp;</td>
+    <td >f&uuml;gt eine Statusbar mit gegebener H&ouml;he in Pixels  hinzu</td>
+  </tr>
+  <tr>
+    <td >setStatusText(text)&nbsp;&nbsp;</td>
+    <td >schreibt Text in Statusbar</td>
+  </tr>
+  <tr>
+    <td width="28%" >setStatusText(text, font, color) </td>
+    <td width="62%">schreibt Text mit Font und Textfarbe in Statusbar</td>
+  </tr>  
+</table>
+  <h4><br>
+  Font-Format</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+      <td >Font(name, style, size)</td>
+      <td >erzeugt eine neues Font mit gegebenen Namen, Stil und Gr&ouml;sse</td>
+    </tr>
+    <tr>
+      <td >name</td>
+      <td >ein String mit einem dem System bekannten  Fontnamen, z.B.. &quot;Times New Roman&quot;, &quot;Arial&quot;, &quot;Courier&quot;</td>
+    </tr>
+    <tr>
+      <td width="28%" >style </td>
+      <td width="62%">einer der Konstanten: Font.PLAIN, Font.BOLD, Font.ITALIC oder einen Kombination davon: Font.BOLD + Font.ITALIC</td>
+    </tr>
+    <tr>
+      <td >size</td>
+      <td>ein Integer mit einer auf dem System verf&uuml;gbaren Font-Gr&ouml;sse (in pixels), z.B. 12, 16, 72</td>
+    </tr>
+  </table>
+  <h4>&nbsp;</h4>
+  <h4>Dialoge</h4>
+  <table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+      <td width="28%">msgDlg(message)</td>
+      <td width="62%" >&ouml;ffnet einen modalen Dialog mit einem OK-Button und gegebenem Mitteilungstext</td>
+    </tr>
+    <tr>
+      <td>msgDlg(message, title = title_text)</td>
+      <td >dasselbe mit Titelangabe</td>
+    </tr>
+    <tr>
+      <td>inputInt(prompt)</td>
+      <td>&ouml;ffnet einen modalen Dialog mit  OK/Abbrechen-Buttons. OK gibt den  eingegebenen Integer zur&uuml;ck (falls kein Integer, wird Dialog neu angezeigt). Abbrechen od. Schliessen beendet das Programm. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+    </tr>
+    <tr>
+      <td>inputInt(prompt, False)</td>
+      <td>dasselbe, aber Abbrechen/Schliessen beendet das Programm nicht, sondern gibt None zur&uuml;ck. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+    </tr>
+    <tr>
+      <td>inputFloat(prompt)</td>
+      <td>&ouml;ffnet einen modalen Dialog mit  OK/Abbrechen-Buttons. OK gibt den eingegebenen  Float zur&uuml;ck (falls kein Float, wird Dialog neu angezeigt). Abbrechen  od. Schliessen beendet das Programm. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+    </tr>
+    <tr>
+      <td>inputFloat(prompt, False)</td>
+      <td>dasselbe, aber Abbrechen/Schliessen beendet das Programm nicht, sondern gibt None zur&uuml;ck. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+    </tr>
+    <tr>
+      <td>inputString(prompt)</td>
+      <td>&ouml;ffnet einen modalen Dialog mit  OK/Abbrechen-Buttons. OK gibt den  eingegeben String zur&uuml;ck. Abbrechen od. Schliessen beendet das Programm. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+    </tr>
+    <tr>
+      <td>inputString(prompt, False)</td>
+      <td>dasselbe, aber Abbrechen/Schliessen beendet das Programm nicht, sondern gibt None zur&uuml;ck. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+    </tr>
+    <tr>
+      <td>input(prompt)</td>
+      <td>&ouml;ffnet einen modalen Dialog mit OK/Abbrechen-Buttons. OK gibt Eingabe als Integer, Float oder String zur&uuml;ck. Abbrechen od. Schliessen beendet das Programm. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+    </tr>
+    <tr>
+      <td>input(prompt, False)</td>
+      <td>dasselbe, aber Abbrechen/Schliessen beendet das Programm nicht, sondern gibt None zur&uuml;ck. Mit dem benannten Parameter init kann ein Initialisierungswert gesetzt werden</td>
+    </tr>
+    <tr>
+      <td>askYesNo(prompt)</td>
+      <td>&ouml;ffnet einen modalen Dialog mit Ja/Nein-Buttons. Ja gibt True, Nein gibt False zur&uuml;ck. Schliessen beendet das Programm</td>
+    </tr>
+    <tr>
+      <td>askYesNo(prompt, False)</td>
+      <td>dasselbe, aber Schliessen beendet das Programm nicht, sondern gibt None zur&uuml;ck</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+<h4>Klasse GBitmap</h4>
+  <table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+      <td width="28%" >bm = GBitmap(width, height)</td>
+      <td width="62%" >erzeugt eine (leere) Bitmap mit geg. Anzahl horizontaler und vertikaler Pixels</td>
+    </tr>
+    <tr>
+      <td >bm = getImage(filename)</td>
+      <td >erzeugt eine Bitmap mit der Gr&ouml;sse des Bildes und l&auml;dt das Bild von der Bilddatei (Formate: jpg, bmp, png, gif)</td>
+    </tr>
+
+    <tr>
+      <td >bm = getBitmap()</td>
+      <td >gibt eine Kopie der Bitmap des aktuellen GPanels zur&uuml;ck</td>
+    </tr>
+    <tr>
+      <td >bm.getWidth()</td>
+      <td >gibt die Breite der Bitmap zur&uuml;ck (in Pixels)</td>
+    </tr>
+    <tr>
+      <td >bm.getHeight()</td>
+      <td >gibt die H&ouml;he der Bitmap zur&uuml;ck (in Pixels)</td>
+    </tr>
+    <tr>
+      <td >bm.getPixelColor(x, y)</td>
+      <td >gibt Farbe am Punkt (x, y) als Colortyp  zur&uuml;ck</td>
+    </tr>
+    <tr>
+      <td >bm.getPixelColor(pt) </td>
+      <td >gibt Farbe an Punktliste pt = [x, y] als Colortyp  zur&uuml;ck</td>
+    </tr>
+    
+    <tr>
+      <td >bm.getPixelColorStr(x, y)</td>
+      <td >gibt Farbe am Punkt (x, y) als X11-Farbstring  zur&uuml;ck</td>
+    </tr>
+    <tr>
+      <td >bm.getPixelColorStr(pt) </td>
+      <td >gibt Farbe an Punktliste pt = [x, y] als X11-Farbstring zur&uuml;ck</td>
+    </tr>
+    <tr>
+      <td >bm.setPixelColor(x, y, color)</td>
+      <td >setzt Farbe am Punkt (x, y). color als Farbtyp</td>
+    </tr>
+    <tr>
+      <td >bm.setPixelColor(pt, color) </td>
+      <td >setzt Farbe an Punktliste pt = [x, y]. color als Farbtyp</td>
+    </tr>
+    <tr>
+      <td >bm.setPixelColorStr(x, y, color)</td>
+      <td >setzt Farbe am Punkt (x, y). color als X11-Farbstring</td>
+    </tr>
+    <tr>
+      <td >bm.setPixelColorStr(pt, color) </td>
+      <td >setzt Farbe an Punktliste pt = [x, y]. color als X11-Farbstring</td>
+    </tr>
+    <tr>
+      <td >bm = readImage(data)</td>
+      <td >konvertiert bin&auml;ren Bilddatenstrom (als String im jpg, gif, bmp und png Format) in Bitmap</td>
+    </tr>
+    <tr>
+      <td >s = imageToString(bm, type)</td>
+      <td >konvertiert Bitmap zu bin&auml;rem Datenstrom (als String)  (type = "bmp", "gif", "jpg", "png)</td>
+    </tr>
+    <tr>
+      <td > save(bm, filename, type)</td>
+      <td >speichert Bitmap in Datei (type = "bmp", "gif", "jpg", "png) in Datei</td>
+    </tr>
+    <tr>
+      <td >saveData(data, filename)</td>
+      <td >speichert bin&auml;ren Datenstrom (als String) in Datei</td>
+    </tr>
+    <tr>
+      <td >bm1 = paste(bm, bmReplace, x, y)</td>
+      <td >ersetzt Teil des Bildes an der Stelle x, y mit bmReplace und gibt neue Bitmap zur&uuml;ck</td>
+    </tr>
+    <tr>
+      <td >bm1 = crop(bm, x1, y1, x2, y2)</td>
+      <td >gibt den Teil des Bildes im Rechteck x1, y1, x2, y2 zur&uuml;ck</td>
+    </tr>
+    <tr>
+      <td >bm1 = scale(bm, factor, angle)</td>
+      <td >skaliert das Bild mit dem Vergr&ouml;sserungsfaktor factor und dreht es um den Winkel angle (in Grad im Uhrzeigersinn). Gibt das neue Bild zur&uuml;ck</td>
+    </tr>
+    <tr>
+      <td >bm1 = floodFill(bm, x, y, oldColor, newColor)</td>
+      <td >f&uuml;llt das geschlossenes Gebiet um den Punkt (x, y), das die einheitliche Farbe oldColor hat mit newColor und gibt das neue Bild zur&uuml;ck</td>
+    </tr>
+  </table>
+<h4></h4>
+<h4>&nbsp;</h4>
+<h2>Dokumentation Sound<br>
+</h2>
+<h4>Sound</h4>
+  <table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+      <td width="28%">playTone(freq)</td>
+      <td width="62%">spielt Ton mit geg. Frequenz (in Hz) und Dauer 1000 ms (blockierende Funktion)</td>
+    </tr>
+    <tr>
+      <td>playTone(freq, blocking = False)</td>
+      <td>dasselbe, aber nicht-blockierende Funktion (um mehrere T&ouml;ne fast gleichzeitig abzuspielen)</td>
+    </tr>
+    <tr>
+      <td>playTone(freq, duration)</td>
+      <td>spielt Ton mit geg. Frequenz und geg. Dauer (in ms)</td>
+    </tr>
+    <tr>
+      <td>playTone([f1, f2, ...])</td>
+      <td>spielt hintereinander mehrere T&ouml;ne mit geg. Frequenzen und Dauer 1000 ms</td>
+    </tr>
+    <tr>
+      <td>playTone([(f1, d1), (f2, d2), ...])</td>
+      <td>spielt hintereinander mehrere T&ouml;ne mit geg. Frequenzen und geg. Dauer</td>
+    </tr>
+    <tr>
+      <td>playTone([(&quot;c&quot;, 700), (&quot;e&quot;, 1500), ...])</td>
+      <td>spielt hintereinander mehrere T&ouml;ne mit geg. Tonbezeichnungen und geg. Dauer. Erlaubt sind: Grosse Oktave, ein-, zwei- und dreigetrichene Oktave, also der Bereich von C, C#,..., h'''</td>
+    </tr>
+    <tr>
+      <td>playTone([(&quot;c&quot;, 700), (&quot;e&quot;, 1500), ...], instrument = &quot;piano&quot;)</td>
+      <td>wie vorher, aber mit gew&auml;hltem Instrument (piano, guitar, harp, trumpet, xylophone, organ, violin, panflute, bird, seashore, ... (gem&auml;ss MIDI-Spezifikation)</td>
+    </tr>
+    <tr>
+      <td>playTone([(&quot;c&quot;, 700), (&quot;e&quot;, 1500), ...], instrument = &quot;piano&quot;, volume = 10)</td>
+      <td>wie vorher, aber mit gew&auml;hlter Lautst&auml;rke (0..100)</td>
+    </tr>
+  </table>
+  <br>
+  <p>&nbsp;</p>
+  <h3>Module import: from soundsystem import *  </h3>
+<h4>Wiedergabe</h4>
+  <table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+      <td width="28%" bgcolor="#F0F0F5" >Befehl</td>
+      <td width="62%" bgcolor="#F0F0F5" >Aktion</td>
+    </tr>
+    <tr>
+      <td >samples = getWavMono(filename)</td>
+      <td >
+        <p>liefert Liste mit ganzzahligen Abtastwerten der angegeben monauralen Sounddatei. Angabe &quot;wav/xxx.wav&quot; l&auml;dt vom wav-Verzeichnis in tigerjython2.jar<br>
+      </p></td>
+    </tr>
+    <tr>
+      <td >samples = getWavStereo(filename)</td>
+      <td >liefert Liste mit ganzzahligen Abtastwerten der angegeben binauralen Sounddatei. Angabe &quot;wav/xxx.wav&quot; l&auml;dt  vom wav-Verzeichnis in  tigerjython2.jar</td>
+    </tr>
+    <tr>
+      <td >getWavInfo(file)</td>
+      <td >liefert String mit Information &uuml;ber Abtastrate, usw.</td>
+    </tr>
+    <tr>
+      <td >openSoundPlayer(filename)</td>
+      <td >&ouml;ffnet einen Soundplayer mit der angegebenen Sounddatei. Nachher kann sie mit den folgenden Player-Funktionen abgespielt werden. Angabe &quot;wav/xxx.wav&quot; l&auml;dt vom wav-Verzeichnis in tigerjython2.jar </td>
+    </tr>
+    <tr>
+      <td >openSoundPlayer(buffer)</td>
+      <td >wie oben, aber l&auml;dt die Soundsamples im WAV-Format von einem Bytearray (Typ array.array)</td>
+    </tr>
+    <tr>
+      <td >openMonoPlayer(samples, sampleRate)</td>
+      <td >
+        <p>erstellt einen monauralen Sound-Player, um die  Liste samples mit Integer-Werten mit der gegebenen Abtastrate abzuspielen. Der Sound wird mit play() einmal abgespielt</p>        </td>
+    </tr>
+    <tr>
+      <td >openStereoPlayer(samples, sampleRate)</td>
+      <td >erstellt einen binauralen Sound-Player, um die  Liste samples mit Integer-Werten mit der gegebenen Abtastrate abzuspielen. Der Sound wird mit play() einmal abgespielt</td>
+    </tr>
+    <tr>
+      <td >openSoundPlayerMP3(filename)</td>
+      <td >wie openSoundPlayer(), aber f&uuml;r MP3-Datei</td>
+    </tr>
+    <tr>
+      <td >openMonoPlayerMP3(filename)</td>
+      <td >wie openMonotPlayer(), aber f&uuml;r MP3-Datei</td>
+    </tr>
+    <tr>
+      <td >openStereoPlayerMP3(filename)</td>
+      <td >wie openStereoPlayer(), aber f&uuml;r MP3-Datei</td>
+    </tr>
+    <tr>
+      <td >play()</td>
+      <td >spielt Sound von der aktuellen Position an und kehrt sofort zur&uuml;ck</td>
+    </tr>
+    <tr>
+      <td >blockingPlay()</td>
+      <td ><p>spielt Sound von der aktuellen Position an und wartet, bis er fertig gespielt ist</p></td>
+    </tr>
+    <tr>
+      <td >advanceFrames(n)</td>
+      <td ><p>schiebt die aktuelle Position um die Anzahl Abtastwerte nach vorne</p></td>
+    </tr>
+    <tr>
+      <td >advanceTime(t)</td>
+      <td ><p>schiebt die aktuelle Position um die angegebene Zeit nach vorne</p></td>
+    </tr>
+    <tr>
+      <td >getCurrentPos()</td>
+      <td ><p>gibt die aktuelle Position zur&uuml;ck</p></td>
+    </tr>
+    <tr>
+      <td >getCurrentTime()</td>
+      <td ><p>gibt die aktuelle Spielzeit zur&uuml;ck</p></td>
+    </tr>
+    <tr>
+      <td >rewindFrames(n)</td>
+      <td ><p>schiebt die aktuelle Position um die angegebene Anzahl Abtastwerte zur&uuml;ck</p></td>
+    </tr>
+    <tr>
+      <td >rewindTime(t)</td>
+      <td >schiebt die aktuelle Position um die angegebene Zeit zur&uuml;ck</td>
+    </tr>
+    <tr>
+      <td >stop()</td>
+      <td >h&auml;lt das Abspielen an und setzt die aktuelle Abspielposition an den Anfang</td>
+    </tr>
+    <tr>
+      <td >setVolume(v)</td>
+      <td >setzt die Lautst&auml;rke (v = 0..100)</td>
+    </tr>
+    <tr>
+      <td >isPlaying()</td>
+      <td >gibt True zur&uuml;ck, falls noch nicht zu Ende gespielt ist</td>
+    </tr>
+    <tr>
+      <td >mute(bool)</td>
+      <td >schaltet mit True auf stumm, mit False wieder auf h&ouml;rbar</td>
+    </tr>
+    <tr>
+      <td >playLoop()</td>
+      <td >wiederholt das Abspielen endlos</td>
+    </tr>
+    <tr>
+      <td >replay()</td>
+      <td >wiederholt das Abspielen einmal</td>
+    </tr>
+
+    <tr>
+      <td >delay(time)</td>
+      <td >h&auml;lt Programm um time (Millisekunden) an (zum Einf&uuml;gen von Pausen)</td>
+    </tr>
+  </table>
+<h4>&nbsp;</h4>
+  <h4>Sound Dateien in der TigerJython Distribution:<br>
+    </h4>
+  (Format: WAV PCM 16 bit mono)<br>
+  <table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+      <td width="24%" ><strong>Filename</strong></td>
+      <td width="23%" ><strong>Abtastrate (Hz)</strong></td>
+      <td width="53%" ><strong>Beschreibung</strong></td>
+    </tr>
+    <tr>
+      <td >wav/bird.wav</td>
+      <td >22050</td>
+      <td >Kurzes Vogelgezwitscher</td>
+    </tr>
+    <tr>
+      <td >wav/boing.wav</td>
+      <td >22050</td>
+      <td >Aufschlag</td>
+    </tr>
+    <tr>
+      <td >wav/cat.wav</td>
+      <td >22050</td>
+      <td >Miauen</td>
+    </tr>
+    <tr>
+      <td >wav/click.wav</td>
+      <td >22050</td>
+      <td >Klicken</td>
+    </tr>
+    <tr>
+      <td >wav/dog.wav</td>
+      <td >22050</td>
+      <td >Bellen</td>
+    </tr>
+    <tr>
+      <td >wav/dummy.wav</td>
+      <td >40000</td>
+      <td >Sinus-Schwinung mit  500 Hz und 1500 Hz (halbe Amplitude)</td>
+    </tr>
+    <tr>
+      <td >wav/explode.wav</td>
+      <td >22050</td>
+      <td >Explosion</td>
+    </tr>
+    <tr>
+      <td >wav/fade.wav</td>
+      <td >22050</td>
+      <td >Ausblendung</td>
+    </tr>
+    <tr>
+      <td >wav/flute.wav</td>
+      <td >20000</td>
+      <td >Fl&ouml;te spielt G2 (352 Hz)</td>
+    </tr>
+    <tr>
+      <td >wav/harris.wav</td>
+      <td >20000</td>
+      <td >Stimme spricht &quot;harris&quot;</td>
+    </tr>
+    <tr>
+      <td >wav/mmm.wav</td>
+      <td >22050</td>
+      <td >Kurzes &quot;mmm&quot; f&uuml;r gutes Essen</td>
+    </tr>
+    <tr>
+      <td >wav/notify.wav</td>
+      <td >22050</td>
+      <td >Kurzes Anmeldungssignet</td>
+    </tr>
+    <tr>
+      <td >wav/oboe.wav</td>
+      <td >20000</td>
+      <td >Oboe spielt G2 (352 Hz)</td>
+    </tr>
+    <tr>
+      <td >ping.wav</td>
+      <td >22050</td>
+      <td >Kurzes Klingelzeichen</td>
+    </tr>
+  </table>
+<p>&nbsp;</p>
+<h4>Aufnahme und speichern</h4>
+  <table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+      <td >openMonoRecorder()</td>
+      <td >&ouml;ffnet einen monauralen Soundrecorder</td>
+    </tr>
+    <tr>
+      <td >openStereoRecorder()</td>
+      <td >&ouml;ffnet einen binauralen Soundrecorder</td>
+    </tr>
+    <tr>
+      <td >capture()</td>
+      <td >beginnt mit der Aufnahme</td>
+    </tr>
+    <tr>
+      <td >stopCapture()</td>
+      <td >beendet die Aufnahme</td>
+    </tr>
+    <tr>
+      <td >getCapturedBytes()</td>
+      <td >liefert die aufgenommenen Samples byteweise zur&uuml;ck (als Liste)</td>
+    </tr>
+    <tr>
+      <td >getCapturedSound()</td>
+      <td >liefert die aufgenommenen Samples als integer Listenwerte zur&uuml;ck (binaural: Kan&auml;le abwechselnd)</td>
+    </tr>
+    <tr>
+      <td >writeWavFile(samples, filename)</td>
+      <td >schreibt die Samples in eine WAV-Datei</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <h4>Fast Fourier Transform (FFT)</h4>
+  <table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+      <td width="15%" >fft(samples, n)</td>
+      <td width="85%" ><p>transformiert die ersten n Werte der  &uuml;bergebenen Liste mit Abtastwerten (floats). R&uuml;ckgabe einer Liste mit n // 2 &auml;quidistanten Spektralwerten (floats). Bei einer Abtastrate von fs reichen diese von 0 bis fs/2 im Abstand fs / n (Aufl&ouml;sung)</p>      </td>
+    </tr>
+    <tr>
+      <td >fft_db(samples, n)</td>
+      <td >dasselbe, aber liefert die Spektralwerte in Dezibel 20*log(v) zur&uuml;ck</td>
+    </tr>
+    <tr>
+      <td >fft_filter(ydata, cutoff, isLowpass)</td>
+      <td >Filterung der Werte durch Fouriertransformation und Nullen des oberen (isLowPass = True) oder unteren Teils (isLowpoass = False) des Spektrums und R&uuml;cktransformation mit einer inversion Fouriertransformation in den Zeitbereich. cutoff im Bereich 0...len(ydata) bestimmt die Cutoff-Frequenz fc.  F&uuml;r cutoff = len(ydata) the Cutoff-Frequenz ist fs / 2 (fs: Abtastrate)</td>
+    </tr>
+    <tr>
+      <td >toAequidistant(xrawdata, yrawdata, deltax)</td>
+      <td >gibt zwei Listen xdata, ydata mit &auml;quidistanten Werten in x-Abst&auml;nden deltax zur&uuml;ck (lineare Interpolation)</td>
+    </tr>
+    <tr>
+      <td >sine(A, f, t)</td>
+      <td >Sinusschwingung mit Amplitude A und Frequenz f (Phase 0) f&uuml;r jeden Float-Wert t</td>
+    </tr>
+    <tr>
+      <td >square(A, f, t)</td>
+      <td >Rechteckschwingung mit Amplitude A und Frequenz f (Phase 0) f&uuml;r jeden Float-Wert t</td>
+    </tr>
+    <tr>
+      <td >sawtooth(A, f, t)</td>
+      <td >S&auml;gezahnschwingung mit Amplitude A und Frequenz f (Phase 0) f&uuml;r jeden Float-Wert t</td>
+    </tr>
+    <tr>
+      <td >triangle(A, f, t)</td>
+      <td >Dreieckschwingung mit Amplitude A und Frequenz f (Phase 0) f&uuml;r jeden Float-Wert t</td>
+    </tr>
+    <tr>
+      <td >chirp(A, f, t)</td>
+      <td >Sinusschwingung mit Amplitude A und zeitlinear ansteigender Frequenz (Startwert f)  f&uuml;r jeden Float-Wert t</td>
+    </tr>
+  </table>
+<p>&nbsp;</p>
+  <h3>Curve fitting</h3>
+  <h4>Module import: from fitter import * </h4>
+<table width="100%"  border="1" cellpadding="4" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+      <td width="28%" bgcolor="#F0F0F5" >Befehl</td>
+      <td width="62%" bgcolor="#F0F0F5" >Aktion</td>
+    </tr>
+
+    <tr>
+      <td >coeffs = polynomfit(xdata, ydata, n)</td>
+      <td >fittet mit einem Polynom  der Ordnung n und liefert in ydata die gefitteten Werte. R&uuml;ckgabewert: Liste mit den n + 1 Polynom-Koeffizienten</td>
+    </tr>
+    <tr>
+      <td >spline = splinefit(xdata, ydata)</td>
+      <td >fittet mit einer Splinefunktion spline(x), die durch die &auml;quidistanten Datenpunkte geht. Liefert spline mit dem Definitionsintervall min(xdata)...max(xdata). Ausserhalb gibt spline null zur&uuml;ck.</td>
+    </tr>
+    <tr>
+        <td >fft_filter(ydata, cutoff, isLowPass)</td>
+        <td >wendet eine Tief- oder Hochpassfilterung auf die &auml;quidistaten Datenpunkte an. cutoff muss im Bereich 0..n liegen, wo n = len(ydata). R&uuml;ckgabe in ydata</td>
+    </tr>
+    <tr>
+      <td >functionfit(func, derivatives, initialGuess, xdata, ydata)</td>
+      <td >fittet die Funktion func(x, param) mit n Parametern in der Liste param. derivatives(x, param) gibt eine Liste mit den Werten der n partiellen Ableitungen nach den Parametern zur&uuml;ck. initGuess ist eine Liste mit n L&ouml;sungsvorschl&auml;gen der Parameter</td>
+    </tr>
+    <tr>
+      <td >functionfit(func, derivatives, initialGuess, xdata, ydata, weights)</td>
+      <td >dasselbe unter Angabe einer Liste weights von relativen Gewichten der Datenpunkte</td>
+    </tr>
+    <tr>
+      <td >xdata, ydata = toAequidistant(xrawdata, yrawdata, deltax)</td>
+      <td >
+        <p>gibt zwei Listen xdata, ydata mit &auml;quidistanten Werten in x-Abst&auml;nden deltax zur&uuml;ck (lineare Interpolation)</p>
+      </td>
+    </tr>
+  </table>
+<h3>&nbsp;</h3>
+  <h3>TCP Client/Server Library</h3>
+  <h4>Module import: from tcpcom import * </h4>
+  <h4>Klasse TCPServer	</h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+      <td width="28%" >server = TCPServer(port, stateChanged, isVerbose = False)</td>
+      <td width="62%" >erzeugt einen TCP-Socket-Server, der auf dem TCP-Port port auf Clients h&ouml;rt. Zustands&auml;nderungen rufen stateChanged() auf. F&uuml;r isVerbose = True werden Debug-Mitteilungen im Ausgabefenster  ausgeschrieben</td>
+    </tr>
+    <tr>
+      <td >stateChanged(state, msg)</td>
+      <td >
+        <p>Callback, der bei Zustands&auml;nderungen aufgerufen wird.<br>
+          state: 
+      TCPServer.PORT_IN_USE, msg: port<br>
+          state: 
+          TCPServer.CONNECTED, msg: IP Adresse des Clients<br>
+          state: TCPServer.LISTENING, msg: port<br>
+          state: 
+          TCPSever.TERMINATED, msg: leer<br>
+          state:
+          TCPServer.MESSAGE, msg: vom Client erhaltene Message (String)<br>
+          </p>
+      </td>
+    </tr>
+    <tr>
+        <td >server.disconnect()</td>
+        <td >beendet die Verbindung mit dem Client und geht in den LISTENING-Zustand</td>
+    </tr>
+    <tr>
+      <td >server.isConnected()</td>
+      <td >gibt True zur&uuml;ck, falls ein Client mit dem Server verbunden ist</td>
+    </tr>
+    <tr>
+      <td >server.terminate()</td>
+      <td >beendet die Verbindung und den LISTENNG-Zustand, gibt den IP-Port frei</td>
+    </tr>
+    <tr>
+      <td >server.isTerminated()</td>
+      <td >gibt True zur&uuml;ck, falls der Server terminiert wurde</td>
+    </tr>
+    <tr>
+      <td >server.sendMessage(msg)</td>
+      <td >sendet die Information msg zum Client (als String, das Zeichen \0 (ASCII 0) dient als Endzeichen,  automatisch transparent hinzugef&uuml;gt und wieder entfernt)  </td>
+    </tr>
+    <tr>
+      <td >TCPServer.getVersion()</td>
+      <td >gibt die Version des Moduls als String zur&uuml;ck</td>
+    </tr>
+  </table>
+<h4><br>
+Klasse HTTPServer (abgeleitet aus TCPServer)</h4>
+  <table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+      <tr>
+          <td width="28%" >server = HTTPServer(requestHandler, serverName = &quot;PYSERVER&quot;, port = 80, isVerbose = False)</td>
+          <td width="62%" >
+              <p>erzeugt einen HTTPServer (Web server, abgeleitet aus TCPServer), der auf dem gegebenen port (default: 80) auf einen Client wartet. Startet einen Thread, der an kommende HTTP GET requests abarbeitet und einen HTTP response erzeugt. Dieser verwendet im Header den gegebenen Servernamen (default: PYSERVER). Es werden nur Textresponses unterst&uuml;tzt</p>
+              <p>requestHandler() ist eine Callbackfunktion, die bei einem  GET request aufgerufen wird.<br>
+                  Signatur:<br>
+                  <font face="Courier New, Courier, monospace">msg, stateHandler = requestHandler(clientIP, filename, params)</font><br>
+                  Parameter: <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clientIP: die IP-Adresse des Client (im gepunkteten Format)<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;filename: der angeforderte Dateinamen mit einem vorgestellten '/'<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;params: ein Tupel mit dem Format:<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((param_key1, param_value1), (param_key2, param_value2), ...)  (alles Strings)<br>
+                  R&uuml;ckgabewert:<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: der HTTP Textresponse (der Header wird automatisch erzeugt)<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stateHandler: eine Callbackfunktion, die aufgerufen wird, nachdem der Response an den&nbsp;Client zur&uuml;ckgesendet ist.&nbsp;&nbsp;<br>
+              </p>
+              <p>F&uuml;r stateHandler =  None wird nichts gemacht. Die Funktion kann l&auml;nger dauernde Aktionen umfassen oder eine Wartezeit enthalten, damit keine neuen Requests mehr angenommen werden, bis ein Sensor wieder bereits ist, diese zu &nbsp;verarbeiten.<br>
+                  <br>
+              Die TCP-Verbindung wird am Ende jedes Response vom Server geschlossen. Falls sich ein Client verbindet, aber keinen Request innerhalb von 5 s sendet, schliesst der Server die Verbindung.</p>
+              <p>Um den Server zu stoppen und den Port wieder freizugeben, sollte terminate() aufgerufen werden </p>
+          </td>
+      </tr>
+
+      <tr>
+          <td >server.getClientIP()</td>
+          <td > gibt die gepunktete IP-Adresse des Clients zur&uuml;ck (leerer String, falls kein Client verbunden ist)</td>
+      </tr>
+      <tr>
+          <td >HTTPServer.getServerIP()</td>
+          <td > gibt die gepunktete IP-Adresse des Servers zur&uuml;ck (statische Methode)</td>
+      </tr>
+      <tr>
+          <td >(alle Methoden von TCPServer)</td>
+          <td >&nbsp;</td>
+      </tr>
+  </table>
+<h4><br>
+      Klasse TCPClient </h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+      <td width="28%" >client = TCPClient(ipAddress, port, stateChanged,  isVerbose = False)</td>
+      <td width="62%" >
+        <p>erzeugt einen TCP-Socket-Client, der f&uuml;r eine Verbindung mit einem TCPServer mit der IP-Adresse ipAddress (String) und dem TCP-Port port vorbereitet ist. Zustands&auml;nderungen rufen stateChanged() auf. F&uuml;r isVerbose = True werden Debug-Messages im Ausgabefenster ausgeschrieben</p>
+      </td>
+    </tr>
+    <tr>
+      <td >stateChanged(state, msg)</td>
+      <td >Callback, der bei Zustands&auml;nderungen aufgerufen wird.<br>
+state: 
+      TCPClient.CONNECTING, msg: IP Adresse:Port des Servers<br>
+state: 
+      TCPClient.CONNECTION_FAILED, msg: IP Adresse:Port des Servers<br>
+state: 
+      TCPClient.CONNECTED, msg: IP Adresse:Port des Servers<br>
+state: 
+      TCPClient.SERVER_OCCUPIED, msg: IP Adresse:Port des Servers<br>
+state: TCPClient.DISCONNECTED, msg: leer<br>
+state:
+      TCPClient.MESSAGE, msg: vom Server erhaltene Message (String)</td>
+    </tr>
+    <tr>
+      <td >client.connect()</td>
+      <td >erstellt eine Verbindung zum Server (blockierend bis Timeout). Gibt True zur&uuml;ck, falls die Verbindung zustande gekommen ist, sonst wird False zur&uuml;ckgegeben</td>
+    </tr>
+    <tr>
+      <td >client.connect(timeout)</td>
+      <td >dasselbe, aber Angabe des Timeouts (in s) f&uuml;r den Verbindungsversuch</td>
+    </tr>
+    <tr>
+      <td >client.isConnecting()</td>
+      <td >gibt True zur&uuml;ck, w&auml;hrend der Client einen Verbindungsversuch unternimmt</td>
+    </tr>
+    <tr>
+      <td >client.isConnected()</td>
+      <td >gibt True zur&uuml;ck, falls der Client mit einem Server verbunden ist</td>
+    </tr>
+    <tr>
+      <td >client.disconnect()</td>
+      <td >beendet die Verbindung mit dem Server</td>
+    </tr>
+    <tr>
+      <td >client.sendMessage(msg, responseTime)</td>
+      <td >sendet die Information msg zum Server (als String, das Zeichen \0 (ASCII 0) dient als Endzeichen,  automatisch transparent hinzugef&uuml;gt und wieder entfernt).  F&uuml;r responseTime &gt; 0 ist die Methode blockierend und erwartet innerhalb von responseTime (in s) eine Antwort. Die Antwort wird als R&uuml;ckgabewert geliefert. Falls die Antwort nicht ankommt, wird None zur&uuml;ckgegeben</td>
+    </tr>
+    <tr>
+      <td >TCPClient.getVersion()</td>
+      <td >gibt die Version des Moduls als String zur&uuml;ck</td>
+    </tr>
+  </table>
+  <h3>&nbsp;</h3>
+  <h3>Bluetooth Client/Server Library</h3>
+  <h4>Module import: from btcom import * </h4>
+  <h4>Klasse BTServer </h4>
+  <table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+      <tr>
+          <td width="28%" >server = BTServer(serviceName, stateChanged, isVerbose = False)</td>
+          <td width="62%" >erzeugt einen Bluetooth-Server, der den RFCOMM-Service mit dem Namen serviceName anbietet. Zustands&auml;nderungen rufen stateChanged() auf. F&uuml;r isVerbose = True werden Debug-Mitteilungen im Ausgabefenster ausgeschrieben</td>
+      </tr>
+      <tr>
+          <td >stateChanged(state, msg)</td>
+          <td >
+              <p>Callback, der bei Zustands&auml;nderungen aufgerufen wird.<br>
+                  state: 
+                  &quot;LISTENING&quot; , msg: leer<br>
+                  state: 
+                  &quot;CONNECTED&quot;, msg: Remote info: Bluetooth name (MAC-Adresse)<br>
+                  state: &quot;TERMINATED&quot;, msg: leer<br>
+                  state: 
+                  &quot;MESSAGE&quot;, msg: erhaltene Message<br>
+              </p>
+          </td>
+      </tr>
+      <tr>
+          <td >server.disconnect()</td>
+          <td >beendet die Verbindung mit dem Client und geht in den LISTENING-Zustand</td>
+      </tr>
+      <tr>
+          <td >server.isConnected()</td>
+          <td >gibt True zur&uuml;ck, falls ein Client mit dem Server verbunden ist</td>
+      </tr>
+
+      <tr>
+          <td >server.terminate()</td>
+          <td >beendet den LISTENING-Zustand und gibt interne Ressourcen frei</td>
+      </tr>
+      <tr>
+          <td >server.isTerminated()</td>
+          <td >gibt True zur&uuml;ck, falls der Server terminiert wurde</td>
+      </tr>
+      <tr>
+          <td >server.sendMessage(msg)</td>
+          <td >sendet die Information msg zum Client (als String, das Zeichen \0 (ASCII 0) dient als Endzeichen,  automatisch transparent hinzugef&uuml;gt und wieder entfernt). </td>
+      </tr>
+      <tr>
+          <td >BTServer.getVersion()</td>
+          <td >gibt die Version des Moduls als String zur&uuml;ck</td>
+      </tr>
+  </table>
+  <h4><br>
+      Klasse BTClient </h4>
+  <table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+      <tr>
+          <td width="28%" >client = BTClient(stateChanged,  isVerbose = False)</td>
+          <td width="62%" >
+              <p>erzeugt einen Bluetooth-Client, der f&uuml;r eine Verbindung mit einem BTServer vorbereitet ist. Zustands&auml;nderungen rufen stateChanged() auf. F&uuml;r isVerbose = True werden Debug-Messages im Ausgabefenster  ausgeschrieben</p>
+          </td>
+      </tr>
+      <tr>
+          <td >client.findServer(serverName, timeout)</td>
+          <td >f&uuml;hrt eine Bluetooth-Inquiry durch, um den Server mit dem gegebenen Bluetooth-Namen zu finden. Gibt das Tupel serverInfo zur&uuml;ck: ("nn:nn:nn:nn:nn:nn", channel) , z.B. (&quot;B8:27:EB:04:A6:7E", 1). Falls der Server nicht antwortet, wird None zur&uuml;ckgegeben. Die Suche wird bis zum  Erreichen des timeout (in s) wiederholt</td>
+      </tr>
+      <tr>
+          <td >client.findService(serviceName, timeout)</td>
+          <td >f&uuml;hrt eine Bluetooth-Inquiry durch, um einen Bluetooth-Server mit dem gegebenen RFCOMM-Servicenamen zu finden. Gibt das Tupel serverInfo zur&uuml;ck: ("nn:nn:nn:nn:nn:nn", channel) , z.B. (&quot;B8:27:EB:04:A6:7E", 1). Falls der server nicht antwortet, wird None zur&uuml;ckgegeben. Die Suche wird bis zum  Erreichen des timeout (in s) wiederholt</td>
+      </tr>
+      <tr>
+          <td >stateChanged(state, msg)</td>
+          <td >Callback, der bei Zustands&auml;nderungen aufgerufen wird.<br>
+state: 
+                  &quot;CONNECTING&quot; , msg: server info (MAC-Adresse, Bluetooth-Kanal)<br>
+state: 
+                  &quot;CONNECTED&quot; , msg: server info<br>
+state: 
+                  &quot;CONNECTION_FAILED&quot;, msg: sever info<br>
+state: &quot;DISCONNECTED&quot;, msg: leer<br>
+state: 
+          &quot;MESSAGE&quot;, msg: erhaltene Message</td>
+      </tr>
+      <tr>
+          <td >client.connect(serverInfo, timeout)</td>
+          <td >erstellt eine Verbindung zum Server (blockierend bis maximal timeout in s). Gibt True zur&uuml;ck, falls die Verbindung zustande gekommen ist, sonst wird False zur&uuml;ckgegeben. serverInfo ist ein Tupel mit MAC-Adresse und Kanal ("nn:nn:nn:nn:nn:nn", channel) , z.B. (&quot;B8:27:EB:04:A6:7E", 1)</td>
+      </tr>
+
+      <tr>
+          <td >client.isConnecting()</td>
+          <td >gibt True zur&uuml;ck, w&auml;hrend der Client einen Verbindungsversuch unternimmt</td>
+      </tr>
+      <tr>
+          <td >client.isConnected()</td>
+          <td >gibt True zur&uuml;ck, falls der Client mit einem Server verbunden ist</td>
+      </tr>
+      <tr>
+          <td >client.disconnect()</td>
+          <td >schliesst die Verbindung mit dem Server</td>
+      </tr>
+      <tr>
+          <td >client.sendMessage(msg,)</td>
+          <td >sendet die Information msg zum Server (als String, das Zeichen \0 (ASCII 0) dient als Endzeichen,  automatisch transparent hinzugef&uuml;gt und wieder entfernt).</td>
+      </tr>
+      <tr>
+          <td >BTClient.getVersion()</td>
+          <td >gibt die Version des Moduls als String zur&uuml;ck</td>
+      </tr>
+  </table>
+<p>&nbsp;</p>
+<h3>MQTT Client Library</h3>
+<h4>Modul import: from mqttclient import * </h4>
+<h4>Klasse MQTTClient </h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="28%" >client = MQTTClient(messageReceived = None, username = &quot;&quot;, password = &quot;&quot;)</td>
+        <td width="62%" >
+            <p>erzeugt eine MQTTClient Instanz, die Topics publiziert (publish) und/oder abonniert (subscribe). Der Client erstellt noch keine Verbindung zu einem Broker.<br>
+                    <br>
+                messageReceived(topic, message) ist eine Callbackfunktion, die beim Empfang einer Message aufgerufen wird (und die in einem eigenen Thread l&auml;uft). Falls None, so werden keine Empfangsnotifikationen getriggert, beispielsweise bei einem Client, der ausschliesslich publiziert.                 username wird verwendet, um beim Broker einzuloggen (leer, falls der Broker keine Authentifizierung verlangt).                password ist das Passwort, um beim Broker einzuloggen (leer, falls der Broker keine Authentiifizierung verlangt).</p>
+        </td>
+    </tr>
+    <tr>
+        <td >client.connect(host, port = 1883, keepalive = 60)</td>
+        <td >
+            <p>startet einen Verbindungsaufbau zum gegebenen Broker auf dem gegebenen IP port (default: 1883). 
+            keepalive ist die maximale Periode (in s) zwischen zwei Kommunikationen mit dem Broker (default: 60 s) Falls keine anderen Messages ausgetauscht werden, handelt es sich um das Zeitintervall zwischen bei Ping-Messages. Gibt True zur&uuml;ck, falls die Verbindung zustande gekommen ist; sonst wird False zur&uuml;ck gegeben<br>
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td >client.disconnect()</td>
+        <td >beendet die Verbindung zum Broker</td>
+    </tr>
+    <tr>
+        <td >client.publish(topic, payload, qos = 0, retain = False)</td>
+        <td > sendet eine Message mit gegebenen Topic und Payload  zum Broker. payload ist ein String (bei einem int oder float, wird dieser zuerst in einen String konvertiert). qos ist die Qualit&auml;tsstufe (quality of service level, Zahl 0, 1, 2, default: 0). 
+            retain bestimmt, ob die Message als &ldquo;last known good&rdquo;/retained message f&uuml;r dieses Topic betrachtet wird (default: False)</td>
+    </tr>
+    <tr>
+        <td >client.subscribe(topic, qos = 0)</td>
+        <td >abonniert (subscribes) den Client auf eines oder mehrere Topics. topic ist ein String oder eine Liste mit Tupels im Format (topic, qos). qos ist die Qualit&auml;tsstufe (quality of service level, Zahl  0, 1, 2, default: 0); wird nicht verwendet, falls topic eine Liste ist</td>
+    </tr>
+    <tr>
+        <td >client.setVerbose(verbose)</td>
+        <td >schaltet das Ausschreiben von Log-Informationen ein/aus</td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+<h4>Klasse GameClient </h4>
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
+    <tr>
+        <td width="28%" >client = GameClient(stateChanged, messageReceived, topic = &quot;/ch/aplu/mqtt/gameclient&quot;)</td>
+        <td width="62%" >
+            <p> erzeugt eine GameClient Instanz zur R&uuml;ckgabe von Statusinformationen und dem Austausch von Informationen f&uuml;r Zweipersonen-Spiele.
+                stateChanged(state) ist eine Callbackfunktion, da bei der &Auml;nderng des Game-Zustands aufgerufen wird. Statuswert: 'CONNECTING' (w&auml;hrend des Verbindungsaufbaus zum Broker), 'CONNECTED' (falls im dem Broker verbunden, aber noch auf den Spielpartner wartend), 'READY' (beide Spieler sind spielbereit), 'DISCONNECTED' (der Spielpartner ist nicht mehr verbunden).  messageReceived(msg)  ist eine Callbackfunktion, die beim Empfang von Informationen aufgerufen wird. 
+                topic ist das MQTT Topic, das f&uuml;r den Datenaustausch verwendet wird  (default: /ch/aplu/mqtt/gameclient)<br>
+            </p>        </td>
+    </tr>
+    <tr>
+      <td >client.setName(name)</td>
+      <td >setzt den Spielernamen, der beim &Uuml;bergang auf READY dem Partner mitgeteilt wird</td>
+    </tr>
+    <tr>
+        <td >client.connect(host, port = 1883)</td>
+        <td >
+            <p> startet einen Verbindungsaufbau zum MQTT Broker mit  gegebenen IP Adresse und IP Port (default: 1883)<br>
+            </p>        </td>
+    </tr>
+    <tr>
+        <td >client.sendMessage(text)</td>
+        <td > sendet eine Textinformation zum Partner<br>        </td>
+    </tr>
+    <tr>
+        <td >client.disconnect()</td>
+        <td >beendet die Verbindung zum Broker</td>
+    </tr>
+    <tr>
+        <td >client.getState()</td>
+        <td > gibt den aktuellen Zustand zur&uuml;ck (ein Wert aus 'IDLE', 'CONNECTING', 'CONNECTED', 'READY', 'DISCONNECTED')</td>
+    </tr>
+    <tr>
+      <td >client.getPartnerName()</td>
+      <td >gibt den Namen des Mitspielers zur&uuml;ck, der beim &Uuml;bergang aur READY vom Partner mitgeteilt wurde (leer, falls noch nicht READY)</td>
+    </tr>
+    <tr>
+      <td >client.getPartnerAddress()</td>
+      <td >gibt die IP-Adresse des Mitspielers zur&uuml;ck, der beim &Uuml;bergang aur READY vom Partner mitgeteilt wurde (leer, falls noch nicht READY)</td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+<p><br>
+    <a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

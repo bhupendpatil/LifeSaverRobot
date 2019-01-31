@@ -1,0 +1,350 @@
+<html>
+<head>
+</head>
+<body font face="Arial, Helvetica, sans-serif">
+<h2><a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></h2>
+<h2>Dokumentation EntryDialog</h2>
+<h3>Module imports: </h3>
+<h3>from entrydialog import *<br>
+  from gturtle import *<br>
+  from gpanel import *<br />
+</h3>
+<h4>Klasse EntryDialog</h4>
+
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%" bgcolor="#F0F0F5">Konstruktoren/Methoden</td>
+    <td width="70%" bgcolor="#F0F0F5">Aktion</td>
+  </tr>
+  <tr>
+    <td> EntryDialog(entryPane1, entryPane2,...)</td>
+    <td>
+      <p>erzeugt in Bildschirmmitte ein Dialogfenster mit EntryPane-Zonen, die in der Reihenfolge der Parameter eingef&uuml;gt werden<br>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>EntryDialog(ulx, uly, entryPane1, entryPane2,...)</td>
+    <td>erzeugt  ein Dialogfenster mit EntryPane-Zonen, die in der Reihenfolge der Parameter eingef&uuml;gt werden. Die obere linke Ecke des Fensters wird auf die Bildschirmkoordinaten (ulx, uly) gesetzt</td>
+  </tr>
+  <tr>
+    <td>setTitle(text)</td>
+    <td>schreibt text in die Titelzeile des Dialogs</td>
+  </tr>
+  <tr>
+    <td>isChanged()</td>
+    <td>liefert True, falls eines der EntryItems  CheckEntry, RadioEntry, SliderEntry ge&auml;ndert wurde. Nachfolgender Aufruf gibt wieder False, bis zu einer erneuten &Auml;nderung</td>
+  </tr>
+  <tr>
+    <td>dispose()</td>
+    <td>schliesst das Dialogfenster</td>
+  </tr>
+   <tr>
+     <td>isDisposed()</td>
+     <td>liefert True, falls der Dialog mit dem Close-Button oder mit dispose() geschlossen wurde</td>
+   </tr>
+   <tr>
+     <td>hide()</td>
+     <td>versteckt das Dialogfenster</td>
+   </tr>
+   <tr>
+     <td>show()</td>
+     <td>zeigt ein vorher verstecktes Dialogfenster</td>
+   </tr>
+   <tr>
+     <td>setAlwaysOnTop(enable)</td>
+     <td>mit enable = True bleibt das Dialogfenster immer &uuml;ber anderen Programmfenstern sichtbar, kann aber trotzdem den Fokus verlieren</td>
+   </tr>
+   <tr>
+     <td>toFront(enable)</td>
+     <td>mit enable = True wird das Fenster &uuml;ber andere Programmfenster gesetzt und erh&auml;lt den Fokus; mit enable = False wird das Fenster in den Hintergrund gesetzt</td>
+   </tr>
+</table>
+
+<h4><br>
+Klasse EntryPane</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%" bgcolor="#F0F0F5">Konstruktoren</td>
+    <td width="70%" bgcolor="#F0F0F5">Aktion</td>
+  </tr>
+  <tr>
+    <td> EntryPane(entryItem1, entryItem2,...)</td>
+    <td>
+      <p>erzeugt eine Zone ohne Umrandung mit den gegebenen GUI-Elementen, die in der Reihenfolge der Parameter eingef&uuml;gt werden. Die gegebenen Elemente m&uuml;ssen denselben Datentyp aufweisen (StringEntry, LongEntry, IntEntry, FloatEntry werden als gleich betrachtet)<br>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>EntryPane(title, entryItem1, entryItem2,...)</td>
+    <td>erzeugt eine Zone mit den gegebenen GUI-Elementen, die in der Reihenfolge der Parameter eingef&uuml;gt werden. Die Zone wird mit einem Rechteck umrandet und ein Titel auf den oberen Rand gesetzt (title kann auch leerer String sein). Die gegebenen Elemente m&uuml;ssen denselben Datentyp aufweisen (StringEntry, LongEntry, IntEntry, FloatEntry werden als gleich betrachtet)</td>
+  </tr>
+  <tr>
+    <td>setTitle(title)</td>
+    <td>falls die Zone eine Umrandung hat, wird ein vorhandener Titeltext ersetzt</td>
+  </tr>
+</table>
+<h4><br>
+Klasse ButtonEntry (Basisklasse EntryItem)</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%" bgcolor="#F0F0F5">Konstruktor/Methoden</td>
+    <td width="70%" bgcolor="#F0F0F5">Aktion</td>
+  </tr>
+  <tr>
+    <td>ButtonEntry(label)</td>
+    <td>erzeugt eine Schaltfl&auml;che mit gegebenem Text</td>
+  </tr>
+  <tr>
+    <td>isTouched()</td>
+    <td>liefert True, falls die Schaltfl&auml;che seit dem letzten Aufruf von isTouched() gedr&uuml;ckt wurde</td>
+  </tr>
+  <tr>
+    <td>getValue()</td>
+    <td>liefert True, falls die Schaltfl&auml;che zur Zeit des Aufrufs gedr&uuml;ckt ist</td>
+  </tr>
+  <tr>
+    <td>setEnabled(enabled)</td>
+    <td>aktiviert/deaktiviert die Schaltfl&auml;che</td>
+  </tr>
+</table>
+<h4><br>
+Klasse CheckEntry (Basisklasse EntryItem)</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%" bgcolor="#F0F0F5">Konstruktor/Methoden</td>
+    <td width="70%" bgcolor="#F0F0F5">Aktion</td>
+  </tr>
+  <tr>
+    <td>CheckEntry(label, init)</td>
+    <td>erzeugt eine Checkbox mit gegebener Beschriftung. F&uuml;r init = True, ist die Checkbox angew&auml;hlt</td>
+  </tr>
+  <tr>
+    <td>isTouched()</td>
+    <td>liefert True, falls auf die CheckBox seit dem letzten Aufruf von isTouched() geklickt wurde</td>
+  </tr>
+  <tr>
+    <td>getValue()</td>
+    <td>liefert True, falls die Checkbox angew&auml;hlt ist; False, falls die Checkbox abgew&auml;hlt ist</td>
+  </tr>
+  <tr>
+    <td>setValue(value)</td>
+    <td>f&uuml;r value = True, wird die Checkbox angew&auml;hlt, sonst abgew&auml;hlt</td>
+  </tr>
+  <tr>
+    <td>setEnabled(enabled)</td>
+    <td>aktiviert/deaktiviert die Checkbox</td>
+  </tr>
+</table>
+<h4><br>
+Klasse RadioEntry (Basisklasse EntryItem)</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%" bgcolor="#F0F0F5">Konstruktor/Methoden</td>
+    <td width="70%" bgcolor="#F0F0F5">Aktion</td>
+  </tr>
+  <tr>
+    <td>RadioEntry(label)</td>
+    <td>erzeugt einen abgew&auml;hlten Radiobutton mit gegebener Beschriftung. Alle Radiobuttons in der gleichen EntryPane-Zone sind in der gleichen logischen Buttongruppe</td>
+  </tr>
+  <tr>
+    <td>isTouched()</td>
+    <td>liefert True, falls auf den Radiobutton seit dem letzten Aufruf von isTouched() geklickt wurde</td>
+  </tr>
+  <tr>
+    <td>getValue()</td>
+    <td>
+      <p>liefert True, falls der Radiobutton angew&auml;hlt ist; False, falls der Radiobutton abgew&auml;hlt ist</p>
+    </td>
+  </tr>
+  <tr>
+    <td>setValue(value)</td>
+    <td>f&uuml;r value = True, wird der Radiobutton angew&auml;hlt, sonst abgew&auml;hlt</td>
+  </tr>
+  <tr>
+    <td>setEnabled(enabled)</td>
+    <td>aktiviert/deaktiviert den Radiobutton</td>
+  </tr>
+</table>
+<h4><br>
+  Klasse IntEntry (Basisklasse EntryItem)</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%" bgcolor="#F0F0F5">Konstruktoren/Methoden</td>
+    <td width="70%" bgcolor="#F0F0F5">Aktion</td>
+  </tr>
+  <tr>
+    <td>IntEntry(prompt, init)</td>
+    <td>erzeugt ein Textfeld zur Eingabe oder Anzeige von Integer-Zahlen. Das Feld wird mit prompt angeschrieben und der Anfangswert init hineingesetzt</td>
+  </tr>
+  <tr>
+    <td>IntEntry(prompt)</td>
+    <td>erzeugt ein Textfeld zur Eingabe oder Anzeige von Integer-Zahlen. Das Feld wird mit prompt angeschrieben </td>
+  </tr>
+  <tr>
+    <td>isTouched()</td>
+    <td>liefert True, falls auf das Textfeld seit dem letzten Aufruf von isTouched() geklickt wurde</td>
+  </tr>
+  <tr>
+    <td>getValue()</td>
+    <td>liefert den aktuellen Wert im Feld; falls dieser nicht ein Integer ist, wird None zur&uuml;ckgegeben</td>
+  </tr>
+  <tr>
+    <td>setValue(value)</td>
+    <td>setzt den gegebenen Wert ins Feld (None: leeres Feld)</td>
+  </tr>
+  <tr>
+    <td>setEditable(False)</td>
+    <td>verhindert das Editieren (und entfernt den Cursor)</td>
+  </tr>
+  <tr>
+    <td>setEnabled(enabled)</td>
+    <td>aktiviert/deaktiviert das Textfeld</td>
+  </tr>
+</table>
+<h4><br>
+Klasse LongEntry (Basisklasse EntryItem)</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%" bgcolor="#F0F0F5">Konstruktoren/Methoden</td>
+    <td width="70%" bgcolor="#F0F0F5">Aktion</td>
+  </tr>
+  <tr>
+    <td>LongEntry(prompt, init)</td>
+    <td>erzeugt ein Textfeld zur Eingabe oder Anzeige von Long-Zahlen. Das Feld wird mit prompt angeschrieben und der Anfangswert init hineingesetzt</td>
+  </tr>
+  <tr>
+    <td>LongEntry(prompt)</td>
+    <td>erzeugt ein Textfeld zur Eingabe oder Anzeige von Long-Zahlen. Das Feld wird mit prompt angeschrieben </td>
+  </tr>
+  <tr>
+    <td>isTouched()</td>
+    <td>liefert True, falls auf das Textfeld seit dem letzten Aufruf von isTouched() geklickt wurde</td>
+  </tr>
+  <tr>
+    <td>getValue()</td>
+    <td>liefert den aktuellen Wert im Feld; falls dieser nicht ein Long oder Integer ist, wird None zur&uuml;ckgegeben</td>
+  </tr>
+  <tr>
+    <td>setValue(value)</td>
+    <td>setzt den gegebenen Wert ins Feld (None: leeres Feld)</td>
+  </tr>
+  <tr>
+    <td>setEditable(False)</td>
+    <td>verhindert das Editieren (und entfernt den Cursor)</td>
+  </tr>
+  <tr>
+    <td>setEnabled(enabled)</td>
+    <td>aktiviert/deaktiviert das Textfeld</td>
+  </tr>
+</table>
+<h4><br>
+Klasse FloatEntry (Basisklasse EntryItem)</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%" bgcolor="#F0F0F5">Konstruktoren/Methoden</td>
+    <td width="70%" bgcolor="#F0F0F5">Aktion</td>
+  </tr>
+  <tr>
+    <td>FloatEntry(prompt, init)</td>
+    <td>erzeugt ein Textfeld zur Eingabe oder Anzeige von Float-Zahlen. Das Feld wird mit prompt angeschrieben und der Anfangswert init hineingesetzt</td>
+  </tr>
+  <tr>
+    <td>FloatEntry(prompt)</td>
+    <td>erzeugt ein Textfeld zur Eingabe oder Anzeige von Float-Zahlen. Das Feld wird mit dem Prompt angeschrieben </td>
+  </tr>
+  <tr>
+    <td>isTouched()</td>
+    <td>liefert True, falls auf das Textfeld seit dem letzten Aufruf von isTouched() geklickt wurde</td>
+  </tr>
+  <tr>
+    <td>getValue()</td>
+    <td>liefert den aktuellen Wert im Feld; falls dieser nicht eine Zahl ist, wird None zur&uuml;ckgegeben</td>
+  </tr>
+  <tr>
+    <td>setValue(value)</td>
+    <td>setzt den gegebenen Wert ins Feld (None: leeres Feld)</td>
+  </tr>
+  <tr>
+    <td>setEditable(False)</td>
+    <td>verhindert das Editieren (und entfernt den Cursor)</td>
+  </tr>
+  <tr>
+    <td>setEnabled(enabled)</td>
+    <td>aktiviert/deaktiviert das Textfeld</td>
+  </tr>
+</table>
+<h4><br>
+Klasse StringEntry (Basisklasse EntryItem)</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td width="30%" bgcolor="#F0F0F5">Konstruktoren/Methoden</td>
+    <td width="70%" bgcolor="#F0F0F5">Aktion</td>
+  </tr>
+  <tr>
+    <td>StringEntry(label, init)</td>
+    <td>erzeugt ein Textfeld zur Eingabe oder Anzeige von Strings. Das Feld wird mit prompt angeschrieben und der Anfangswert init hineingesetzt</td>
+  </tr>
+  <tr>
+    <td>StringEntry(label)</td>
+    <td>erzeugt ein Textfeld zur Eingabe oder Anzeige von Strings. Das Feld wird mit dem Prompt angeschrieben </td>
+  </tr>
+  <tr>
+    <td>isTouched()</td>
+    <td>liefert True, falls auf das Textfeld seit dem letzten Aufruf von isTouched() geklickt wurde</td>
+  </tr>
+  <tr>
+    <td>getValue()</td>
+    <td>liefert den aktuellen Wert im Feld</td>
+  </tr>
+  <tr>
+    <td>setValue(value)</td>
+    <td>setzt den gegebenen Wert ins Feld (None oder &quot;&quot;: leeres Feld)</td>
+  </tr>
+  <tr>
+    <td>setEditable(False)</td>
+    <td>verhindert das Editieren (und entfernt den Cursor)</td>
+  </tr>
+  <tr>
+    <td>setEnabled(enabled)</td>
+    <td>aktiviert/deaktiviert das Textfeld</td>
+  </tr>
+</table>
+<h4><br>
+Klasse SliderEntry (Basisklasse EntryItem)</h4>
+<table width="100%"  border="1" cellpadding="3" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td bgcolor="#F0F0F5">&nbsp;</td>
+    <td bgcolor="#F0F0F5">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="30%" bgcolor="#F0F0F5">Konstruktor/Methoden</td>
+    <td width="70%" bgcolor="#F0F0F5">Aktion</td>
+  </tr>
+  <tr>
+    <td>SliderEntry(min, max, init, major, minor)</td>
+    <td>erzeugt einen Schieberegler mit dem minimalen Wert min, dem maximalen Wert max, der Intialisierungsposition des Knopfs init, dem Abstand der Hauptticks major und dem Abstand der Nebenticks minor</td>
+  </tr>
+  <tr>
+    <td>isTouched()</td>
+    <td>liefert True, falls auf den Schieberegler seit dem letzten Aufruf von isTouched() geklickt wurde</td>
+  </tr>
+  <tr>
+    <td>getValue()</td>
+    <td>liefert den aktuellen Wert der Knopfposition</td>
+  </tr>
+  <tr>
+    <td>setValue(value)</td>
+    <td>setzt den Knopf an die gegebene Position</td>
+  </tr>
+  <tr>
+    <td>setEnabled(enabled)</td>
+    <td>aktiviert/deaktiviert den Schieberegler</td>
+  </tr>
+</table>
+<h4>&nbsp;</h4>
+<p><a href="http://ch/aplu/docs/index_de.html"><img src="gifs/home.png" alt="home" width="25" height="25"></a></p>
+<p>&nbsp;</p>
+</body>
+</html>
+
