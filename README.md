@@ -6,11 +6,11 @@ Note:
 
 I have no rights for redistribution.
 
-But this can save your time searching dependencies everywhere.
+But this can save your time searching packages everywhere.
 
 The name "LifeSaverBhupend" is given by my friend Rashmi.
 
-## Libraries included:
+## Packages included:
 ch.aplu.
 * bluetooth
 * esm
