@@ -17,7 +17,6 @@ ch.aplu.
 * ev3
 * jcardgame
 * jgamegrid
-* mbm
 * mbsim
 * minisim
 * nxt
