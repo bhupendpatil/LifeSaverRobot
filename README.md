@@ -8,7 +8,7 @@ I have no rights for redistribution.
 
 But this can save your time searching packages everywhere.
 
-The name "LifeSaverBhupend" is given by my friend [Rashmi](https://github.com/Rashmi1404)
+The name "LifeSaverBhupend" is given by my friend [Rashmi](https://github.com/Rashmi1404).
 
 ## Packages included:
 ch.aplu.
@@ -37,7 +37,7 @@ wav
 
 ## Credits :
 Dr. Aegidius Plüss
-..
+
 website : http://www.aplu.ch 
 
 support : support@aplu.ch
