@@ -1,4 +1,4 @@
-# LifeSaverBhupend
+# LifeSaverBhupend | LifeSaverRobot
 
 # [Download](https://github.com/bhupendpatil/LifeSaverBhupend/releases)
 
@@ -8,7 +8,7 @@ I have no rights for redistribution.
 
 But this can save your time searching packages everywhere.
 
-The name "LifeSaverBhupend" is given by my friend Rashmi.
+The name "LifeSaverBhupend" is given by my friend [Rashmi](https://github.com/Rashmi1404).
 
 ## Packages included:
 ch.aplu.
